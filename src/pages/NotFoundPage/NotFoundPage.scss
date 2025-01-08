@@ -1,0 +1,17 @@
+ @use '../../App.scss' as app;
+
+.container{
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+.go-back-btn {
+  color: app.$secondary;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  color: app.$primary;
+}
