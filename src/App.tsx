@@ -1,7 +1,8 @@
 import './App.scss';
+import { Phones } from './components/Phones';
 
 function App() {
-  return <p>Р</p>;
+  return <Phones />;
 }
 
 export default App;
