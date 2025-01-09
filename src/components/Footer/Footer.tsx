@@ -1,50 +1,75 @@
-import './Footer.scss'
+import { Link } from 'react-router';
+import './Footer.scss';
 export const Footer = () => {
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className="footer">
-      <div className="container content has-text-centered">
+      <div className="_container footer-content has-text-centered">
         <div className="footer-logo">
-          <img
-            src="../../../public/img/Logo.png"
-            alt="Nice Gadgets Logo"
-            className="logo"
-          />
+          <Link
+            to="/home"
+            className="footer-logo--link"
+          >
+            <img
+              src="../../../public/img/Logo.png"
+              alt="Nice Gadgets Logo"
+              className="logo"
+            />
+          </Link>
         </div>
 
         <div>
           <ul className="footer-links">
-            <li>
-              <a
-                href="/github"
+            <li className="footer-link-item">
+              <Link
+                to="/github"
                 className="footer-link"
               >
                 Github
-              </a>
+              </Link>
             </li>
-            <li>
-              <a
-                href="/contacts"
+            <li className="footer-link-item">
+              <Link
+                to="/contacts"
                 className="footer-link"
               >
                 Contacts
-              </a>
+              </Link>
             </li>
-            <li>
-              <a
-                href="/rights"
+            <li className="footer-link-item">
+              <Link
+                to="/rights"
                 className="footer-link"
               >
                 Rights
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className="footer-back-to-top">
-          <button className="back-to-top-button">Back to Top</button>
+          <label
+            htmlFor="back-to-top"
+            className="footer-back-to-top--label"
+          >
+            Back to Top
+          </label>
+          <button
+            className="footer-back-to-top--button"
+            id="back-to-top"
+            onClick={handleBackToTop}
+          >
+            <img
+              src="./../../../public/img/icons/Arrow-Top.png"
+              alt="top angle arrow"
+              className="footer-back-to-top--img"
+            />
+          </button>
         </div>
       </div>
     </footer>
   );
-}
+};

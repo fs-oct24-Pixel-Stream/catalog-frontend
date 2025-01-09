@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 import './App.scss';
+import { Footer } from './components/Footer/Footer';
 
 export const App = () => {
   return (
@@ -7,8 +8,7 @@ export const App = () => {
       {/* TODO ADD Header */}
       header
       <Outlet />
-      footer
-      {/* TODO ADD Footer */}
+      <Footer />
     </>
   );
 };
