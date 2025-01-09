@@ -1,18 +1,36 @@
-@import './utils/variables';
+@use './utils/variables' as variables;
+@use './styles/utils/mixins.scss' as mixins;
 
 html {
   font-family: Mont, sans-serif;
-  font-size: 14px;
+  font-size: 1.4em;
+}
+
+._container {
+  padding-inline: 16px;
+
+  @include mixins.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include mixins.on-desktop {
+    padding-inline: 32px;
+    max-width: 1136px;
+    margin-inline: auto;
+  }
 }
 
 .titleMain {
   font-size: 48px;
   font-weight: 800;
   line-height: 1.17;
-  color: $primary;
+  color: variables.$primary;
   // color: #313237;
   font-family: Mont, sans-serif; // Bulma перезаписує
 
   @media (min-width: em()) {
   }
 }
+// .title {
+//   font-size: 54px;
+// }
