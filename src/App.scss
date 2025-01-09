@@ -2,7 +2,7 @@
 @use './styles/utils/mixins.scss' as mixins;
 
 html {
-  font-family: Mont, sans-serif !important;
+  font-family: Mont, sans-serif;
   font-size: 10px;
 }
 
@@ -27,6 +27,3 @@ html {
   color: variables.$primary;
   font-family: Mont, sans-serif; // Bulma перезаписує
 }
-// .title {
-//   font-size: 54px;
-// }
