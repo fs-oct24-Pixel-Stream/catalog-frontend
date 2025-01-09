@@ -20,7 +20,7 @@
 
   &-logo {
     width: 89px;
-    transition: scale 300ms ease;
+    transition: scale variables.$button-transition-time ease;
 
     &:hover {
       scale: 1.1;
@@ -79,7 +79,7 @@
       border: 1px solid variables.$secondary;
       width: 32px;
       height: 32px;
-      border-radius: 4px;
+      border-radius: variables.$global-border-radius;
 
       &:hover {
         border: 1px solid variables.$primary;
