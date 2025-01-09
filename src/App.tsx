@@ -1,7 +1,14 @@
+import { Outlet } from 'react-router';
 import './App.scss';
 
-function App() {
-  return <div className="title _container">Title</div>;
-}
-
-export default App;
+export const App = () => {
+  return (
+    <>
+      {/* TODO ADD Header */}
+      header
+      <Outlet />
+      footer
+      {/* TODO ADD Footer */}
+    </>
+  );
+};
