@@ -1,12 +1,24 @@
-$primary: #313237;
-$secondary: #89939a;
-$icons: #b4bdc3;
-$elements: #e2e6e9;
-$hoverBg: #fafbfc;
-$green: #27ae60;
-$red: #eb5757;
+@use './styles/utils/mixins.scss';
 
 html {
   font-family: Mont, sans-serif;
-  font-size: 14px;
+  font-size: 1.4em;
 }
+
+._container {
+  padding-inline: 16px;
+
+  @include mixins.on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include mixins.on-desktop {
+    padding-inline: 32px;
+    max-width: 1136px;
+    margin-inline: auto;
+  }
+}
+
+// .title {
+//   font-size: 54px;
+// }

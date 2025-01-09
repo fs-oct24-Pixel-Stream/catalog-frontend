@@ -1,8 +1,14 @@
+import { Outlet } from 'react-router';
 import './App.scss';
-import { Footer } from './components/Footer/Footer';
 
-function App() {
-  return <Footer />;
-}
-
-export default App;
+export const App = () => {
+  return (
+    <>
+      {/* TODO ADD Header */}
+      header
+      <Outlet />
+      footer
+      {/* TODO ADD Footer */}
+    </>
+  );
+};

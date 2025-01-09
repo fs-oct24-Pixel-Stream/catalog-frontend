@@ -1,0 +1,17 @@
+@use '../../styles/utils/variable.scss' as variables;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+.go-back-btn {
+  color: variables.$secondary;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  color: variables.$primary;
+}

@@ -1,2 +1,9 @@
 @use '../public/fonts/fonts.scss';
-@use './normalise.scss';
+@use './styles/normalise.scss';
+
+@use 'bulma/css/bulma.css';
+
+@use './styles/utils/variable';
+@use './styles/utils/mixins';
+
+@use './App.scss';
