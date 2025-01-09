@@ -1,9 +1,9 @@
-@import '../public/fonts/fonts.scss';
-@import './styles/normalise.scss';
+@use '../public/fonts/fonts.scss';
+@use './styles/normalise.scss';
 
-@import 'bulma/css/bulma.css';
+@use 'bulma/css/bulma.css';
 
-@import './styles/utils/variable';
-@import './styles/utils/mixins';
+@use './styles/utils/variable';
+@use './styles/utils/mixins';
 
-@import './App.scss';
+@use './App.scss';
