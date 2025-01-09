@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 import './App.scss';
+import { ProductCard } from './components/ProductCard/ProductCard';
 
 export const App = () => {
   return (
@@ -9,6 +10,7 @@ export const App = () => {
       <Outlet />
       footer
       {/* TODO ADD Footer */}
+      <ProductCard />
     </>
   );
 };
