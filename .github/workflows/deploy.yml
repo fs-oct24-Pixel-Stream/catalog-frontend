@@ -40,4 +40,4 @@ jobs:
           branch: gh-pages # Branch where the app will be deployed
           folder: dist # Folder containing the built React app
         env:
-          GITHUB_TOKEN: ${{ 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 }}
+          GITHUB_TOKEN: ${{ secrets.MY_SECRET_KEY }}
