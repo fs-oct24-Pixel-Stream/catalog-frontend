@@ -1,6 +1,4 @@
-import './FavoritePage.scss'
+import './FavoritePage.scss';
 export const FavoritePage = () => {
-  return (
-    <div>Favorite</div>
-  )
-}
+  return <div>Favorite</div>;
+};

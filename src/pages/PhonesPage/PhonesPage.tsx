@@ -1,5 +1,5 @@
-import "./PhonesPage.scss"
-import { Outlet } from "react-router";
+import './PhonesPage.scss';
+import { Outlet } from 'react-router';
 
 export const PhonesPage = () => {
   return (
@@ -8,4 +8,4 @@ export const PhonesPage = () => {
       <Outlet />
     </>
   );
-}
+};

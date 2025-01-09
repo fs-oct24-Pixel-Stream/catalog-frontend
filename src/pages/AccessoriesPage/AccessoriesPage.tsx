@@ -1,6 +1,4 @@
-import "./AccessoriesPage.scss"
+import './AccessoriesPage.scss';
 export const HomePage = () => {
-  return (
-    <div>Home</div>
-  );
-}
+  return <div>Home</div>;
+};

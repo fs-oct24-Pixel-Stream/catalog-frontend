@@ -1,5 +1,5 @@
-import './TabletsPage.scss'
-import { Outlet } from "react-router"
+import './TabletsPage.scss';
+import { Outlet } from 'react-router';
 
 export const TabletsPage = () => {
   return (
@@ -7,5 +7,5 @@ export const TabletsPage = () => {
       <div>Tablets</div>
       <Outlet />
     </>
-  )
-}
+  );
+};

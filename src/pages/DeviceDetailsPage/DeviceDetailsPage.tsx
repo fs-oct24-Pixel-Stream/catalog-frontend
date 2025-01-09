@@ -1,6 +1,4 @@
-import "./DeviceDetailsPage.scss"
+import './DeviceDetailsPage.scss';
 export const DeviceDetailsPage = () => {
-  return (
-    <div>DeviceDetails</div>
-  )
+  return <div>DeviceDetails</div>;
 };

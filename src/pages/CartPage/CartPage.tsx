@@ -1,6 +1,4 @@
-import "./CartPage.scss"
+import './CartPage.scss';
 export const CartPage = () => {
-  return (
-    <div>Cart</div>
-  )
-}
+  return <div>Cart</div>;
+};
