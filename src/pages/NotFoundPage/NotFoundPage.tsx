@@ -3,14 +3,14 @@ import './NotFoundPage.scss';
 
 export const NotFoundPage = () => {
   return (
-    <div className="container">
-      <nav>
+    <div className="_container">
+      <nav className="navigation">
         <span className="fa-solid fa-angle-left"></span>
         <Link
           to=".."
           className="go-back-btn"
         >
-          go back{' '}
+          back
         </Link>
       </nav>
       <h1 className="title">Page Not Found</h1>
