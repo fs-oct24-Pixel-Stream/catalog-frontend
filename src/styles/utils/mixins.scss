@@ -1,13 +1,13 @@
-@import './variable.scss';
+@use './variable.scss';
 
 @mixin on-tablet {
-  @media (min-width: $tablet-min-width) {
+  @media (min-width: variable.$tablet-min-width) {
     @content;
   }
 }
 
 @mixin on-desktop {
-  @media (min-width: $desktop-min-width) {
+  @media (min-width: variable.$desktop-min-width) {
     @content;
   }
 }
