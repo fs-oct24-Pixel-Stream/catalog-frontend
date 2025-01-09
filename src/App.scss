@@ -1,4 +1,24 @@
+@import './styles/utils/mixins.scss';
+
 html {
   font-family: Mont, sans-serif;
   font-size: 1.4em;
 }
+
+._container {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: 1136px;
+    margin-inline: auto;
+  }
+}
+
+// .title {
+//   font-size: 54px;
+// }
