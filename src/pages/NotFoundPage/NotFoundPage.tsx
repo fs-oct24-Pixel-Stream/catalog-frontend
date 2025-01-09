@@ -1,19 +1,27 @@
-import { Link } from 'react-router';
+import { useNavigate } from 'react-router';
 import './NotFoundPage.scss';
 
 export const NotFoundPage = () => {
+  const navigate = useNavigate();
+
+  const OneStepBackHandler = () => navigate(-1);
+
   return (
     <div className="_container">
-      <nav className="navigation">
-        <span className="fa-solid fa-angle-left"></span>
-        <Link
-          to=".."
-          className="go-back-btn"
+      <div className="page-not-found">
+        <h1 className=" title page-not-found__title">Page not found</h1>
+        <p className="page-not-found__description">
+          {
+            "Sorry, the page you're looking for doesn't exist. Please correct your URL or return to the latest page you visited via our cool and helpful back button."
+          }
+        </p>
+        <button
+          className="page-not-found__back-button"
+          onClick={OneStepBackHandler}
         >
-          back
-        </Link>
-      </nav>
-      <h1 className="title">Page Not Found</h1>
+          Back
+        </button>
+      </div>
     </div>
   );
 };

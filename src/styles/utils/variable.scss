@@ -5,6 +5,7 @@ $elements: #e2e6e9;
 $hoverBg: #fafbfc;
 $green: #27ae60;
 $red: #eb5757;
+$white: #fff;
 
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
@@ -12,3 +13,7 @@ $desktop-min-width: 1200px;
 $font-family: Mont, sans-serif;
 $font-size: 10px;
 $font-weight: 400;
+
+$button-transition-time: 0.3s;
+
+$global-border-radius: 4px;

@@ -1,37 +1,55 @@
 @use '../../styles/utils/variable.scss' as variables;
 @use '../../styles/utils/mixins.scss' as mixins;
 
-.container {
-  display: flex;
-  flex-direction: column;
-  max-width: 1136px;
+.page-not-found {
+  background-image: url(../../../public/img/page-not-found.png);
   margin: 0 auto;
-}
-.navigation {
-  margin: 24px 0 40px 0;
+  max-width: 800px;
+  padding: 390px 0 130px;
+
+  background-repeat: no-repeat;
+  background-size: auto 280px;
+  background-position: center 70px;
+
   display: flex;
   align-items: center;
-  gap: 8px;
-  width: 66px;
-  line-height: 16px;
-}
-.go-back-btn {
-  font-family: variables.$font-family;
-  font-size: 1.2em;
-  color: variables.$secondary;
-  font-weight: 600;
-  text-transform: capitalize;
-}
+  flex-direction: column;
 
-.title {
   font-family: variables.$font-family;
-  font-size: 3.2em;
-  font-weight: 800;
+  text-align: center;
   color: variables.$primary;
+
+  &__title {
+    font-size: 3.2em;
+  }
+  &__description {
+    font-size: 1.4em;
+    font-weight: 500;
+    padding: 20px 0 20px;
+    line-height: 21px;
+  }
+  &__back-button {
+    background-color: variables.$primary;
+    color: variables.$white;
+    font-size: 1.4em;
+    width: 175px;
+    height: 48px;
+    box-sizing: border-box;
+
+    transition: box-shadow variables.$button-transition-time ease;
+
+    border-radius: 4px;
+
+    &:hover {
+      box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
+    }
+  }
 }
 
 @include mixins.on-tablet {
-  .title {
-    font-size: 4.8em;
+  .page-not-found {
+    &__title {
+      font-size: 4.8em;
+    }
   }
 }
