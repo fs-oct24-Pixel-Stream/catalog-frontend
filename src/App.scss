@@ -1,4 +1,18 @@
+@import './utils/variables';
+
 html {
   font-family: Mont, sans-serif;
   font-size: 14px;
+}
+
+.titleMain {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.17;
+  color: $primary;
+  // color: #313237;
+  font-family: Mont, sans-serif; // Bulma перезаписує
+
+  @media (min-width: em()) {
+  }
 }

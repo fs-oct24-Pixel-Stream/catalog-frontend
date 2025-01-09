@@ -1,11 +1,17 @@
+import './Phones.scss';
+
 export const Phones = () => {
   return (
     <section className="phones container is-fluid">
-      <h1>Mobile phones</h1>
+      <div className="route">Заглушка</div>
+
+      <h1 className="titleMain">Mobile phones</h1>
 
       <p className="phones__quantity">95 models</p>
       <form className="phone__filters phoneFilters">
-        <div className="control">
+        {' '}
+        {/*CUSTOM COMPONENT*/}
+        <div className="control phone__control">
           <label htmlFor="sort">Sort by</label>
           <div
             className="select"
@@ -17,8 +23,7 @@ export const Phones = () => {
             </select>
           </div>
         </div>
-
-        <div className="control">
+        <div className="control phone__control">
           <label htmlFor="itemsOnPage">Items on page</label>
           <div
             className="select"
@@ -32,22 +37,22 @@ export const Phones = () => {
         </div>
       </form>
       <div className="phones__list">
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
-        <div className="product"></div>
+        <div className="product">Заглушка</div> {/*CUSTOM COMPONENT*/}
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
+        <div className="product">Заглушка</div>
       </div>
       <div className="phonesPagination">1 2 3 4 5 6 7 8</div>
     </section>
