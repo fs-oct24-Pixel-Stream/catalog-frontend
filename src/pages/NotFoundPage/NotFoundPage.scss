@@ -1,4 +1,4 @@
-@use '../../App.scss' as app;
+@use '../../styles/utils/variable.scss' as variables;
 
 .container {
   display: flex;
@@ -7,11 +7,11 @@
   margin: 0 auto;
 }
 .go-back-btn {
-  color: app.$secondary;
+  color: variables.$secondary;
 }
 
 .title {
   font-size: 48px;
   font-weight: 800;
-  color: app.$primary;
+  color: variables.$primary;
 }
