@@ -8,9 +8,7 @@ export const App = () => {
       header
       <Outlet />
       footer
-       {/* TODO ADD Footer */}
+      {/* TODO ADD Footer */}
     </>
-  )
-}
-
-
+  );
+};
