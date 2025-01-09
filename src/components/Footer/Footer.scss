@@ -1,0 +1,24 @@
+@import '../../App.scss';
+
+.footer {
+  .content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    width: 89px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: space-around;
+
+    .footer-link {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $secondary;
+    }
+  }
+}
