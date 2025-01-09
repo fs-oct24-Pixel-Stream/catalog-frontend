@@ -3,9 +3,9 @@ import './Phones.scss';
 export const Phones = () => {
   return (
     <section className="phones _container">
-      <div className="route">Заглушка</div>
+      <div className="bread-crumbs">Заглушка</div>
 
-      <h1 className="titleMain">Mobile phones</h1>
+      <h1 className="titleMain">Phones</h1>
 
       <p className="phones__quantity">95 models</p>
       <form className="phones__filters phoneFilters">
@@ -39,7 +39,7 @@ export const Phones = () => {
           </label>
           <div className="control">
             <div
-              className="select phones__select"
+              className="select "
               id="sort"
             >
               <select>
@@ -50,7 +50,9 @@ export const Phones = () => {
           </div>
         </div>
       </form>
-      <div className="phones__list">
+      <div className="products">
+        {' '}
+        {/*CUSTOM COMPONENT*/}
         <div className="product">Заглушка</div> {/*CUSTOM COMPONENT*/}
         <div className="product">Заглушка</div>
         <div className="product">Заглушка</div>

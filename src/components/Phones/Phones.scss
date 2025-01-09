@@ -13,7 +13,8 @@
     font-weight: 600;
     font-size: 1.4em;
     line-height: 1.5;
-    color: variable.$secondary; //variables
+    color: variable.$secondary;
+    font-family: variable.$font-family;
     margin-top: 8px;
     margin-bottom: 32px;
 
@@ -49,21 +50,24 @@
     line-height: 1.5; /* 21/14 */
     color: variable.$primary;
   }
-
-  &__list {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 40px;
-
-    @media (min-width: 640px) {
-      grid-template-columns: 2fr;
-      column-gap: 16px;
-    }
-  }
+}
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 40px;
 }
 
 .product {
-  max-width: 100%; // temp style
-  min-height: 440px; // temp style
+  max-width: 288px; //temp style
+  flex: 1 1 100%;
+  min-height: 440px;
   border: 1px solid #000;
+  column-gap: 40px;
+
+  @include mixins.on-tablet {
+    flex: 1 1 50%;
+    row-gap: 16px;
+    column-gap: 16px;
+  }
 }
