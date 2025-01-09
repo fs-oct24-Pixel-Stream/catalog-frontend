@@ -2,37 +2,51 @@ import './Phones.scss';
 
 export const Phones = () => {
   return (
-    <section className="phones container is-fluid">
+    <section className="phones _container">
       <div className="route">Заглушка</div>
 
       <h1 className="titleMain">Mobile phones</h1>
 
       <p className="phones__quantity">95 models</p>
-      <form className="phone__filters phoneFilters">
+      <form className="phones__filters phoneFilters">
         {' '}
         {/*CUSTOM COMPONENT*/}
-        <div className="control phone__control">
-          <label htmlFor="sort">Sort by</label>
-          <div
-            className="select"
-            id="sort"
+        <div className="field phones__control">
+          <label
+            className="phones__label"
+            htmlFor="sort"
           >
-            <select>
-              <option>Newest</option>
-              <option>Newest</option>
-            </select>
+            Sort by
+          </label>
+          <div className="control">
+            <div
+              className="select phones__select"
+              id="sort"
+            >
+              <select>
+                <option>Newest</option>
+                <option>Newest</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div className="control phone__control">
-          <label htmlFor="itemsOnPage">Items on page</label>
-          <div
-            className="select"
-            id="itemsOnPage"
+        <div className="field phones__control">
+          <label
+            className="phones__label"
+            htmlFor="sort"
           >
-            <select>
-              <option>16</option>
-              <option>32</option>
-            </select>
+            Items on page
+          </label>
+          <div className="control">
+            <div
+              className="select phones__select"
+              id="sort"
+            >
+              <select>
+                <option>16</option>
+                <option>32</option>
+              </select>
+            </div>
           </div>
         </div>
       </form>

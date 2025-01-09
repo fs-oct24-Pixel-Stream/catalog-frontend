@@ -2,8 +2,8 @@
 @use './styles/utils/mixins.scss' as mixins;
 
 html {
-  font-family: Mont, sans-serif;
-  font-size: 1.4em;
+  font-family: Mont, sans-serif !important;
+  font-size: 10px;
 }
 
 ._container {
@@ -21,15 +21,11 @@ html {
 }
 
 .titleMain {
-  font-size: 48px;
+  font-size: 4.8em;
   font-weight: 800;
   line-height: 1.17;
   color: variables.$primary;
-  // color: #313237;
   font-family: Mont, sans-serif; // Bulma перезаписує
-
-  @media (min-width: em()) {
-  }
 }
 // .title {
 //   font-size: 54px;

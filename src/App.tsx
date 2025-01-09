@@ -5,14 +5,16 @@ import './utils/mixins.scss';
 import { Outlet } from 'react-router';
 
 import './App.scss';
+import { Phones } from './components/Phones';
 
 export const App = () => {
   return (
     <>
       {/* TODO ADD Header */}
-      header
+      {/* header */}
+      <Phones />
       <Outlet />
-      footer
+      {/* footer */}
       {/* TODO ADD Footer */}
     </>
   );

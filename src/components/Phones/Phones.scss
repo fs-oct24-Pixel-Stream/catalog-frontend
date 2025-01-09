@@ -1,21 +1,55 @@
+@use '../../styles/utils/mixins.scss' as mixins;
+@use '../../styles/utils/variable.scss' as variable;
+
 .phones {
-  padding: 100px;
-  margin-top: 100px;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include mixins.on-tablet {
+    padding-bottom: 80px;
+  }
 
   &__quantity {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 1.4em;
     line-height: 1.5;
-    color: #89939a; //variables
+    color: variable.$secondary; //variables
     margin-top: 8px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 40px;
+    }
   }
 
   &__filters {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    column-gap: 16px;
     margin-bottom: 24px;
   }
-  // &__control {
-  // }
+  &__label {
+    font-weight: 700;
+    font-size: 1.2em;
+    line-height: 1.27;
+    color: variable.$secondary;
+    margin-bottom: 4px;
+    font-family: variable.$font-family;
+  }
+  &__select {
+    width: 100%;
+    min-height: 40px;
+  }
+  &__select select {
+    width: 100%;
+    min-height: 40px;
+    font-family: variable.$font-family;
+    font-size: 1.4em;
+    font-weight: 700;
+    line-height: 1.5; /* 21/14 */
+    color: variable.$primary;
+  }
+
   &__list {
     display: grid;
     grid-template-columns: 1fr;
@@ -29,6 +63,7 @@
 }
 
 .product {
+  max-width: 100%; // temp style
+  min-height: 440px; // temp style
   border: 1px solid #000;
-  min-height: 287px;
 }
