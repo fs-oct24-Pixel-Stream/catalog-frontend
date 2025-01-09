@@ -1,7 +1,7 @@
 import './App.scss';
 
 function App() {
-  return <p>Р</p>;
+  return <div className="title container">Title</div>;
 }
 
 export default App;
