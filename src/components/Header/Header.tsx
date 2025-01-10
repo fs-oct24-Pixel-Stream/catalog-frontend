@@ -1,34 +1,15 @@
 // import { useState } from 'react';
 import './Header.scss';
 import logo from '../../../public/img/Logo.png';
-import { useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
 import { Link } from 'react-router';
 import burger from '../../../public/img/icons/burger.png';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
+import { HeaderLinks } from './HeaderLinks';
 // import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
-const navLinks = [
-  {
-    name: 'home',
-    pathName: '/',
-  },
-  {
-    name: 'phones',
-    pathName: '/phones',
-  },
-  {
-    name: 'tablets',
-    pathName: '/tablets',
-  },
-  {
-    name: 'accessories',
-    pathName: '/accessories',
-  },
-];
-
 export const Header = () => {
-  const location = useLocation();
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // const toggleBurgerMenu = (): void => {
@@ -52,23 +33,11 @@ export const Header = () => {
             />
           </a>
 
-          <div className="nav-links">
-            {navLinks.map(({ name, pathName }) => {
-              return (
-                <Link
-                  key={name}
-                  to={pathName}
-                  className={
-                    pathName === location.pathname ?
-                      'nav-links--item nav-links--current'
-                    : 'nav-links--item'
-                  }
-                >
-                  {name}
-                </Link>
-              );
-            })}
-          </div>
+          <HeaderLinks
+            mainClassName="nav-links--item"
+            activeClassName="nav-links--item nav-links--current"
+            containerClassName="nav-links"
+          />
         </div>
 
         <div
