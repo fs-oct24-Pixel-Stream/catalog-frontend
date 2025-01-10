@@ -1,0 +1,116 @@
+@use '../../styles/utils/variable.scss';
+@use '../../styles/utils/mixins.scss' as mixins;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding-left: 16px;
+  border-bottom: 2px solid #e2e6e9;
+}
+
+.header-nav {
+  &--logo {
+    width: 64px;
+    height: 22px;
+  }
+}
+
+.nav-links {
+  // visibility: hidden;
+  display: none;
+  &--item {
+    text-transform: uppercase;
+    font-family: 'Mont', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: variable.$secondary;
+    position: relative;
+    transition: color 0.3s;
+  }
+  &--current {
+    color: variable.$primary; // Active link color
+  }
+}
+
+.burger-menu {
+  width: 48px;
+  height: 100%;
+
+  border-left: 1px solid #e2e6e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icons-wrapper {
+  display: none;
+}
+
+// tabl
+@include mixins.on-tablet {
+  .header-nav {
+    display: flex;
+    box-sizing: border-box;
+    &--logo {
+      display: flex;
+      align-items: center;
+      margin-right: 36px;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+
+    &--current::after {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      // color: variable.$primary;
+      background: variable.$primary;
+      border-radius: 2px;
+    }
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .icons-wrapper {
+    display: flex;
+    height: 100%;
+    &--item {
+      width: 48px;
+      height: 100%;
+
+      border-left: 1px solid #e2e6e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@include mixins.on-desktop {
+  .header {
+    height: 64px;
+    padding-left: 24px;
+  }
+
+  .header-nav--logo {
+    margin-right: 48px;
+  }
+
+  .nav-links {
+    gap: 64px;
+    &--current::after {
+      top: 34px;
+    }
+  }
+}
