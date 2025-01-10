@@ -1,6 +1,7 @@
 @use './../../styles/utils/variable.scss';
 
 .icon-button {
+  position: relative;
   height: 32px;
   width: 32px;
   border: 1px solid variable.$icons;
@@ -18,11 +19,10 @@
   }
 
   &-text {
+    position: absolute;
     font-size: 2em;
     color: variable.$primary;
     line-height: 1;
-    display: flex;
-    align-items: center;
     margin-top: -2px;
   }
 }
