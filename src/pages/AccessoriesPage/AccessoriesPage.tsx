@@ -1,4 +1,4 @@
 import './AccessoriesPage.scss';
-export const HomePage = () => {
-  return <div>Home</div>;
+export const AccessoriesPage = () => {
+  return <div>AccessoriesPage</div>;
 };
