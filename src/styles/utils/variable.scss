@@ -5,9 +5,16 @@ $elements: #e2e6e9;
 $hoverBg: #fafbfc;
 $green: #27ae60;
 $red: #eb5757;
+$shadow: #17203166;
+$white: #fff;
+$black: #000;
 
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
 
-$font-size: 10px;
+$font-family: Mont, sans-serif;
 $font-weight: 400;
+
+$button-transition-time: 0.3s;
+
+$global-border-radius: 4px;
