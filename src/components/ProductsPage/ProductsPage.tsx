@@ -15,6 +15,7 @@ export const ProductsPage: React.FC<Props> = () => {
       <h1 className="titleMain">Products</h1>
 
       <p className="products__quantity">95 models</p>
+
       <div className="products__filters">
         <div className="field products__control">
           <label
@@ -28,9 +29,11 @@ export const ProductsPage: React.FC<Props> = () => {
               className="select products__select"
               id="sort"
             >
-              <select>
-                <option>Newest</option>
-                <option>Newest</option>
+              {}
+              <select className="products__selectList color-secondary">
+                <option value="0">Select...</option>
+                <option value="Newest">Newest</option>
+                <option value="Oldest">Oldest</option>
               </select>
             </div>
           </div>
@@ -44,10 +47,10 @@ export const ProductsPage: React.FC<Props> = () => {
           </label>
           <div className="control">
             <div
-              className="select "
+              className="select products__select"
               id="sort"
             >
-              <select>
+              <select className="products__selectList color-primary">
                 <option>16</option>
                 <option>32</option>
               </select>

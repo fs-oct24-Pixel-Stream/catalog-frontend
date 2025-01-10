@@ -1,23 +1,25 @@
-@use '../../styles/utils/variables.scss';
+@use '../../styles/utils/variable.scss';
 @use '../../styles/utils/mixins.scss';
 
 .secondary-container {
   height: 50px;
   padding: 10px;
-  border: 1px solid variables.$elements;
+  border: 1px solid variable.$elements;
   border-radius: 8px;
   background-color: white;
-  color: variables.$secondary;
+  color: variable.$secondary;
   margin-bottom: 16px;
 }
 
-.product__list {
+.productList {
   display: grid;
   grid-template-columns: repeat(1, auto);
+  grid-auto-rows: auto;
   justify-content: center;
   row-gap: 40px;
   column-gap: 16px;
   margin-bottom: 40px;
+  height: 100%;
 
   @include mixins.on-tablet {
     grid-template-columns: repeat(2, auto);

@@ -1,11 +1,18 @@
-@use './styles/utils/variables.scss' as variables;
+@use './styles/utils/variable.scss' as variable;
 @use './styles/utils/mixins.scss' as mixins;
 
 html {
   font-family: Mont, sans-serif;
   font-size: 10px;
 }
-
+.body-ajustment {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+.main {
+  flex: 1 1 auto;
+}
 ._container {
   padding-inline: 16px;
 
@@ -24,6 +31,6 @@ html {
   font-size: 4.8em;
   font-weight: 800;
   line-height: 1.17;
-  color: variables.$primary;
+  color: variable.$primary;
   font-family: Mont, sans-serif; // Bulma перезаписує
 }

@@ -1,5 +1,5 @@
 @use '../../styles/utils/mixins.scss';
-@use '../../styles/utils/variables.scss';
+@use '../../styles/utils/variable.scss';
 
 ._container {
   display: flex;
@@ -35,8 +35,8 @@
     font-weight: 600;
     font-size: 1.4em;
     line-height: 1.5;
-    color: variables.$secondary;
-    font-family: variables.$font-family;
+    color: variable.$secondary;
+    font-family: variable.$font-family;
     margin-top: 8px;
     margin-bottom: 32px;
 
@@ -46,34 +46,44 @@
   }
 
   &__filters {
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    column-gap: 16px;
+    display: flex;
+    gap: 16px;
     margin-bottom: 24px;
+    width: 270px;
   }
   &__label {
     font-weight: 700;
     font-size: 1.2em;
     line-height: 1.27;
-    color: variables.$secondary;
+    color: variable.$secondary;
     margin-bottom: 4px;
-    font-family: variables.$font-family;
+    font-family: variable.$font-family;
   }
+
   &__select {
-    width: 100%;
+    width: 130px;
     min-height: 40px;
+    font-size: 1.4em;
   }
-  &__select select {
+
+  &__selectList {
     width: 100%;
     min-height: 40px;
-    font-family: variables.$font-family;
+    font-family: variable.$font-family;
     font-size: 1.4em;
     font-weight: 700;
     line-height: 1.5; /* 21/14 */
-    color: variables.$primary;
+    // color: variable.$secondary;
   }
 }
 
+.select .color-secondary {
+  color: variable.$secondary;
+}
+
+.select .color-primary {
+  color: variable.$primary;
+}
 .bread-crumbs {
   margin-bottom: 24px;
 

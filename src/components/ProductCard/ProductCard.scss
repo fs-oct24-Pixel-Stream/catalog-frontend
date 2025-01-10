@@ -3,17 +3,15 @@
 
 .card {
   max-width: 288px;
+  height: 100%;
   padding: 32px;
-
   border-radius: variable.$global-border-radius;
   border: 1px solid variable.$elements;
   font-family: variable.$font-family;
   transition: all variable.$button-transition-time ease;
+
   @include mixins.on-desktop {
     max-width: 272px;
-  }
-  &__add {
-    justify-content: center;
   }
 
   &__image {
@@ -42,7 +40,6 @@
     font-size: 1.4em;
     font-weight: 600;
     line-height: 1.5;
-
     color: variable.$primary;
     transition: all variable.$button-transition-time ease;
 

@@ -6,17 +6,16 @@ import { Outlet } from 'react-router';
 
 import './App.scss';
 
-import { ProductsPage } from './components/Products';
-
 import { Footer } from './components/Footer/Footer';
 
 export const App = () => {
   return (
-    <>
+    <div className="body-ajustment">
       {/* TODO ADD Header */}
-      <ProductsPage categoryName="tablet" /> {/*DIFFERENT DEVICES */}
-      <Outlet />
+      <main className="main">
+        <Outlet />
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
