@@ -1,7 +1,29 @@
-@use '../../styles/utils/mixins.scss' as mixins;
-@use '../../styles/utils/variable.scss' as variable;
+@use '../../styles/utils/mixins.scss';
+@use '../../styles/utils/variables.scss';
 
-.phones {
+._container {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  flex-direction: column;
+  padding-top: 24px;
+  max-width: 287px;
+  margin: 0 auto;
+
+  @include mixins.on-tablet {
+    max-width: 592px;
+  }
+
+  @include mixins.on-tablet2 {
+    max-width: 719px;
+  }
+
+  @include mixins.on-desktop {
+    max-width: 1200px;
+  }
+}
+
+.products {
   padding-top: 24px;
   padding-bottom: 64px;
 
@@ -13,8 +35,8 @@
     font-weight: 600;
     font-size: 1.4em;
     line-height: 1.5;
-    color: variable.$secondary;
-    font-family: variable.$font-family;
+    color: variables.$secondary;
+    font-family: variables.$font-family;
     margin-top: 8px;
     margin-bottom: 32px;
 
@@ -33,9 +55,9 @@
     font-weight: 700;
     font-size: 1.2em;
     line-height: 1.27;
-    color: variable.$secondary;
+    color: variables.$secondary;
     margin-bottom: 4px;
-    font-family: variable.$font-family;
+    font-family: variables.$font-family;
   }
   &__select {
     width: 100%;
@@ -44,30 +66,18 @@
   &__select select {
     width: 100%;
     min-height: 40px;
-    font-family: variable.$font-family;
+    font-family: variables.$font-family;
     font-size: 1.4em;
     font-weight: 700;
     line-height: 1.5; /* 21/14 */
-    color: variable.$primary;
+    color: variables.$primary;
   }
 }
-.products {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  row-gap: 40px;
-}
 
-.product {
-  max-width: 288px; //temp style
-  flex: 1 1 100%;
-  min-height: 440px;
-  border: 1px solid #000;
-  column-gap: 40px;
+.bread-crumbs {
+  margin-bottom: 24px;
 
   @include mixins.on-tablet {
-    flex: 1 1 50%;
-    row-gap: 16px;
-    column-gap: 16px;
+    margin-bottom: 40px;
   }
 }

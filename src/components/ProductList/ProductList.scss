@@ -1,0 +1,33 @@
+@use '../../styles/utils/variables.scss';
+@use '../../styles/utils/mixins.scss';
+
+.secondary-container {
+  height: 50px;
+  padding: 10px;
+  border: 1px solid variables.$elements;
+  border-radius: 8px;
+  background-color: white;
+  color: variables.$secondary;
+  margin-bottom: 16px;
+}
+
+.product__list {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  justify-content: center;
+  row-gap: 40px;
+  column-gap: 16px;
+  margin-bottom: 40px;
+
+  @include mixins.on-tablet {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  @include mixins.on-tablet2 {
+    grid-template-columns: repeat(3, auto);
+  }
+
+  @include mixins.on-desktop {
+    grid-template-columns: repeat(4, auto);
+  }
+}

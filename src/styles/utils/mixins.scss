@@ -1,13 +1,25 @@
-@use './variable.scss';
+@use './variables.scss';
 
 @mixin on-tablet {
-  @media (min-width: variable.$tablet-min-width) {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-tablet2 {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin on-tablet3 {
+  @media (min-width: 870px) {
     @content;
   }
 }
 
 @mixin on-desktop {
-  @media (min-width: variable.$desktop-min-width) {
+  @media (min-width: 1200px) {
     @content;
   }
 }

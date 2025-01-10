@@ -1,21 +1,19 @@
 import 'bulma/css/bulma.css';
 
-import './utils/variables.scss';
-import './utils/mixins.scss';
+import '../src/styles/utils/variables.scss';
+import '../src/styles/utils/mixins.scss';
 import { Outlet } from 'react-router';
 
 import './App.scss';
-import { ProductCard } from './components/ProductCard/ProductCard';
+import { ProductsPage } from './components/Products';
 
 export const App = () => {
   return (
     <>
       {/* TODO ADD Header */}
-      header
+      <ProductsPage categoryName="tablet" /> {/*DIFFERENT DEVICES */}
       <Outlet />
-      footer
       {/* TODO ADD Footer */}
-      <ProductCard />
     </>
   );
 };

@@ -1,4 +1,4 @@
-@use './utils/variables' as variables;
+@use './styles/utils/variables.scss' as variables;
 @use './styles/utils/mixins.scss' as mixins;
 
 html {
@@ -15,7 +15,7 @@ html {
 
   @include mixins.on-desktop {
     padding-inline: 32px;
-    max-width: 1136px;
+    max-width: 1200px;
     margin-inline: auto;
   }
 }

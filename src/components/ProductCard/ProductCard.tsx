@@ -35,13 +35,13 @@ export const ProductCard = () => {
           <h3 className={styles.card_descriptions_value}>128 GB</h3>
         </div>
 
-        <div className={`is-flex is-justify-content-space-between`}>
+        <div className={`is-flex is-justify-content-space-between `}>
           <h3 className={styles.card_descriptions_text}>RAM</h3>
           <h3 className={styles.card_descriptions_value}>6 GB</h3>
         </div>
       </div>
 
-      <div className={`${styles.card_buttons} is-flex is-justify-content-space-between`}>
+      <div className={`${styles.card_buttons} is-flex is-justify-content-space-between `}>
         <button className={`${styles.card_button_buy} button`}>Add to cart</button>
         <button className={`${styles.card_button_wishlist} button`}></button>
       </div>

@@ -1,17 +1,19 @@
-@use '../../styles/utils/variable.scss';
+@use '../../styles/utils/variables.scss';
 @use '../../styles/utils/mixins.scss';
 
 .card {
   max-width: 288px;
   padding: 32px;
-  border-radius: $global-border-radius;
-  border: 1px solid variable.$elements;
-  font-family: variable.$font-family;
+  border-radius: variables.$global-border-radius;
+  border: 1px solid variables.$elements;
+  font-family: variables.$font-family;
 
   @include mixins.on-desktop {
     max-width: 272px;
   }
-
+  &__add {
+    justify-content: center;
+  }
   &_image {
     margin-bottom: 8px;
     display: block;
@@ -38,10 +40,10 @@
     font-size: 1.4em;
     font-weight: 600;
     line-height: 1.5;
-    color: variable.$primary;
+    color: variables.$primary;
+    transition: transform 300ms ease;
 
     &:hover {
-      transition: all 300ms ease;
       transform: scale(1.1);
     }
   }
@@ -55,19 +57,19 @@
     font-size: 22px;
     font-weight: 800;
     line-height: 1.4;
-    color: variable.$primary;
+    color: variables.$primary;
   }
 
   &_price_value_discount {
     font-size: 22px;
     font-weight: 800;
     line-height: 1.4;
-    color: variable.$secondary;
+    color: variables.$secondary;
     text-decoration: line-through;
   }
 
   &_line {
-    border-bottom: 1px solid variable.$elements;
+    border-bottom: 1px solid variables.$elements;
     margin-bottom: 16px;
   }
 
@@ -82,57 +84,57 @@
       font-size: 12px;
       font-weight: 700;
       line-height: 1.2;
-      color: variable.$secondary;
+      color: variables.$secondary;
     }
 
     &_value {
       font-size: 12px;
       font-weight: 700;
       line-height: 1.2;
-      color: variable.$primary;
+      color: variables.$primary;
     }
   }
 
   &_button_buy {
     height: 40px;
     width: 75%;
-    border-radius: $global-border-radius;
-    background-color: variable.$primary;
+    border-radius: variables.$global-border-radius;
+    background-color: variables.$primary;
     border: 0;
-    color: variable.$white;
+    color: variables.$white;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.5;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px variable.$shadow;
+      box-shadow: 0px 3px 13px 0px variables.$shadow;
     }
 
     &:active {
       box-shadow: none;
-      background-color: variable.$white;
-      color: variable.$primary;
-      border: 1px solid variable.$icons;
+      background-color: variables.$white;
+      color: variables.$primary;
+      border: 1px solid variables.$icons;
     }
   }
 
   &_button_wishlist {
     height: 40px;
     width: 40px;
-    border: 1px solid variable.$icons;
+    border: 1px solid variables.$icons;
     border-radius: 4px;
     background-image: url('../../../public/img/icons/Favourites\ \(Heart\ Like\).svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px;
-    background-color: variable.$white;
+    background-color: variables.$white;
 
     &:hover {
-      border: 1px solid variable.$primary;
+      border: 1px solid variables.$primary;
     }
 
     &:active {
-      border: 1px solid variable.$icons;
+      border: 1px solid variables.$icons;
       background-image: url('../../../public/img/icons/IconsFavourites\ Filled\ \(Heart\ Like\).svg');
       background-position: center;
       background-repeat: no-repeat;
@@ -141,7 +143,7 @@
   }
 
   &:hover {
-    transition: all $button-transition-time ease;
-    box-shadow: 0px 3px 13px 0px variable.$shadow;
+    transition: all variables.$button-transition-time ease;
+    box-shadow: 0px 3px 13px 0px variables.$shadow;
   }
 }
