@@ -1,4 +1,4 @@
-@use '../../styles/utils/variable.scss' as variables;
+@use '../../styles/utils/variable.scss' as variable;
 @use '../../styles/utils/mixins.scss' as mixins;
 
 .page-not-found {
@@ -15,9 +15,9 @@
   align-items: center;
   flex-direction: column;
 
-  font-family: variables.$font-family;
+  font-family: variable.$font-family;
   text-align: center;
-  color: variables.$primary;
+  color: variable.$primary;
 
   &__title {
     font-size: 3.2em;
@@ -29,14 +29,14 @@
     line-height: 1.5;
   }
   &__back-button {
-    background-color: variables.$primary;
-    color: variables.$white;
+    background-color: variable.$primary;
+    color: variable.$white;
     font-size: 1.4em;
     width: 175px;
     height: 48px;
     box-sizing: border-box;
 
-    transition: box-shadow variables.$button-transition-time ease;
+    transition: box-shadow variable.$button-transition-time ease;
 
     border-radius: 4px;
 
