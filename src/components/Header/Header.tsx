@@ -1,20 +1,19 @@
-// import { useState } from 'react';
 import './Header.scss';
 import logo from '../../../public/img/Logo.png';
-// import { useLocation } from 'react-router';
 import { Link } from 'react-router';
 import burger from '../../../public/img/icons/burger.png';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
 import { HeaderLinks } from './HeaderLinks';
-// import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import { useState } from 'react';
 
 export const Header = () => {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // const toggleBurgerMenu = (): void => {
-  //   setIsMenuOpen((prev) => !prev);
-  // };
+  const toggleBurgerMenu = (): void => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
     <>
@@ -42,7 +41,7 @@ export const Header = () => {
 
         <div
           className="burger-menu"
-          // onClick={toggleBurgerMenu}
+          onClick={toggleBurgerMenu}
           aria-label="Open menu"
         >
           <button>
@@ -72,10 +71,10 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      {/* <BurgerMenu
+      <BurgerMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
-      /> */}
+      />
     </>
   );
 };
