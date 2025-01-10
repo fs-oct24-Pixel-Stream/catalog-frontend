@@ -4,61 +4,62 @@
 .card {
   max-width: 288px;
   padding: 32px;
-  border-radius: $global-border-radius;
+  border-radius: variable.$global-border-radius;
   border: 1px solid variable.$elements;
   font-family: variable.$font-family;
+  transition: all variable.$button-transition-time ease;
 
   @include mixins.on-desktop {
     max-width: 272px;
   }
 
-  &_image {
+  &__image {
     margin-bottom: 8px;
     display: block;
     width: 100%;
     height: 130px;
     object-fit: contain;
+    transition: transform variable.$button-transition-time ease;
 
     @include mixins.on-tablet {
       height: 196px;
     }
 
     &:hover {
-      transition: all 300ms ease;
       transform: scale(1.1);
     }
   }
 
-  &_title {
+  &__title {
     margin-bottom: 8px;
   }
 
-  &_title_text {
+  &__title__text {
     margin-top: 16px;
     font-size: 1.4em;
     font-weight: 600;
     line-height: 1.5;
     color: variable.$primary;
+    transition: all variable.$button-transition-time ease;
 
     &:hover {
-      transition: all 300ms ease;
       transform: scale(1.1);
     }
   }
 
-  &_price {
+  &__price {
     margin-bottom: 8px;
     column-gap: 8px;
   }
 
-  &_price_value {
+  &__price__value {
     font-size: 22px;
     font-weight: 800;
     line-height: 1.4;
     color: variable.$primary;
   }
 
-  &_price_value_discount {
+  &__price__value__discount {
     font-size: 22px;
     font-weight: 800;
     line-height: 1.4;
@@ -66,26 +67,26 @@
     text-decoration: line-through;
   }
 
-  &_line {
+  &__line {
     border-bottom: 1px solid variable.$elements;
     margin-bottom: 16px;
   }
 
-  &_descriptions {
+  &__descriptions {
     margin-bottom: 16px;
 
-    &_mb {
+    &__mb {
       margin-bottom: 8px;
     }
 
-    &_text {
+    &__text {
       font-size: 12px;
       font-weight: 700;
       line-height: 1.2;
       color: variable.$secondary;
     }
 
-    &_value {
+    &__value {
       font-size: 12px;
       font-weight: 700;
       line-height: 1.2;
@@ -93,10 +94,10 @@
     }
   }
 
-  &_button_buy {
+  &__button__buy {
     height: 40px;
     width: 75%;
-    border-radius: $global-border-radius;
+    border-radius: variable.$global-border-radius;
     background-color: variable.$primary;
     border: 0;
     color: variable.$white;
@@ -116,11 +117,11 @@
     }
   }
 
-  &_button_wishlist {
+  &__button__wishlist {
     height: 40px;
     width: 40px;
     border: 1px solid variable.$icons;
-    border-radius: 4px;
+    border-radius: variable.$global-border-radius;
     background-image: url('../../../public/img/icons/Favourites\ \(Heart\ Like\).svg');
     background-position: center;
     background-repeat: no-repeat;
@@ -141,7 +142,6 @@
   }
 
   &:hover {
-    transition: all $button-transition-time ease;
     box-shadow: 0px 3px 13px 0px variable.$shadow;
   }
 }
