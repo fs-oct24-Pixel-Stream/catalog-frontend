@@ -8,6 +8,7 @@ import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { FavoritePage } from './pages/FavoritePage/FavoritePage';
 import { CartPage } from './pages/CartPage/CartPage';
+import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 
 // Before testing keep in mind to use # in url. e.g http://localHost/#/phones because of HashRouter.
 
@@ -28,6 +29,17 @@ export const Root = () => (
           element={<PhonesPage />}
         >
           {/* TODO CREATE Phones Page*/}
+          <Route
+            path=":id"
+            element={<DeviceDetailsPage />}
+          />{' '}
+          {/* TODO CREATE Device Details Page and IDvalidator func*/}
+        </Route>
+        <Route
+          path="/accessories"
+          element={<AccessoriesPage />}
+        >
+          {/* TODO CREATE AccessoriesPage*/}
           <Route
             path=":id"
             element={<DeviceDetailsPage />}
