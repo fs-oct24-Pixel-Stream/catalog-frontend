@@ -4,7 +4,7 @@
   background-color: variable.$primary;
   color: variable.$white;
   font-family: variable.$font-family;
-  font-size: 1.4em;
+  font-size: 1em;
   width: 175px;
   height: 48px;
   box-sizing: border-box;
@@ -17,7 +17,40 @@
     box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
   }
 
-  &choice-button-confirm {
+  &-confirm {
     background-color: variable.$green;
   }
+  &-cancel {
+    background-color: variable.$red;
+  }
+}
+
+.modal {
+  font-size: 1.4em;
+  overflow-y: scroll;
+}
+.modal-background {
+  background-color: variable.$shadow;
+}
+
+.modal-card-body {
+  max-height: 300px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  margin: 20px 0;
+  font-size: 1em;
+  color: variable.$primary; // Цвет текста для таблицы
+}
+
+td {
+  background-color: variable.$white;
+  border: 1px solid black;
+}
+
+table th,
+table td {
+  padding: 12px;
 }
