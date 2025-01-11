@@ -1,18 +1,23 @@
-import './ProductsPage.scss';
 import { ProductList } from '../../components/ProductList';
 import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useLocation } from 'react-router';
+
+import './ProductsPage.scss';
 
 type Props = {
   products: ProductCardType[];
 };
 
 export const ProductsPage: React.FC<Props> = ({ products }) => {
+  const location = useLocation();
+  const title = location.pathname.slice(1)[0].toUpperCase() + location.pathname.slice(2);
+
   return (
     <section className="products _container">
       <div className="bread-crumbs">BREAD CRUMBS</div>
       {/*BREAD CRUMBS */}
 
-      <h1 className="titleMain">Products</h1>
+      <h1 className="titleMain">{title}</h1>
 
       <p className="products__quantity">95 models</p>
 
