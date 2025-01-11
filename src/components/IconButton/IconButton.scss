@@ -1,0 +1,28 @@
+@use './../../styles/utils/variable.scss';
+
+.icon-button {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  border: 1px solid variable.$icons;
+  border-radius: variable.$global-border-radius;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-color: variable.$white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border: 1px solid variable.$primary;
+  }
+
+  &-text {
+    position: absolute;
+    font-size: 2em;
+    color: variable.$primary;
+    line-height: 1;
+    margin-top: -2px;
+  }
+}
