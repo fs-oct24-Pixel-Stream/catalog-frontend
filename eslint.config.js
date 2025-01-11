@@ -27,6 +27,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react/prop-types': 'off', // This will suppress the react/prop-types warning for all components, relying on TypeScript for type validation.
     },
   },
   {

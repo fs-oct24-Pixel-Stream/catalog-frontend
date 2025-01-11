@@ -1,5 +1,12 @@
 import './CheckoutModal.scss';
-export const CheckoutModal = () => {
+
+type Props = {
+  setIsModalOpen: (param: boolean) => void;
+};
+
+export const CheckoutModal: React.FC<Props> = (props) => {
+  const { setIsModalOpen } = props;
+
   return (
     <>
       <div className="modal is-active">
@@ -43,7 +50,14 @@ export const CheckoutModal = () => {
           <footer className="modal-card-foot">
             <div className="buttons">
               <button className="choice-button choice-button-confirm">Confirm</button>
-              <button className="choice-button choice-button-cancel">Cancel</button>
+              <button
+                className="choice-button choice-button-cancel"
+                onClick={() => {
+                  setIsModalOpen(false);
+                }}
+              >
+                Cancel
+              </button>
             </div>
           </footer>
         </div>
