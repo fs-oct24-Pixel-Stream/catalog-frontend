@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import './Footer.scss';
+import { IconButton } from '../IconButton/IconButton';
 export const Footer = () => {
   const handleBackToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -51,23 +52,11 @@ export const Footer = () => {
         </div>
 
         <div className="footer-back-to-top">
-          <label
-            htmlFor="back-to-top"
-            className="footer-back-to-top--label"
-          >
-            Back to Top
-          </label>
-          <button
-            className="footer-back-to-top--button"
-            id="back-to-top"
+          <label className="footer-back-to-top--label">Back to Top</label>
+          <IconButton
+            backgroundImage="./../../../public/img/icons/Arrow-Top.png"
             onClick={handleBackToTop}
-          >
-            <img
-              src="./img/icons/Arrow-Top.png"
-              alt="top angle arrow"
-              className="footer-back-to-top--img"
-            />
-          </button>
+          />
         </div>
       </div>
     </footer>
