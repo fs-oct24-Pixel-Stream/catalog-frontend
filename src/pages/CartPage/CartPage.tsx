@@ -15,7 +15,7 @@ export const CartPage = () => {
   console.log(cart);
 
   return (
-    <div>
+    <>
       {!!cart.length &&
         cart.map((product) => (
           <CartItem
@@ -23,18 +23,13 @@ export const CartPage = () => {
             product={product}
           />
         ))}
-      <>
-      <div>CartPage</div>
       <button
         className="button main-button"
         onClick={() => handleOpenModal(true)}
       >
         Checkout
       </button>
-      
-    </>
-    </div>
-
-
+      {isModalOpen && <CheckoutModal setIsModalOpen={setIsModalOpen} />}
+      </>
   );
 };
