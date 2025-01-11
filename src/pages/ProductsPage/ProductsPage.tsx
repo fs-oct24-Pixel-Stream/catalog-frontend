@@ -1,7 +1,8 @@
-import React from 'react';
-
 import './ProductsPage.scss';
 import { ProductList } from '../../components/ProductList';
+import { useEffect } from 'react';
+import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useAppSelector } from '../../app/hooks';
 
 type Props = {
   categoryName: string; //ENUM
@@ -9,6 +10,25 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = (props) => {
   const { categoryName } = props;
+  const phones = useAppSelector((state) => state.phones.phones);
+  const tablets = useAppSelector((state) => state.tablets.tablets);
+  const accessories = useAppSelector((state) => state.accessories.accessories);
+
+  let products: ProductCardType[] | null = null;
+  console.log(categoryName);
+  console.log(phones);
+
+  useEffect(() => {
+    if (categoryName === 'phones') {
+      products = phones;
+    }
+    if (categoryName === 'tablets') {
+      products = tablets;
+    }
+    if (categoryName === 'accessories') {
+      products = accessories;
+    }
+  }, [categoryName]);
 
   return (
     <section className="products _container">
@@ -61,7 +81,7 @@ export const ProductsPage: React.FC<Props> = (props) => {
           </div>
         </div>
       </div>
-      <ProductList />
+      {products && <ProductList products={products} />}
       <div className="productsPagination">PAGINATION</div>
     </section>
   );

@@ -1,13 +1,21 @@
+import React from 'react';
 import { ProductCard } from '../ProductCard';
 import './ProductList.scss';
+import { ProductCardType } from '../../utils/types/ProductCardType';
 
-export const ProductList = () => {
+type Props = {
+  products: ProductCardType[];
+};
+export const ProductList: React.FC<Props> = ({ products }) => {
   return (
     <>
       {/* <div className="secondary-container"> Not Devices Found </div> */}
       <div className="productList">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((card) => (
-          <ProductCard key={card} />
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+          />
         ))}
       </div>
     </>

@@ -1,5 +1,5 @@
-import { RootState } from '@reduxjs/toolkit/query';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from './store';
 
 // Use these hooks everywhere instead of useDispatch and useSelector
 export const useAppDispatch = () => useDispatch<AppDispatch>();

@@ -1,7 +1,7 @@
 import { HashRouter as Router, Routes } from 'react-router';
 import { App } from './App';
 import { Route } from 'react-router';
-import { PhonesPage } from './pages/PhonesPage/PhonesPage';
+// import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { DeviceDetailsPage } from './pages/DeviceDetailsPage/DeviceDetailsPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
@@ -9,6 +9,7 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { FavoritePage } from './pages/FavoritePage/FavoritePage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { ProductsPage } from './pages/ProductsPage';
 
 // Before testing keep in mind to use # in url. e.g http://localHost/#/phones because of HashRouter.
 
@@ -26,7 +27,7 @@ export const Root = () => (
         {/* // TODO CREATE Home page */}
         <Route
           path="/phones"
-          element={<PhonesPage />}
+          element={<ProductsPage categoryName="phones" />}
         >
           {/* TODO CREATE Phones Page*/}
           <Route

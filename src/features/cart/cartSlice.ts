@@ -31,6 +31,7 @@ export const cartSlice = createSlice({
       delete state.productsCart[payload];
     },
 
+    //I created this function, if it is not needed, then we will delete it
     isBuy: (state, { payload }: PayloadAction<number>) => {
       //payload is product.id
       if (state.productsCart[payload]) {
