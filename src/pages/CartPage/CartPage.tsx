@@ -6,9 +6,21 @@ export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
 
-  const handleOpenModal = (param: boolean) => {
-    setIsModalOpen(param);
-    setIsPurchased(isModalOpen ? true : false);
+  const succsessModalWindowText = 'Thank you for your purchase!';
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    setIsPurchased(false);
+  };
+
+  const handleCloseModal = (option: string) => {
+    if (option === 'close') {
+      setIsModalOpen(false);
+      return;
+    } else {
+      setIsModalOpen(false);
+      setIsPurchased(true);
+    }
   };
 
   const products = [
@@ -87,20 +99,33 @@ export const CartPage = () => {
   ];
   return (
     <>
-      <div>CartPage</div>
-      <button
-        className="button main-button"
-        onClick={() => handleOpenModal(true)}
-      >
-        Checkout
-      </button>
-      {isModalOpen && (
-        <CheckoutModal
-          productsList={products}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
-      {isPurchased && <ModalMessage setIsPurchased={setIsPurchased} />}
+      <div className="_container">
+        <div className="checkout-block">
+          <div className="checkout-block__header">
+            <h1 className="checkout-block__header-title">$1111</h1>
+            <p className="checkout-block__header-text">Total for 0 items</p>
+          </div>
+          <button
+            className="button main-button checkout-block__button"
+            onClick={handleOpenModal}
+          >
+            Checkout
+          </button>
+        </div>
+
+        {isModalOpen && (
+          <CheckoutModal
+            productsList={products}
+            handleCloseModal={handleCloseModal}
+          />
+        )}
+        {isPurchased && (
+          <ModalMessage
+            text={succsessModalWindowText}
+            setIsPurchased={setIsPurchased}
+          />
+        )}
+      </div>
     </>
   );
 };

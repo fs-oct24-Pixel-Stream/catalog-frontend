@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 
 type Props = {
   setIsPurchased: (value: boolean) => void;
+  text: string;
 };
 
-export const ModalMessage: React.FC<Props> = ({ setIsPurchased }) => {
+export const ModalMessage: React.FC<Props> = ({ setIsPurchased, text }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsPurchased(false);
-    }, 3000);
+    }, 2000);
     return () => {
       clearTimeout(timer);
     };
@@ -19,7 +20,7 @@ export const ModalMessage: React.FC<Props> = ({ setIsPurchased }) => {
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Thank you for your order</p>
+            <p className="modal-card-title">{text}</p>
           </header>
         </div>
       </div>

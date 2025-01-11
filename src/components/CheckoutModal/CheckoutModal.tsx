@@ -2,12 +2,12 @@ import { ProductType } from '../../utils/types/ProductType';
 import './CheckoutModal.scss';
 
 type Props = {
-  setIsModalOpen: (param: boolean) => void;
+  handleCloseModal: (option: string) => void;
   productsList: ProductType[];
 };
 
 export const CheckoutModal: React.FC<Props> = (props) => {
-  const { setIsModalOpen } = props;
+  const { handleCloseModal, productsList } = props;
 
   return (
     <>
@@ -27,7 +27,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
                 </tr>
               </thead>
               <tbody className="table-body">
-                {props.productsList.map((product) => {
+                {productsList.map((product) => {
                   return (
                     <tr
                       key={product.id}
@@ -44,13 +44,13 @@ export const CheckoutModal: React.FC<Props> = (props) => {
           </section>
           <footer className="modal-card-foot">
             <div className="price-block">
-              <p>Total price:0000$/₴</p>
+              <p>Total price:$/₴0000</p>
             </div>
             <div className="buttons">
               <button
                 className="choice-button choice-button-confirm"
                 onClick={() => {
-                  setIsModalOpen(false);
+                  handleCloseModal('succsess');
                 }}
               >
                 Confirm
@@ -58,7 +58,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
               <button
                 className="choice-button choice-button-cancel"
                 onClick={() => {
-                  setIsModalOpen(false);
+                  handleCloseModal('close');
                 }}
               >
                 Cancel
