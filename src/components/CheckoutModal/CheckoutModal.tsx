@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router';
 import { ProductType } from '../../utils/types/ProductType';
 import './CheckoutModal.scss';
 
@@ -9,7 +8,6 @@ type Props = {
 
 export const CheckoutModal: React.FC<Props> = (props) => {
   const { setIsModalOpen } = props;
-  const navigate = useNavigate();
 
   return (
     <>
@@ -52,7 +50,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
               <button
                 className="choice-button choice-button-confirm"
                 onClick={() => {
-                  navigate('/');
+                  setIsModalOpen(false);
                 }}
               >
                 Confirm
