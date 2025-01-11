@@ -8,9 +8,21 @@ export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
 
-  const handleOpenModal = (param: boolean) => {
-    setIsModalOpen(param);
-    setIsPurchased(isModalOpen ? true : false);
+  const succsessModalWindowText = 'Thank you for your purchase!';
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    setIsPurchased(false);
+  };
+
+  const handleCloseModal = (option: string) => {
+    if (option === 'close') {
+      setIsModalOpen(false);
+      return;
+    } else {
+      setIsModalOpen(false);
+      setIsPurchased(true);
+    }
   };
 
   const cart = useAppSelector((state) => state.cart.cart);
