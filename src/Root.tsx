@@ -3,12 +3,12 @@ import { App } from './App';
 import { Route } from 'react-router';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { HomePage } from './pages/HomePage/HomePage';
-import { DeviceDetailsPage } from './pages/DeviceDetailsPage/DeviceDetailsPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { FavoritePage } from './pages/FavoritePage/FavoritePage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 // Before testing keep in mind to use # in url. e.g http://localHost/#/phones because of HashRouter.
 
@@ -31,7 +31,7 @@ export const Root = () => (
           {/* TODO CREATE Phones Page*/}
           <Route
             path=":id"
-            element={<DeviceDetailsPage />}
+            element={<ProductDetailsPage />}
           />{' '}
           {/* TODO CREATE Device Details Page and IDvalidator func*/}
         </Route>
@@ -42,7 +42,7 @@ export const Root = () => (
           {/* TODO CREATE AccessoriesPage*/}
           <Route
             path=":id"
-            element={<DeviceDetailsPage />}
+            element={<ProductDetailsPage />}
           />{' '}
           {/* TODO CREATE Device Details Page and IDvalidator func*/}
         </Route>
@@ -53,7 +53,7 @@ export const Root = () => (
           {/* TODO CREATE Tablets Page*/}
           <Route
             path=":id"
-            element={<DeviceDetailsPage />}
+            element={<ProductDetailsPage />}
           />{' '}
           {/* TODO CREATE Device Details Page and IDvalidator func*/}
         </Route>

@@ -8,7 +8,9 @@ import 'bulma/css/bulma.css';
 import '../src/styles/utils/variable.scss';
 import '../src/styles/utils/mixins.scss';
 import './App.scss';
-import { Header } from './components/Header/Header';
+
+import { Footer } from './components/Footer/Footer';
+import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -22,6 +24,7 @@ export const App = () => {
       <Header />
       <main className="main">
         <Outlet />
+        <ProductDetailsPage />
       </main>
       <Footer />
     </div>
