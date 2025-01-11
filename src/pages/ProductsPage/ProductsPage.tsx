@@ -1,12 +1,15 @@
 import React from 'react';
-import { ProductList } from '../ProductList/ProductList';
+
 import './ProductsPage.scss';
+import { ProductList } from '../../components/ProductList';
 
 type Props = {
   categoryName: string; //ENUM
 };
 
-export const ProductsPage: React.FC<Props> = () => {
+export const ProductsPage: React.FC<Props> = (props) => {
+  const { categoryName } = props;
+
   return (
     <section className="products _container">
       <div className="bread-crumbs">BREAD CRUMBS</div>

@@ -1,36 +1,47 @@
 import js from '@eslint/js';
 import globals from 'globals';
+import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import tseslint from 'typescript-eslint';
+import { configs as tsConfigs } from '@typescript-eslint/eslint-plugin';
+import parser from '@typescript-eslint/parser';
 import prettier from 'eslint-config-prettier';
-import react from 'eslint-plugin-react';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default [
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      prettier, // This is a config, so it goes under "extends"
-    ],
-    files: ['**/*.{ts,tsx}'],
+    ignores: ['dist'],
     languageOptions: {
       ecmaVersion: 2020,
+      sourceType: 'module',
       globals: globals.browser,
+      parser,
     },
     plugins: {
+      react, // Плагин для React
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      react, // We register the "eslint-plugin-react" plugin
     },
     rules: {
+      ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      ...react.configs.recommended.rules, // This way we use recommended set of rules from "eslint-plugin-react" plugin
-
-      'react/react-in-jsx-scope': 'off', // This rule is included in "recommended", but since React 17 it is not needed!
-
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
-);
+  {
+    files: ['.ts', '.tsx'],
+    languageOptions: {
+      parser,
+    },
+    plugins: {
+      '@typescript-eslint': tsConfigs.recommended,
+    },
+    rules: {
+      ...tsConfigs.recommended.rules,
+    },
+  },
+  {
+    extends: [js.configs.recommended, prettier],
+  },
+];

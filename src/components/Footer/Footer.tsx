@@ -14,7 +14,7 @@ export const Footer = () => {
             className="footer-logo--link"
           >
             <img
-              src="../../../public/img/Logo.png"
+              src="./img/Logo.png"
               alt="Nice Gadgets Logo"
               className="logo"
             />
@@ -63,7 +63,7 @@ export const Footer = () => {
             onClick={handleBackToTop}
           >
             <img
-              src="./../../../public/img/icons/Arrow-Top.png"
+              src="./img/icons/Arrow-Top.png"
               alt="top angle arrow"
               className="footer-back-to-top--img"
             />

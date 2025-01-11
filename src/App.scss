@@ -1,8 +1,12 @@
 @use './styles/utils/variable.scss' as variable;
 @use './styles/utils/mixins.scss' as mixins;
 
+:root {
+  --bulma-family-primary: Mont, sans-serif;
+}
+
 html {
-  font-family: Mont, sans-serif;
+  $font-family: var(--bulma-family-primary);
   font-size: 10px;
 }
 .body-ajustment {
