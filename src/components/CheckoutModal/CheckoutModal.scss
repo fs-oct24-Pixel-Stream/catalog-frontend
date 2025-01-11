@@ -46,9 +46,14 @@ table {
   color: variable.$primary; 
 }
 
-td {
-  background-color: variable.$white;
-  border: 1px solid black;
+.table-body {
+  &__row {
+    border: 1px solid variable.$primary;
+
+    td {
+      padding: 11px;
+    }
+  }
 }
 
 table th,
