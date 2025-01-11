@@ -1,0 +1,93 @@
+@use '../../styles/utils/mixins.scss';
+@use '../../styles/utils/variable.scss';
+
+._container {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  flex-direction: column;
+  padding-top: 24px;
+  max-width: 287px;
+  margin: 0 auto;
+
+  @include mixins.on-tablet {
+    max-width: 592px;
+  }
+
+  @include mixins.on-tablet2 {
+    max-width: 719px;
+  }
+
+  @include mixins.on-desktop {
+    max-width: 1200px;
+  }
+}
+
+.products {
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include mixins.on-tablet {
+    padding-bottom: 80px;
+  }
+
+  &__quantity {
+    font-weight: 600;
+    font-size: 1.4em;
+    line-height: 1.5;
+    color: variable.$secondary;
+    font-family: variable.$font-family;
+    margin-top: 8px;
+    margin-bottom: 32px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    width: 270px;
+  }
+  &__label {
+    font-weight: 700;
+    font-size: 1.2em;
+    line-height: 1.27;
+    color: variable.$secondary;
+    margin-bottom: 4px;
+    font-family: variable.$font-family;
+  }
+
+  &__select {
+    width: 130px;
+    min-height: 40px;
+    font-size: 1.4em;
+  }
+
+  &__selectList {
+    width: 100%;
+    min-height: 40px;
+    font-family: variable.$font-family;
+    font-size: 1.4em;
+    font-weight: 700;
+    line-height: 1.5; /* 21/14 */
+    // color: variable.$secondary;
+  }
+}
+
+.select .color-secondary {
+  color: variable.$secondary;
+}
+
+.select .color-primary {
+  color: variable.$primary;
+}
+.bread-crumbs {
+  margin-bottom: 24px;
+
+  @include mixins.on-tablet {
+    margin-bottom: 40px;
+  }
+}

@@ -1,10 +1,22 @@
-@use './styles/utils/mixins.scss';
+@use './styles/utils/variable.scss' as variable;
+@use './styles/utils/mixins.scss' as mixins;
 
-html {
-  font-family: Mont, sans-serif;
-  font-size: 10px;
+:root {
+  --bulma-family-primary: Mont, sans-serif;
 }
 
+html {
+  $font-family: var(--bulma-family-primary);
+  font-size: 10px;
+}
+.body-ajustment {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+.main {
+  flex: 1 1 auto;
+}
 ._container {
   padding-inline: 16px;
 
@@ -14,7 +26,15 @@ html {
 
   @include mixins.on-desktop {
     padding-inline: 32px;
-    max-width: 1136px;
+    max-width: 1200px;
     margin-inline: auto;
   }
+}
+
+.titleMain {
+  font-size: 4.8em;
+  font-weight: 800;
+  line-height: 1.17;
+  color: variable.$primary;
+  font-family: Mont, sans-serif; // Bulma перезаписує
 }
