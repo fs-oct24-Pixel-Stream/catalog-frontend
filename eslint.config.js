@@ -31,6 +31,7 @@ export default tseslint.config(
       'react/react-in-jsx-scope': 'off', // This rule is included in "recommended", but since React 17 it is not needed!
 
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react/prop-types': 'off', // This will suppress the react/prop-types warning for all components, relying on TypeScript for type validation.
     },
   },
 );

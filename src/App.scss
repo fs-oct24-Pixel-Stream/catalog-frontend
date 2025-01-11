@@ -38,3 +38,20 @@ html {
   color: variable.$primary;
   font-family: Mont, sans-serif; // Bulma перезаписує
 }
+
+.main-button {
+  background-color: variable.$primary;
+  color: variable.$white;
+  font-size: 1.4em;
+  width: 175px;
+  height: 48px;
+  box-sizing: border-box;
+
+  transition: box-shadow variable.$button-transition-time ease;
+
+  border-radius: 4px;
+
+  &:hover {
+    box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
+  }
+}
