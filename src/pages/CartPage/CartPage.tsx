@@ -29,7 +29,12 @@ export const CartPage = () => {
       >
         Checkout
       </button>
-      {isModalOpen && <CheckoutModal setIsModalOpen={setIsModalOpen} />}
-      </>
+      {isModalOpen && (
+        <CheckoutModal
+          productsList={products}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
+    </>
   );
 };

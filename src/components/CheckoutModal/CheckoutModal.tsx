@@ -11,7 +11,6 @@ export const CheckoutModal: React.FC<Props> = (props) => {
   const { setIsModalOpen } = props;
   const navigate = useNavigate();
 
-
   return (
     <>
       <div className="modal is-active">
