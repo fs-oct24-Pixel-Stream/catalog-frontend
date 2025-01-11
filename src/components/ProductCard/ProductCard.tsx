@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductCard.scss';
-import { ProductCardType } from '../../utils/types/ProductCardType';
 import { Link } from 'react-router';
+import { ProductCardType } from '../../utils/types/ProductCardType';
 
 type Props = {
   product: ProductCardType;

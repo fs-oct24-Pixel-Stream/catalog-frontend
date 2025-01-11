@@ -1,35 +1,12 @@
 import './ProductsPage.scss';
 import { ProductList } from '../../components/ProductList';
-import { useEffect } from 'react';
 import { ProductCardType } from '../../utils/types/ProductCardType';
-import { useAppSelector } from '../../app/hooks';
 
 type Props = {
-  categoryName: string; //ENUM
+  products: ProductCardType[];
 };
 
-export const ProductsPage: React.FC<Props> = (props) => {
-  const { categoryName } = props;
-  const phones = useAppSelector((state) => state.phones.phones);
-  const tablets = useAppSelector((state) => state.tablets.tablets);
-  const accessories = useAppSelector((state) => state.accessories.accessories);
-
-  let products: ProductCardType[] | null = null;
-  console.log(categoryName);
-  console.log(phones);
-
-  useEffect(() => {
-    if (categoryName === 'phones') {
-      products = phones;
-    }
-    if (categoryName === 'tablets') {
-      products = tablets;
-    }
-    if (categoryName === 'accessories') {
-      products = accessories;
-    }
-  }, [categoryName]);
-
+export const ProductsPage: React.FC<Props> = ({ products }) => {
   return (
     <section className="products _container">
       <div className="bread-crumbs">BREAD CRUMBS</div>

@@ -9,7 +9,7 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { FavoritePage } from './pages/FavoritePage/FavoritePage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
-import { ProductsPage } from './pages/ProductsPage';
+import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 
 // Before testing keep in mind to use # in url. e.g http://localHost/#/phones because of HashRouter.
 
@@ -27,7 +27,7 @@ export const Root = () => (
         {/* // TODO CREATE Home page */}
         <Route
           path="/phones"
-          element={<ProductsPage categoryName="phones" />}
+          element={<PhonesPage />}
         >
           {/* TODO CREATE Phones Page*/}
           <Route
