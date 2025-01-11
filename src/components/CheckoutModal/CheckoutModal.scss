@@ -5,7 +5,7 @@
   background-color: variable.$primary;
   color: variable.$white;
   font-family: variable.$font-family;
-  font-size: 1.4em;
+  font-size: 1em;
   width: 175px;
   height: 48px;
   box-sizing: border-box;
@@ -43,7 +43,7 @@ table {
   width: 100%;
   margin: 20px 0;
   font-size: 1em;
-  color: variable.$primary; // Цвет текста для таблицы
+  color: variable.$primary; 
 }
 
 td {
@@ -55,8 +55,3 @@ table th,
 table td {
   padding: 12px;
 }
-
-  &choice-button-confirm {
-    background-color: variable.$green;
-  }
-
