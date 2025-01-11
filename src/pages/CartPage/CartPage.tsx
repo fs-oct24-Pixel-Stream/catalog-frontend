@@ -10,8 +10,10 @@ export const CartPage = () => {
   const handleOpenModal = (param: boolean) => {
     setIsModalOpen(param);
   };
+
   const cart = useAppSelector((state) => state.cart.cart);
   console.log(cart);
+
   return (
     <div>
       {!!cart.length &&
@@ -29,7 +31,7 @@ export const CartPage = () => {
       >
         Checkout
       </button>
-      {isModalOpen && <CheckoutModal setIsModalOpen={setIsModalOpen} />}
+      
     </>
     </div>
 
