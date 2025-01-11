@@ -1,14 +1,19 @@
 .burger-menu-overlay {
+  overflow: auto;
   position: fixed;
   top: 0;
+  right: -100;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
+  padding: 0 20px;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #d12d35;
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    right 0.8s ease,
+    opacity 0.8s ease;
 }
 
 .burger-menu-overlay.open {
