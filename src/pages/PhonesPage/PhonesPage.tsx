@@ -6,10 +6,9 @@ import { Outlet } from 'react-router';
 
 export const PhonesPage = () => {
   const products = useAppSelector((state) => state.products.products);
-
   const phones = useMemo(() => {
     return products.filter((product) => product.category === 'phones');
-  }, []);
+  }, [products]);
   return (
     <>
       <div>Phones</div>

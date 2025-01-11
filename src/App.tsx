@@ -6,7 +6,7 @@ import '../src/styles/utils/mixins.scss';
 import './App.scss';
 
 import { Footer } from './components/Footer/Footer';
-import { useAppDispatch, useAppSelector } from './app/hooks';
+import { useAppDispatch } from './app/hooks';
 import { useEffect } from 'react';
 import { fetchPhones } from './features/phones/phonesSlice';
 import { fetchTablets } from './features/tablets/tabletsSlice';
@@ -20,17 +20,17 @@ export const App = () => {
     dispatch(fetchProducts());
   }, []);
 
-  useEffect(() => {
-    dispatch(fetchPhones());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchPhones());
+  // }, []);
 
-  useEffect(() => {
-    dispatch(fetchTablets());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchTablets());
+  // }, []);
 
-  useEffect(() => {
-    dispatch(fetchAccessories());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchAccessories());
+  // }, []);
 
   return (
     <div className="body-ajustment">
