@@ -12,14 +12,11 @@ import { Footer } from './components/Footer/Footer';
 export const App = () => {
   return (
     <div className="body-ajustment">
-
-
       <Header />
       <main className="main">
         <Outlet />
       </main>
       <Footer />
     </div>
-
   );
 };
