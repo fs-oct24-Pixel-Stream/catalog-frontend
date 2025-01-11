@@ -21,17 +21,20 @@ export const CheckoutModal: React.FC<Props> = (props) => {
           </header>
           <section className="modal-card-body">
             <table className="content">
-              <thead>
-                <tr>
+              <thead className="table-header">
+                <tr className="table-header__row">
                   <th>product name</th>
                   <th>quantity</th>
                   <th>price</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="table-body">
                 {props.productsList.map((product) => {
                   return (
-                    <tr key={product.id}>
+                    <tr
+                      key={product.id}
+                      className="table-body__row"
+                    >
                       <td>{product.name}</td>
                       <td>{product.quantity}</td>
                       <td>{product.price}</td>
@@ -42,6 +45,9 @@ export const CheckoutModal: React.FC<Props> = (props) => {
             </table>
           </section>
           <footer className="modal-card-foot">
+            <div className="price-block">
+              <p>Total price:0000$/₴</p>
+            </div>
             <div className="buttons">
               <button
                 className="choice-button choice-button-confirm"
