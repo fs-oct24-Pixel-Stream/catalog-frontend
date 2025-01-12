@@ -51,6 +51,7 @@ export const Header = () => {
             mainClassName="nav-links--item"
             activeClassName="nav-links--item nav-links--current"
             containerClassName="nav-links"
+            onClose={() => setIsMenuOpen(false)}
           />
         </div>
 
@@ -94,7 +95,12 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      {isMenuOpen && <BurgerMenu isOpen={isMenuOpen} />}
+      {isMenuOpen && (
+        <BurgerMenu
+          isOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+        />
+      )}
     </>
   );
 };

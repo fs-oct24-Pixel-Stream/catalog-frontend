@@ -19,10 +19,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   &.open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
   }
 }
 
@@ -40,6 +40,7 @@
     letter-spacing: 0.04em;
     color: variable.$secondary;
     text-transform: uppercase;
+    transition: color 0.3s ease-in-out;
     &:hover {
       color: variable.$primary;
     }
