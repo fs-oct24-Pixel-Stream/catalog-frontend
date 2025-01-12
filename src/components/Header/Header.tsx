@@ -2,12 +2,13 @@ import './Header.scss';
 import logo from '../../../public/img/Logo.png';
 import logo2x from '../../../public/img/Logo2x.png';
 import { Link } from 'react-router';
-import burger from '../../../public/img/icons/burger.png';
+import burger from '../../../public/img/icons/burger.svg';
+import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
 import { HeaderLinks } from './HeaderLinks';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +16,18 @@ export const Header = () => {
   const toggleBurgerMenu = (): void => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -29,7 +42,7 @@ export const Header = () => {
           >
             <img
               src={logo}
-              // srcSet={`${logo} 1x, ${logo2x} 2x`}
+              srcSet={`${logo} 1x, ${logo2x} 2x`}
               alt="logo"
             />
           </Link>
@@ -46,12 +59,20 @@ export const Header = () => {
           onClick={toggleBurgerMenu}
           aria-label="Open menu"
         >
-          <button>
-            <img
-              src={burger}
-              alt="icon for open side-bar"
-            />
-          </button>
+          {isMenuOpen ?
+            <button>
+              <img
+                src={burgerClose}
+                alt="icon for close side-bar"
+              />
+            </button>
+          : <button>
+              <img
+                src={burger}
+                alt="icon for open side-bar"
+              />
+            </button>
+          }
         </div>
 
         <div className="icons-wrapper">
@@ -73,10 +94,7 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      <BurgerMenu
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-      />
+      {isMenuOpen && <BurgerMenu isOpen={isMenuOpen} />}
     </>
   );
 };
