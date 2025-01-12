@@ -1,27 +1,51 @@
+import React, { useState } from 'react';
 import './ProductCard.scss';
+import { Link } from 'react-router';
+import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useAppDispatch } from '../../app/hooks';
+import { addProduct, removeProduct } from '../../features/cart/cartSlice';
+import cn from 'classnames';
 
-export const ProductCard = () => {
+type Props = {
+  product: ProductCardType;
+};
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const capacity = product.capacity.slice(0, -2);
+  const ram = product.ram.slice(0, -2);
+  const [inCart, setInCart] = useState<number | null>(null);
+  const dispatch = useAppDispatch();
+
+  const handleBuyProduct = () => {
+    if (inCart === product.id) {
+      setInCart(null);
+      dispatch(removeProduct(product.id));
+    } else {
+      setInCart(product.id);
+      dispatch(addProduct(product));
+    }
+  };
+
   return (
     <div className="card">
-      <a href="#">
+      <Link to={`${product.id}`}>
         <img
-          src="https://s3-alpha-sig.figma.com/img/4036/d779/98ea87fdcb4fe9b1d62dd9629b0b820f?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=dW0Qq4841iTFau5uqnnAA8anxDFnDtFNxKGq92Uq9fGG5jTIO5TEVGYRN0rnS7B-qgUQVa44SikVlxvAs7d3wEGY7kaJqdbmC3fxWDww~nj4IDEis1AMBLdxh49jt~TncmMVVfioxN6IgQdC3E0j7L8mo4V8UBCyhjsmuG60QNIYRTtErWml4CVhLLNfOIQEluMfilexyX9BmS3QT48rso6j-EkWHgzY5z7Za6YYXPo0KPrNT7AcQ8wW6FTsIXq3TR6BHl-Xjy0WjGWeUPNaPFVZSDyh5Bti5ZNnAIKMIo5pBRyop78~e40vaGawtIY~aJ4ZJWwYiidxAos1038RNQ__"
+          src={`${product.image}`}
           alt="Placeholder image"
           className="card__image"
         />
-      </a>
+      </Link>
 
       <div className="is-flex is-justify-content-space-between card__title">
-        <a
-          href="#"
+        <Link
+          to={`${product.id}`}
           className="card__title__text"
         >
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
-        </a>
+          {product.name}
+        </Link>
       </div>
 
       <div className="is-flex card__price">
-        <h2 className="card__price__value">$999</h2>
+        <h2 className="card__price__value">{product.price}</h2>
         <h2 className="card__price__value__discount">$999</h2>
       </div>
 
@@ -30,22 +54,30 @@ export const ProductCard = () => {
       <div className="card__descriptions">
         <div className="is-flex is-justify-content-space-between">
           <h3 className="card__descriptions__text card__descriptions__mb">Screen</h3>
-          <h3 className="card__descriptions__value">6.1” OLED</h3>
+          <h3 className="card__descriptions__value">{product.screen}</h3>
         </div>
 
         <div className="is-flex is-justify-content-space-between">
           <h3 className="card__descriptions__text card__descriptions__mb">Capacity</h3>
-          <h3 className="card__descriptions__value">128 GB</h3>
+          <h3 className="card__descriptions__value">{capacity} GB</h3>
         </div>
 
         <div className="is-flex is-justify-content-space-between">
           <h3 className="card__descriptions__text">RAM</h3>
-          <h3 className="card__descriptions__value">6 GB</h3>
+          <h3 className="card__descriptions__value">{ram} GB</h3>
         </div>
       </div>
 
       <div className="is-flex is-justify-content-space-between card__buttons">
-        <button className="button card__button__buy">Add to cart</button>
+        <button
+          onClick={handleBuyProduct}
+          className={cn('button', {
+            'card__button__buy': inCart !== product.id,
+            'card__button--active': inCart === product.id,
+          })}
+        >
+          Add to cart
+        </button>
         <button className="button card__button__wishlist"></button>
       </div>
     </div>

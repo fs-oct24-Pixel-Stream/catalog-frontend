@@ -1,18 +1,25 @@
-import React from 'react';
-import { ProductList } from '../ProductList/ProductList';
+import { ProductList } from '../ProductList';
+import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useLocation } from 'react-router';
+
 import './ProductsPage.scss';
 
 type Props = {
-  categoryName: string; //ENUM
+  products: ProductCardType[];
 };
 
-export const ProductsPage: React.FC<Props> = () => {
+export const ProductsPage: React.FC<Props> = ({ products }) => {
+  const location = useLocation();
+
+  const path = location.pathname.split('/')[1];
+  const title = path.slice(0, 1).toUpperCase() + path.slice(1);
+
   return (
     <section className="products _container">
       <div className="bread-crumbs">BREAD CRUMBS</div>
       {/*BREAD CRUMBS */}
 
-      <h1 className="titleMain">Products</h1>
+      <h1 className="titleMain">{title}</h1>
 
       <p className="products__quantity">95 models</p>
 
@@ -58,7 +65,7 @@ export const ProductsPage: React.FC<Props> = () => {
           </div>
         </div>
       </div>
-      <ProductList />
+      {products && <ProductList products={products} />}
       <div className="productsPagination">PAGINATION</div>
     </section>
   );

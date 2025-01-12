@@ -94,7 +94,12 @@
       color: variable.$primary;
     }
   }
-
+  &__button--active {
+    box-shadow: none;
+    background-color: variable.$white;
+    color: variable.$primary;
+    border: 1px solid variable.$icons;
+  }
   &__button__buy {
     height: 40px;
     width: 75%;
@@ -108,13 +113,6 @@
 
     &:hover {
       box-shadow: 0px 3px 13px 0px variable.$shadow;
-    }
-
-    &:active {
-      box-shadow: none;
-      background-color: variable.$white;
-      color: variable.$primary;
-      border: 1px solid variable.$icons;
     }
   }
 

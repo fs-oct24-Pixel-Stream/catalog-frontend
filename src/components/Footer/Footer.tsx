@@ -7,15 +7,15 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="footer">
-      <div className="_container footer-content has-text-centered">
+    <footer className="footer footer-custom">
+      <div className="footer-content has-text-centered">
         <div className="footer-logo">
           <Link
             to="/home"
             className="footer-logo--link"
           >
             <img
-              src="../../../public/img/Logo.png"
+              src="./img/Logo.png"
               alt="Nice Gadgets Logo"
               className="logo"
             />
