@@ -62,6 +62,9 @@
   }
 
   &__price-value--discount {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.4;
     color: variable.$secondary;
     text-decoration: line-through;
   }

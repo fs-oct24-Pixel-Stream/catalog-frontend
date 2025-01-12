@@ -60,7 +60,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="is-flex product-card__price">
         <p className="product-card__price-value">${product.price}</p>
-        <p className="product-card__price-value product-card__price-value--discount">$999</p>
+        <p className="product-card__price-value product-card__price-value--discount">${product.fullPrice}</p>
+
       </div>
 
       <div className="product-card__line"></div>
