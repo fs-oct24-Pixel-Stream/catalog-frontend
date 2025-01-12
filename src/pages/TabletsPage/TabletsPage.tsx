@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import './TabletsPage.scss';
 import { Outlet } from 'react-router';
-import { ProductsPage } from '../ProductsPage';
+import { ProductsPage } from '../../components/ProductsPage';
 
 export const TabletsPage = () => {
   const products = useAppSelector((state) => state.products.products);

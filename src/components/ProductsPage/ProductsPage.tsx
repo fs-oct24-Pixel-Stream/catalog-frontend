@@ -1,4 +1,4 @@
-import { ProductList } from '../../components/ProductList';
+import { ProductList } from '../ProductList';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { useLocation } from 'react-router';
 

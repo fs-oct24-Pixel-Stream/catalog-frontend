@@ -3,10 +3,12 @@
 
 :root {
   --bulma-family-primary: Mont, sans-serif;
+  --bulma-footer-padding: 0 32px 32px 32px;
 }
 
 html {
   $font-family: var(--bulma-family-primary);
+  $footer-padding: var(--bulma-footer-padding);
   font-size: 10px;
 }
 .body-ajustment {

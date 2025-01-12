@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import { ProductsPage } from '../ProductsPage';
+import { ProductsPage } from '../../components/ProductsPage';
 import './PhonesPage.scss';
 import { Outlet } from 'react-router';
 
