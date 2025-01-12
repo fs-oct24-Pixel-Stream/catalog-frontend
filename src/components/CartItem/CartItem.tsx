@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 import { decreaseProduct, increaseProduct, removeProduct } from '../../features/cart/cartSlice';
 import { IconButton } from '../IconButton/IconButton';
 import './CartItem.scss';
@@ -17,8 +17,11 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     dispatch(increaseProduct(product));
   };
 
-  const handleDecrease = () => {
+  const handleDecrease = (product: ProductCardType) => {
     setQuantity(quantity - 1);
+    if (quantity === 1) {
+      dispatch(removeProduct(product.id));
+    }
     dispatch(decreaseProduct(product));
   };
 
@@ -26,7 +29,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     dispatch(removeProduct(product.id));
   };
 
-  const cart = useAppSelector((state) => state.cart.cart);
+
   return (
     <div className="is-flex cart-item">
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__header">
@@ -59,7 +62,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__footer">
         <div className="is-flex is-align-items-center cart-item__quantity-controls">
           <IconButton
-            onClick={handleDecrease}
+            onClick={()=>{handleDecrease(product)}}
             backgroundImage="../../../public/img/icons/Minus.svg"
           />
 

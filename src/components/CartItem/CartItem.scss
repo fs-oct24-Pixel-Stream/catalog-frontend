@@ -1,5 +1,5 @@
-@use '../../styles/utils/variable.scss';
-@use '../../styles/utils/mixins.scss';
+@use '../../styles/utils/variable.scss' as variable;
+@use '../../styles/utils/mixins.scss' as mixins;
 
 .cart-item {
   flex-direction: column;
@@ -8,6 +8,7 @@
   border-radius: variable.$global-border-radius;
   border: 1px solid variable.$elements;
   justify-content: space-between;
+  background-color: variable.$white;
 
   @include mixins.on-tablet {
     //max-width: 592px;

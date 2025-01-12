@@ -28,49 +28,54 @@ export const CartPage = () => {
   const cart = useAppSelector((state) => state.cart.cart);
   console.log(cart);
 
-
   const totalPrice = useMemo(() => {
     return cart.reduce((acc, product) => {
       return acc + product.price * product.quantity;
     }, 0);
   }, [cart]);
-  
+
   const totalQuantity = useMemo(() => {
     return cart.reduce((acc, product) => {
       return acc + product.quantity;
     }, 0);
   }, [cart]);
 
-  
-
-  
   return (
     <>
       <div className="cart _container">
-        <div className="cart-block">
-          <div className="cart-block__list">
-            {!!cart.length &&
-              cart.map((product) => (
-                <CartItem
-                  key={product.id}
-                  product={product}
-                />
-              ))}
-          </div>
+        <h1 className="titleMain cart__title">Cart</h1>
 
-          {!!cart.length && (
-            <div className="checkout-block">
-              <h2 className="checkout-block__header-title">${totalPrice}</h2>
-            <p className="checkout-block__products-quantity">for {totalQuantity} products</p>
-            <button
-              className="button main-button"
-              onClick={() => handleOpenModal()}
-            >
-              Checkout
-            </button>
+        {cart.length <= 0 ?
+          <div className="cart__background">
+            <h2 className="cart__background__title">Your cart is empty</h2>
           </div>
-          )}
-        </div>
+        : <>
+            <div className="cart-block">
+              <div className="cart-block__list">
+                {!!cart.length &&
+                  cart.map((product) => (
+                    <CartItem
+                      key={product.id}
+                      product={product}
+                    />
+                  ))}
+              </div>
+
+              {!!cart.length && (
+                <div className="checkout-block">
+                  <h2 className="checkout-block__header-title">${totalPrice}</h2>
+                  <p className="checkout-block__products-quantity">for {totalQuantity} products</p>
+                  <button
+                    className="checkout-block__button main-button"
+                    onClick={() => handleOpenModal()}
+                  >
+                    Checkout
+                  </button>
+                </div>
+              )}
+            </div>
+          </>
+        }
       </div>
       {isModalOpen && (
         <CheckoutModal
