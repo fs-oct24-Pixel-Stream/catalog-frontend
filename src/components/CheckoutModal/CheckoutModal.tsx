@@ -8,7 +8,7 @@ type Props = {
 
 export const CheckoutModal: React.FC<Props> = (props) => {
   const { handleCloseModal, productsList } = props;
-
+  const num = 0;
   return (
     <>
       <div className="modal is-active">

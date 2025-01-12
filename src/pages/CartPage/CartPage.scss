@@ -1,6 +1,9 @@
 @use '../../styles/utils/variable.scss' as variable;
 @use '../../styles/utils/mixins.scss' as mixins;
 
+
+// cart item bg white and checkout block bg white
+
 .main-block {
   display: flex;
   flex-direction: column;
