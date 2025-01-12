@@ -1,5 +1,7 @@
 import './ProductDetailsPage.scss';
 import phones from '../../../public/api/phones.json';
+import { BackButton } from '../../components/BackButton/BackButton';
+import { AboutSection } from '../../components/AboutSection/AboutSection';
 
 // we will take:
 // - all the products from the store,
@@ -25,7 +27,7 @@ export const ProductDetailsPage = () => {
     cell,
   } = device;
 
-  //techSpecs should vary according to product category
+  //techSpecs should vary according to product category, which we will take from the pathname
   const techSpecs = [screen, resolution, processor, ram, capacity, camera, zoom, cell];
   return (
     <div className="_container product-details">
@@ -35,10 +37,10 @@ export const ProductDetailsPage = () => {
       </div>
 
       <div className="product-details__back-button">
-        <button>Back button</button>
+        <BackButton />
       </div>
 
-      <h1 className="product-details__title">{name}</h1>
+      <h1 className="product-details__title titleSecond">{name}</h1>
 
       <section className="product-details__gallery">
         {/* TODO ADD gallery */}
@@ -70,10 +72,7 @@ export const ProductDetailsPage = () => {
       </section>
 
       <section className="product-details__about">
-        {/* TODO ADD about section */}
-
-        <h2>About</h2>
-        <div>{description.toString()}</div>
+        <AboutSection description={description} />
       </section>
 
       <section className="product-details__tech-specs">

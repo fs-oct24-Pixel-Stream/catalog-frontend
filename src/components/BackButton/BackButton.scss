@@ -1,0 +1,28 @@
+@use './../../styles/utils/variable.scss';
+
+.back-button {
+  display: flex;
+  font-size: 1.2em;
+  align-items: center;
+  justify-content: center;
+  color: variable.$secondary;
+  font-weight: 600;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(./../../../public/img/icons/Arrow-Left.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-right: 4px;
+    transition: all variable.$button-transition-time ease;
+  }
+
+  &:hover {
+
+    .back-button__icon {
+      transform: translateX(-5px);
+    }
+  }
+}
