@@ -10,6 +10,7 @@ html {
   $font-family: var(--bulma-family-primary);
   $footer-padding: var(--bulma-footer-padding);
   font-size: 10px;
+  background-color: variable.$bgColor;
 }
 .body-ajustment {
   display: flex;
