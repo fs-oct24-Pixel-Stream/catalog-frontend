@@ -29,7 +29,7 @@ export const Header = () => {
           >
             <img
               src={logo}
-              srcSet={`${logo} 1x, ${logo2x} 2x`}
+              // srcSet={`${logo} 1x, ${logo2x} 2x`}
               alt="logo"
             />
           </Link>
