@@ -38,7 +38,10 @@ export const HeaderLinks: FC<Props> = (props) => {
           <Link
             key={name}
             to={pathName}
-            className={pathName === location.pathname ? activeClassName : mainClassName}
+            // className={classnames({
+            //   [activeClassName]: pathName === location.pathname,
+            //   [mainClassName]: pathName !== location.pathname,
+            // })}
           >
             {name}
           </Link>
