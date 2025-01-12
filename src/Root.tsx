@@ -30,8 +30,8 @@ export const Root = () => (
         >
           {/* TODO CREATE Phones Page*/}
           <Route
-            path=":id"
-            element={<ProductDetailsPage />}
+            path=":itemId"
+            element={<DeviceDetailsPage />}
           />{' '}
           {/* TODO CREATE Device Details Page and IDvalidator func*/}
         </Route>
@@ -41,8 +41,8 @@ export const Root = () => (
         >
           {/* TODO CREATE AccessoriesPage*/}
           <Route
-            path=":id"
-            element={<ProductDetailsPage />}
+            path=":itemId"
+            element={<DeviceDetailsPage />}
           />{' '}
           {/* TODO CREATE Device Details Page and IDvalidator func*/}
         </Route>
@@ -52,8 +52,8 @@ export const Root = () => (
         >
           {/* TODO CREATE Tablets Page*/}
           <Route
-            path=":id"
-            element={<ProductDetailsPage />}
+            path=":itemId"
+            element={<DeviceDetailsPage />}
           />{' '}
           {/* TODO CREATE Device Details Page and IDvalidator func*/}
         </Route>

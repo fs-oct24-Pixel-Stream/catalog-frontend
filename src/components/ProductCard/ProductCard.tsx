@@ -27,7 +27,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="card">
-      <Link to={`${product.id}`}>
+      <Link to={`${product.itemId}`}>
         <img
           src={`${product.image}`}
           alt="Placeholder image"
@@ -37,7 +37,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="is-flex is-justify-content-space-between card__title">
         <Link
-          to={`${product.id}`}
+          to={`${product.itemId}`}
           className="card__title__text"
         >
           {product.name}
