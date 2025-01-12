@@ -1,5 +1,6 @@
 import './Header.scss';
 import logo from '../../../public/img/Logo.png';
+import logo2x from '../../../public/img/Logo2x.png';
 import { Link } from 'react-router';
 import burger from '../../../public/img/icons/burger.png';
 import cart from '../../../public/img/icons/cart.png';
@@ -22,15 +23,16 @@ export const Header = () => {
         id="home"
       >
         <div className="header-nav">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="header-nav--logo"
           >
             <img
               src={logo}
+              // srcSet={`${logo} 1x, ${logo2x} 2x`}
               alt="logo"
             />
-          </a>
+          </Link>
 
           <HeaderLinks
             mainClassName="nav-links--item"
