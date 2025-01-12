@@ -10,7 +10,9 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({ products }) => {
   const location = useLocation();
-  const title = location.pathname.slice(1)[0].toUpperCase() + location.pathname.slice(2);
+
+  const path = location.pathname.split('/')[1];
+  const title = path.slice(0, 1).toUpperCase() + path.slice(2);
 
   return (
     <section className="products _container">

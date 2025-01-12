@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductCard.scss';
 import { Link } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useAppDispatch } from '../../app/hooks';
+import { addProduct, removeProduct } from '../../features/cart/cartSlice';
+import cn from 'classnames';
 
 type Props = {
   product: ProductCardType;
@@ -9,6 +12,18 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const capacity = product.capacity.slice(0, -2);
   const ram = product.ram.slice(0, -2);
+  const [inCart, setInCart] = useState<number | null>(null);
+  const dispatch = useAppDispatch();
+
+  const handleBuyProduct = () => {
+    if (inCart === product.id) {
+      setInCart(null);
+      dispatch(removeProduct(product.id));
+    } else {
+      setInCart(product.id);
+      dispatch(addProduct(product));
+    }
+  };
 
   return (
     <div className="card">
@@ -54,7 +69,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="is-flex is-justify-content-space-between card__buttons">
-        <button className="button card__button__buy">Add to cart</button>
+        <button
+          onClick={handleBuyProduct}
+          className={cn('button', {
+            'card__button__buy': inCart !== product.id,
+            'card__button--active': inCart === product.id,
+          })}
+        >
+          Add to cart
+        </button>
         <button className="button card__button__wishlist"></button>
       </div>
     </div>

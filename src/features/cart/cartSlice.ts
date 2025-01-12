@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { asyncThunkCreator, buildCreateSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartType } from '../../utils/types/CartType';
+import { ProductCardType } from '../../utils/types/ProductCardType';
 
 type InitialState = {
   cart: CartType[];
@@ -9,10 +10,36 @@ const initialState: InitialState = {
   cart: [],
 };
 
-export const cartSlice = createSlice({
-  name: 'cart',
-  initialState,
-  reducers: {},
+export const createAppSlice = buildCreateSlice({
+  creators: { asyncThunk: asyncThunkCreator },
 });
 
-export const {} = cartSlice.actions;
+export const cartSlice = createAppSlice({
+  name: 'cart',
+  initialState,
+  reducers(create) {
+    return {
+      addProduct: create.reducer((state, { payload }: PayloadAction<ProductCardType>) => {
+        const findInCart = state.cart.find((product) => product.id === payload.id);
+
+        if (findInCart) {
+          findInCart.quantity += 1;
+          return { ...state, findInCart };
+        } else {
+          const updatedProduct: CartType = { ...payload, quantity: 1, isBuy: true };
+
+          state.cart.push(updatedProduct);
+        }
+      }),
+
+      removeProduct: create.reducer((state, { payload }: PayloadAction<number>) => {
+        state.cart = state.cart.filter((cart) => cart.id !== payload);
+      }),
+      clearAllProducts: create.reducer((state) => {
+        state.cart = [];
+      }),
+    };
+  },
+});
+
+export const { addProduct, removeProduct, clearAllProducts } = cartSlice.actions;
