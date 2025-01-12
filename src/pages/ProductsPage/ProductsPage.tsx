@@ -12,7 +12,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
   const location = useLocation();
 
   const path = location.pathname.split('/')[1];
-  const title = path.slice(0, 1).toUpperCase() + path.slice(2);
+  const title = path.slice(0, 1).toUpperCase() + path.slice(1);
 
   return (
     <section className="products _container">
