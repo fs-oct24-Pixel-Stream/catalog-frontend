@@ -4,12 +4,12 @@
 .cart-item {
   flex-direction: column;
   padding: 16px;
-  max-width: 288px;
+  //max-width: 288px;
   border-radius: variable.$global-border-radius;
   border: 1px solid variable.$elements;
 
   @include mixins.on-tablet {
-    max-width: 592px;
+    //max-width: 592px;
     padding: 24px;
     flex-direction: row;
     column-gap: 24px;

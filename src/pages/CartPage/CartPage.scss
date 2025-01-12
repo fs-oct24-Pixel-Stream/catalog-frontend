@@ -1,6 +1,17 @@
 @use '../../styles/utils/variable.scss' as variable;
 @use '../../styles/utils/mixins.scss' as mixins;
 
+.main-block {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cart-block {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 .checkout-block {
   padding: 20px;
   display: flex;
@@ -32,6 +43,19 @@
 
 @include mixins.on-tablet {
   .checkout-block {
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+@include mixins.on-tablet3 {
+  .checkout-block {
     max-width: 300px;
+    max-height: 200px;
+  }
+  .main-block {
+    display: flex;
+    flex-direction: row;
   }
 }
