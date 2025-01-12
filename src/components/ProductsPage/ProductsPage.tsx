@@ -21,7 +21,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
 
       <h1 className="titleMain">{title}</h1>
 
-      <p className="products__quantity">95 models</p>
+      <p className="products__quantity">{products.length} models</p>
 
       <div className="products__filters">
         <div className="field products__control">

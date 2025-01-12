@@ -24,7 +24,6 @@ export const cartSlice = createAppSlice({
 
         if (findInCart) {
           findInCart.quantity += 1;
-          return { ...state, findInCart };
         } else {
           const updatedProduct: CartType = { ...payload, quantity: 1, isBuy: true };
 
@@ -32,9 +31,26 @@ export const cartSlice = createAppSlice({
         }
       }),
 
+      increaseProduct: create.reducer((state, { payload }: PayloadAction<ProductCardType>) => {
+        const findInCart = state.cart.find((product) => product.id === payload.id);
+
+        if (findInCart) {
+          findInCart.quantity += 1;
+        }
+      }),
+
+      decreaseProduct: create.reducer((state, { payload }: PayloadAction<ProductCardType>) => {
+        const findInCart = state.cart.find((product) => product.id === payload.id);
+
+        if (findInCart && findInCart.quantity > 1) {
+          findInCart.quantity -= 1;
+        }
+      }),
+
       removeProduct: create.reducer((state, { payload }: PayloadAction<number>) => {
         state.cart = state.cart.filter((cart) => cart.id !== payload);
       }),
+
       clearAllProducts: create.reducer((state) => {
         state.cart = [];
       }),
@@ -42,4 +58,5 @@ export const cartSlice = createAppSlice({
   },
 });
 
-export const { addProduct, removeProduct, clearAllProducts } = cartSlice.actions;
+export const { addProduct, increaseProduct, decreaseProduct, removeProduct, clearAllProducts } =
+  cartSlice.actions;
