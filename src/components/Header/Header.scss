@@ -89,14 +89,18 @@
   .icons-wrapper {
     display: flex;
     height: 100%;
+    cursor: pointer;
     &--item {
       width: 48px;
       height: 100%;
 
-      border-left: 1px solid #e2e6e9;
+      border-left: 1px solid variable.$elements;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    &--item:hover {
+      background-color: variable.$elements;
     }
   }
 }

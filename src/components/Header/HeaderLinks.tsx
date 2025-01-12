@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { FC } from 'react';
 import { Link, useLocation } from 'react-router';
 
@@ -34,14 +35,16 @@ export const HeaderLinks: FC<Props> = (props) => {
   return (
     <div className={containerClassName}>
       {navLinks.map(({ name, pathName }) => {
+        const isActive = pathName === location.pathname;
+
         return (
           <Link
             key={name}
             to={pathName}
-            // className={classnames({
-            //   [activeClassName]: pathName === location.pathname,
-            //   [mainClassName]: pathName !== location.pathname,
-            // })}
+            className={cn({
+              [activeClassName]: isActive,
+              [mainClassName]: !isActive,
+            })}
           >
             {name}
           </Link>
