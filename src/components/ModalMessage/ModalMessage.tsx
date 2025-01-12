@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 type Props = {
   setIsPurchased: (value: boolean) => void;
@@ -6,9 +7,11 @@ type Props = {
 };
 
 export const ModalMessage: React.FC<Props> = ({ setIsPurchased, text }) => {
+  const navigate = useNavigate();
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsPurchased(false);
+      navigate('/');
     }, 2000);
     return () => {
       clearTimeout(timer);

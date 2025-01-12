@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
+import { CartItem } from '../../components/CartItem/CartItem';
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
@@ -100,18 +101,35 @@ export const CartPage = () => {
   return (
     <>
       <div className="_container">
-        <div className="checkout-block">
-          <div className="checkout-block__header">
-            <h1 className="checkout-block__header-title">$1111</h1>
-            <p className="checkout-block__header-text">Total for 0 items</p>
+        <p>breadcrumbs</p>
+        <h1 className="titleMain">Cart</h1>
+
+        <main className="main-block">
+          <div className="cart-block">
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
           </div>
-          <button
-            className="button main-button checkout-block__button"
-            onClick={handleOpenModal}
-          >
-            Checkout
-          </button>
-        </div>
+          <div className="checkout-block">
+            <div className="checkout-block__header">
+              <h1 className="checkout-block__header-title">$1111</h1>
+              <p className="checkout-block__header-text">Total for 0 items</p>
+            </div>
+            <button
+              className="button main-button checkout-block__button"
+              onClick={handleOpenModal}
+            >
+              Checkout
+            </button>
+          </div>
+        </main>
 
         {isModalOpen && (
           <CheckoutModal
