@@ -5,6 +5,8 @@ import { ProductCardType } from '../../utils/types/ProductCardType';
 import { useAppDispatch } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
 import cn from 'classnames';
+import { IconButton } from '../IconButton/IconButton';
+import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
 
 type Props = {
   product: ProductCardType;
@@ -13,8 +15,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const capacity = product.capacity.slice(0, -2);
   const ram = product.ram.slice(0, -2);
   const [inCart, setInCart] = useState<number | null>(null);
+  const [inFavorite, setInFavorite] = useState<number | null>(null);
   const dispatch = useAppDispatch();
-
+  
+  const getButtonText = (isInCart: boolean): string => {
+    return isInCart ? 'Added to cart' : 'Add to cart';
+  }
+    
   const handleBuyProduct = () => {
     if (inCart === product.id) {
       setInCart(null);
@@ -25,60 +32,76 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
   };
 
+  const handleAddFavorite = () => {
+    if (inFavorite === product.id) {
+      setInFavorite(null);
+      dispatch(removeFavorite(product.id));
+    } else {
+      setInFavorite(product.id);
+      dispatch(addFavorite(product));
+    }
+  };
+
   return (
-    <div className="card">
+
+    <div className="is-flex is-flex-direction-column is-justify-content-space-between product-card">
       <Link to={`${product.itemId}`}>
+
         <img
           src={`${product.image}`}
           alt="Placeholder image"
-          className="card__image"
+          className="product-card__image"
         />
       </Link>
 
-      <div className="is-flex is-justify-content-space-between card__title">
-        <Link
-          to={`${product.itemId}`}
-          className="card__title__text"
-        >
-          {product.name}
-        </Link>
+      <Link to={`${product.itemId}`}>
+        <h2 className="product-card__title">{product.name}</h2>
+      </Link>
+
+      <div className="is-flex product-card__price">
+        <p className="product-card__price-value">${product.price}</p>
+        <p className="product-card__price-value product-card__price-value--discount">${product.fullPrice}</p>
+
       </div>
 
-      <div className="is-flex card__price">
-        <h2 className="card__price__value">{product.price}</h2>
-        <h2 className="card__price__value__discount">${product.fullPrice}</h2>
+      <div className="product-card__line"></div>
+
+      <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
+        <p className="product-card__descriptions-text">
+          Screen
+        </p>
+        <p className="product-card__descriptions-value">{product.screen}</p>
       </div>
 
-      <div className="card__line"></div>
-
-      <div className="card__descriptions">
-        <div className="is-flex is-justify-content-space-between">
-          <h3 className="card__descriptions__text card__descriptions__mb">Screen</h3>
-          <h3 className="card__descriptions__value">{product.screen}</h3>
-        </div>
-
-        <div className="is-flex is-justify-content-space-between">
-          <h3 className="card__descriptions__text card__descriptions__mb">Capacity</h3>
-          <h3 className="card__descriptions__value">{capacity} GB</h3>
-        </div>
-
-        <div className="is-flex is-justify-content-space-between">
-          <h3 className="card__descriptions__text">RAM</h3>
-          <h3 className="card__descriptions__value">{ram} GB</h3>
-        </div>
+      <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
+        <p className="product-card__descriptions-text">
+          Capacity
+        </p>
+        <p className="product-card__descriptions-value">{capacity} GB</p>
       </div>
 
-      <div className="is-flex is-justify-content-space-between card__buttons">
+      <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
+        <p className="product-card__descriptions-text">RAM</p>
+        <p className="product-card__descriptions-value">{ram} GB</p>
+      </div>
+
+      <div className="is-flex is-justify-content-space-between product-card__buttons">
         <button
           onClick={handleBuyProduct}
           className={cn('button', {
-            'card__button__buy': inCart !== product.id,
-            'card__button--active': inCart === product.id,
+            'product-card__button-buy': inCart !== product.id,
+            'product-card__button-buy--active': inCart === product.id,
           })}
         >
-          Add to cart
+          {getButtonText(inCart === product.id)}
         </button>
-        <button className="button card__button__wishlist"></button>
+        <IconButton
+          onClick={handleAddFavorite}
+          className={cn({
+            'product-card__button-wishlist': inFavorite !== product.id,
+            'product-card__button-wishlist--active' : inFavorite === product.id
+          })}
+        />
       </div>
     </div>
   );
