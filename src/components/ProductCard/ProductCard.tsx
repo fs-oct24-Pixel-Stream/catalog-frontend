@@ -43,8 +43,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
   };
 
-  const favorite = useAppSelector((state) => state.favorities.products);
-  console.log(favorite);
   return (
     <div className="is-flex is-flex-direction-column is-justify-content-space-between product-card">
       <Link to={`${product.itemId}`}>
