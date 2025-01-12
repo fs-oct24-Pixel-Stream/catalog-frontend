@@ -16,7 +16,7 @@ export const ModalMessage: React.FC<Props> = ({ setIsPurchased, text }) => {
     return () => {
       clearTimeout(timer);
     };
-  });
+  }, [setIsPurchased, navigate]);
   return (
     <>
       <div className="modal is-active">
