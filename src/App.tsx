@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router';
-import { Footer } from './components/Footer/Footer';
 import { useAppDispatch } from './app/hooks';
 import { useEffect } from 'react';
 import { fetchProducts } from './features/products/productsSlice';
@@ -11,6 +10,7 @@ import './App.scss';
 
 import { Footer } from './components/Footer/Footer';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { Header } from './components/Header/Header';
 
 export const App = () => {
   const dispatch = useAppDispatch();

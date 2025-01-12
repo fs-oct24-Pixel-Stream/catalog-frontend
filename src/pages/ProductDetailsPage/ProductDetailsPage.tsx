@@ -29,18 +29,18 @@ export const ProductDetailsPage = () => {
   const techSpecs = [screen, resolution, processor, ram, capacity, camera, zoom, cell];
   return (
     <div className="_container product-details">
-      <div className="product-details-breadcrumps">
+      <div className="product-details__breadcrumps">
         {/* TODO ADD Breadcrumps */}
         Breadcrumps
       </div>
 
-      <div className="product-details-back-button">
+      <div className="product-details__back-button">
         <button>Back button</button>
       </div>
 
-      <h1 className="product-details-title">{name}</h1>
+      <h1 className="product-details__title">{name}</h1>
 
-      <section className="product-details-gallery">
+      <section className="product-details__gallery">
         {/* TODO ADD gallery */}
 
         <img
@@ -49,7 +49,7 @@ export const ProductDetailsPage = () => {
         />
       </section>
 
-      <section className="product-details-parameters">
+      <section className="product-details__parameters">
         {/* TODO ADD parameters section */}
 
         <p>Available colors:</p>
@@ -69,21 +69,21 @@ export const ProductDetailsPage = () => {
         }
       </section>
 
-      <section className="product-details-about">
+      <section className="product-details__about">
         {/* TODO ADD about section */}
 
         <h2>About</h2>
         <div>{description.toString()}</div>
       </section>
 
-      <section className="product-details-tech-specs">
+      <section className="product-details__tech-specs">
         {/* TODO ADD tech-specs section */}
 
         <h2>Tech specs</h2>
         <div>{techSpecs}</div>
       </section>
 
-      <section className="product-details-recommended">
+      <section className="product-details__recommended">
         {/* TODO ADD Recommended */}
         Recommended
       </section>

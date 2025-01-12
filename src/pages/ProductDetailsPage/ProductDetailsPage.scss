@@ -14,7 +14,7 @@
     padding-bottom: 80px;
   }
 
-  &-breadcrumps {
+  &__breadcrumps {
     grid-column: 1 / -1;
     margin-bottom: 24px;
 
@@ -23,13 +23,13 @@
     }
   }
 
-  &-back-button {
+  &__back-button {
     grid-column: 1 / -1;
 
     margin-bottom: 16px;
   }
 
-  &-title {
+  &__title {
     grid-column: 1 / -1;
 
     margin-bottom: 32px;
@@ -39,7 +39,7 @@
     }
   }
 
-  &-gallery {
+  &__gallery {
     grid-column: 1 / -1;
     margin-bottom: 40px;
 
@@ -55,7 +55,7 @@
     }
   }
 
-  &-parameters {
+  &__parameters {
     grid-column: 1/-1;
     margin-bottom: 56px;
 
@@ -70,7 +70,7 @@
     }
   }
 
-  &-about {
+  &__about {
     grid-column: 1 / -1;
     margin-bottom: 56px;
 
@@ -84,7 +84,7 @@
     }
   }
 
-  &-tech-specs {
+  &__tech-specs {
     grid-column: 1 / -1;
     margin-bottom: 56px;
 
@@ -98,7 +98,7 @@
     }
   }
 
-  &-recommended {
+  &__recommended {
     grid-column: 1 / -1;
   }
 }
