@@ -1,7 +1,7 @@
 @use '../../styles/utils/mixins.scss';
 @use '../../styles/utils/variable.scss';
 
-._container {
+.container-custom {
   display: flex;
   justify-content: center;
   justify-self: center;
