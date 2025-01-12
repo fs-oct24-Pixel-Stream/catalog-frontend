@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ProductCard.scss';
 import { Link } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { IconButton } from '../IconButton/IconButton';
@@ -12,16 +12,17 @@ type Props = {
   product: ProductCardType;
 };
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const capacity = product.capacity.slice(0, -2);
-  const ram = product.ram.slice(0, -2);
   const [inCart, setInCart] = useState<number | null>(null);
   const [inFavorite, setInFavorite] = useState<number | null>(null);
   const dispatch = useAppDispatch();
-  
+
+  const capacity = product.capacity.slice(0, -2);
+  const ram = product.ram.slice(0, -2);
+
   const getButtonText = (isInCart: boolean): string => {
     return isInCart ? 'Added to cart' : 'Add to cart';
-  }
-    
+  };
+
   const handleBuyProduct = () => {
     if (inCart === product.id) {
       setInCart(null);
@@ -43,10 +44,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-
     <div className="is-flex is-flex-direction-column is-justify-content-space-between product-card">
       <Link to={`${product.itemId}`}>
-
         <img
           src={`${product.image}`}
           alt="Placeholder image"
@@ -60,23 +59,20 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="is-flex product-card__price">
         <p className="product-card__price-value">${product.price}</p>
-        <p className="product-card__price-value product-card__price-value--discount">${product.fullPrice}</p>
-
+        <p className="product-card__price-value product-card__price-value--discount">
+          ${product.fullPrice}
+        </p>
       </div>
 
       <div className="product-card__line"></div>
 
       <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
-        <p className="product-card__descriptions-text">
-          Screen
-        </p>
+        <p className="product-card__descriptions-text">Screen</p>
         <p className="product-card__descriptions-value">{product.screen}</p>
       </div>
 
       <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
-        <p className="product-card__descriptions-text">
-          Capacity
-        </p>
+        <p className="product-card__descriptions-text">Capacity</p>
         <p className="product-card__descriptions-value">{capacity} GB</p>
       </div>
 
@@ -99,7 +95,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           onClick={handleAddFavorite}
           className={cn({
             'product-card__button-wishlist': inFavorite !== product.id,
-            'product-card__button-wishlist--active' : inFavorite === product.id
+            'product-card__button-wishlist--active': inFavorite === product.id,
           })}
         />
       </div>
