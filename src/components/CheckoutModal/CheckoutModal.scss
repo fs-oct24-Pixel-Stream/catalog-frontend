@@ -1,5 +1,5 @@
-
 @use '../../styles/utils/variable.scss' as variable;
+@use '../../styles/utils/mixins.scss' as mixins;
 
 .choice-button {
   background-color: variable.$primary;
@@ -19,10 +19,10 @@
   }
 
   &-confirm {
-    background-color: variable.$green;
+    background-color: variable.$primary;
   }
   &-cancel {
-    background-color: variable.$red;
+    background-color: variable.$secondary;
   }
 }
 
@@ -34,16 +34,36 @@
   background-color: variable.$shadow;
 }
 
+.modal-card-head {
+  box-shadow: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+.modal-card-title {
+  font-weight: bold;
+}
 .modal-card-body {
   max-height: 300px;
-  padding: 10px;
+  padding: 5px;
+  background-color: variable.$white;
 }
 
-table {
+.content {
   width: 100%;
-  margin: 20px 0;
-  font-size: 1em;
-  color: variable.$primary; 
+  font-size: 1.2em;
+  color: variable.$primary;
+}
+.table-header {
+  &__row {
+    border: 1px solid black;
+    background-color: variable.$icons;
+    text-transform: capitalize;
+
+    th {
+      font-weight: 800;
+      padding: 12px;
+    }
+  }
 }
 
 .table-body {
@@ -56,7 +76,20 @@ table {
   }
 }
 
-table th,
-table td {
-  padding: 12px;
+.modal-card-foot {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 1.4em;
+}
+
+@include mixins.on-tablet {
+  .modal-card {
+    width: 70%;
+  }
+
+  .modal-card-title {
+    font-size: 1.4em;
+  }
 }
