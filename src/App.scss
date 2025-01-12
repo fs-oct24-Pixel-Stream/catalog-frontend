@@ -38,3 +38,11 @@ html {
   color: variable.$primary;
   font-family: Mont, sans-serif; // Bulma перезаписує
 }
+
+.titleSecond {
+  font-size: 2.2em;
+  font-weight: 800;
+  line-height: 1.4;
+  color: variable.$primary;
+  font-family: Mont, sans-serif; // Bulma перезаписує
+}
