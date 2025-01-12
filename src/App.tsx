@@ -8,6 +8,7 @@ import 'bulma/css/bulma.css';
 import '../src/styles/utils/variable.scss';
 import '../src/styles/utils/mixins.scss';
 import './App.scss';
+import { Header } from './components/Header/Header';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -18,11 +19,14 @@ export const App = () => {
 
   return (
     <div className="body-ajustment">
-      {/* TODO ADD Header */}
+
+
+      <Header />
       <main className="main">
         <Outlet />
       </main>
       <Footer />
     </div>
+
   );
 };
