@@ -1,12 +1,41 @@
+import React, { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { decreaseProduct, increaseProduct, removeProduct } from '../../features/cart/cartSlice';
 import { IconButton } from '../IconButton/IconButton';
 import './CartItem.scss';
+import { ProductCardType } from '../../utils/types/ProductCardType';
 
-export const CartItem = () => {
+type Props = {
+  product: ProductCardType;
+};
+export const CartItem: React.FC<Props> = ({ product }) => {
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useAppDispatch();
+
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+    dispatch(increaseProduct(product));
+  };
+
+  const handleDecrease = () => {
+    setQuantity(quantity - 1);
+    dispatch(decreaseProduct(product));
+  };
+
+  const handleDeleteProduct = () => {
+    dispatch(removeProduct(product.id));
+  };
+
+  const cart = useAppSelector((state) => state.cart.cart);
+  console.log(cart);
   return (
     <div className="is-flex cart-item">
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__header">
         <div className="is-flex is-align-items-center cart-item__image-container">
-          <button className="cart-item__remove-button"></button>
+          <button
+            onClick={handleDeleteProduct}
+            className="cart-item__remove-button"
+          ></button>
 
           <a
             href="#"
@@ -24,17 +53,23 @@ export const CartItem = () => {
           href="#"
           className="title cart-item__title"
         >
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
+          {product.name}
         </a>
       </div>
 
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__footer">
         <div className="is-flex is-align-items-center cart-item__quantity-controls">
-          <IconButton backgroundImage="../../../public/img/icons/Minus.svg" />
+          <IconButton
+            onClick={handleDecrease}
+            backgroundImage="../../../public/img/icons/Minus.svg"
+          />
 
-          <span className="cart-item__quantity">1</span>
+          <span className="cart-item__quantity">{quantity}</span>
 
-          <IconButton backgroundImage="../../../public/img/icons/Plus.svg" />
+          <IconButton
+            onClick={handleIncrease}
+            backgroundImage="../../../public/img/icons/Plus.svg"
+          />
         </div>
 
         <p className="cart-item__price">$999</p>
