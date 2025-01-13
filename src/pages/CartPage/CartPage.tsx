@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../app/hooks';
 import { CartItem } from '../../components/CartItem/CartItem';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
@@ -42,9 +42,17 @@ export const CartPage = () => {
     }, 0);
   }, [cart]);
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isModalOpen]);
+
   return (
     <>
-      <div className="cart _container">
+      <div className='cart _container'>
         <h1 className="titleMain cart__title">Cart</h1>
 
         {!isCartNotEmpty ?
