@@ -13,7 +13,7 @@ export const ModalMessage: React.FC<Props> = ({ setIsPurchased, text }) => {
     const timer = setTimeout(() => {
       setIsPurchased(false);
       navigate('/');
-    }, 2000);
+    }, 1000);
     return () => {
       clearTimeout(timer);
     };
