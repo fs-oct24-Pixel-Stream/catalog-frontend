@@ -22,13 +22,13 @@
   &__image {
     display: block;
     width: 100%;
-    height: 130px;
+    height: 160px;
 
     object-fit: contain;
     transition: transform variable.$button-transition-time ease;
 
     @include mixins.on-tablet {
-      height: 196px;
+      height: 160px;
     }
 
     &:hover {
