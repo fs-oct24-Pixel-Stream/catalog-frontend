@@ -20,15 +20,22 @@
 
   &-confirm {
     background-color: variable.$primary;
+    width: 100%;
   }
   &-cancel {
     background-color: variable.$secondary;
+    width: 100%;
   }
 }
 
 .modal {
   font-size: 1.4em;
   overflow-y: scroll;
+
+  &-card {
+    max-width: 800px;
+    
+  }
 }
 .modal-background {
   background-color: variable.$shadow;
@@ -46,35 +53,31 @@
   max-height: 300px;
   padding: 5px;
   background-color: variable.$white;
+  display: flex;
+  flex-direction: column;
+  gap:5px;
 }
 
-.content {
+.buttons{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
   width: 100%;
-  font-size: 1.2em;
-  color: variable.$primary;
-}
-.table-header {
-  &__row {
-    border: 1px solid black;
-    background-color: variable.$icons;
-    text-transform: capitalize;
-
-    th {
-      font-weight: 800;
-      padding: 12px;
-    }
-  }
 }
 
-.table-body {
-  &__row {
-    border: 1px solid variable.$primary;
-
-    td {
-      padding: 11px;
-    }
-  }
+.confirm {
+  width: 100%;
 }
+.cancel {
+  width: 100%;
+}
+
+.price-block {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 
 .modal-card-foot {
   display: flex;
@@ -92,4 +95,24 @@
   .modal-card-title {
     font-size: 1.4em;
   }
+  .confirm {
+    display: flex;
+    max-width: 300px;
+    flex-direction: column;
+    
+  }
+  .cancel {
+    display: flex;
+    max-width: 300px;
+    flex-direction: column;
+  }
+
+}
+
+
+@include mixins.on-tablet2 {
+  .cancel {
+    max-width: 200px;
+  }
+
 }
