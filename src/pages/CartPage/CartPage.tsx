@@ -91,6 +91,7 @@ export const CartPage = () => {
       {isModalOpen && (
         <CheckoutModal
           productsList={cart}
+          totalPrice={totalPrice}
           handleCloseModal={handleCloseModal}
         />
       )}

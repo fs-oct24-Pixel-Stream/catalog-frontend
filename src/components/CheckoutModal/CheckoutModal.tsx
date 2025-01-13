@@ -5,10 +5,11 @@ import './CheckoutModal.scss';
 type Props = {
   handleCloseModal: (option: string) => void;
   productsList: ProductCardType[];
+  totalPrice: number;
 };
 
 export const CheckoutModal: React.FC<Props> = (props) => {
-  const { handleCloseModal, productsList } = props;
+  const { handleCloseModal, productsList, totalPrice } = props;
   return (
     <>
       <div className="modal is-active">
@@ -30,12 +31,11 @@ export const CheckoutModal: React.FC<Props> = (props) => {
           </section>
 
           <footer className="modal-card-foot">
+          <div className="price-block">
+                  <p>Total price: ${totalPrice}</p>
+                </div>
             <div className="buttons">
               <div className="confirm">
-                <div className="price-block">
-                  <p>Total price:$/₴0000</p>
-                </div>
-
                 <button
                   className="choice-button choice-button-confirm"
                   onClick={() => {
@@ -45,7 +45,6 @@ export const CheckoutModal: React.FC<Props> = (props) => {
                   Confirm
                 </button>
               </div>
-
               <div className="cancel">
                 <button
                   className="choice-button choice-button-cancel"
