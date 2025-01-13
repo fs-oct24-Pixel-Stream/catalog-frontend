@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import './IconButton.scss';
 type Props = {
   backgroundImage?: string;
