@@ -1,32 +1,35 @@
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useEffect, useMemo, useState } from 'react';
 import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
+import { clearAllProducts } from '../../features/cart/cartSlice';
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
-
-  const succsessModalWindowText = 'Thank you for your purchase!';
+  const dispatch = useAppDispatch();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
     setIsPurchased(false);
   };
 
+ 
+
+  const cart = useAppSelector((state) => state.cart.cart);
+
   const handleCloseModal = (option: string) => {
+    debugger
     if (option === 'close') {
       setIsModalOpen(false);
       return;
-    } else {
+    } else if (option === 'succsess') {
       setIsModalOpen(false);
       setIsPurchased(true);
+      dispatch(clearAllProducts());
     }
   };
-
-  const cart = useAppSelector((state) => state.cart.cart);
-  console.log(cart)
 
   const isCartNotEmpty =   !!cart.length;
 
@@ -97,7 +100,6 @@ export const CartPage = () => {
       )}
       {isPurchased && (
         <ModalMessage
-          text={succsessModalWindowText}
           setIsPurchased={setIsPurchased}
         />
       )}
