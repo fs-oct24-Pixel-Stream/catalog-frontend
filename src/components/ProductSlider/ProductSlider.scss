@@ -1,0 +1,32 @@
+@use '../../styles/utils/variable.scss';
+@use '../../styles/utils/mixins.scss';
+
+.product-slider {
+  &__header {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
+
+  &__title {
+    @include mixins.on-tablet {
+      font-size: 3.2em;
+      line-height: 1.28;
+    }
+  }
+
+  &__buttons {
+    gap: 16px;
+  }
+
+  &__item {
+    max-width: 230px;
+
+    @include mixins.on-tablet {
+      max-width: 237px;
+    }
+
+    @include mixins.on-desktop {
+      max-width: 272px;
+    }
+  }
+}
