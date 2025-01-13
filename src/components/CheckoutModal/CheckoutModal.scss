@@ -33,7 +33,7 @@
   overflow-y: scroll;
 
   &-card {
-    max-width: 800px;
+    max-width: 100%;
     
   }
 }
@@ -42,20 +42,23 @@
 }
 
 .modal-card-head {
+  padding: 30px 30px;
+  
   box-shadow: none;
   text-align: center;
   text-transform: uppercase;
 }
 .modal-card-title {
+  font-size: 1.4em;
   font-weight: bold;
 }
 .modal-card-body {
-  max-height: 300px;
-  padding: 5px;
+  max-height: 100%;
+  padding: 0 30px;
   background-color: variable.$white;
   display: flex;
   flex-direction: column;
-  gap:5px;
+  gap:30px;
 }
 
 .buttons{
@@ -85,12 +88,18 @@
   flex-direction: column;
   gap: 30px;
   font-size: 1.4em;
+  border-top: 1px solid variable.$elements;
+  padding: 40px 30px;
 }
 
 @include mixins.on-tablet {
   .modal-card {
-    width: 70%;
+    width: 90%;
+
+
   }
+
+  
 
   .modal-card-title {
     font-size: 1.4em;
@@ -114,5 +123,13 @@
   .cancel {
     max-width: 200px;
   }
+  .modal-card {
+    width: 90%;
 
+    &-head {
+      text-align: left;
+    }
+  }
 }
+
+

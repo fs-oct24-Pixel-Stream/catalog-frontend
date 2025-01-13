@@ -15,7 +15,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Confirm your order</p>
+            <h1 className="modal-card-title">Confirm your order</h1>
           </header>
           <section className="modal-card-body">
             {productsList.map((product) => {
