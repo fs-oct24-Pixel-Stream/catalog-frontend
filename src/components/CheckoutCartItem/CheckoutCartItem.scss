@@ -1,0 +1,9 @@
+@use '../../styles/utils/variable.scss' as variable;
+@use '../../styles/utils/mixins.scss' as mixins;
+
+.checkout-cart-item {
+  display: flex;
+  padding: 10px;
+  gap: 5px;
+
+}
