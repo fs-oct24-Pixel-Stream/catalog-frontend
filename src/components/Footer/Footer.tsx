@@ -8,8 +8,8 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="footer footer-custom">
-      <div className="footer-content has-text-centered">
+    <footer className="footer ">
+      <div className="_container footer-content has-text-centered">
         <div className="footer-logo">
           <Link
             to="/home"

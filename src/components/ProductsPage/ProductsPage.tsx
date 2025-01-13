@@ -37,15 +37,38 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
               id="sort"
             >
               {}
-              <select className="products__selectList color-secondary">
-                <option value="0">Select...</option>
-                <option value="Newest">Newest</option>
-                <option value="Oldest">Oldest</option>
+              <select className="products__selectList color-primary">
+                <option
+                  className="color-secondary "
+                  value="0"
+                  selected
+                  disabled
+                >
+                  Select...
+                </option>
+                <option
+                  className="color-primary"
+                  value="Newest"
+                >
+                  newest
+                </option>
+                <option
+                  className="color-primary"
+                  value="Oldest"
+                >
+                  cheapest
+                </option>
+                <option
+                  className="color-primary"
+                  value="Oldest"
+                >
+                  most expensive
+                </option>
               </select>
             </div>
           </div>
         </div>
-        <div className="field products__control">
+        <div className="field products__control color-primary">
           <label
             className="products__label"
             htmlFor="sort"
