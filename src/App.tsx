@@ -9,8 +9,8 @@ import '../src/styles/utils/mixins.scss';
 import './App.scss';
 
 import { Footer } from './components/Footer/Footer';
-import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { Header } from './components/Header/Header';
+import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const App = () => {
   const dispatch = useAppDispatch();

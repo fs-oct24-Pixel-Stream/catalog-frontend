@@ -2,33 +2,29 @@ import './ProductDetailsPage.scss';
 import phones from '../../../public/api/phones.json';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { AboutSection } from '../../components/AboutSection/AboutSection';
-
-// we will take:
-// - all the products from the store,
-// - the category and id from useLokation pathname,
-// and find the device
+import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
+import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
+// import { useAppSelector } from '../../app/hooks';
+// import { useLocation } from 'react-router';
+// import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
+// import { useState } from 'react';
 
 const device = phones[0];
 
 export const ProductDetailsPage = () => {
-  const {
-    name,
-    images,
-    colorsAvailable,
-    capacityAvailable,
-    description,
-    screen,
-    resolution,
-    processor,
-    ram,
-    capacity,
-    camera,
-    zoom,
-    cell,
-  } = device;
+  // const location = useLocation();
+
+  // const category = location.pathname.split('/')[1];
+  // const deviceId = location.pathname.split('/')[2];
+  // const products = useAppSelector((state) => state.products.products);
+
+  // const [device, setDevice] = useState<ProductDeviceType | null>(null);
+
+  // const selectedDevice = products.find((product) => product.itemId === device?.id);
+
+  const { name, images, colorsAvailable, capacityAvailable, description } = device;
 
   //techSpecs should vary according to product category, which we will take from the pathname
-  const techSpecs = [screen, resolution, processor, ram, capacity, camera, zoom, cell];
   return (
     <div className="_container product-details">
       <div className="product-details__breadcrumps">
@@ -43,12 +39,7 @@ export const ProductDetailsPage = () => {
       <h1 className="product-details__title titleSecond">{name}</h1>
 
       <section className="product-details__gallery">
-        {/* TODO ADD gallery */}
-
-        <img
-          src={images[0]}
-          alt={`${name} photo`}
-        />
+        <ProductGallery images={images} name={name} />
       </section>
 
       <section className="product-details__parameters">
@@ -76,10 +67,7 @@ export const ProductDetailsPage = () => {
       </section>
 
       <section className="product-details__tech-specs">
-        {/* TODO ADD tech-specs section */}
-
-        <h2>Tech specs</h2>
-        <div>{techSpecs}</div>
+        <TechSpecs device={device} />
       </section>
 
       <section className="product-details__recommended">
