@@ -20,7 +20,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const ram = product.ram.slice(0, -2);
 
   const getButtonText = (isInCart: boolean): string => {
-    return isInCart ? 'Added to cart' : 'Add to cart';
+    return isInCart ? 'Added' : 'Add to cart';
   };
 
   const handleBuyProduct = () => {
