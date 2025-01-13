@@ -11,20 +11,24 @@
   font-size: 1em;
   text-align: center;
   background-color: #fff;
+  max-width: 92%;
 }
 
 .modal-background {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-@include mixins.on-tablet2 {
+}@include mixins.on-tablet2 {
   .head {
     width: 100vw;
     height: 200px;
     border-radius: 20px;
     font-size: 1.4em;
     text-align: center;
+    max-width: 700px;
   }
 }
+
+
+
