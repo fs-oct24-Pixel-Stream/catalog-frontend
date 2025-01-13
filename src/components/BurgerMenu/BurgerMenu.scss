@@ -1,46 +1,100 @@
-.burger-menu-overlay {
-  overflow: auto;
+@use '../../styles/utils/mixins.scss' as mixins;
+@use '../../styles/utils/variable.scss';
+
+.no-scroll {
+  overflow: hidden;
   position: fixed;
-  top: 0;
-  right: -100;
-  left: 0;
-  padding: 0 20px;
-  box-sizing: border-box;
-  height: 100vh;
-  background-color: #d12d35;
-  opacity: 0;
-  pointer-events: none;
-
-  transition:
-    right 0.8s ease,
-    opacity 0.8s ease;
-}
-
-.burger-menu-overlay.open {
-  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 .burger-menu-content {
-  background: white;
-  width: 80%;
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-}
-
-.burger-menu-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.burger-nav-cont {
+  top: 48px;
+  position: fixed;
+  width: 100%;
+  max-width: 639px;
+  background-color: variable.$white;
+  z-index: 101;
+  height: calc(100vh - 48px);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.burger-nav {
+  padding-top: 32px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__main {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: variable.$secondary;
+    text-transform: uppercase;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: variable.$primary;
+    }
+  }
+}
+
+.burger-nav__active {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+  color: variable.$primary;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid variable.$primary;
+  }
+}
+
+.burger-icons {
+  display: flex;
+  &__item {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 64px;
+    border: 1px solid variable.$elements;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      background-color: variable.$elements;
+    }
+  }
+  &__active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: variable.$primary;
+    border-radius: 2px;
+  }
+}
+
+@include mixins.on-tablet {
+  .burger-menu-content {
+    display: none;
+  }
 }

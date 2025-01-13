@@ -16,7 +16,7 @@ export const Footer = () => {
             className="footer-logo--link"
           >
             <img
-              src="./img/Logo.png"
+              src="./img/icons/Logo.svg"
               alt="Nice Gadgets Logo"
               className="logo"
             />

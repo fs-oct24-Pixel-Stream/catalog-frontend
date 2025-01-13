@@ -1,7 +1,10 @@
 import { FC } from 'react';
 import { HeaderLinks } from '../Header/HeaderLinks';
 import './BurgerMenu.scss';
-
+import cn from 'classnames';
+import fav from '../../../public/img/icons/fav.png';
+import cart from '../../../public/img/icons/cart.png';
+import { Link, useLocation } from 'react-router';
 type Props = {
   isOpen: boolean;
   onClose: () => void;
@@ -9,26 +12,44 @@ type Props = {
 
 export const BurgerMenu: FC<Props> = (props) => {
   const { isOpen, onClose } = props;
+  const location = useLocation();
 
   return (
-    <div className={`burger-menu-overlay ${isOpen ? 'open' : ''}`}>
-      <div className="burger-menu-content">
-        <button
-          className="burger-menu-close"
+    <div className={cn('burger-menu-content', { open: isOpen })}>
+      <HeaderLinks
+        mainClassName="burger-nav__main"
+        activeClassName="burger-nav__main burger-nav__active"
+        containerClassName="burger-nav"
+        onClose={onClose}
+      />
+
+      <div className="burger-icons">
+        <Link
+          to="/favorites"
+          className={cn('burger-icons__item', {
+            'burger-icons__active': location.pathname === '/favorites',
+          })}
           onClick={onClose}
-          aria-label="Close menu"
         >
-          ✕
-        </button>
-        <HeaderLinks
-          mainClassName="link"
-          activeClassName="link-active"
-          containerClassName="burger-nav-cont"
-        />
+          <img
+            src={fav}
+            alt="favorite"
+          />
+        </Link>
+
+        <Link
+          to="/cart"
+          className={cn('burger-icons__item', {
+            'burger-icons__active': location.pathname === '/cart',
+          })}
+          onClick={onClose}
+        >
+          <img
+            src={cart}
+            alt="cart"
+          />
+        </Link>
       </div>
     </div>
   );
 };
-
-// <div className={classNames('burger-menu-overlay', { open: isOpen })}>
-//
