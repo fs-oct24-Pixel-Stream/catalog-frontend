@@ -26,6 +26,8 @@ export const CartPage = () => {
   };
 
   const cart = useAppSelector((state) => state.cart.cart);
+
+  const isCartNotEmpty =   !!cart.length;
   console.log(cart);
 
   const totalPrice = useMemo(() => {
@@ -45,14 +47,14 @@ export const CartPage = () => {
       <div className="cart _container">
         <h1 className="titleMain cart__title">Cart</h1>
 
-        {cart.length <= 0 ?
+        {!isCartNotEmpty ?
           <div className="cart__background">
             <h2 className="cart__background__title">Your cart is empty</h2>
           </div>
         : <>
             <div className="cart-block">
               <div className="cart-block__list">
-                {!!cart.length &&
+                {isCartNotEmpty &&
                   cart.map((product) => (
                     <CartItem
                       key={product.id}
@@ -61,7 +63,7 @@ export const CartPage = () => {
                   ))}
               </div>
 
-              {!!cart.length && (
+              {isCartNotEmpty && (
                 <div className="checkout-block">
                   <h2 className="checkout-block__header-title">${totalPrice}</h2>
                   <p className="checkout-block__products-quantity">for {totalQuantity} products</p>

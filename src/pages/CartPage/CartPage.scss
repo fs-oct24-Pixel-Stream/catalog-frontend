@@ -12,7 +12,7 @@
   padding: 20px 20px;
 
   &__background {
-    background-image: url('../../../public/img/cart-is-empty.png');
+    background-image: url( 'img/cart-is-empty.png');
     margin: 0 auto;
     padding: 390px 0 130px;
 
@@ -92,9 +92,6 @@
     }
   }
   
-}
-
-@include mixins.on-tablet2 {
 }
 
 @include mixins.on-tablet3 {

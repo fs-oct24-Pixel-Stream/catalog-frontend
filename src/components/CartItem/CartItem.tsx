@@ -17,7 +17,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     dispatch(increaseProduct(product));
   };
 
-  const handleDecrease = (product: ProductCardType) => {
+  const handleDecrease = () => {
     setQuantity(quantity - 1);
     if (quantity === 1) {
       dispatch(removeProduct(product.id));
@@ -62,7 +62,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__footer">
         <div className="is-flex is-align-items-center cart-item__quantity-controls">
           <IconButton
-            onClick={()=>{handleDecrease(product)}}
+            onClick={handleDecrease}
             backgroundImage="../../../public/img/icons/Minus.svg"
           />
 
