@@ -1,0 +1,109 @@
+@use '../../styles/utils/variable.scss' as variable;
+@use '../../styles/utils/mixins.scss' as mixins;
+
+// cart item bg white and checkout block bg white
+
+.main-block {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.cart {
+  padding: 20px 20px;
+
+  &__background {
+    background-image: url('../../../public/img/cart-is-empty.png');
+    margin: 0 auto;
+    padding: 390px 0 130px;
+
+    background-repeat: no-repeat;
+    background-size: auto 50%;
+    background-position: center 100px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+    color: variable.$primary;
+
+    &__title {
+      padding-top: 20px;
+      font-weight: 700;
+      font-size: 2em;
+    }
+  }
+}
+.cart-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+  }
+}
+.checkout-block {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 1px solid variable.$elements;
+  font-size: 1.4em;
+  border-radius: variable.$global-border-radius;
+  text-align: center;
+  gap: 20px;
+  background-color: variable.$white;
+
+  &__header {
+    margin-bottom: 30px;
+
+    &-title {
+      font-size: 2em;
+      font-weight: 800;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+@include mixins.on-tablet {
+  .checkout-block {
+    &__button {
+      width: 80%;
+    }
+  }
+
+  .cart {
+    &__background {
+      &__title {
+        padding-top: 20px;
+        font-weight: 700;
+        font-size: 3.4em;
+      }
+    }
+  }
+}
+
+@include mixins.on-tablet3 {
+  .checkout-block {
+    max-width: 300px;
+    max-height: 200px;
+
+    &__button {
+      width: 100%;
+    }
+  }
+  .cart-block {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
