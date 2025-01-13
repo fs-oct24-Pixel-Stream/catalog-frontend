@@ -23,11 +23,15 @@
   // max-width: 100%;
 
   @include mixins.on-tablet {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 280px);
   }
 
   @include mixins.on-tablet2 {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 233px);
+  }
+
+  @include mixins.on-tablet3 {
+    grid-template-columns: repeat(3, 250px);
   }
 
   @include mixins.on-desktop {

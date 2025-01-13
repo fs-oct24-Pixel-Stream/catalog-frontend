@@ -23,8 +23,6 @@ html {
 ._container {
   padding-inline: 16px;
 
-  // @include mixins.page-grid;
-
   @include mixins.on-tablet {
     padding-inline: 24px;
   }
@@ -37,11 +35,17 @@ html {
 }
 
 .titleMain {
-  font-size: 4.8em;
+  font-size: 3.2em;
   font-weight: 800;
   line-height: 1.17;
   color: variable.$primary;
-  font-family: Mont, sans-serif; // Bulma перезаписує
+
+  @include mixins.on-tablet {
+    font-size: 4.2em;
+  }
+  @include mixins.on-desktop {
+    font-size: 4.8em;
+  }
 }
 
 .titleSecond {
@@ -49,7 +53,6 @@ html {
   font-weight: 800;
   line-height: 1.4;
   color: variable.$primary;
-  font-family: Mont, sans-serif; // Bulma перезаписує
 }
 .main-button {
   background-color: variable.$primary;
@@ -61,7 +64,7 @@ html {
 
   transition: box-shadow variable.$button-transition-time ease;
 
-  border-radius: 4px;
+  border-radius: variable.$global-border-radius;
 
   &:hover {
     box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
