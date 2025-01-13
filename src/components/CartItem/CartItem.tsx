@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { decreaseProduct, increaseProduct, removeProduct } from '../../features/cart/cartSlice';
 import { IconButton } from '../IconButton/IconButton';
@@ -9,17 +9,14 @@ type Props = {
   product: ProductCardType;
 };
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const [quantity, setQuantity] = useState(1);
   const dispatch = useAppDispatch();
 
   const handleIncrease = () => {
-    setQuantity(quantity + 1);
     dispatch(increaseProduct(product));
   };
 
   const handleDecrease = () => {
-    setQuantity(quantity - 1);
-    if (quantity === 1) {
+    if (product.quantity === 1) {
       dispatch(removeProduct(product.id));
     }
     dispatch(decreaseProduct(product));
@@ -66,7 +63,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             backgroundImage="../../../public/img/icons/Minus.svg"
           />
 
-          <span className="cart-item__quantity">{quantity}</span>
+          <span className="cart-item__quantity">{product.quantity}</span>
 
           <IconButton
             onClick={handleIncrease}
@@ -74,7 +71,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           />
         </div>
 
-        <p className="cart-item__price">${product.price * quantity}</p>
+        <p className="cart-item__price">${product.price * product.quantity}</p>
       </div>
     </div>
   );

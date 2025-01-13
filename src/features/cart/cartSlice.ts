@@ -1,9 +1,8 @@
 import { asyncThunkCreator, buildCreateSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartType } from '../../utils/types/CartType';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 
 type InitialState = {
-  cart: CartType[];
+  cart: ProductCardType[];
 };
 
 const initialState: InitialState = {
@@ -25,7 +24,7 @@ export const cartSlice = createAppSlice({
         if (findInCart) {
           findInCart.quantity += 1;
         } else {
-          const updatedProduct: CartType = { ...payload, quantity: 1, isBuy: true };
+          const updatedProduct: ProductCardType = { ...payload, quantity: 1};
 
           state.cart.push(updatedProduct);
         }

@@ -26,9 +26,10 @@ export const CartPage = () => {
   };
 
   const cart = useAppSelector((state) => state.cart.cart);
+  console.log(cart)
 
   const isCartNotEmpty =   !!cart.length;
-  console.log(cart);
+
 
   const totalPrice = useMemo(() => {
     return cart.reduce((acc, product) => {
