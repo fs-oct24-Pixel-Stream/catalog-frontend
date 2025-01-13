@@ -23,6 +23,8 @@ html {
 ._container {
   padding-inline: 16px;
 
+  // @include mixins.page-grid;
+
   @include mixins.on-tablet {
     padding-inline: 24px;
   }

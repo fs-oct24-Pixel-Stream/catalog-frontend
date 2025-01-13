@@ -6,7 +6,7 @@
   padding: 10px;
   border: 1px solid variable.$elements;
   border-radius: 8px;
-  background-color: white;
+  background-color: variable.$white;
   color: variable.$secondary;
   margin-bottom: 16px;
 }
@@ -20,6 +20,7 @@
   column-gap: 16px;
   margin-bottom: 40px;
   height: 100%;
+  // max-width: 100%;
 
   @include mixins.on-tablet {
     grid-template-columns: repeat(2, auto);
