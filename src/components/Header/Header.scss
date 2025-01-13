@@ -54,6 +54,11 @@
   display: none;
 }
 
+.logo-img {
+  width: 64px;
+  height: 22px;
+}
+
 @include mixins.on-tablet {
   .header-nav {
     display: flex;
