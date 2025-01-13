@@ -65,3 +65,14 @@ html {
     box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
   }
 }
+
+.button-animation {
+  // background-color: variable.$bgColor;
+  text-transform: capitalize;
+  transition: 0.5s;
+  background-size: 200% auto;
+  background-image: linear-gradient(to right, #414248 0%, #d9dade 51%, #4d4f56);
+  &:hover {
+    background-position: right center;
+  }
+}
