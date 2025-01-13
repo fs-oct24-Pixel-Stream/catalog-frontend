@@ -29,21 +29,14 @@ export const CheckoutModal: React.FC<Props> = (props) => {
             })}
           </section>
 
-
           <footer className="modal-card-foot">
-
             <div className="buttons">
-
               <div className="confirm">
-
                 <div className="price-block">
-
                   <p>Total price:$/₴0000</p>
-
                 </div>
 
                 <button
-                  
                   className="choice-button choice-button-confirm"
                   onClick={() => {
                     handleCloseModal('succsess');
@@ -51,31 +44,20 @@ export const CheckoutModal: React.FC<Props> = (props) => {
                 >
                   Confirm
                 </button>
-
-
               </div>
 
-              <div className='cancel'>
-
+              <div className="cancel">
                 <button
-                className="choice-button choice-button-cancel"
-                onClick={() => {
-                  handleCloseModal('close');
-                }}
-              >
-                Cancel
+                  className="choice-button choice-button-cancel"
+                  onClick={() => {
+                    handleCloseModal('close');
+                  }}
+                >
+                  Cancel
                 </button>
-                
               </div>
-              
             </div>
-
           </footer>
-          
-
-
-
-
         </div>
       </div>
     </>

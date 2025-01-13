@@ -18,8 +18,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-}@include mixins.on-tablet2 {
+@include mixins.on-tablet2 {
   .head {
     width: 100vw;
     height: 200px;
@@ -29,6 +30,3 @@
     max-width: 700px;
   }
 }
-
-
-
