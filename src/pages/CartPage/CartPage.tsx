@@ -20,7 +20,6 @@ export const CartPage = () => {
   const cart = useAppSelector((state) => state.cart.cart);
 
   const handleCloseModal = (option: string) => {
-    debugger
     if (option === 'close') {
       setIsModalOpen(false);
       return;
