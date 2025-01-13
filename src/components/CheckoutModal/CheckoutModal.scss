@@ -34,7 +34,6 @@
 
   &-card {
     max-width: 100%;
-    
   }
 }
 .modal-background {
@@ -43,7 +42,7 @@
 
 .modal-card-head {
   padding: 30px 30px;
-  
+
   box-shadow: none;
   text-align: center;
   text-transform: uppercase;
@@ -58,10 +57,10 @@
   background-color: variable.$white;
   display: flex;
   flex-direction: column;
-  gap:30px;
+  gap: 30px;
 }
 
-.buttons{
+.buttons {
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-end;
@@ -81,7 +80,6 @@
   text-align: center;
 }
 
-
 .modal-card-foot {
   display: flex;
   justify-content: center;
@@ -95,11 +93,7 @@
 @include mixins.on-tablet {
   .modal-card {
     width: 90%;
-
-
   }
-
-  
 
   .modal-card-title {
     font-size: 1.4em;
@@ -108,7 +102,6 @@
     display: flex;
     max-width: 300px;
     flex-direction: column;
-    
   }
   .cancel {
     display: flex;
@@ -116,12 +109,20 @@
     flex-direction: column;
   }
 
+  .modal-card-head {
+    padding: 30px 50px;
+  }
+  .modal-card-body {
+    padding: 30px 50px;
+  }
+  .modal-card-foot {
+    padding: 30px 50px;
+  }
 }
-
 
 @include mixins.on-tablet2 {
   .cancel {
-    max-width: 200px;
+    max-width: 180px;
   }
   .modal-card {
     width: 90%;
@@ -130,6 +131,37 @@
       text-align: left;
     }
   }
+  .modal-card-head {
+    padding: 30px 100px;
+  }
+  .modal-card-body {
+    padding: 30px 100px;
+  }
+  .modal-card-foot {
+    padding: 30px 100px;
+  }
 }
 
 
+@include mixins.on-tablet3 {
+  .modal-card-head {
+    padding: 30px 150px;
+  }
+  .modal-card-body {
+    padding: 30px 150px;
+  }
+  .modal-card-foot {
+    padding: 30px 150px;
+  }
+}
+@include mixins.on-desktop {
+  .modal-card-head {
+    padding: 30px 200px;
+  }
+  .modal-card-body {
+    padding: 30px 200px;
+  }
+  .modal-card-foot {
+    padding: 30px 200px;
+  }
+}
