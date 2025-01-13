@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
-
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
