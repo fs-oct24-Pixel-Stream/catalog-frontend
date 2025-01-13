@@ -45,12 +45,3 @@
     transform: translateX(100%); 
   }
 }
-
-@keyframes pulling-text {
-  from {
-    transform: translateX(-100%); 
-  }
-  to {
-    transform: translateX(50%); 
-  }
-}
