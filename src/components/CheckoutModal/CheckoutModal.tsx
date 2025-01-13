@@ -1,9 +1,9 @@
-import { ProductType } from '../../utils/types/ProductType';
+import { CartType } from '../../utils/types/CartType';
 import './CheckoutModal.scss';
 
 type Props = {
   handleCloseModal: (option: string) => void;
-  productsList: ProductType[];
+  productsList: CartType[];
 };
 
 export const CheckoutModal: React.FC<Props> = (props) => {
