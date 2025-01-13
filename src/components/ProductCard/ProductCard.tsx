@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './ProductCard.scss';
 import { Link } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { IconButton } from '../IconButton/IconButton';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
+import './ProductCard.scss';
 
 type Props = {
   product: ProductCardType;
