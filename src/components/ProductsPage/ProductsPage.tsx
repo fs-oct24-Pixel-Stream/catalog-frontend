@@ -65,7 +65,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
           </div>
         </div>
       </div>
-      {products && <ProductList products={products} />}
+      {!!products.length && <ProductList products={products} />}
       <div className="productsPagination">PAGINATION</div>
     </section>
   );
