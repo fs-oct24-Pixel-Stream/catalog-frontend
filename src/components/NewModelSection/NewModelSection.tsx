@@ -7,10 +7,10 @@ interface Props {
 }
 
 export const NewModelSection: React.FC<Props> = ({ products }) => {
-  const latestYear = Math.max(...products.map(product => product.year));
+  const highestYear = Math.max(...products.map(product => product.year));
 
   const newestProducts = products.filter(
-    product => product.year === latestYear,
+    product => product.year === highestYear,
   );
 
   return (
