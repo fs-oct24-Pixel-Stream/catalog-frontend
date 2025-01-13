@@ -10,6 +10,7 @@ html {
   $font-family: var(--bulma-family-primary);
   $footer-padding: var(--bulma-footer-padding);
   font-size: 10px;
+  background-color: variable.$bgColor;
 }
 .body-ajustment {
   display: flex;
@@ -34,11 +35,17 @@ html {
 }
 
 .titleMain {
-  font-size: 4.8em;
+  font-size: 3.2em;
   font-weight: 800;
   line-height: 1.17;
   color: variable.$primary;
-  font-family: Mont, sans-serif; // Bulma перезаписує
+
+  @include mixins.on-tablet {
+    font-size: 4.2em;
+  }
+  @include mixins.on-desktop {
+    font-size: 4.8em;
+  }
 }
 
 .titleSecond {
@@ -46,5 +53,20 @@ html {
   font-weight: 800;
   line-height: 1.4;
   color: variable.$primary;
-  font-family: Mont, sans-serif; // Bulma перезаписує
+}
+.main-button {
+  background-color: variable.$primary;
+  color: variable.$white;
+  font-size: 1.4em;
+  width: 175px;
+  height: 48px;
+  box-sizing: border-box;
+
+  transition: box-shadow variable.$button-transition-time ease;
+
+  border-radius: variable.$global-border-radius;
+
+  &:hover {
+    box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
+  }
 }

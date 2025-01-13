@@ -8,29 +8,36 @@
   min-height: 48px;
   padding-left: 16px;
   border-bottom: 2px solid #e2e6e9;
+  background-color: variable.$white;
 }
 
 .header-nav {
   &--logo {
     width: 64px;
     height: 22px;
+    transition: scale variable.$button-transition-time ease;
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 }
 
 .nav-links {
-  // visibility: hidden;
   display: none;
   &--item {
     text-transform: uppercase;
-    font-family: 'Mont', sans-serif;
     font-size: 12px;
     font-weight: 700;
     color: variable.$secondary;
     position: relative;
-    transition: color 0.3s;
+    transition: variable.$button-transition-time;
+  }
+  &--item:hover {
+    color: variable.$primary;
   }
   &--current {
-    color: variable.$primary; // Active link color
+    color: variable.$primary;
   }
 }
 
@@ -48,7 +55,11 @@
   display: none;
 }
 
-// tabl
+.logo-img {
+  width: 64px;
+  height: 22px;
+}
+
 @include mixins.on-tablet {
   .header-nav {
     display: flex;
@@ -72,7 +83,6 @@
       left: 0;
       width: 100%;
       height: 3px;
-      // color: variable.$primary;
       background: variable.$primary;
       border-radius: 2px;
     }
@@ -85,14 +95,30 @@
   .icons-wrapper {
     display: flex;
     height: 100%;
-    &--item {
+    cursor: pointer;
+    &__item {
+      position: relative;
       width: 48px;
       height: 100%;
 
-      border-left: 1px solid #e2e6e9;
+      border-left: 1px solid variable.$elements;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background-color variable.$button-transition-time ease;
+    }
+    &__item:hover {
+      background-color: variable.$elements;
+    }
+
+    &__current::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: variable.$primary;
     }
   }
 }
@@ -114,7 +140,12 @@
     }
   }
 
-  .icons-wrapper--item {
+  .icons-wrapper__item {
     width: 64px;
+  }
+
+  .logo-img {
+    width: 80px;
+    height: 28px;
   }
 }

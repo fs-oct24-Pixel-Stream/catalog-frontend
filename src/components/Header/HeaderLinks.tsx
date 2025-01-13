@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { FC } from 'react';
 import { Link, useLocation } from 'react-router';
 
@@ -24,21 +25,28 @@ type Props = {
   mainClassName: string;
   activeClassName: string;
   containerClassName: string;
+  onClose: () => void;
 };
 
 export const HeaderLinks: FC<Props> = (props) => {
-  const { mainClassName, activeClassName, containerClassName } = props;
+  const { mainClassName, activeClassName, containerClassName, onClose } = props;
 
   const location = useLocation();
 
   return (
     <div className={containerClassName}>
       {navLinks.map(({ name, pathName }) => {
+        const isActive = pathName === location.pathname;
+
         return (
           <Link
             key={name}
             to={pathName}
-            className={pathName === location.pathname ? activeClassName : mainClassName}
+            className={cn({
+              [activeClassName]: isActive,
+              [mainClassName]: !isActive,
+            })}
+            onClick={onClose}
           >
             {name}
           </Link>

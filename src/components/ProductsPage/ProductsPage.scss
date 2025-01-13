@@ -1,28 +1,6 @@
 @use '../../styles/utils/mixins.scss';
 @use '../../styles/utils/variable.scss';
 
-.container-custom {
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  flex-direction: column;
-  padding-top: 24px;
-  max-width: 287px;
-  margin: 0 auto;
-
-  @include mixins.on-tablet {
-    max-width: 592px;
-  }
-
-  @include mixins.on-tablet2 {
-    max-width: 719px;
-  }
-
-  @include mixins.on-desktop {
-    max-width: 1200px;
-  }
-}
-
 .products {
   padding-top: 24px;
   padding-bottom: 64px;
@@ -89,5 +67,31 @@
 
   @include mixins.on-tablet {
     margin-bottom: 40px;
+  }
+}
+
+.container-custom {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  flex-direction: column;
+  padding-top: 24px;
+  max-width: 316px;
+  margin: 0 auto;
+
+  @include mixins.on-tablet {
+    max-width: 620px;
+  }
+
+  // @include mixins.on-tablet2 {
+  //   max-width: 780px;
+  // }
+
+  @include mixins.on-tablet3 {
+    max-width: 854px;
+  }
+
+  @include mixins.on-desktop {
+    max-width: 1200px;
   }
 }

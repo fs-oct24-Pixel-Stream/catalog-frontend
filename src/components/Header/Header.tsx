@@ -1,19 +1,38 @@
 import './Header.scss';
-import logo from '../../../public/img/Logo.png';
-import { Link } from 'react-router';
-import burger from '../../../public/img/icons/burger.png';
+import logo from '../../../public/img/icons/Logo.svg';
+import { Link, useLocation } from 'react-router';
+import burger from '../../../public/img/icons/burger.svg';
+import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
 import { HeaderLinks } from './HeaderLinks';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import cn from 'classnames';
 
 export const Header = () => {
+  const location = useLocation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleBurgerMenu = (): void => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isMenuOpen]);
+
+  // const isFavoriteStorage = localStorage.getItem('favorites');
+  // const favoriteStorage = 2;
 
   return (
     <>
@@ -22,20 +41,22 @@ export const Header = () => {
         id="home"
       >
         <div className="header-nav">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="header-nav--logo"
           >
             <img
               src={logo}
               alt="logo"
+              className='logo-img'
             />
-          </a>
+          </Link>
 
           <HeaderLinks
             mainClassName="nav-links--item"
             activeClassName="nav-links--item nav-links--current"
             containerClassName="nav-links"
+            onClose={() => setIsMenuOpen(false)}
           />
         </div>
 
@@ -44,37 +65,56 @@ export const Header = () => {
           onClick={toggleBurgerMenu}
           aria-label="Open menu"
         >
-          <button>
-            <img
-              src={burger}
-              alt="icon for open side-bar"
-            />
-          </button>
+          {isMenuOpen ?
+            <button>
+              <img
+                src={burgerClose}
+                alt="icon for close side-bar"
+              />
+            </button>
+          : <button>
+              <img
+                src={burger}
+                alt="icon for open side-bar"
+              />
+            </button>
+          }
         </div>
 
         <div className="icons-wrapper">
-          <div className="icons-wrapper--item">
-            <Link to="/favorites">
+          <Link
+            to="/favorites"
+            className={cn('icons-wrapper__item', {
+              'icons-wrapper__current': location.pathname === '/favorites',
+            })}
+          >
+            <div>
               <img
                 src={fav}
                 alt="icon for favorite"
               />
-            </Link>
-          </div>
-          <div className="icons-wrapper--item">
-            <Link to="/cart">
-              <img
-                src={cart}
-                alt="icon for cart"
-              />
-            </Link>
-          </div>
+              {/* {favoriteStorage > 0 && <span>{favoriteStorage}</span>} */}
+            </div>
+          </Link>
+          <Link
+            to="/cart"
+            className={cn('icons-wrapper__item', {
+              'icons-wrapper__current': location.pathname === '/cart',
+            })}
+          >
+            <img
+              src={cart}
+              alt="icon for cart"
+            />
+          </Link>
         </div>
       </header>
-      <BurgerMenu
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-      />
+      {isMenuOpen && (
+        <BurgerMenu
+          isOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+        />
+      )}
     </>
   );
 };
