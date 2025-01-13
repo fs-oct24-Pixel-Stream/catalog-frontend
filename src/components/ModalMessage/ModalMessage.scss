@@ -1,2 +1,35 @@
 @use '../../styles/utils/variable.scss' as variable;
 @use '../../styles/utils/mixins.scss' as mixins;
+
+
+
+.head {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 0.4em;
+  text-align: center;
+  width: 100vw;
+  height: 100px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  text-align: center;
+  background-color: #fff;
+}
+.modal-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@include mixins.on-tablet {
+  .head {
+    width: 100vw;
+    height: 200px;
+    border-radius: 20px;
+    font-size: 1.4em;
+    text-align: center;
+    background-color: #fff;
+  }
+}

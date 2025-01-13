@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import './ModalMessage.scss';
 
 type Props = {
   setIsPurchased: (value: boolean) => void;
@@ -20,12 +21,12 @@ export const ModalMessage: React.FC<Props> = ({ setIsPurchased, text }) => {
   return (
     <>
       <div className="modal is-active">
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <header className="modal-card-head">
-            <p className="modal-card-title">{text}</p>
-          </header>
+        <div className="modal-background">
+        <header className="head">
+          <p className="modal-card-title">{text}</p>
+        </header>
         </div>
+        
       </div>
     </>
   );

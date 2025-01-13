@@ -38,13 +38,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
+
 
   &__list {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 5px;
+    gap: 30px;
   }
 }
 .checkout-block {
