@@ -60,6 +60,34 @@
   height: 22px;
 }
 
+//
+.header-icons-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.icons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid variable.$elements;
+}
+
+.icon-container {
+  width: 48px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icons-language {
+  display: none;
+}
+
 @include mixins.on-tablet {
   .header-nav {
     display: flex;
@@ -147,5 +175,13 @@
   .logo-img {
     width: 80px;
     height: 28px;
+  }
+
+  .icons {
+    border-left: none;
+  }
+
+  .icons-language {
+    display: flex;
   }
 }
