@@ -8,6 +8,9 @@ import { useLocation } from 'react-router';
 import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 import { useEffect, useState } from 'react';
 
+/* import tablets from './../../../public/api/tablets.json';
+const device = tablets[0]; */
+
 export const ProductDetailsPage = () => {
   const [device, setDevice] = useState<ProductDeviceType | null>(null);
 
@@ -15,28 +18,39 @@ export const ProductDetailsPage = () => {
   const category = location.pathname.split('/')[1];
   const deviceId = location.pathname.split('/')[2];
 
-  const getCategoryProducts = () => {
+  const tablets = useAppSelector((state) => state.tablets.tablets);
+  /* const getCategoryProducts = () => {
     switch (category) {
       case 'phones':
         return useAppSelector((state) => state.phones.phones);
       case 'tablets':
-        return useAppSelector((state) => state.tablets.tablets);
+        return useAppSelector((state) => {
+          console.log('!!!', state)
+          return state.tablets.tablets
+        });
       case 'accessories':
         return useAppSelector((state) => state.accessories.accessories);
       default:
         return [];
     }
-  };
+  }; */
 
   useEffect(() => {
-    const products = getCategoryProducts();
+    const products = tablets;
+    console.log(products);
     const selectedDevice = products.find((product: ProductDeviceType) => product.id === deviceId);
     setDevice(selectedDevice || null);
   }, [category, deviceId]);
 
+  useEffect(() => {
+    console.log('On mount', location, category, deviceId);
+  }, []);
+
   if (!device) {
     return <p>Loading...</p>;
   }
+
+  console.log('ekjbrjkh');
 
   const { name, images, colorsAvailable, capacityAvailable, description } = device;
 
