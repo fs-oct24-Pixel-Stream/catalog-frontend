@@ -11,7 +11,8 @@ export const HotPriceSection: React.FC<Props> = ({ products }) => {
   const productWithDiscount = products
     .filter((product) => getDiscount(product) > 0)
     .sort((a, b) => getDiscount(b) - getDiscount(a))
-    .sort(() => Math.random() - 0.5);
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 12);
 
   return (
     <ProductSlider

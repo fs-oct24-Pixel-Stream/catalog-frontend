@@ -1,0 +1,31 @@
+@use '../../styles/utils/mixins.scss';
+@use '../../styles/utils/variable.scss';
+
+.home-page {
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include mixins.on-tablet {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+
+    @include mixins.on-desktop {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__sections {
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include mixins.on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}
