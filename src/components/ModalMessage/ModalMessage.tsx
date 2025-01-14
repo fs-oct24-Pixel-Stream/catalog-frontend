@@ -4,16 +4,15 @@ import './ModalMessage.scss';
 
 type Props = {
   setIsPurchased: (value: boolean) => void;
-  text: string;
 };
 
-export const ModalMessage: React.FC<Props> = ({ setIsPurchased, text }) => {
+export const ModalMessage: React.FC<Props> = ({ setIsPurchased}) => {
   const navigate = useNavigate();
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsPurchased(false);
       navigate('/');
-    }, 1000);
+    }, 2000);
     return () => {
       clearTimeout(timer);
     };
@@ -22,11 +21,16 @@ export const ModalMessage: React.FC<Props> = ({ setIsPurchased, text }) => {
     <>
       <div className="modal is-active">
         <div className="modal-background">
-        <header className="head">
-          <p className="modal-card-title">{text}</p>
-        </header>
+          <div className="head">
+            <div className="road">
+              <img
+                src="../../public/img/icons/delivery.gif"
+                alt="truck"
+                className="movingTruck"
+              />
+            </div>
+          </div>
         </div>
-        
       </div>
     </>
   );

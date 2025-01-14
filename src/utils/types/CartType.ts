@@ -1,6 +1,6 @@
-import { ProductCardType } from './ProductCardType';
+// import { ProductCardType } from './ProductCardType';
 
-export interface CartType extends ProductCardType {
-  quantity: number;
-  isBuy: boolean;
-}
+// export interface CartType extends ProductCardType {
+//   quantity: number;
+//   isBuy: boolean;
+// }

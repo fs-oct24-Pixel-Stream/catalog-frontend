@@ -11,4 +11,5 @@ export interface ProductCardType {
   ram: string;
   year: number;
   image: string;
+  quantity: number;
 }
