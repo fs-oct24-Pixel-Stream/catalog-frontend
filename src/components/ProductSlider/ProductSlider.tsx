@@ -1,10 +1,9 @@
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { IconButton } from '../IconButton/IconButton';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
-//@ts-ignore
-import 'swiper/scss';
 import { useRef } from 'react';
 import { ProductCard } from '../ProductCard';
+import 'swiper/swiper-bundle.css';
 import './ProductSlider.scss';
 
 interface Props {
@@ -50,7 +49,10 @@ export const ProductSlider: React.FC<Props> = (props) => {
         freeMode={true}
       >
         {products.map((product) => (
-          <SwiperSlide key={product.id} className="product-slider__item">
+          <SwiperSlide
+            key={product.id}
+            className="product-slider__item"
+          >
             <ProductCard
               discount={discount}
               product={product}
