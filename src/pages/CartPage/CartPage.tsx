@@ -15,8 +15,6 @@ export const CartPage = () => {
     setIsPurchased(false);
   };
 
- 
-
   const cart = useAppSelector((state) => state.cart.cart);
 
   const handleCloseModal = (option: string) => {
@@ -30,8 +28,7 @@ export const CartPage = () => {
     }
   };
 
-  const isCartNotEmpty =   !!cart.length;
-
+  const isCartNotEmpty = !!cart.length;
 
   const totalPrice = useMemo(() => {
     return cart.reduce((acc, product) => {
@@ -55,7 +52,7 @@ export const CartPage = () => {
 
   return (
     <>
-      <div className='cart _container'>
+      <div className="cart _container">
         <h1 className="titleMain cart__title">Cart</h1>
 
         {!isCartNotEmpty ?
@@ -97,11 +94,7 @@ export const CartPage = () => {
           handleCloseModal={handleCloseModal}
         />
       )}
-      {isPurchased && (
-        <ModalMessage
-          setIsPurchased={setIsPurchased}
-        />
-      )}
+      {isPurchased && <ModalMessage setIsPurchased={setIsPurchased} />}
     </>
   );
 };

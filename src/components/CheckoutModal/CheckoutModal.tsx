@@ -31,9 +31,9 @@ export const CheckoutModal: React.FC<Props> = (props) => {
           </section>
 
           <footer className="modal-card-foot">
-          <div className="price-block">
-                  <p>Total price: ${totalPrice}</p>
-                </div>
+            <div className="price-block">
+              <p>Total price: ${totalPrice}</p>
+            </div>
             <div className="buttons">
               <div className="confirm">
                 <button

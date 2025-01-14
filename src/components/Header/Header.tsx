@@ -48,7 +48,7 @@ export const Header = () => {
             <img
               src={logo}
               alt="logo"
-              className='logo-img'
+              className="logo-img"
             />
           </Link>
 
