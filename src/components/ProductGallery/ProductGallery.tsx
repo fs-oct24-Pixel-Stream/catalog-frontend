@@ -7,13 +7,13 @@ type Props = {
   name: string;
 };
 
-export const ProductGallery: React.FC<Props> = ({images, name}) => {
-  const pictures = images.map(img => {
+export const ProductGallery: React.FC<Props> = ({ images, name }) => {
+  const pictures = images.map((img) => {
     return {
       original: img,
       thumbnail: img,
     };
-  })
+  });
 
   return (
     <div className="image-gallery">
