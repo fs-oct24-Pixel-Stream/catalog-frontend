@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { IconButton } from '../IconButton/IconButton';
@@ -12,33 +12,33 @@ type Props = {
   product: ProductCardType;
 };
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const [inCart, setInCart] = useState<number | null>(null);
   const [inFavorite, setInFavorite] = useState<number | null>(null);
   const dispatch = useAppDispatch();
+
+  const cart = useAppSelector((store) => store.cart.cart);
+  const isInCart = cart.some((item) => item.id === product.id);
+
+  const favorites = useAppSelector((store) => store.favorities.products);
+  const isInFavorites = favorites.some((item) => item.id === product.id);
+
 
   const capacity = product.capacity.slice(0, -2);
   const ram = product.ram.slice(0, -2);
 
-  const getButtonText = (isInCart: boolean): string => {
-    return isInCart ? 'Added' : 'Add to cart';
-  };
+  const getButtonText = isInCart ? 'Added' : 'Add to cart';
 
   const handleBuyProduct = () => {
-    if (inCart === product.id) {
-      setInCart(null);
+    if (isInCart) {
       dispatch(removeProduct(product.id));
     } else {
-      setInCart(product.id);
       dispatch(addProduct(product));
     }
   };
 
   const handleAddFavorite = () => {
-    if (inFavorite === product.id) {
-      setInFavorite(null);
+    if (isInFavorites) {
       dispatch(removeFavorite(product.id));
     } else {
-      setInFavorite(product.id);
       dispatch(addFavorite(product));
     }
   };
@@ -85,16 +85,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <button
           onClick={handleBuyProduct}
           className={cn('button', 'product-card__button-buy', {
-            'product-card__button-buy--active': inCart === product.id,
+            'product-card__button-buy--active': isInCart,
           })}
         >
-          {getButtonText(inCart === product.id)}
+          {getButtonText}
         </button>
         <IconButton
           onClick={handleAddFavorite}
           className={cn({
-            'product-card__button-wishlist': inFavorite !== product.id,
-            'product-card__button-wishlist--active': inFavorite === product.id,
+            'product-card__button-wishlist': !isInFavorites,
+            'product-card__button-wishlist--active': isInFavorites,
           })}
         />
       </div>
