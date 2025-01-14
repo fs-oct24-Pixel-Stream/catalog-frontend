@@ -1,44 +1,51 @@
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
+import cn from 'classnames';
 import './Breadcrumbs.scss';
-import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
-
-type Props = {
-  product?: ProductDeviceType;
-};
 
 export const Breadcrumbs = () => {
+  const location = useLocation();
+
+  const pathnames = location.pathname.split('/').filter((page) => page !== '');
+  console.log(pathnames);
+  const isActivePathActive = (pathIndex: number) => {
+    if (pathIndex === 0 && pathnames.length > 1) {
+      return true;
+    }
+    return false;
+  };
   return (
-    <>
-      <div className="_container">
-        <ul className="breadcrumbs">
-          <li>
-            <Link to="/">
-              <img
-                className="breadcrumbs__home"
-                src="./img/icons/Home.svg"
-              />
-            </Link>
-          </li>
-          <li>&gt;</li>
-          <li>
-            <Link
-              to="/phones"
+    <div className="breadcrumbs-container">
+      <ul className="breadcrumbs">
+        <li>
+          <Link to="/">
+            <img
+              className="breadcrumbs__home"
+              src="./img/icons/Home.svg"
+              alt="Home"
+            />
+          </Link>
+        </li>
+        {pathnames.map((path, index) => {
+          const redirectTo = `/${pathnames.slice(0, index + 1).join('/')}`;
+          return (
+            <li
+              key={path}
               className="breadcrumbs__link"
             >
-              Phones
-            </Link>
-          </li>
-          <li>&gt;</li>
-          <li>
-            <Link
-              to="/"
-              className="breadcrumbs__link"
-            >
-              Apple iPhone XS 64GB Gold
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </>
+              <span>&gt;</span>
+              <Link
+                to={redirectTo}
+                className={cn({
+                  'breadcrumbs__link--active': isActivePathActive(index),
+                  'breadcrumbs__link': !isActivePathActive(index),
+                })}
+              >
+                {path}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
