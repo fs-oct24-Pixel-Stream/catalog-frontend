@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { IconButton } from '../IconButton/IconButton';
@@ -10,34 +10,36 @@ import './ProductCard.scss';
 
 type Props = {
   product: ProductCardType;
+  discount?: boolean;
 };
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, discount }) => {
+  const [inCart, setInCart] = useState<number | null>(null);
+  const [inFavorite, setInFavorite] = useState<number | null>(null);
   const dispatch = useAppDispatch();
-
-  const cart = useAppSelector((store) => store.cart.cart);
-  const isInCart = cart.some((item) => item.id === product.id);
-
-  const favorites = useAppSelector((store) => store.favorities.products);
-  const isInFavorites = favorites.some((item) => item.id === product.id);
-
 
   const capacity = product.capacity.slice(0, -2);
   const ram = product.ram.slice(0, -2);
 
-  const getButtonText = isInCart ? 'Added' : 'Add to cart';
+  const getButtonText = (isInCart: boolean): string => {
+    return isInCart ? 'Added' : 'Add to cart';
+  };
 
   const handleBuyProduct = () => {
-    if (isInCart) {
+    if (inCart === product.id) {
+      setInCart(null);
       dispatch(removeProduct(product.id));
     } else {
+      setInCart(product.id);
       dispatch(addProduct(product));
     }
   };
 
   const handleAddFavorite = () => {
-    if (isInFavorites) {
+    if (inFavorite === product.id) {
+      setInFavorite(null);
       dispatch(removeFavorite(product.id));
     } else {
+      setInFavorite(product.id);
       dispatch(addFavorite(product));
     }
   };
@@ -58,9 +60,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="is-flex product-card__price">
         <p className="product-card__price-value">${product.price}</p>
-        <p className="product-card__price-value product-card__price-value--discount">
-          ${product.fullPrice}
-        </p>
+        {discount && (
+          <p className="product-card__price-value product-card__price-value--discount">
+            ${product.fullPrice}
+          </p>
+        )}
       </div>
 
       <div className="product-card__line"></div>
@@ -84,16 +88,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <button
           onClick={handleBuyProduct}
           className={cn('button', 'product-card__button-buy', {
-            'product-card__button-buy--active': isInCart,
+            'product-card__button-buy--active': inCart === product.id,
           })}
         >
-          {getButtonText}
+          {getButtonText(inCart === product.id)}
         </button>
         <IconButton
           onClick={handleAddFavorite}
           className={cn({
-            'product-card__button-wishlist': !isInFavorites,
-            'product-card__button-wishlist--active': isInFavorites,
+            'product-card__button-wishlist': inFavorite !== product.id,
+            'product-card__button-wishlist--active': inFavorite === product.id,
           })}
         />
       </div>

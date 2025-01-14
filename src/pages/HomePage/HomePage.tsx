@@ -4,6 +4,7 @@ import { NewModelSection } from '../../components/NewModelSection';
 import './HomePage.scss';
 import { fetchProducts } from '../../features/products/productsSlice';
 import { CategorySection } from '../../components/CategorySection/CategorySection';
+import { HotPriceSection } from '../../components/HotPriceSection';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ export const HomePage = () => {
     <>
       <NewModelSection products={products} />
       <CategorySection />
+      <HotPriceSection products={products} />
     </>
   );
 };
