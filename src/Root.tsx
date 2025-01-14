@@ -22,51 +22,51 @@ export const Root = () => (
         <Route
           index
           element={<HomePage />}
-        />{' '}
-        {/* // TODO CREATE Home page */}
-        <Route
-          path="/phones"
-          element={<PhonesPage />}
-        >
-          {/* TODO CREATE Phones Page*/}
+        />
+
+        <Route path="phones">
+          <Route
+            index
+            element={<PhonesPage />}
+          />
           <Route
             path=":itemId"
-            element={<ProductDetailsPage />}
-          />{' '}
-          {/* TODO CREATE Device Details Page and IDvalidator func*/}
+            element={<DeviceDetailsPage />}
+          />
         </Route>
-        <Route
-          path="/accessories"
-          element={<AccessoriesPage />}
-        >
-          {/* TODO CREATE AccessoriesPage*/}
+
+        <Route path="/accessories">
+          <Route
+            index
+            element={<AccessoriesPage />}
+          />
           <Route
             path=":itemId"
-            element={<ProductDetailsPage />}
-          />{' '}
-          {/* TODO CREATE Device Details Page and IDvalidator func*/}
+            element={<DeviceDetailsPage />}
+          />
         </Route>
-        <Route
-          path="/tablets"
-          element={<TabletsPage />}
-        >
-          {/* TODO CREATE Tablets Page*/}
+
+        <Route path="/tablets">
+          <Route
+            index
+            element={<TabletsPage />}
+          />
           <Route
             path=":itemId"
-            element={<ProductDetailsPage />}
-          />{' '}
-          {/* TODO CREATE Device Details Page and IDvalidator func*/}
+            element={<DeviceDetailsPage />}
+          />
         </Route>
+
         <Route
           path="/favorites"
           element={<FavoritePage />}
         />
-        {/* TODO CREATE Favorites Page*/}
+
         <Route
           path="/cart"
           element={<CartPage />}
         />
-        {/* TODO CREATE Cart Page*/}
+
         <Route
           path="*"
           element={<NotFoundPage />}
