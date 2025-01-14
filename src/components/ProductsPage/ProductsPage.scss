@@ -53,6 +53,8 @@
     line-height: 1.5; /* 21/14 */
     // color: variable.$secondary;
   }
+  &__pagination {
+  }
 }
 
 .select .color-secondary {
@@ -93,5 +95,47 @@
 
   @include mixins.on-desktop {
     max-width: 1200px;
+  }
+}
+
+.pagination {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    @include mixins.on-tablet {
+      gap: 16px;
+    }
+  }
+  &__page {
+    width: 3.2em;
+    height: 3.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid variable.$elements;
+    border-radius: variable.$global-border-radius;
+
+    &--active {
+      background-color: variable.$primary;
+    }
+    &--prev {
+    }
+    &--next {
+    }
+  }
+  &__link {
+    background-color: variable.$white;
+    color: variable.$primary;
+    &--active {
+      background-color: variable.$primary;
+      color: variable.$white;
+    }
+    &--prev {
+    }
+    &--next {
+    }
   }
 }
