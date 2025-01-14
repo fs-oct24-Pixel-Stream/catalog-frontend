@@ -4,6 +4,7 @@ import { ProductsPage } from '../../components/ProductsPage';
 import './PhonesPage.scss';
 
 import { fetchPhones } from '../../features/phones/phonesSlice';
+import { Outlet } from 'react-router';
 
 export const PhonesPage = () => {
   const dispatch = useAppDispatch();
@@ -14,11 +15,12 @@ export const PhonesPage = () => {
 
   useEffect(() => {
     dispatch(fetchPhones());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <ProductsPage products={phones} />
+      <Outlet />
     </>
   );
 };

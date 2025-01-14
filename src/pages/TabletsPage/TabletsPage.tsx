@@ -11,9 +11,10 @@ export const TabletsPage = () => {
   }, [products]);
 
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(fetchTablets());
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <ProductsPage products={tablets} />
