@@ -24,7 +24,7 @@ export const ModalMessage: React.FC<Props> = ({ setIsPurchased }) => {
           <div className="head">
             <div className="road">
               <img
-                src="../../public/img/icons/delivery.gif"
+                src="img/icons/delivery.gif"
                 alt="truck"
                 className="movingTruck"
               />

@@ -59,14 +59,14 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <div className="is-flex is-align-items-center cart-item__quantity-controls">
           <IconButton
             onClick={handleDecrease}
-            backgroundImage="../../../public/img/icons/Minus.svg"
+            backgroundImage="img/icons/Minus.svg"
           />
 
           <span className="cart-item__quantity">{product.quantity}</span>
 
           <IconButton
             onClick={handleIncrease}
-            backgroundImage="../../../public/img/icons/Plus.svg"
+            backgroundImage="public/img/icons/Plus.svg"
           />
         </div>
 
