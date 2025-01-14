@@ -51,7 +51,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: white;
+    background-color: rgb(229, 229, 229);
 
     @include mixins.on-tablet {
       border-radius: variable.$global-border-radius;
