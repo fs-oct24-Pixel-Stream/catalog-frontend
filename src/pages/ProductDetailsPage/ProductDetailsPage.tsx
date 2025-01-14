@@ -1,30 +1,45 @@
 import './ProductDetailsPage.scss';
-import phones from '../../../public/api/phones.json';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { AboutSection } from '../../components/AboutSection/AboutSection';
 import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
 import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
-// import { useAppSelector } from '../../app/hooks';
-// import { useLocation } from 'react-router';
-// import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
-// import { useState } from 'react';
-
-const device = phones[0];
+import { useAppSelector } from '../../app/hooks';
+import { useLocation } from 'react-router';
+import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
+import { useEffect, useState } from 'react';
 
 export const ProductDetailsPage = () => {
-  // const location = useLocation();
+  const [device, setDevice] = useState<ProductDeviceType | null>(null);
 
-  // const category = location.pathname.split('/')[1];
-  // const deviceId = location.pathname.split('/')[2];
-  // const products = useAppSelector((state) => state.products.products);
+  const location = useLocation();
+  const category = location.pathname.split('/')[1];
+  const deviceId = location.pathname.split('/')[2];
 
-  // const [device, setDevice] = useState<ProductDeviceType | null>(null);
+  const getCategoryProducts = () => {
+    switch (category) {
+      case 'phones':
+        return useAppSelector((state) => state.phones.phones);
+      case 'tablets':
+        return useAppSelector((state) => state.tablets.tablets);
+      case 'accessories':
+        return useAppSelector((state) => state.accessories.accessories);
+      default:
+        return [];
+    }
+  };
 
-  // const selectedDevice = products.find((product) => product.itemId === device?.id);
+  useEffect(() => {
+    const products = getCategoryProducts();
+    const selectedDevice = products.find((product: ProductDeviceType) => product.id === deviceId);
+    setDevice(selectedDevice || null);
+  }, [category, deviceId]);
+
+  if (!device) {
+    return <p>Loading...</p>;
+  }
 
   const { name, images, colorsAvailable, capacityAvailable, description } = device;
 
-  //techSpecs should vary according to product category, which we will take from the pathname
   return (
     <div className="_container product-details">
       <div className="product-details__breadcrumps">
@@ -39,12 +54,13 @@ export const ProductDetailsPage = () => {
       <h1 className="product-details__title titleSecond">{name}</h1>
 
       <section className="product-details__gallery">
-        <ProductGallery images={images} name={name} />
+        <ProductGallery
+          images={images}
+          name={name}
+        />
       </section>
 
       <section className="product-details__parameters">
-        {/* TODO ADD parameters section */}
-
         <p>Available colors:</p>
         <div>
           {colorsAvailable.map((color) => (
@@ -57,9 +73,6 @@ export const ProductDetailsPage = () => {
             <p key={capacity}>{capacity}</p>
           ))}
         </div>
-        {
-          //a few reusable components: button, add to fav, short Techspecs
-        }
       </section>
 
       <section className="product-details__about">

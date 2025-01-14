@@ -1,6 +1,6 @@
 import { client } from '../utils/client/axiosClient';
-import { ProductCardType } from '../utils/types/ProductCardType';
+import { ProductDeviceType } from '../utils/types/ProductDeviceType';
 
 export const getPhones = () => {
-  return client.get<ProductCardType[]>('/phones.json');
+  return client.get<ProductDeviceType[]>('/phones.json');
 };

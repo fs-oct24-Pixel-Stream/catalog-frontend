@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ProductCardType } from '../../utils/types/ProductCardType';
 import { getAccessories } from '../../api/accessories';
+import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 
 type InitialState = {
-  accessories: ProductCardType[];
+  accessories: ProductDeviceType[];
   loading: boolean;
   error: string | null;
 };

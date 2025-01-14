@@ -10,7 +10,6 @@ import './App.scss';
 
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +23,6 @@ export const App = () => {
       <Header />
       <main className="main">
         <Outlet />
-        <ProductDetailsPage />
       </main>
       <Footer />
     </div>

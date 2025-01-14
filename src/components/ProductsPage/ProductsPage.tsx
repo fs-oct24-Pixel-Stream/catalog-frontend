@@ -15,10 +15,8 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
   const title = path.slice(0, 1).toUpperCase() + path.slice(1);
 
   return (
-    <section className="products _container container-custom">
+      <section className="products _container container-custom">
       <div className="bread-crumbs">BREAD CRUMBS</div>
-      {/*BREAD CRUMBS */}
-
       <h1 className="titleMain">{title}</h1>
 
       <p className="products__quantity">{products.length} models</p>

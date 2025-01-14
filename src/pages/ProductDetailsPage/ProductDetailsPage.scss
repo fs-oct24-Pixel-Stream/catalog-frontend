@@ -46,7 +46,7 @@
     @include mixins.on-tablet {
       grid-column: 1/8;
       column-gap: 16px;
-      margin-bottom: 0;
+      margin-bottom: 64;
     }
 
     @include mixins.on-desktop {
