@@ -16,9 +16,9 @@ export const HomePage = () => {
 
   return (
     <>
-      <NewModelSection products={products} />
+      {/* <NewModelSection products={products} />
       <CategorySection />
-      <HotPriceSection products={products} />
+      <HotPriceSection products={products} /> */}
     </>
   );
 };
