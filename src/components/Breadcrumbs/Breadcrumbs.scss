@@ -1,0 +1,25 @@
+@use '../../styles/utils/variable.scss' as variables;
+@use '../../styles/utils/mixins.scss' as mixins;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0;
+  font-size: 1.2em;
+  font-weight: 700;
+
+  &__link {
+    color: variables.$secondary;
+
+    &--active {
+      color: variables.$primary;
+    }
+  }
+}
+
+@include mixins.on-tablet {
+  .breadcrumbs {
+    padding: 24px 0 40px 0;
+  }
+}
