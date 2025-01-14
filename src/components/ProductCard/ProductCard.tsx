@@ -10,8 +10,9 @@ import './ProductCard.scss';
 
 type Props = {
   product: ProductCardType;
+  discount?: boolean;
 };
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const dispatch = useAppDispatch();
 
   const cart = useAppSelector((store) => store.cart.cart);
@@ -58,9 +59,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="is-flex product-card__price">
         <p className="product-card__price-value">${product.price}</p>
-        <p className="product-card__price-value product-card__price-value--discount">
-          ${product.fullPrice}
-        </p>
+        {discount && (
+          <p className="product-card__price-value product-card__price-value--discount">
+            ${product.fullPrice}
+          </p>
+        )}
       </div>
 
       <div className="product-card__line"></div>
@@ -84,7 +87,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <button
           onClick={handleBuyProduct}
           className={cn('button', 'product-card__button-buy', {
-            'product-card__button-buy--active': isInCart,
+            'product-card__button-buy--active':  isInCart,
           })}
         >
           {getButtonText}
