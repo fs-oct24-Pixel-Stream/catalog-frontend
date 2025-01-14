@@ -8,7 +8,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="footer ">
+    <footer className="footer">
       <div className="_container footer-content has-text-centered">
         <div className="footer-logo">
           <Link
