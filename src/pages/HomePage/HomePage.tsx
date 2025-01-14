@@ -16,9 +16,9 @@ export const HomePage = () => {
 
   return (
     <>
-      <NewModelSection products={products} />
+      <NewModelSection products={products.slice(0, 8)} />
       <CategorySection />
-      <HotPriceSection products={products} />
+      <HotPriceSection products={products.slice(0, 8)} />
     </>
   );
 };

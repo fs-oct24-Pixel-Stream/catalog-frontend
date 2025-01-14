@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useParams } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
@@ -42,9 +42,19 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
     }
   };
 
+  const location = useLocation();
+
+  const handleRedirect = () => {
+    if (location.pathname === `/${product.category}`) {
+      return `${product.itemId}`;
+    } else {
+      return `/${product.category}/${product.itemId}`;
+    }
+  };
+
   return (
     <div className="is-flex is-flex-direction-column is-justify-content-space-between product-card">
-      <Link to={`${product.itemId}`}>
+      <Link to={handleRedirect()}>
         <img
           src={`${product.image}`}
           alt="Placeholder image"
@@ -52,7 +62,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
         />
       </Link>
 
-      <Link to={`${product.itemId}`}>
+      <Link to={handleRedirect()}>
         <h2 className="product-card__title">{product.name}</h2>
       </Link>
 
