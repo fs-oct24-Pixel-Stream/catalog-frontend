@@ -1,4 +1,5 @@
 import { useAppSelector } from '../../app/hooks';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductCard } from '../../components/ProductCard';
 import './FavoritePage.scss';
 export const FavoritePage = () => {
@@ -7,7 +8,8 @@ export const FavoritePage = () => {
   const quantity = products.length;
   return (
     <>
-      <div className="favorites _container">
+      <div className="favorites _container container-custom">
+        <Breadcrumbs />
         <h1 className="titleMain">Favorites</h1>
         {!isFavoritesEmpty ?
           <div className="favorites__background">
