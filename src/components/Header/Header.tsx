@@ -5,6 +5,7 @@ import burger from '../../../public/img/icons/burger.svg';
 import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
+import search from '../../../public/img/icons/Search.svg';
 import { HeaderLinks } from './HeaderLinks';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { useEffect, useState } from 'react';
@@ -51,7 +52,6 @@ export const Header = () => {
               className="logo-img"
             />
           </Link>
-
           <HeaderLinks
             mainClassName="nav-links--item"
             activeClassName="nav-links--item nav-links--current"
@@ -60,53 +60,72 @@ export const Header = () => {
           />
         </div>
 
-        <div
-          className="burger-menu"
-          onClick={toggleBurgerMenu}
-          aria-label="Open menu"
-        >
-          {isMenuOpen ?
-            <button>
-              <img
-                src={burgerClose}
-                alt="icon for close side-bar"
-              />
-            </button>
-          : <button>
-              <img
-                src={burger}
-                alt="icon for open side-bar"
-              />
-            </button>
-          }
-        </div>
-
-        <div className="icons-wrapper">
-          <Link
-            to="/favorites"
-            className={cn('icons-wrapper__item', {
-              'icons-wrapper__current': location.pathname === '/favorites',
-            })}
-          >
-            <div>
-              <img
-                src={fav}
-                alt="icon for favorite"
-              />
-              {/* {favoriteStorage > 0 && <span>{favoriteStorage}</span>} */}
+        {/*  */}
+        <div className="header-icons-box">
+          <div className="icons">
+            <div className="icons-search icon-container">
+              <a className="icons-search1">
+                <img
+                  src={search}
+                  alt="search"
+                />
+              </a>
             </div>
-          </Link>
-          <Link
-            to="/cart"
-            className={cn('icons-wrapper__item', {
-              'icons-wrapper__current': location.pathname === '/cart',
-            })}
+            <div className="icons-toggle icon-container">
+              <a className="icons-toggle1">toggle</a>
+            </div>
+            <div className="icons-language icon-container">
+              <a>EN</a>
+            </div>
+            <div className="icons-wrapper">
+              <Link
+                to="/favorites"
+                className={cn('icons-wrapper__item', {
+                  'icons-wrapper__current': location.pathname === '/favorites',
+                })}
+              >
+                <div>
+                  <img
+                    src={fav}
+                    alt="icon for favorite"
+                  />
+                  {/* {favoriteStorage > 0 && <span>{favoriteStorage}</span>} */}
+                </div>
+              </Link>
+              <Link
+                to="/cart"
+                className={cn('icons-wrapper__item', {
+                  'icons-wrapper__current': location.pathname === '/cart',
+                })}
+              >
+                <img
+                  src={cart}
+                  alt="icon for cart"
+                />
+              </Link>
+            </div>
+          </div>
+
+          <div
+            className="burger-menu"
+            onClick={toggleBurgerMenu}
+            aria-label="Open menu"
           >
-            <img
-              src={cart}
-              alt="icon for cart"
-            />
-          </Link>
+            {isMenuOpen ?
+              <button>
+                <img
+                  src={burgerClose}
+                  alt="icon for close side-bar"
+                />
+              </button>
+            : <button>
+                <img
+                  src={burger}
+                  alt="icon for open side-bar"
+                />
+              </button>
+            }
+          </div>
         </div>
       </header>
       {isMenuOpen && (
