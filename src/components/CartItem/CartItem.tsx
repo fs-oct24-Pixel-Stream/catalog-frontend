@@ -66,7 +66,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
           <IconButton
             onClick={handleIncrease}
-            backgroundImage="public/img/icons/Plus.svg"
+            backgroundImage="img/icons/Plus.svg"
           />
         </div>
 

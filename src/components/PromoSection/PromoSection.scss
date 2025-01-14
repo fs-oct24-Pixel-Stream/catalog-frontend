@@ -59,23 +59,23 @@
   }
 
   &__slide--first {
-    background-image: url('public/img/Banner-mini.png');
+    background-image: url('img/Banner-mini.png');
 
     @include mixins.on-tablet {
-      background-image: url('public/img/Banner.png');
+      background-image: url('img/Banner.png');
     }
   }
 
   &__slide--second {
-    background-image: url('public/img/banner-phones.png');
+    background-image: url('img/banner-phones.png');
   }
 
   &__slide--third {
-    background-image: url('public/img/banner-tablets.png');
+    background-image: url('img/banner-tablets.png');
   }
 
   &__slide--fourth {
-    background-image: url('public/img/banner-accessories.png');
+    background-image: url('img/banner-accessories.png');
   }
 }
 
