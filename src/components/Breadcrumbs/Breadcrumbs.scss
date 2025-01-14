@@ -1,0 +1,38 @@
+@use '../../styles/utils/variable.scss' as variables;
+@use '../../styles/utils/mixins.scss' as mixins;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 24px 0;
+  font-size: 1.2em;
+  font-weight: 700;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  max-width: 85%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  &__home {
+    min-width: 16px;
+    min-height: 16px;
+  }
+
+  &__link {
+    color: variables.$secondary;
+    text-transform: capitalize;
+    display: flex;
+    gap: 8px;
+
+    &--active {
+      color: variables.$primary;
+    }
+  }
+}
+
+@include mixins.on-tablet {
+  .breadcrumbs {
+    padding: 0 0 40px 0;
+    max-width: 100%;
+  }
+}
