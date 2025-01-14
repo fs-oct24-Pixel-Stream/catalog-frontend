@@ -23,22 +23,23 @@ export const PromoSection = () => {
     <div>
       <div className="is-flex promo-section">
         <IconButton
-          backgroundImage="/public/img/icons/arrow-left.svg"
+          backgroundImage="img/icons/arrow-left.svg"
           onClick={handlePrevSlide}
           className="promo-section__button"
         />
         <Swiper
           ref={swiperRef}
           modules={[Pagination, Autoplay]}
-          // autoplay={{ delay: 3000, disableOnInteraction: false }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           pagination={{ el: paginationRef.current, clickable: true }}
+          spaceBetween={2}
           slidesPerView={1}
           loop={true}
           grabCursor={true}
           className="promo-section__swiper"
         >
           <SwiperSlide>
-            <Link to={'/apple-iphone-14-512gb-midnight'}>
+            <Link to={'/phones/apple-iphone-14-512gb-midnight'}>
               <div className="promo-section__slide promo-section__slide--first"></div>
             </Link>
           </SwiperSlide>
@@ -62,7 +63,7 @@ export const PromoSection = () => {
           </SwiperSlide>
         </Swiper>
         <IconButton
-          backgroundImage="/public/img/icons/arrow-right.svg"
+          backgroundImage="img/icons/arrow-right.svg"
           onClick={handleNextSlide}
           className="promo-section__button"
         />

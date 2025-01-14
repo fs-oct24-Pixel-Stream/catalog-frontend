@@ -80,10 +80,14 @@
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 4px;
+  display: none;
+
+  @include mixins.on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4px;
+  }
 }
 
 .swiper-pagination-bullet {

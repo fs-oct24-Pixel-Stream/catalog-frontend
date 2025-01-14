@@ -19,7 +19,7 @@ export const CategorySection: React.FC<Props> = (props) => {
         <div>
           <Link to="/phones">
             <img
-              src="public\img\phones.png"
+              src="img/phones.png"
               alt="Phone image"
               className="category-item__image"
             />
@@ -33,7 +33,7 @@ export const CategorySection: React.FC<Props> = (props) => {
         <div>
           <Link to="/tablets">
             <img
-              src="public\img\tablets.png"
+              src="img/tablets.png"
               alt="Phone image"
               className="category-item__image"
             />
@@ -47,7 +47,7 @@ export const CategorySection: React.FC<Props> = (props) => {
         <div>
           <Link to="/accessories">
             <img
-              src="public\img\accessories.png"
+              src="img/accessories.png"
               alt="Phone image"
               className="category-item__image"
             />
