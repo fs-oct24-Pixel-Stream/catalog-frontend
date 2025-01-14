@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -12,7 +12,6 @@ type Props = {
   product: ProductCardType;
 };
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const [inFavorite, setInFavorite] = useState<number | null>(null);
   const dispatch = useAppDispatch();
 
   const cart = useAppSelector((store) => store.cart.cart);
