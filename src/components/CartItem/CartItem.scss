@@ -6,7 +6,7 @@
   padding: 16px;
   //max-width: 288px;
   border-radius: variable.$global-border-radius;
-   border: 1px solid variable.$elements;
+  border: 1px solid variable.$elements;
   justify-content: space-between;
   background-color: variable.$white;
 
@@ -23,7 +23,6 @@
 
   @include mixins.on-desktop {
     width: 100%;
-    
   }
 
   &__header {

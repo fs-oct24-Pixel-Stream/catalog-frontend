@@ -39,7 +39,6 @@
   flex-direction: column;
   justify-content: center;
 
-
   &__list {
     display: flex;
     flex-direction: column;
@@ -72,6 +71,16 @@
 
   &__button {
     width: 100%;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: variable.$elements;
+    }
   }
 }
 

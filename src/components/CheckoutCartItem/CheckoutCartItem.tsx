@@ -34,11 +34,10 @@ export const CheckoutCartItem: React.FC<Props> = ({ product, quantity }) => {
 
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__footer">
         <div className="is-flex is-align-items-center cart-item__quantity-controls">
-
           <span className="cart-item__quantity">{quantity}</span>
         </div>
 
-        <p className="cart-item__price">${(product.price * quantity)}</p>
+        <p className="cart-item__price">${product.price * quantity}</p>
       </div>
     </div>
   );

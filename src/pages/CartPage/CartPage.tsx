@@ -1,34 +1,34 @@
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useEffect, useMemo, useState } from 'react';
 import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
+import { clearAllProducts } from '../../features/cart/cartSlice';
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
-
-  const succsessModalWindowText = 'Thank you for your purchase!';
+  const dispatch = useAppDispatch();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
     setIsPurchased(false);
   };
 
+  const cart = useAppSelector((state) => state.cart.cart);
+
   const handleCloseModal = (option: string) => {
     if (option === 'close') {
       setIsModalOpen(false);
       return;
-    } else {
+    } else if (option === 'succsess') {
       setIsModalOpen(false);
       setIsPurchased(true);
+      dispatch(clearAllProducts());
     }
   };
 
-  const cart = useAppSelector((state) => state.cart.cart);
-
-  const isCartNotEmpty =   !!cart.length;
-  console.log(cart);
+  const isCartNotEmpty = !!cart.length;
 
   const totalPrice = useMemo(() => {
     return cart.reduce((acc, product) => {
@@ -52,7 +52,7 @@ export const CartPage = () => {
 
   return (
     <>
-      <div className='cart _container'>
+      <div className="cart _container">
         <h1 className="titleMain cart__title">Cart</h1>
 
         {!isCartNotEmpty ?
@@ -90,15 +90,11 @@ export const CartPage = () => {
       {isModalOpen && (
         <CheckoutModal
           productsList={cart}
+          totalPrice={totalPrice}
           handleCloseModal={handleCloseModal}
         />
       )}
-      {isPurchased && (
-        <ModalMessage
-          text={succsessModalWindowText}
-          setIsPurchased={setIsPurchased}
-        />
-      )}
+      {isPurchased && <ModalMessage setIsPurchased={setIsPurchased} />}
     </>
   );
 };

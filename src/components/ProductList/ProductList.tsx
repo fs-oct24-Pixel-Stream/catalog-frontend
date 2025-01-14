@@ -15,6 +15,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
           <ProductCard
             key={product.id}
             product={product}
+            discount={true}
           />
         ))}
       </div>
