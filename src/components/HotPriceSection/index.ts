@@ -1,1 +1,1 @@
-export * from './HotPriceSection'
+export * from './HotPriceSection';

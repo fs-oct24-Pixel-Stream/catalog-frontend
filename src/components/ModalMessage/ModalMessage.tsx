@@ -6,7 +6,7 @@ type Props = {
   setIsPurchased: (value: boolean) => void;
 };
 
-export const ModalMessage: React.FC<Props> = ({ setIsPurchased}) => {
+export const ModalMessage: React.FC<Props> = ({ setIsPurchased }) => {
   const navigate = useNavigate();
   useEffect(() => {
     const timer = setTimeout(() => {

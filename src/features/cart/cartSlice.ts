@@ -24,7 +24,7 @@ export const cartSlice = createAppSlice({
         if (findInCart) {
           findInCart.quantity += 1;
         } else {
-          const updatedProduct: ProductCardType = { ...payload, quantity: 1};
+          const updatedProduct: ProductCardType = { ...payload, quantity: 1 };
 
           state.cart.push(updatedProduct);
         }

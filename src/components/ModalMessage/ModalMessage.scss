@@ -11,9 +11,8 @@
   font-size: 1em;
   text-align: center;
   background-color: #fff;
-  
-  overflow-x: hidden;
 
+  overflow-x: hidden;
 }
 
 .modal-background {
@@ -23,7 +22,7 @@
 }
 .road {
   width: 100%;
-  animation: ride 1.8s cubic-bezier(0.70, 0.9, 1, 0) infinite;
+  animation: ride 1.8s cubic-bezier(0.7, 0.9, 1, 0) infinite;
 }
 
 @include mixins.on-tablet2 {
@@ -36,12 +35,11 @@
   }
 }
 
-
 @keyframes ride {
   from {
-    transform: translateX(-100%); 
+    transform: translateX(-100%);
   }
   to {
-    transform: translateX(100%); 
+    transform: translateX(100%);
   }
 }

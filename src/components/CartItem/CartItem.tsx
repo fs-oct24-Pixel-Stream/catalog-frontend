@@ -26,7 +26,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     dispatch(removeProduct(product.id));
   };
 
-
   return (
     <div className="is-flex cart-item">
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__header">

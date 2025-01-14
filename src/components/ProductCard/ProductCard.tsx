@@ -21,7 +21,6 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const favorites = useAppSelector((store) => store.favorities.products);
   const isInFavorites = favorites.some((item) => item.id === product.id);
 
-
   const capacity = product.capacity.slice(0, -2);
   const ram = product.ram.slice(0, -2);
 
@@ -87,7 +86,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
         <button
           onClick={handleBuyProduct}
           className={cn('button', 'product-card__button-buy', {
-            'product-card__button-buy--active':  isInCart,
+            'product-card__button-buy--active': isInCart,
           })}
         >
           {getButtonText}
