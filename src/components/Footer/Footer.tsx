@@ -1,15 +1,12 @@
 import { Link } from 'react-router';
 import { IconButton } from '../IconButton/IconButton';
 import './Footer.scss';
+import { handleBackToTop } from '../../utils/functions/handleBackToTop';
 
 export const Footer = () => {
-  const handleBackToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="footer footer-custom">
-      <div className="footer-content has-text-centered">
+    <footer className="footer">
+      <div className="_container footer-content has-text-centered">
         <div className="footer-logo">
           <Link
             to="/home"

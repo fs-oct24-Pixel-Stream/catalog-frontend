@@ -13,7 +13,7 @@ export const AccessoriesPage = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchAccessories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

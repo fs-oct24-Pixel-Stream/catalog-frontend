@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: repeat(1, auto);
   grid-auto-rows: auto;
-  justify-content: center;
+  justify-content: flex-start;
   row-gap: 40px;
   column-gap: 16px;
   margin-bottom: 40px;

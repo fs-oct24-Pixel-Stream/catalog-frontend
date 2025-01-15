@@ -3,19 +3,19 @@
 
 :root {
   --bulma-family-primary: Mont, sans-serif;
-  --bulma-footer-padding: 0 32px 32px 32px;
+  // --bulma-footer-padding: 0 32px 32px 32px;
 }
 
 html {
   $font-family: var(--bulma-family-primary);
-  $footer-padding: var(--bulma-footer-padding);
+  // $footer-padding: var(--bulma-footer-padding);
   font-size: 10px;
   background-color: variable.$bgColor;
 }
 
 .body-ajustment {
   display: flex;
-  height: 100vh;
+  height: 100dvh;
   flex-direction: column;
 }
 .main {
@@ -71,7 +71,6 @@ html {
     box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
   }
 }
-
 .footer {
   padding: 32px;
 }

@@ -22,7 +22,11 @@
       margin-bottom: 40px;
     }
   }
-
+  &__control {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
   &__filters {
     display: flex;
     gap: 16px;
@@ -34,8 +38,7 @@
     font-size: 1.2em;
     line-height: 1.27;
     color: variable.$secondary;
-    margin-bottom: 4px;
-    font-family: variable.$font-family;
+    margin-left: 4px;
   }
 
   &__select {
@@ -50,8 +53,7 @@
     font-family: variable.$font-family;
     font-size: 1.4em;
     font-weight: 700;
-    line-height: 1.5; /* 21/14 */
-    // color: variable.$secondary;
+    line-height: 1.5;
   }
 }
 
@@ -82,10 +84,6 @@
   @include mixins.on-tablet {
     max-width: 620px;
   }
-
-  // @include mixins.on-tablet2 {
-  //   max-width: 780px;
-  // }
 
   @include mixins.on-tablet3 {
     max-width: 854px;
