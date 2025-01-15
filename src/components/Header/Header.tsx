@@ -1,6 +1,6 @@
 import './Header.scss';
 import logo from '../../../public/img/icons/Logo.svg';
-import { Link, useLocation } from 'react-router';
+import { Link, NavLink, useLocation } from 'react-router';
 import burger from '../../../public/img/icons/burger.svg';
 import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import cart from '../../../public/img/icons/cart.png';
@@ -10,14 +10,20 @@ import { HeaderLinks } from './HeaderLinks';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { useAppSelector } from '../../app/hooks';
+import { SearchModal } from '../SearchModal';
 
 export const Header = () => {
   const location = useLocation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
   const toggleBurgerMenu = (): void => {
     setIsMenuOpen((prev) => !prev);
+  };
+  const toggleSearchModal = (): void => {
+    setIsSearchActive((prev) => !prev);
   };
 
   useEffect(() => {
@@ -32,8 +38,8 @@ export const Header = () => {
     };
   }, [isMenuOpen]);
 
-  // const isFavoriteStorage = localStorage.getItem('favorites');
-  // const favoriteStorage = 2;
+  const cartList = useAppSelector((state) => state.cart.cart);
+  const favoritesList = useAppSelector((state) => state.favorities.products);
 
   return (
     <>
@@ -60,48 +66,64 @@ export const Header = () => {
           />
         </div>
 
-        {/*  */}
         <div className="header-icons-box">
           <div className="icons">
-            <div className="icons-search icon-container">
-              <a className="icons-search1">
-                <img
-                  src={search}
-                  alt="search"
-                />
-              </a>
+            <div
+              className="icons-search icon-container"
+              onClick={toggleSearchModal}
+              aria-label="open search"
+            >
+              <img
+                src={search}
+                alt="search"
+              />
             </div>
-            <div className="icons-toggle icon-container">
-              <a className="icons-toggle1">toggle</a>
-            </div>
-            <div className="icons-language icon-container">
-              <a>EN</a>
+            {isSearchActive && <SearchModal onClose={toggleSearchModal} />}
+            <div className="icons-togle-switcher">
+              <div className="icons-toggle icon-container">
+                <p>toggle</p>
+              </div>
+
+              <div className="icons-language icon-container">
+                <select
+                  className="nav-links--item language-selector"
+                  defaultValue="EN"
+                >
+                  <option value="EN">EN</option>
+                  <option value="UK">UK</option>
+                </select>
+              </div>
             </div>
             <div className="icons-wrapper">
               <Link
                 to="/favorites"
-                className={cn('icons-wrapper__item', {
+                className={cn('icons-wrapper__item icon-container', {
                   'icons-wrapper__current': location.pathname === '/favorites',
                 })}
               >
-                <div>
+                <div className="icons-img-box">
                   <img
                     src={fav}
                     alt="icon for favorite"
                   />
-                  {/* {favoriteStorage > 0 && <span>{favoriteStorage}</span>} */}
+                  {favoritesList.length > 0 && (
+                    <span className="item-counter">{favoritesList.length}</span>
+                  )}
                 </div>
               </Link>
               <Link
                 to="/cart"
-                className={cn('icons-wrapper__item', {
+                className={cn('icons-wrapper__item icon-container', {
                   'icons-wrapper__current': location.pathname === '/cart',
                 })}
               >
-                <img
-                  src={cart}
-                  alt="icon for cart"
-                />
+                <div className="icons-img-box">
+                  <img
+                    src={cart}
+                    alt="icon for cart"
+                  />
+                  {cartList.length > 0 && <span className="item-counter">{cartList.length}</span>}
+                </div>
               </Link>
             </div>
           </div>

@@ -1,0 +1,67 @@
+@use '../../styles/utils/mixins.scss' as mixins;
+@use '../../styles/utils/variable.scss';
+
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 1000;
+
+  &__content {
+    position: relative;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #89939a;
+    cursor: pointer;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid variable.$elements;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: variable.$elements;
+    }
+  }
+  &__results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 44px;
+    width: 100%;
+    margin-top: 3px;
+    padding: 7px;
+    overflow-y: scroll;
+    border: 1px solid variable.$elements;
+    border-radius: 5px;
+    background-color: white;
+  }
+  &__item {
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+@include mixins.on-desktop {
+  .search-modal {
+    display: none;
+  }
+}
