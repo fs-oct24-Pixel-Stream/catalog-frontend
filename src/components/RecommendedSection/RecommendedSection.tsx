@@ -9,7 +9,7 @@ interface Props {
 export const RecommendedSection: React.FC<Props> = ({ products }) => {
   return (
     <ProductSlider
-      products={}
+      products={products}
       discount={false}
       title={'You may also like'}
     />
