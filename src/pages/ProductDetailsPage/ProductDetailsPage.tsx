@@ -31,6 +31,13 @@ export const ProductDetailsPage = () => {
     setDevice(selectedDevice || null);
   }, [category, deviceId]);
 
+  (() => {
+    const timer = setTimeout(() => {
+      const selectedDevice = products.find((product: ProductDeviceType) => product.id === deviceId);
+      setDevice(selectedDevice || null);
+    }, 200);
+  })();
+
   if (!device) {
     return <p>Loading...</p>;
   }

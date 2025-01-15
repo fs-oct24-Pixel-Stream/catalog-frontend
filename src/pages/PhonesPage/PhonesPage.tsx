@@ -1,20 +1,19 @@
-import { useEffect, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useMemo } from 'react'; //useEffect
+import { useAppSelector } from '../../app/hooks';
 import { ProductsPage } from '../../components/ProductsPage';
 import './PhonesPage.scss';
 
-import { fetchPhones } from '../../features/phones/phonesSlice';
+// import { fetchPhones } from '../../features/phones/phonesSlice';
 
 export const PhonesPage = () => {
-  const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.products.products);
   const phones = useMemo(() => {
     return products.filter((product) => product.category === 'phones');
   }, [products]);
 
-  useEffect(() => {
-    dispatch(fetchPhones());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchPhones());
+  // }, []);
 
   return (
     <>
