@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import './Pagination.scss';
+import { CustomEventPageClick } from '../../utils/types/CustomEventPageClick';
 
 interface Props {
   pageCount: number;
-  handlePageClick: (event: any) => void;
+  handlePageClick: (event: CustomEventPageClick) => void;
 }
 
-export const PaginationProducts: React.FC<Props> = (props) => {
+const PaginationProducts: React.FC<Props> = (props) => {
   const { pageCount, handlePageClick } = props;
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -22,36 +23,33 @@ export const PaginationProducts: React.FC<Props> = (props) => {
     };
   }, []);
 
-  const hrefBuild = () => {
-    // console.log('hrefBuild');
-  };
-
   return (
-    <div className="pagination products__pagination">
+    <div className="paginations products__pagination">
       <ReactPaginate
         breakLabel={width <= 640 ? null : '...'}
         nextLabel=">"
         onPageChange={(event) => handlePageClick(event)}
-        pageRangeDisplayed={width <= 640 ? 1 : 2}
+        pageRangeDisplayed={width <= 340 ? 1 : 2}
         marginPagesDisplayed={width <= 640 ? 0 : 2}
         pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}
-        containerClassName="pagination__container"
-        breakClassName="pagination__points"
-        pageClassName="pagination__page"
-        activeClassName="pagination__page--active"
-        previousClassName="pagination__page pagination__page--prev"
-        nextClassName="pagination__page pagination__page--next"
-        disabledClassName="pagination__page--disabled"
-        pageLinkClassName="pagination__link"
-        activeLinkClassName="pagination__link--active"
-        previousLinkClassName="pagination__link pagination__link--prev"
-        nextLinkClassName="pagination__link pagination__link--next"
-        disabledLinkClassName="pagination__link--disabled"
-        hrefBuilder={hrefBuild}
+        containerClassName="paginations__container"
+        breakClassName="paginations__points"
+        pageClassName="paginations__page"
+        activeClassName="paginations__page--active"
+        previousClassName="paginations__page paginations__page--prev"
+        nextClassName="paginations__page paginations__page--next"
+        disabledClassName="paginations__page--disabled"
+        pageLinkClassName="paginations__link"
+        activeLinkClassName="paginations__link--active"
+        previousLinkClassName="paginations__link paginations__link--prev"
+        nextLinkClassName="paginations__link paginations__link--next"
+        disabledLinkClassName="paginations__link--disabled"
         hrefAllControls={true}
       />
     </div>
   );
 };
+
+export default React.memo(PaginationProducts);

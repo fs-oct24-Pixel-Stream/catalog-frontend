@@ -1,20 +1,16 @@
-import { ProductList } from '../ProductList';
-import { ProductCardType } from '../../utils/types/ProductCardType';
-// import cn from 'classnames';
-import './ProductsPage.scss';
-import { visibleItems } from '../../utils/utilsFunctions';
-import { handleBackToTop } from '../../utils/functions/handleBackToTop';
-import { variableForFilter } from '../../utils/constants/variableForFilter';
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
-
-import { PaginationProducts } from '../PaginationProducts/PaginationProducts';
+import { ProductList } from '../ProductList';
+import PaginationProducts from '../PaginationProducts/PaginationProducts';
 
 import { filteredProducts } from '../../utils/functions/filteredProducts';
+import { getSearchWith, SearchParams } from '../../utils/functions/searchHelper';
+import { handleBackToTop } from '../../utils/functions/handleBackToTop';
+import { variableForFilter } from '../../utils/constants/variableForFilter';
 
+import { ProductCardType } from '../../utils/types/ProductCardType';
 import { ChooseForFilter } from '../../utils/types/ChooseForFilter';
-
-import { getSearchWith } from '../../utils/functions/searchHelper';
+import { CustomEventPageClick } from '../../utils/types/CustomEventPageClick';
 import './ProductsPage.scss';
 
 type Props = {
@@ -57,41 +53,66 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
     }
   };
 
-  const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * +perPage) % products.length;
-    setItemOffset(newOffset);
-    handleBackToTop();
-
-    setSearchParams((currentParams) => {
-      console.log(currentParams);
-      const settingPage = event.selected >= 0 ? event.selected + 1 : null;
-
-      return getSearchWith(currentParams, { page: settingPage.toString() });
-    });
-  };
-
-  const handleFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value) {
-      console.log(event.target.value);
+  const handlePageClick = useCallback(
+    (event: CustomEventPageClick) => {
+      const newOffset = (event.selected * +perPage) % products.length;
+      setItemOffset(newOffset);
+      handleBackToTop();
 
       setSearchParams((currentParams) => {
-        const sortParam = event.target.value === ChooseForFilter.SELECT ? null : event.target.value;
+        const settingPage = event.selected >= 0 ? event.selected + 1 : null;
 
-        return getSearchWith(currentParams, {
-          sort: sortParam,
-          page: '1',
-        });
+        // Отримуємо старі значення sort та devicesOnPage
+        const devicesOnPage = currentParams.get('devicesOnPage') || perPage;
+        const sort = currentParams.get('sort') || filterName;
+
+        // Створюємо новий об'єкт параметрів з актуальними значеннями
+        const newParams: SearchParams = {
+          sort: sort,
+          devicesOnPage: devicesOnPage.toString(),
+          page: settingPage?.toString() || '',
+        };
+
+        const updatedSearchParams = getSearchWith(currentParams, newParams);
+
+        return updatedSearchParams;
       });
+    },
+    [perPage, products.length, setSearchParams, filterName],
+  );
+
+  const handleFilter = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const newValue = event.target.value;
+
+      if (newValue !== filterName) {
+        setSearchParams((currentParams) => {
+          const sortParam = newValue === ChooseForFilter.SELECT ? null : newValue;
+
+          const devicesOnPage = currentParams.get('devicesOnPage') || perPage;
+
+          return getSearchWith(currentParams, {
+            sort: sortParam,
+            devicesOnPage: devicesOnPage.toString(),
+            page: '1',
+          });
+        });
+      }
+    },
+    [filterName, setSearchParams],
+  );
+
+  useEffect(() => {
+    const newItems = updatedProducts.slice(itemOffset, endOffset);
+
+    if (JSON.stringify(newItems) !== JSON.stringify(currentItems)) {
+      setCurrentItems(newItems);
     }
-  };
+  }, [updatedProducts, itemOffset, endOffset]);
 
   useEffect(() => {
     setPageCount(Math.ceil(products.length / +perPage));
   }, [products, perPage]);
-
-  useEffect(() => {
-    setCurrentItems(updatedProducts.slice(itemOffset, endOffset));
-  }, [updatedProducts, itemOffset, endOffset]);
 
   return (
     <section className="products _container container-custom">
