@@ -12,6 +12,7 @@ html {
   font-size: 10px;
   background-color: variable.$bgColor;
 }
+
 .body-ajustment {
   display: flex;
   height: 100vh;
@@ -69,4 +70,8 @@ html {
   &:hover {
     box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
   }
+}
+
+.footer {
+  padding: 32px;
 }
