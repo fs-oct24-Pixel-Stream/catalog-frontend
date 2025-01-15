@@ -52,7 +52,7 @@
 }
 
 .icons-wrapper {
-  display: none;
+  display: flex;
 }
 
 .logo-img {
@@ -60,7 +60,6 @@
   height: 22px;
 }
 
-//
 .header-icons-box {
   display: flex;
   align-items: center;
@@ -82,10 +81,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.icons-language {
+.item-counter {
+  width: 14px;
+  height: 14px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 50%;
+
+  color: #fff;
+  background-color: #476df4;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.icons-img-box {
+  position: relative;
+}
+
+.icons-togle-switcher {
   display: none;
+}
+
+.select {
+  border: none;
+}
+
+.select__list {
+  border: none;
 }
 
 @include mixins.on-tablet {
@@ -116,10 +145,6 @@
     }
   }
 
-  .burger-menu {
-    display: none;
-  }
-
   .icons-wrapper {
     display: flex;
     height: 100%;
@@ -148,6 +173,25 @@
       height: 3px;
       background: variable.$primary;
     }
+  }
+
+  .icons-togle-switcher {
+    display: flex;
+    align-items: center;
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .language-selector {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .language-selector:focus {
+    outline: none;
   }
 }
 
