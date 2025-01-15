@@ -10,6 +10,7 @@ import { FavoritePage } from './pages/FavoritePage/FavoritePage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { RightsPage } from './pages/RightsPage/RightsPage';
+import { ContactsPage } from './pages/ContactsPage/ContactsPage';
 
 // Before testing keep in mind to use # in url. e.g http://localHost/#/phones because of HashRouter.
 
@@ -75,7 +76,7 @@ export const Root = () => (
 
         <Route
           path="/contacts"
-          element={<RightsPage />} // СМЕНИТЬ
+          element={<ContactsPage />}
         />
 
         <Route
