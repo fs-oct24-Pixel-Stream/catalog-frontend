@@ -4,6 +4,7 @@ import { decreaseProduct, increaseProduct, removeProduct } from '../../features/
 import { IconButton } from '../IconButton/IconButton';
 import './CartItem.scss';
 import { ProductCardType } from '../../utils/types/ProductCardType';
+import { Link } from 'react-router';
 
 type Props = {
   product: ProductCardType;
@@ -25,7 +26,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
   const handleDeleteProduct = () => {
     dispatch(removeProduct(product.id));
   };
-
   return (
     <div className="is-flex cart-item">
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__header">
@@ -35,8 +35,8 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             className="cart-item__remove-button"
           ></button>
 
-          <a
-            href="#"
+          <Link
+            to={`/${product.category}/${product.itemId}`}
             className="cart-item__image-url"
           >
             <img
@@ -44,15 +44,15 @@ export const CartItem: React.FC<Props> = ({ product }) => {
               className=" cart-item__image"
               alt="Placeholder image"
             />
-          </a>
+          </Link>
         </div>
 
-        <a
-          href="#"
+        <Link
+          to={`/${product.category}/${product.itemId}`}
           className="title cart-item__title"
         >
           {product.name}
-        </a>
+        </Link>
       </div>
 
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__footer">

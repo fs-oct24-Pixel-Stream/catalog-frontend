@@ -74,7 +74,9 @@ export const CartPage = () => {
               {isCartNotEmpty && (
                 <div className="checkout-block">
                   <h2 className="checkout-block__header-title">${totalPrice}</h2>
-                  <p className="checkout-block__products-quantity">for {totalQuantity} products</p>
+                  <p className="checkout-block__products-quantity">
+                    for {totalQuantity} product{totalQuantity > 1 ? 's' : ''}
+                  </p>
                   <button
                     className="checkout-block__button main-button"
                     onClick={() => handleOpenModal()}
