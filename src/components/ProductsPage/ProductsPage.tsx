@@ -13,6 +13,7 @@ import { ChooseForFilter } from '../../utils/types/ChooseForFilter';
 import { CustomEventPageClick } from '../../utils/types/CustomEventPageClick';
 
 import './ProductsPage.scss';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 type Props = {
   products: ProductCardType[];
@@ -117,7 +118,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
 
   return (
     <section className="products _container container-custom">
-      <div className="bread-crumbs">BREAD CRUMBS</div>
+      <Breadcrumbs />
 
       <h1 className="titleMain">{title}</h1>
 
