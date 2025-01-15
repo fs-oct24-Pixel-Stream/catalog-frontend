@@ -26,6 +26,7 @@
     font-size: 24px;
     color: #89939a;
     cursor: pointer;
+    padding-right: 10px;
   }
 
   &__input {
@@ -41,9 +42,19 @@
       border-color: variable.$elements;
     }
   }
+
+  &__item {
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   &__results {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 12px;
     min-height: 44px;
     width: 100%;
@@ -54,9 +65,20 @@
     border-radius: 5px;
     background-color: white;
   }
-  &__item {
-    font-size: 16px;
-    cursor: pointer;
+
+  &__no-results {
+    font-size: 14px;
+  }
+}
+
+@include mixins.on-tablet {
+  .search-modal__content {
+    max-width: 768px;
+
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 auto;
   }
 }
 
