@@ -1,0 +1,68 @@
+@use './../../styles/utils/variable.scss';
+@use './../../styles/utils/mixins.scss';
+
+.available-options {
+  &__section {
+    padding-bottom: 24px;
+    border-bottom: 1px solid variable.$elements;
+    margin-bottom: 24px;
+  }
+
+  &__label-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    font-size: 1.2em;
+    line-height: 1.3;
+    font-weight: 500;
+    color: variable.$secondary;
+    padding-right: 20px;
+    margin-bottom: 8px;
+  }
+
+  &__id {
+    font-size: 1.2em;
+    line-height: 1.3;
+    font-weight: 500;
+    color: variable.$icons;
+
+    @include mixins.on-desktop {
+      position: absolute;
+      right: 32px;
+    }
+  }
+
+  &__color-button {
+    display: flex;
+    flex-direction: row;
+    width: 32px;
+    height: 32px;
+    border: 1px solid variable.$elements;
+    border-radius: 50%;
+    margin-right: 8px;
+
+    &--inner {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+    }
+  }
+
+  &__color-button:last-child {
+    margin-right: 0;
+  }
+
+  &__capacity-button {
+    height: 32px;
+    border: 1px solid variable.$elements;
+    margin-right: 8px;
+    margin-top: 8px;
+    padding-inline: 8px;
+  }
+
+  &__capacity-button:last-child {
+    margin-right: 0;
+  }
+}

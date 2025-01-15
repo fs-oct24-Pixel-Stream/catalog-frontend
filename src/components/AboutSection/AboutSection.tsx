@@ -12,10 +12,6 @@ type Props = {
 export const AboutSection: React.FC<Props> = ({ description }) => {
   return (
     <div className="about">
-      <h3 className="about__title">About</h3>
-
-      <div className="about__line" />
-
       {description.map((section) => {
         return (
           <section

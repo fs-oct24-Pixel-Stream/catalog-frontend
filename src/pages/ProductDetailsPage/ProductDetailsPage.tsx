@@ -3,13 +3,11 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import { AboutSection } from '../../components/AboutSection/AboutSection';
 import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
 import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
-import { useAppSelector } from '../../app/hooks';
 import { useLocation } from 'react-router';
 import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 import { useEffect, useState } from 'react';
-
-/* import tablets from './../../../public/api/tablets.json';
-const device = tablets[0]; */
+import { useCategoryProducts } from '../../utils/customHooks/useCategoryProducts';
+import { ProductParamrsSelects } from '../../components/ProductParamrsSelects/ProductParamsSelects';
 
 export const ProductDetailsPage = () => {
   const [device, setDevice] = useState<ProductDeviceType | null>(null);
@@ -18,41 +16,18 @@ export const ProductDetailsPage = () => {
   const category = location.pathname.split('/')[1];
   const deviceId = location.pathname.split('/')[2];
 
-  const tablets = useAppSelector((state) => state.tablets.tablets);
-  /* const getCategoryProducts = () => {
-    switch (category) {
-      case 'phones':
-        return useAppSelector((state) => state.phones.phones);
-      case 'tablets':
-        return useAppSelector((state) => {
-          console.log('!!!', state)
-          return state.tablets.tablets
-        });
-      case 'accessories':
-        return useAppSelector((state) => state.accessories.accessories);
-      default:
-        return [];
-    }
-  }; */
+  const products = useCategoryProducts(category);
 
   useEffect(() => {
-    const products = tablets;
-    console.log(products);
     const selectedDevice = products.find((product: ProductDeviceType) => product.id === deviceId);
     setDevice(selectedDevice || null);
   }, [category, deviceId]);
-
-  useEffect(() => {
-    console.log('On mount', location, category, deviceId);
-  }, []);
 
   if (!device) {
     return <p>Loading...</p>;
   }
 
-  console.log('ekjbrjkh');
-
-  const { name, images, colorsAvailable, capacityAvailable, description } = device;
+  const { name, images, colorsAvailable, capacityAvailable, description, id } = device;
 
   return (
     <div className="_container product-details">
@@ -75,26 +50,29 @@ export const ProductDetailsPage = () => {
       </section>
 
       <section className="product-details__parameters">
-        <p>Available colors:</p>
-        <div>
-          {colorsAvailable.map((color) => (
-            <p key={color}>{color}</p>
-          ))}
-        </div>
-        <p>Select capacity:</p>
-        <div>
-          {capacityAvailable.map((capacity) => (
-            <p key={capacity}>{capacity}</p>
-          ))}
-        </div>
+        <ProductParamrsSelects
+          colorsAvailable={colorsAvailable}
+          capacityAvailable={capacityAvailable}
+          id={id}
+          category={category}
+        />
       </section>
 
       <section className="product-details__about">
+        <h3 className="product-details__subtitle">About</h3>
+        <div className="product-details__line" />
+
         <AboutSection description={description} />
       </section>
 
       <section className="product-details__tech-specs">
-        <TechSpecs device={device} />
+        <h3 className="product-details__subtitle">Tech specs</h3>
+        <div className="product-details__line" />
+
+        <TechSpecs
+          device={device}
+          category={category}
+        />
       </section>
 
       <section className="product-details__recommended">

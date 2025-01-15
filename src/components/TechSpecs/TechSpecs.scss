@@ -3,26 +3,12 @@
 .tech-specs {
   display: block;
 
-  &__title {
-    margin-bottom: 16px;
-
-    font-weight: 700;
-    font-size: 2.2em;
-    line-height: 1.4;
-    color: variable.$primary;
-  }
-
-  &__line {
-    margin-bottom: 32px;
-
-    border: 0.5px solid variable.$elements;
-  }
-
   &__list {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
+
   &__item {
     display: flex;
     justify-content: space-between;

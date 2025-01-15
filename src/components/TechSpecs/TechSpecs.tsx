@@ -1,16 +1,19 @@
 import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 import './TechSpecs.scss';
+
 type Props = {
   device: ProductDeviceType;
+  category: string;
 };
 
-export const TechSpecs: React.FC<Props> = ({ device }) => {
+export const TechSpecs: React.FC<Props> = ({ device, category }) => {
   const specs = {
     'Screen': device.screen,
     'Resolution': device.resolution,
     'Processor': device.processor,
     'RAM': device.ram,
-    'Built in memory': device.capacity,
+    'Built in memory': device.capacity || null,
+    'Size': device.capacity || null,
     'Camera': device.camera,
     'Zoom': device.zoom,
     'Cell': device.cell,
@@ -43,25 +46,33 @@ export const TechSpecs: React.FC<Props> = ({ device }) => {
     });
   }
 
+  if (category === 'accessories') {
+    specs['Built in memory'] = null;
+  }
+
+  if (category === 'phone' || category === 'tablet') {
+    specs['Size'] = null;
+  }
+
   return (
     <div className="tech-specs">
-      <h3 className="tech-specs__title">Tech specs</h3>
-      <div className="tech-specs__line" />
       <ul className="tech-specs__list">
         {Object.entries(specs).map((spec) => {
           const key = spec[0];
           let val = spec[1];
 
-          return (
-            <li
-              className="tech-specs__item"
-              key={key}
-            >
-              <div className="tech-specs__item--name">{key}</div>
+          if (val) {
+            return (
+              <li
+                className="tech-specs__item"
+                key={key}
+              >
+                <div className="tech-specs__item--name">{key}</div>
 
-              <div className="tech-specs__item--value">{val}</div>
-            </li>
-          );
+                <div className="tech-specs__item--value">{val}</div>
+              </li>
+            );
+          }
         })}
       </ul>
     </div>

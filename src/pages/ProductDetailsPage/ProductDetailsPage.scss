@@ -1,4 +1,5 @@
 @use './../../styles/utils/mixins.scss';
+@use './../../styles/utils/variable.scss';
 
 .product-details {
   @include mixins.page-grid;
@@ -37,6 +38,21 @@
     @include mixins.on-tablet {
       margin-bottom: 40px;
     }
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+
+    font-weight: 700;
+    font-size: 2.2em;
+    line-height: 1.4;
+    color: variable.$primary;
+  }
+
+  &__line {
+    margin-bottom: 32px;
+
+    border: 0.5px solid variable.$elements;
   }
 
   &__gallery {
