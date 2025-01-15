@@ -3,6 +3,7 @@ import { ProductCardType } from '../../utils/types/ProductCardType';
 import { useLocation } from 'react-router';
 
 import './ProductsPage.scss';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 type Props = {
   products: ProductCardType[];
@@ -16,9 +17,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
 
   return (
     <section className="products _container container-custom">
-      <div className="bread-crumbs">BREAD CRUMBS</div>
-      {/*BREAD CRUMBS */}
-
+      <Breadcrumbs />
       <h1 className="titleMain">{title}</h1>
 
       <p className="products__quantity">{products.length} models</p>

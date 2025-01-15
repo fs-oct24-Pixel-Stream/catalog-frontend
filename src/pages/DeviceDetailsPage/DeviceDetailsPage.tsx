@@ -1,4 +1,9 @@
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import './DeviceDetailsPage.scss';
 export const DeviceDetailsPage = () => {
-  return <div>DeviceDetails</div>;
+  return (
+    <>
+      <Breadcrumbs />
+    </>
+  );
 };
