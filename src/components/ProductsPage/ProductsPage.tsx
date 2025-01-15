@@ -40,18 +40,25 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
 
   const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event) {
-      const newCount = Math.ceil(products.length / +event.target.value);
-      setPageCount(newCount);
-      const newCountOfPages = Math.ceil(updatedProducts.length / +event.target.value);
-      const itemsParams = event.target.value;
+      const newItemsPerPage = +event.target.value;
+      const newCountOfPages = Math.ceil(updatedProducts.length / newItemsPerPage);
+
+      // Обчислюємо нову кількість сторінок та відповідну сторінку
+      const newPage = Math.min(currentPage, newCountOfPages);
+
       const newParams = {
-        devicesOnPage: itemsParams.toString(),
-        page: (newCountOfPages < currentPage ? newCountOfPages : currentPage).toString(),
+        devicesOnPage: event.target.value.toString(),
+        page: newPage.toString(),
       };
 
       setSearchParams((currentParams) => {
         return getSearchWith(currentParams, newParams);
       });
+
+      // Оновлюємо кількість сторінок для пагінації
+      setPageCount(newCountOfPages);
+      // Оновлюємо кількість елементів на сторінці
+      setItemOffset((newPage - 1) * newItemsPerPage); // Оновлюємо початкову позицію для пагінації
     }
   };
 
@@ -61,24 +68,24 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
       setItemOffset(newOffset);
       handleBackToTop();
 
-      setSearchParams((currentParams) => {
-        const settingPage = event.selected >= 0 ? event.selected + 1 : null;
+      setTimeout(() => {
+        setSearchParams((currentParams) => {
+          const settingPage = event.selected >= 0 ? event.selected + 1 : null;
 
-        // Отримуємо старі значення sort та devicesOnPage
-        const devicesOnPage = currentParams.get('devicesOnPage') || perPage;
-        const sort = currentParams.get('sort') || filterName;
+          const devicesOnPage = currentParams.get('devicesOnPage') || perPage;
+          const sort = currentParams.get('sort') || filterName;
 
-        // Створюємо новий об'єкт параметрів з актуальними значеннями
-        const newParams: SearchParams = {
-          sort: sort,
-          devicesOnPage: devicesOnPage.toString(),
-          page: settingPage?.toString() || '',
-        };
+          const newParams: SearchParams = {
+            sort: sort,
+            devicesOnPage: devicesOnPage.toString(),
+            page: settingPage?.toString() || '',
+          };
 
-        const updatedSearchParams = getSearchWith(currentParams, newParams);
+          const updatedSearchParams = getSearchWith(currentParams, newParams);
 
-        return updatedSearchParams;
-      });
+          return updatedSearchParams;
+        });
+      }, 100);
     },
     [perPage, products.length, setSearchParams, filterName],
   );
