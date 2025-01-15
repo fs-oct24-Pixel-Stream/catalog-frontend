@@ -1,87 +1,97 @@
 import { ProductList } from '../ProductList';
 import { ProductCardType } from '../../utils/types/ProductCardType';
-import { useLocation } from 'react-router';
 // import cn from 'classnames';
 import './ProductsPage.scss';
-import { useState } from 'react';
 import { visibleItems } from '../../utils/utilsFunctions';
-import ReactPaginate from 'react-paginate';
 import { handleBackToTop } from '../../utils/functions/handleBackToTop';
 import { variableForFilter } from '../../utils/constants/variableForFilter';
+import { useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router';
 
-import './ProductsPage.scss';
+import { PaginationProducts } from '../PaginationProducts/PaginationProducts';
+
+import { filteredProducts } from '../../utils/functions/filteredProducts';
+
 import { ChooseForFilter } from '../../utils/types/ChooseForFilter';
+
+import { getSearchWith } from '../../utils/functions/searchHelper';
+import './ProductsPage.scss';
 
 type Props = {
   products: ProductCardType[];
 };
 
 export const ProductsPage: React.FC<Props> = ({ products }) => {
-  const [perPage, setPerPage] = useState(16); // вибрана кількість девайсів на сторінці
   const [pageCount, setPageCount] = useState(0);
   const [currentItems, setCurrentItems] = useState<ProductCardType[]>([]);
-  const [filterName, setFilterName] = useState<ChooseForFilter>(ChooseForFilter.SELECT);
-  const [width, setWidth] = useState(window.innerWidth);
+
   const [itemOffset, setItemOffset] = useState(0); //початковий девайс на сторінці (+1)
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const location = useLocation();
   const path = location.pathname.split('/')[1];
   const title = path.slice(0, 1).toUpperCase() + path.slice(1);
-  const endOffset = itemOffset + perPage; //кінцевий девайс на сторінці
 
-  const filteredProducts = useMemo(() => {
-    switch (filterName) {
-      case ChooseForFilter.CHEAPEST:
-        return [...products].sort(
-          (productPrev, productCurrent) => productPrev.price - productCurrent.price,
-        );
-      case ChooseForFilter.EXPENSIVE:
-        return [...products].sort(
-          (productPrev, productCurrent) => productCurrent.price - productPrev.price,
-        );
-      case ChooseForFilter.NEWEST:
-        return [...products].sort(
-          (productPrev, productCurrent) => productCurrent.year - productPrev.year,
-        );
-      default:
-        return products;
+  const perPage = searchParams.get('devicesOnPage') || 16;
+  const filterName = searchParams.get('sort') || ChooseForFilter.SELECT;
+
+  const updatedProducts = filteredProducts(filterName as ChooseForFilter, products);
+
+  const endOffset = itemOffset + +perPage; //кінцевий девайс на сторінці
+  const currentPage = Number(searchParams.get('page')) || 1;
+
+  const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (event) {
+      const newCount = Math.ceil(products.length / +event.target.value);
+      setPageCount(newCount);
+      const newCountOfPages = Math.ceil(updatedProducts.length / +event.target.value);
+      const itemsParams = event.target.value;
+      const newParams = {
+        devicesOnPage: itemsParams.toString(),
+        page: (newCountOfPages < currentPage ? newCountOfPages : currentPage).toString(),
+      };
+
+      setSearchParams((currentParams) => {
+        return getSearchWith(currentParams, newParams);
+      });
     }
-  }, [products, filterName]);
+  };
 
-  console.log(filterName);
-  useEffect(() => {
-    const handleResize = (event: Event) => {
-      setWidth((event.target as Window).innerWidth);
-    };
+  const handlePageClick = (event: any) => {
+    const newOffset = (event.selected * +perPage) % products.length;
+    setItemOffset(newOffset);
+    handleBackToTop();
 
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    setSearchParams((currentParams) => {
+      console.log(currentParams);
+      const settingPage = event.selected >= 0 ? event.selected + 1 : null;
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPerPage(+event.target.value);
-    setPageCount(() => Math.ceil(products.length / +event.target.value));
+      return getSearchWith(currentParams, { page: settingPage.toString() });
+    });
+  };
+
+  const handleFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (event.target.value) {
+      console.log(event.target.value);
+
+      setSearchParams((currentParams) => {
+        const sortParam = event.target.value === ChooseForFilter.SELECT ? null : event.target.value;
+
+        return getSearchWith(currentParams, {
+          sort: sortParam,
+          page: '1',
+        });
+      });
+    }
   };
 
   useEffect(() => {
-    setPageCount(Math.ceil(products.length / perPage));
+    setPageCount(Math.ceil(products.length / +perPage));
   }, [products, perPage]);
 
   useEffect(() => {
-    setCurrentItems(filteredProducts.slice(itemOffset, endOffset));
-  }, [filteredProducts, itemOffset, endOffset]);
-
-  const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * perPage) % products.length; //з якої девайси розпочинається показ елементів
-
-    setItemOffset(newOffset);
-    handleBackToTop();
-  };
-  const hrefBuild = () => {
-    console.log('hrefBuild');
-  };
+    setCurrentItems(updatedProducts.slice(itemOffset, endOffset));
+  }, [updatedProducts, itemOffset, endOffset]);
 
   return (
     <section className="products _container container-custom">
@@ -107,7 +117,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
             >
               <select
                 value={filterName}
-                onChange={(event) => setFilterName(event.target.value as ChooseForFilter)}
+                onChange={(e) => handleFilter(e)}
                 className="products__selectList color-primary"
               >
                 {variableForFilter.map((option) => (
@@ -139,7 +149,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
               <select
                 className="products__selectList color-primary"
                 value={perPage}
-                onChange={handleSelectChange}
+                onChange={handlePerPage}
               >
                 <option>16</option>
                 <option>24</option>
@@ -150,33 +160,10 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
         </div>
       </div>
       {!!products.length && <ProductList products={currentItems} />}
-
-      <div className="pagination products__pagination">
-        <ReactPaginate
-          breakLabel={width <= 640 ? null : '...'}
-          nextLabel=">"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={width <= 640 ? 1 : 2}
-          marginPagesDisplayed={width <= 640 ? 0 : 2}
-          pageCount={pageCount}
-          previousLabel="<"
-          renderOnZeroPageCount={null}
-          containerClassName="pagination__container"
-          breakClassName="pagination__points"
-          pageClassName="pagination__page"
-          activeClassName="pagination__page--active"
-          previousClassName="pagination__page pagination__page--prev"
-          nextClassName="pagination__page pagination__page--next"
-          disabledClassName="pagination__page--disabled"
-          pageLinkClassName="pagination__link"
-          activeLinkClassName="pagination__link--active"
-          previousLinkClassName="pagination__link pagination__link--prev"
-          nextLinkClassName="pagination__link pagination__link--next"
-          disabledLinkClassName="pagination__link--disabled"
-          hrefBuilder={hrefBuild}
-          hrefAllControls={true}
-        />
-      </div>
+      <PaginationProducts
+        pageCount={pageCount}
+        handlePageClick={handlePageClick}
+      />
     </section>
   );
 };
