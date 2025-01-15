@@ -53,9 +53,7 @@
     font-family: variable.$font-family;
     font-size: 1.4em;
     font-weight: 700;
-    line-height: 1.5; /* 21/14 */
-    // margin-top: 4px;
-    // color: variable.$secondary;
+    line-height: 1.5;
   }
   &__pagination {
   }
@@ -89,73 +87,11 @@
     max-width: 620px;
   }
 
-  // @include mixins.on-tablet2 {
-  //   max-width: 780px;
-  // }
-
   @include mixins.on-tablet3 {
     max-width: 854px;
   }
 
   @include mixins.on-desktop {
     max-width: 1200px;
-  }
-}
-
-.pagination {
-  &__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 14px;
-
-    @include mixins.on-tablet {
-      gap: 16px;
-    }
-  }
-  &__points {
-    & a {
-      color: variable.$primary;
-    }
-  }
-
-  &__page {
-    width: 3.2em;
-    height: 3.2em;
-    border: 1px solid variable.$elements;
-    border-radius: variable.$global-border-radius;
-    &--active {
-      background-color: variable.$primary;
-    }
-    &--prev {
-    }
-    &--next {
-    }
-    &--disabled {
-    }
-  }
-  &__link {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: variable.$global-border-radius;
-    background-color: variable.$bgColor;
-    color: variable.$primary;
-    font-weight: 600;
-    &--active {
-      background-color: variable.$primary;
-      color: variable.$white;
-    }
-    &--prev {
-    }
-    &--next {
-    }
-    &--disabled {
-      color: variable.$secondary;
-      cursor: default;
-    }
   }
 }
