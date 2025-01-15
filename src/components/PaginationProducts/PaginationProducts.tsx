@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import './Pagination.scss';
 import { CustomEventPageClick } from '../../utils/types/CustomEventPageClick';
+import './Pagination.scss';
 
-interface Props {
+type Props = {
   pageCount: number;
   handlePageClick: (event: CustomEventPageClick) => void;
-}
+};
 
 const PaginationProducts: React.FC<Props> = (props) => {
   const { pageCount, handlePageClick } = props;
