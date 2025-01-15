@@ -1,6 +1,6 @@
 import './Header.scss';
 import logo from '../../../public/img/icons/Logo.svg';
-import { Link, NavLink, useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import burger from '../../../public/img/icons/burger.svg';
 import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import cart from '../../../public/img/icons/cart.png';
@@ -12,12 +12,16 @@ import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useAppSelector } from '../../app/hooks';
 import { SearchModal } from '../SearchModal';
+import { useMediaQuery } from 'react-responsive';
+import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
 
 export const Header = () => {
   const location = useLocation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
+
+  const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
 
   const toggleBurgerMenu = (): void => {
     setIsMenuOpen((prev) => !prev);
@@ -68,6 +72,8 @@ export const Header = () => {
 
         <div className="header-icons-box">
           <div className="icons">
+            {isSearchActive && isDesktop && <DesctopSearch onClose={toggleSearchModal} />}
+
             <div
               className="icons-search icon-container"
               onClick={toggleSearchModal}
@@ -78,7 +84,8 @@ export const Header = () => {
                 alt="search"
               />
             </div>
-            {isSearchActive && <SearchModal onClose={toggleSearchModal} />}
+            {isSearchActive && !isDesktop && <SearchModal onClose={toggleSearchModal} />}
+
             <div className="icons-togle-switcher">
               <div className="icons-toggle icon-container">
                 <p>toggle</p>
