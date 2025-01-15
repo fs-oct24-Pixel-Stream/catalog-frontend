@@ -55,7 +55,7 @@ export const Footer = () => {
         <div className="footer-back-to-top">
           <label className="footer-back-to-top--label">Back to Top</label>
           <IconButton
-            backgroundImage="../../../public/img/icons/Arrow-Top.png"
+            backgroundImage="img/icons/Arrow-Top.png"
             onClick={handleBackToTop}
           />
         </div>

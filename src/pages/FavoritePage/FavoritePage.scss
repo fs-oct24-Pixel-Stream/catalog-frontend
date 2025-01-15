@@ -1,0 +1,43 @@
+@use '../../styles/utils/variable.scss' as variables;
+@use '../../styles/utils/mixins.scss' as mixins;
+
+.favorites {
+  &__items-quantity {
+    color: variables.$secondary;
+    margin-bottom: 32px;
+    font-size: 1.2em;
+  }
+
+  &__background {
+    background-image: url('../../../public/img/no-favorites.png');
+    margin: 0 auto;
+    padding: 390px 0 130px;
+
+    background-repeat: no-repeat;
+    background-size: auto 35%;
+    background-position: center 100px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+
+    &__title {
+      padding-top: 20px;
+      font-weight: 700;
+      font-size: 2em;
+    }
+  }
+}
+
+@include mixins.on-tablet {
+  .favorites {
+    &__background {
+      background-size: auto 50%;
+      &__title {
+        font-size: 3.4em;
+      }
+    }
+  }
+}

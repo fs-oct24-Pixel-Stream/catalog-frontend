@@ -25,16 +25,16 @@ export const ProductSlider: React.FC<Props> = (props) => {
   };
 
   return (
-    <div className="product-slider _container">
+    <div className="product-slider">
       <div className="is-flex is-justify-content-space-between is-align-items-center product-slider__header">
         <h2 className="titleSecond product-slider__title">{title}</h2>
         <div className="is-flex product-slider__buttons">
           <IconButton
-            backgroundImage="../../../public/img/icons/arrow-left.svg"
+            backgroundImage="img/icons/arrow-left.svg"
             onClick={handlePrevSlide}
           />
           <IconButton
-            backgroundImage="../../../public/img/icons/arrow-right.svg"
+            backgroundImage="img/icons/arrow-right.svg"
             onClick={handleNextSlide}
           />
         </div>
