@@ -3,18 +3,26 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import { AboutSection } from '../../components/AboutSection/AboutSection';
 import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
 import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 import { useEffect, useState } from 'react';
 import { useCategoryProducts } from '../../utils/customHooks/useCategoryProducts';
 import { ProductParamrsSelects } from '../../components/ProductParamrsSelects/ProductParamsSelects';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { ColorKey } from '../../utils/types/colors';
 
 export const ProductDetailsPage = () => {
   const [device, setDevice] = useState<ProductDeviceType | null>(null);
 
   const location = useLocation();
+  const navigate = useNavigate();
+
   const category = location.pathname.split('/')[1];
   const deviceId = location.pathname.split('/')[2];
+  const baseId = deviceId
+    .split('-')
+    .slice(0, deviceId.split('-').length - 2)
+    .join('-');
 
   const products = useCategoryProducts(category);
 
@@ -27,13 +35,23 @@ export const ProductDetailsPage = () => {
     return <p>Loading...</p>;
   }
 
-  const { name, images, colorsAvailable, capacityAvailable, description, id } = device;
+  const { name, images, colorsAvailable, capacityAvailable, description, id, color, capacity } =
+    device;
+
+  const handleColorChange = (newColor: ColorKey) => {
+    const newPath = `/${category}/${baseId}-${capacity}-${newColor}`;
+    navigate(newPath);
+  };
+
+  const handleCapasityChange = (newCapasity: string) => {
+    const newPath = `/${category}/${baseId}-${newCapasity}-${color}`;
+    navigate(newPath);
+  };
 
   return (
     <div className="_container product-details">
       <div className="product-details__breadcrumps">
-        {/* TODO ADD Breadcrumps */}
-        Breadcrumps
+        <Breadcrumbs />
       </div>
 
       <div className="product-details__back-button">
@@ -55,6 +73,10 @@ export const ProductDetailsPage = () => {
           capacityAvailable={capacityAvailable}
           id={id}
           category={category}
+          color={color}
+          capacity={capacity}
+          onColorChange={handleColorChange}
+          onCapasityChange={handleCapasityChange}
         />
       </section>
 

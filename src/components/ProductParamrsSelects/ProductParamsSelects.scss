@@ -35,19 +35,29 @@
   }
 
   &__color-button {
-    display: flex;
-    flex-direction: row;
+    position: relative;
     width: 32px;
     height: 32px;
     border: 1px solid variable.$elements;
     border-radius: 50%;
     margin-right: 8px;
 
+    &:hover {
+      border: 1px solid variable.$icons;
+    }
+
     &--inner {
+      top: 2px;
+      left: 2px;
+      position: absolute;
       width: 26px;
       height: 26px;
       border-radius: 50%;
     }
+  }
+
+  &__color-button.selected {
+    border: 1px solid variable.$primary;
   }
 
   &__color-button:last-child {
@@ -60,6 +70,14 @@
     margin-right: 8px;
     margin-top: 8px;
     padding-inline: 8px;
+
+    &:hover {
+      border: 1px solid variable.$icons;
+    }
+  }
+
+  &__capacity-button.selected {
+    border: 1px solid variable.$primary;
   }
 
   &__capacity-button:last-child {

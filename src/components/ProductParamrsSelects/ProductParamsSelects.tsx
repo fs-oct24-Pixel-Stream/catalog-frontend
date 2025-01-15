@@ -1,18 +1,30 @@
 import './ProductParamsSelects.scss';
+import { ColorKey, COLORS } from '../../utils/types/colors';
+import classNames from 'classnames';
 
 type Params = {
-  colorsAvailable: string[];
+  colorsAvailable: ColorKey[];
   capacityAvailable: string[];
   id: string;
   category: string;
+  color: ColorKey;
+  capacity: string;
+  onColorChange: (color: ColorKey) => void;
+  onCapasityChange: (capasity: string) => void;
 };
 
-export const ProductParamrsSelects: React.FC<Params> = ({
-  colorsAvailable,
-  capacityAvailable,
-  id,
-  category,
-}) => {
+export const ProductParamrsSelects: React.FC<Params> = (params) => {
+  const {
+    colorsAvailable,
+    capacityAvailable,
+    id,
+    category,
+    color,
+    capacity,
+    onColorChange,
+    onCapasityChange,
+  } = params;
+
   return (
     <div className="available-options">
       <div className="available-options__color available-options__section">
@@ -22,13 +34,16 @@ export const ProductParamrsSelects: React.FC<Params> = ({
         </div>
 
         <div>
-          {colorsAvailable.map((color) => (
+          {colorsAvailable.map((colorOption) => (
             <button
-              key={color}
-              className="available-options__color-button"
+              key={colorOption}
+              className={classNames('available-options__color-button', {
+                selected: color === colorOption,
+              })}
+              onClick={() => onColorChange(colorOption)}
             >
               <div
-                style={{ backgroundColor: `${color}` }}
+                style={{ backgroundColor: COLORS[colorOption] }}
                 className="available-options__color-button--inner"
               />
             </button>
@@ -41,12 +56,15 @@ export const ProductParamrsSelects: React.FC<Params> = ({
         : <span className="available-options__label">Select capacity</span>}
 
         <div>
-          {capacityAvailable.map((capacity) => (
+          {capacityAvailable.map((capacityOption) => (
             <button
-              key={capacity}
-              className="available-options__capacity-button"
+              key={capacityOption}
+              className={classNames('available-options__capacity-button', {
+                selected: capacity === capacityOption,
+              })}
+              onClick={() => onCapasityChange(capacityOption)}
             >
-              {capacity}
+              {capacityOption}
             </button>
           ))}
         </div>
