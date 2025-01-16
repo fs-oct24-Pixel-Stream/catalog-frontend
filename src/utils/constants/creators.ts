@@ -5,8 +5,8 @@ export const creators = [
     surname: 'Kravchenko',
     linkedinLink: 'https://www.linkedin.com/in/halyna-kravchenko-451172291/',
     githubLink: 'https://github.com/minimal005',
-    avatar: './img/creators/halyna.jpg',
-    hobby: 'Handmade, Reading, Travelling.',
+    avatar: './img/creators/halya2.jpg',
+    hobby: 'Handmade, Reading, Travelling',
   },
   {
     id: 2,
@@ -14,8 +14,8 @@ export const creators = [
     surname: 'Pogorielova',
     linkedinLink: 'https://www.linkedin.com/in/anastasiia-pogorielova/',
     githubLink: 'https://github.com/pogorielova',
-    avatar: './img/creators/fantomas.png',
-    hobby: 'Dog Training, Communication.',
+    avatar: './img/creators/nastya.JPG',
+    hobby: 'Dog Training, Swimming',
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const creators = [
     linkedinLink: 'https://www.linkedin.com/in/maksym-seliutin/',
     githubLink: 'https://github.com/MakksymSly',
     avatar: './img/creators/maksym.jpg',
-    hobby: 'Mechanics, Gaming, Fishing.',
+    hobby: 'Mechanics, Gaming, Fishing',
   },
   {
     id: 4,
@@ -37,11 +37,11 @@ export const creators = [
   },
   {
     id: 5,
-    name: 'xxxxxxx',
-    surname: 'xxxxxxx',
-    linkedinLink: 'https://www.linkedin.com/in/maksym-seliutin/',
-    githubLink: 'https://github.com/MakksymSly',
-    avatar: './img/creators/fantomas.png',
-    hobby: 'xxxxxxx',
+    name: 'Anastasiia',
+    surname: 'Farafonova',
+    linkedinLink: 'https://www.linkedin.com/in/anastasiia-farafonova/',
+    githubLink: 'https://github.com/AsyaDev14',
+    avatar: './img/creators/asya2.png',
+    hobby: 'Swimmig, Photography',
   },
 ];

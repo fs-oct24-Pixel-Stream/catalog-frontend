@@ -28,6 +28,7 @@ export const ContactItem: React.FC<Props> = ({ creator }) => {
               <img
                 className="card__link-block__image"
                 src="./img/icons/gitIcon.svg"
+                alt="creator"
               />{' '}
             </a>
           </p>
@@ -53,6 +54,7 @@ export const ContactItem: React.FC<Props> = ({ creator }) => {
           <p className="card__title hobby__title">Hobbies</p>
           <p className="hobby__text">{creator.hobby}</p>
         </div>
+        <button type="button"></button>
       </div>
     </>
   );

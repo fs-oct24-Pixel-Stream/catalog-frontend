@@ -2,7 +2,7 @@
 @use '../../styles/utils/mixins.scss' as mixins;
 
 .card {
-  max-width: 300px;
+  width: 300px;
   height: 100px;
   box-sizing: border-box;
   padding: 20px;
@@ -63,7 +63,10 @@
   display: flex;
   gap: 5px;
   flex-direction: column;
-  min-height: 100px;
+
+  &__title {
+    margin: 10px;
+  }
 
   &__text {
     line-height: 1.4em;
