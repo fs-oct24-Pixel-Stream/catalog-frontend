@@ -6,8 +6,10 @@
 }
 
 input.input {
-  width: 300px;
+  // max-width: 600px;
+  min-width: 300px;
 }
+
 input.input:focus {
   border-color: none;
   box-shadow: variable.$elements 0px 0px 0px 1px;
@@ -20,18 +22,19 @@ input.input:focus {
     position: absolute;
     top: 50px;
     left: 0;
-    width: 300px;
+    // width: 300px;
+    min-width: 300px;
     padding: 15px;
     z-index: 2;
-    background-color: #fff;
+    background-color: variable.$white;
     border: 1px solid #e2e6e9;
     max-height: 250px;
     overflow-y: auto;
-    overflow-x: hidden;
 
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border-radius: 8px;
   }
   &__no-results {
     font-size: 14px;

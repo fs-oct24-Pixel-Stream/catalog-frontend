@@ -32,7 +32,7 @@ export const BurgerMenu: FC<Props> = (props) => {
         </Link>
 
         <Link
-          to="/cart"
+          to="#"
           className="burger-icons__item"
         >
           <div>UK</div>
