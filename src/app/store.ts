@@ -18,6 +18,7 @@ import { favoritiesSlice } from '../features/favorites/favoritiesSlice';
 import { phonesSlice } from '../features/phones/phonesSlice';
 import { tabletsSlice } from '../features/tablets/tabletsSlice';
 import { accessoriesSlice } from '../features/accessories/accessoriesSlice';
+import { burgerSlice } from '../features/burger/burgerSlice';
 
 const persistConfig = {
   key: 'root',
@@ -32,6 +33,7 @@ const rootReducer = combineSlices(
   tabletsSlice,
   accessoriesSlice,
   favoritiesSlice,
+  burgerSlice,
 );
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
