@@ -1,6 +1,7 @@
 import React from 'react';
 import './CheckoutCartItem.scss';
 import { ProductCardType } from '../../utils/types/ProductCardType';
+import { Link } from 'react-router';
 
 type Props = {
   product: ProductCardType;
@@ -12,8 +13,8 @@ export const CheckoutCartItem: React.FC<Props> = ({ product, quantity }) => {
     <div className="is-flex cart-item checkout-cart-item ">
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__header">
         <div className="is-flex is-align-items-center cart-item__image-container">
-          <a
-            href={`/product/${product.id}`}
+          <Link
+            to={`/${product.category}/${product.itemId}`}
             className="cart-item__image-url"
           >
             <img
@@ -21,15 +22,15 @@ export const CheckoutCartItem: React.FC<Props> = ({ product, quantity }) => {
               className="cart-item__image"
               alt={product.name}
             />
-          </a>
+          </Link>
         </div>
 
-        <a
-          href={`/product/${product.id}`}
+        <Link
+          to={`/${product.category}/${product.itemId}`}
           className="title cart-item__title"
         >
           {product.name}
-        </a>
+        </Link>
       </div>
 
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__footer">
