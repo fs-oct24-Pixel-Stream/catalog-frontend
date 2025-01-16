@@ -1,20 +1,72 @@
+@use '../../styles/utils/variable.scss' as variables;
+@use '../../styles/utils/mixins.scss' as mixins;
+
 .card {
   max-width: 300px;
   box-sizing: border-box;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  font-size: 1.5em;
   height: 100%;
-  justify-content: center;
 
   &__img {
-    width: 300px;
+    width: 100%;
     height: 300px;
+    object-fit: cover;
     border-radius: 4px;
   }
 
   &__name {
     margin-top: 10px;
     text-align: center;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: variables.$elements;
+      margin-top: 10px;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__link-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__link {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__image {
+      min-width: 22px;
+      min-height: 22px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.hobby {
+  text-align: center;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: variables.$elements;
+    margin-top: 10px;
   }
 }

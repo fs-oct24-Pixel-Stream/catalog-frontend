@@ -24,7 +24,8 @@ export const Footer = () => {
           <ul className="footer-links">
             <li className="footer-link-item">
               <Link
-                to="/github"
+                to="https://github.com/fs-oct24-Pixel-Stream/catalog-frontend"
+                target="_blank"
                 className="footer-link"
               >
                 Github

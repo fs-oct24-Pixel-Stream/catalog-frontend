@@ -1,19 +1,22 @@
 import { ContactItem } from '../../components/ContactItem/ContactItem';
-import { creators as creatorsList } from '../../utils/constants';
+import { creators as creatorsList } from '../../utils/constants/creators';
 import './ContactsPage.scss';
 
 export const ContactsPage = () => {
   const creators = creatorsList;
   return (
-    <div className="creators _container">
-      {creators.map((creator) => {
-        return (
-          <ContactItem
-            key={creator.id}
-            creator={creator}
-          />
-        );
-      })}
+    <div className="container-custom">
+      <h1 className="titleMain">Creators</h1>
+      <div className="creators">
+        {creators.map((creator) => {
+          return (
+            <ContactItem
+              key={creator.id}
+              creator={creator}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

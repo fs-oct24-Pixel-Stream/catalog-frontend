@@ -1,6 +1,17 @@
+@use '../../styles/utils/mixins.scss' as mixins;
+@use '../../styles/utils/variable.scss' as variables;
+
 .creators {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 40px;
   justify-content: center;
+}
+
+@include mixins.on-tablet {
+  .creators {
+    gap: 100px;
+  }
 }
