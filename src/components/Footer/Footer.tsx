@@ -1,6 +1,9 @@
 import { Link } from 'react-router';
 import './Footer.scss';
 import { ScrollButton } from '../ScrollButton';
+import { footerButtons } from '../../utils/constants/footerButtons';
+import { correctTitle } from '../../utils/functions/correctTitle';
+import { handleBackToTop } from '../../utils/functions/handleBackToTop';
 
 export const Footer = () => {
   return (
@@ -21,31 +24,23 @@ export const Footer = () => {
 
         <div>
           <ul className="footer-links">
-            <li className="footer-link-item">
-              <Link
-                to="https://github.com/fs-oct24-Pixel-Stream/catalog-frontend"
-                target="_blank"
-                className="footer-link"
-              >
-                Github
-              </Link>
-            </li>
-            <li className="footer-link-item">
-              <Link
-                to="/contacts"
-                className="footer-link"
-              >
-                Contacts
-              </Link>
-            </li>
-            <li className="footer-link-item">
-              <Link
-                to="/rights"
-                className="footer-link"
-              >
-                Rights
-              </Link>
-            </li>
+            {footerButtons.map((button) => {
+              const text = correctTitle(button);
+              return (
+                <li
+                  key={button}
+                  className="footer-link-item"
+                >
+                  <Link
+                    to={`/${button}`}
+                    className="footer-link"
+                    onClick={handleBackToTop}
+                  >
+                    {text}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
