@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import './TabletsPage.scss';
-import { ProductsPage } from '../../components/ProductsPage';
+import { ProductsPage } from '../../components/ProductsContent';
 import { fetchTablets } from '../../features/tablets/tabletsSlice';
 
 export const TabletsPage = () => {

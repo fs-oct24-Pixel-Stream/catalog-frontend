@@ -32,7 +32,7 @@ export const useFilterAndPagination = (products: ProductCardType[]) => {
 
       const newParams = {
         devicesOnPage: event.target.value.toString(),
-        page: newPage.toString(),
+        page: '1',
       };
 
       setSearchParams((currentParams) => {

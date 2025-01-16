@@ -9,7 +9,8 @@ import { useFilterAndPagination } from '../../utils/hooks/useFilterAndPagination
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { ChooseForFilter } from '../../utils/types/ChooseForFilter';
 
-import './ProductsPage.scss';
+import './ProductsContent.scss';
+import { correctTitle } from '../../utils/functions/correctTitle';
 
 type Props = {
   products: ProductCardType[];
@@ -18,7 +19,7 @@ type Props = {
 export const ProductsPage: React.FC<Props> = ({ products }) => {
   const location = useLocation();
   const path = location.pathname.split('/')[1];
-  const title = path.slice(0, 1).toUpperCase() + path.slice(1);
+  const title = correctTitle(path);
 
   const {
     filterName,
