@@ -27,14 +27,14 @@
 }
 
 .burger-nav {
-  padding-top: 32px;
-  gap: 24px;
+  padding-top: 80px;
+  gap: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   &__main {
-    font-size: 12px;
+    font-size: 1.6em;
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: 0.04em;
@@ -48,7 +48,7 @@
 }
 
 .burger-nav__active {
-  font-size: 12px;
+  font-size: 1.6em;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -76,6 +76,7 @@
     height: 64px;
     border: 1px solid variable.$elements;
     cursor: pointer;
+    font-size: 1.6em;
     &:hover,
     &:focus {
       background-color: variable.$elements;
