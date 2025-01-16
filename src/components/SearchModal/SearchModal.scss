@@ -56,7 +56,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 13px;
-    min-height: 44px;
+    height: 50vh;
     width: 100%;
     margin-top: 3px;
     padding: 12px;
@@ -79,6 +79,10 @@
     justify-content: center;
     flex-direction: row;
     margin: 0 auto;
+  }
+
+  .search-modal__results {
+    gap: 15px;
   }
 }
 
