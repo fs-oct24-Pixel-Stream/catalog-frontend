@@ -18,17 +18,39 @@ export const ContactItem: React.FC<Props> = ({ creator }) => {
           {creator.name} {creator.surname}
         </h2>
         <div className="card__link-block">
-          <p>GitHub</p>
-          <p> link</p>
+          <p className="card__title">GitHub</p>
+          <p>
+            <a
+              target="_blank"
+              className="card__link-block__link"
+              href={creator.githubLink}
+            >
+              <img
+                className="card__link-block__image"
+                src="./img/icons/gitIcon.svg"
+              />{' '}
+            </a>
+          </p>
         </div>
 
         <div className="card__link-block">
-          <p>Linkedin</p>
-          <p> link</p>
+          <p className="card__title">LinkedIn</p>
+          <p>
+            <a
+              target="_blank"
+              className="card__link-block__link"
+              href={creator.linkedinLink}
+            >
+              <img
+                className="card__link-block__image"
+                src="./img/icons/linkedIn.svg"
+              />{' '}
+            </a>
+          </p>
         </div>
 
-        <div className="card__hobby">
-          <p>Hobby</p>
+        <div className="card__link-block hobby">
+          <p className="card__title">Hobbies</p>
           <p>{creator.hobby}</p>
         </div>
       </div>
