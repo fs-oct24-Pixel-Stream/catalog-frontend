@@ -15,7 +15,7 @@ export const creators = [
     linkedinLink: 'https://www.linkedin.com/in/anastasiia-pogorielova/',
     githubLink: 'https://github.com/pogorielova',
     avatar: './img/creators/fantomas.png',
-    hobby: 'Dog Training, Learning, Communication',
+    hobby: 'Dog Training, Communication.',
   },
   {
     id: 3,
@@ -28,12 +28,12 @@ export const creators = [
   },
   {
     id: 4,
-    name: 'xxxxxxx',
-    surname: 'xxxxxxx',
-    linkedinLink: 'https://www.linkedin.com/in/maksym-seliutin/',
-    githubLink: 'https://github.com/MakksymSly',
-    avatar: './img/creators/fantomas.png',
-    hobby: 'xxxxxxx',
+    name: 'Andrii',
+    surname: 'Mekshun',
+    linkedinLink: 'https://www.linkedin.com/in/andrii-mekshun-43524a297/',
+    githubLink: 'https://github.com/Welbrn',
+    avatar: './img/creators/Andrii.jpg',
+    hobby: 'Gaming, PC building, Music',
   },
   {
     id: 5,

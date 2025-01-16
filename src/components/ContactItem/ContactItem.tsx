@@ -50,8 +50,8 @@ export const ContactItem: React.FC<Props> = ({ creator }) => {
         </div>
 
         <div className="card__link-block hobby">
-          <p className="card__title">Hobbies</p>
-          <p>{creator.hobby}</p>
+          <p className="card__title hobby__title">Hobbies</p>
+          <p className="hobby__text">{creator.hobby}</p>
         </div>
       </div>
     </>
