@@ -11,7 +11,6 @@ export const useFilterAndPagination = (products: ProductCardType[]) => {
   const [pageCount, setPageCount] = useState(0); //кількість сторінок для пагінації
   const [currentItems, setCurrentItems] = useState<ProductCardType[]>([]);
 
-  const [itemOffset, setItemOffset] = useState(0); //початковий девайс на сторінці (+1)
   const [searchParams, setSearchParams] = useSearchParams();
 
   const perPage = searchParams.get('devicesOnPage') || 16;
@@ -19,16 +18,13 @@ export const useFilterAndPagination = (products: ProductCardType[]) => {
 
   const updatedProducts = filteredProducts(filterName as ChooseForFilter, products);
 
+  const [itemOffset, setItemOffset] = useState(0); //початковий девайс на сторінці (+1)
   const endOffset = itemOffset + +perPage; //кінцевий девайс на сторінці
-  const currentPage = Number(searchParams.get('page')) || 1;
 
   const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event) {
       const newItemsPerPage = +event.target.value;
       const newCountOfPages = Math.ceil(updatedProducts.length / newItemsPerPage);
-
-      // Обчислюємо нову кількість сторінок та відповідну сторінку
-      const newPage = Math.min(currentPage, newCountOfPages);
 
       const newParams = {
         devicesOnPage: event.target.value.toString(),
@@ -40,7 +36,7 @@ export const useFilterAndPagination = (products: ProductCardType[]) => {
       });
 
       setPageCount(newCountOfPages);
-      setItemOffset((newPage - 1) * newItemsPerPage); // Оновлюємо початкову позицію для пагінації
+      setItemOffset(0); // Оновлюємо початкову позицію для пагінації
     }
   };
 
@@ -67,7 +63,7 @@ export const useFilterAndPagination = (products: ProductCardType[]) => {
 
           return updatedSearchParams;
         });
-      }, 100);
+      }, 0);
     },
     [perPage, products.length, setSearchParams, filterName],
   );

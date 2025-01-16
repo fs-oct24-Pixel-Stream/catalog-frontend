@@ -9,7 +9,7 @@ import { useFilterAndPagination } from '../../utils/hooks/useFilterAndPagination
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { ChooseForFilter } from '../../utils/types/ChooseForFilter';
 
-import './ProductsContent.scss';
+import './ProductsPage.scss';
 import { correctTitle } from '../../utils/functions/correctTitle';
 
 type Props = {
@@ -99,6 +99,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
       <PaginationProducts
         pageCount={pageCount}
         handlePageClick={handlePageClick}
+        // currentPage={currentPage}
       />
     </section>
   );

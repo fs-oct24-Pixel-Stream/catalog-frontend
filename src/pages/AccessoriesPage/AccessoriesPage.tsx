@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { ProductsPage } from '../../components/ProductsContent';
+import { ProductsPage } from '../../components/ProductsPage';
 import { fetchAccessories } from '../../features/accessories/accessoriesSlice';
 import './AccessoriesPage.scss';
 
