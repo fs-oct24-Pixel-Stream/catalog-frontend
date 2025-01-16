@@ -19,11 +19,12 @@ import { phonesSlice } from '../features/phones/phonesSlice';
 import { tabletsSlice } from '../features/tablets/tabletsSlice';
 import { accessoriesSlice } from '../features/accessories/accessoriesSlice';
 import { burgerSlice } from '../features/burger/burgerSlice';
+import { themeSlice } from '../features/theme/themeSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart', 'favorities'],
+  whitelist: ['cart', 'favorities', 'theme'],
 };
 
 const rootReducer = combineSlices(
@@ -34,6 +35,7 @@ const rootReducer = combineSlices(
   accessoriesSlice,
   favoritiesSlice,
   burgerSlice,
+  themeSlice,
 );
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
