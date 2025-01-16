@@ -1,15 +1,18 @@
-import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useMemo } from 'react';
+import { useAppSelector } from '../../app/hooks';
 import './CategorySection.scss';
 import { Link } from 'react-router';
 
-interface Props {
-  phones: ProductCardType[];
-  tablets: ProductCardType[];
-  accessories: ProductCardType[];
-}
+export const CategorySection = () => {
+  const { products } = useAppSelector((state) => state.products);
 
-export const CategorySection: React.FC<Props> = (props) => {
-  const { phones, tablets, accessories } = props;
+  const filterProductsByCategory = (category: string) => {
+    return products.filter((product) => product.category === category);
+  };
+
+  const phones = useMemo(() => filterProductsByCategory('phones'), [products]);
+  const tablets = useMemo(() => filterProductsByCategory('tablets'), [products]);
+  const accessories = useMemo(() => filterProductsByCategory('accessories'), [products]);
 
   const categories = [
     { id: 1, name: 'Mobile phones', path: '/phones', img: 'img/phones.png', items: phones },
