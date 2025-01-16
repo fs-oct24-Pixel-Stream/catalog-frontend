@@ -6,7 +6,7 @@ export const Breadcrumbs = () => {
   const location = useLocation();
 
   const pathnames = location.pathname.split('/').filter((page) => page !== '');
-  console.log(pathnames);
+
   const isActivePathActive = (pathIndex: number) => {
     if (pathIndex === 0 && pathnames.length > 1) {
       return true;

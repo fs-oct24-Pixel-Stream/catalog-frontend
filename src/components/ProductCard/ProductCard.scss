@@ -37,6 +37,11 @@
   }
 
   &__title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
     margin: 24px 0px 8px;
     height: 42px;
     font-size: 1.4em;
