@@ -12,12 +12,20 @@ export const TechSpecs: React.FC<Props> = ({ device, category }) => {
     'Resolution': device.resolution,
     'Processor': device.processor,
     'RAM': device.ram,
-    'Built in memory': device.capacity || null,
-    'Size': device.capacity || null,
+    'Built in memory': device.capacity.toUpperCase() || null,
+    'Size': device.capacity.toUpperCase() || null,
     'Camera': device.camera,
     'Zoom': device.zoom,
     'Cell': device.cell,
   };
+
+  if (category === 'accessories') {
+    specs['Built in memory'] = null;
+  }
+
+  if (category === 'tablets' || category === 'phones') {
+    specs['Size'] = null;
+  }
 
   if (specs['Camera']) {
     const camsCount = specs['Camera'].split('+').length;
@@ -44,14 +52,6 @@ export const TechSpecs: React.FC<Props> = ({ device, category }) => {
         return `${cell}, `;
       }
     });
-  }
-
-  if (category === 'accessories') {
-    specs['Built in memory'] = null;
-  }
-
-  if (category === 'phone' || category === 'tablet') {
-    specs['Size'] = null;
   }
 
   return (

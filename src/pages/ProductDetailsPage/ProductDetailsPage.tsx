@@ -36,6 +36,7 @@ export const ProductDetailsPage = () => {
       const selectedDevice = products.find((product: ProductDeviceType) => product.id === deviceId);
       setDevice(selectedDevice || null);
     }, 200);
+    console.log(timer);
   })();
 
   if (!device) {

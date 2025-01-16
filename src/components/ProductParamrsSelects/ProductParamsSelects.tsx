@@ -64,7 +64,7 @@ export const ProductParamrsSelects: React.FC<Params> = (params) => {
               })}
               onClick={() => onCapasityChange(capacityOption)}
             >
-              {capacityOption}
+              {capacityOption.toUpperCase()}
             </button>
           ))}
         </div>
