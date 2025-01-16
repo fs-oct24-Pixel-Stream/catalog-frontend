@@ -1,15 +1,11 @@
-import React from 'react';
 import { ProductSlider } from '../ProductSlider';
-import { ProductCardType } from '../../utils/types/ProductCardType';
+import { filteredProducts } from '../../utils/functions/filteredProducts';
+import { ChooseForFilter } from '../../utils/types/ChooseForFilter';
+import { useAppSelector } from '../../app/hooks';
 
-interface Props {
-  products: ProductCardType[];
-}
-
-export const NewModelSection: React.FC<Props> = ({ products }) => {
-  const highestYear = Math.max(...products.map((product) => product.year));
-
-  const newestProducts = products.filter((product) => product.year === highestYear).slice(0, 12);
+export const NewModelSection = () => {
+  const { products } = useAppSelector((state) => state.products);
+  const newestProducts = filteredProducts(ChooseForFilter.NEWEST, products).slice(0, 12);
 
   return (
     <ProductSlider

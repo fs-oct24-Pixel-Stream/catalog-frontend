@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { ProductSlider } from '../ProductSlider';
+import { getRecommendedProduct } from '../../utils/functions/getRecommendedProduct';
+import { useAppSelector } from '../../app/hooks';
 
 interface Props {
-  products: ProductCardType[];
+  price: number;
+  category: string;
 }
 
-export const RecommendedSection: React.FC<Props> = ({ products }) => {
+export const RecommendedSection: React.FC<Props> = ({ price, category }) => {
+  const [recommendedProducts, setRecommendedProducts] = useState<ProductCardType[]>([]);
+  const { products } = useAppSelector((state) => state.products);
+
+  useEffect(() => {
+    setRecommendedProducts(getRecommendedProduct(products, price, category));
+  }, [products, price, category]);
+
   return (
     <ProductSlider
-      products={products}
-      discount={false}
+      products={recommendedProducts}
+      discount={true}
       title={'You may also like'}
     />
   );

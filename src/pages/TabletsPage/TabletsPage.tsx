@@ -10,10 +10,11 @@ export const TabletsPage = () => {
     return products.filter((product) => product.category === 'tablets');
   }, [products]);
 
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchTablets());
-  // }, []);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTablets());
+  }, [dispatch]);
   return (
     <>
       <ProductsPage products={tablets} />

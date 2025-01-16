@@ -2,7 +2,7 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router';
 import { IconButton } from '../IconButton/IconButton';
 import { useRef } from 'react';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 
 import './PromoSection.scss';
 import 'swiper/swiper-bundle.css';
@@ -29,8 +29,7 @@ export const PromoSection = () => {
         />
         <Swiper
           ref={swiperRef}
-          modules={[Pagination, Autoplay]}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          modules={[Pagination]}
           pagination={{ el: paginationRef.current, clickable: true }}
           spaceBetween={2}
           slidesPerView={1}
@@ -40,25 +39,46 @@ export const PromoSection = () => {
         >
           <SwiperSlide>
             <Link to={'/phones/apple-iphone-14-512gb-midnight'}>
-              <div className="promo-section__slide promo-section__slide--first"></div>
+              <video
+                className="promo-section__slide promo-section__slide--video"
+                autoPlay
+                loop
+                playsInline
+                preload="auto"
+                muted
+              >
+                <source src="video/iPhone-14-Pro.mp4" />
+              </video>
             </Link>
           </SwiperSlide>
 
           <SwiperSlide>
-            <Link to={'/phones'}>
-              <div className="promo-section__slide promo-section__slide--second"></div>
+            <Link to={'/tablets/apple-ipad-pro-11-2021-128gb-spacegray'}>
+              <video
+                className="promo-section__slide promo-section__slide--video"
+                autoPlay
+                loop
+                playsInline
+                preload="auto"
+                muted
+              >
+                <source src="video/iPad-Air-4.mp4" />
+              </video>
             </Link>
           </SwiperSlide>
 
           <SwiperSlide>
-            <Link to={'/tablets'}>
-              <div className="promo-section__slide promo-section__slide--third"></div>
-            </Link>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Link to={'/accessories'}>
-              <div className="promo-section__slide promo-section__slide--fourth"></div>
+            <Link to={'/accessories/apple-watch-series-6-40mm-space-gray'}>
+              <video
+                className="promo-section__slide promo-section__slide--video"
+                autoPlay
+                loop
+                playsInline
+                preload="auto"
+                muted
+              >
+                <source src="video/Apple-Watch-Series-6.mp4" />
+              </video>
             </Link>
           </SwiperSlide>
         </Swiper>

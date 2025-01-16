@@ -1,0 +1,32 @@
+@use '../../styles/utils/variable.scss' as variables;
+@use '../../styles/utils/mixins.scss' as mixins;
+
+.rights {
+  color: variables.$primary;
+  font-size: 1.4em;
+  line-height: 1.4em;
+  padding: 0;
+
+  &__block {
+    background-color: variables.$elements;
+    padding: 20px;
+  }
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    &:last-child {
+      font-style: italic;
+    }
+  }
+}
+
+@include mixins.on-tablet {
+  .rights {
+    padding: 50px 0;
+
+    &__block {
+      border-radius: variables.$global-border-radius;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import cn from 'classnames';
 import { IconButton } from '../IconButton/IconButton';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
 import './ProductCard.scss';
+import { separeteSpecs } from '../../utils/functions/separeteSpecs';
 
 type Props = {
   product: ProductCardType;
@@ -21,8 +22,8 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const favorites = useAppSelector((store) => store.favorities.products);
   const isInFavorites = favorites.some((item) => item.id === product.id);
 
-  const capacity = product.capacity.slice(0, -2);
-  const ram = product.ram.slice(0, -2);
+  const capacity = product.capacity;
+  const ram = product.ram;
 
   const getButtonText = isInCart ? 'Added' : 'Add to cart';
 
@@ -83,13 +84,15 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
       </div>
 
       <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
-        <p className="product-card__descriptions-text">Capacity</p>
-        <p className="product-card__descriptions-value">{capacity} GB</p>
+        {product.category === 'accessories' ?
+          <p className="product-card__descriptions-text">Size</p>
+        : <p className="product-card__descriptions-text">Capacity</p>}
+        <p className="product-card__descriptions-value">{separeteSpecs(capacity)}</p>
       </div>
 
       <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
         <p className="product-card__descriptions-text">RAM</p>
-        <p className="product-card__descriptions-value">{ram} GB</p>
+        <p className="product-card__descriptions-value">{separeteSpecs(ram)}</p>
       </div>
 
       <div className="is-flex is-justify-content-space-between product-card__buttons">

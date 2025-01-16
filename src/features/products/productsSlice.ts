@@ -4,12 +4,14 @@ import { getProducts } from '../../api/products';
 
 type InitialState = {
   products: ProductCardType[];
+  selectedProduct: ProductCardType | null;
   loading: boolean;
   error: string | null;
 };
 
 const initialState: InitialState = {
   products: [],
+  selectedProduct: null,
   loading: false,
   error: null,
 };
@@ -21,7 +23,12 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
 export const productSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedProduct: (state, { payload }) => {
+      const currentProductById = state.products.find((product) => product.itemId === payload);
+      state.selectedProduct = currentProductById || null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => ({
       ...state,
@@ -40,3 +47,5 @@ export const productSlice = createSlice({
     }));
   },
 });
+
+export const { setSelectedProduct } = productSlice.actions;

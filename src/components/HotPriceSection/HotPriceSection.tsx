@@ -1,18 +1,10 @@
-import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useAppSelector } from '../../app/hooks';
+import { getHotPriceProducts } from '../../utils/functions/getHotPriceProducts';
 import { ProductSlider } from '../ProductSlider';
 
-interface Props {
-  products: ProductCardType[];
-}
-
-export const HotPriceSection: React.FC<Props> = ({ products }) => {
-  const getDiscount = (product: ProductCardType) => product.fullPrice - product.price;
-
-  const productWithDiscount = products
-    .filter((product) => getDiscount(product) > 0)
-    .sort((a, b) => getDiscount(b) - getDiscount(a))
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 12);
+export const HotPriceSection = () => {
+  const { products } = useAppSelector((state) => state.products);
+  const productWithDiscount = getHotPriceProducts(products);
 
   return (
     <ProductSlider

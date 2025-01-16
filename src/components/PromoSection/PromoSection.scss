@@ -58,24 +58,8 @@
     }
   }
 
-  &__slide--first {
-    background-image: url('../../../public/img/Banner-mini.png');
-
-    @include mixins.on-tablet {
-      background-image: url('../../../public/img/Banner.png');
-    }
-  }
-
-  &__slide--second {
-    background-image: url('../../../public/img/banner-phones.png');
-  }
-
-  &__slide--third {
-    background-image: url('../../../public/img/banner-tablets.png');
-  }
-
-  &__slide--fourth {
-    background-image: url('../../../public/img/banner-accessories.png');
+  &__slide--video {
+    object-fit: cover;
   }
 }
 

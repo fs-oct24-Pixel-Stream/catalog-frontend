@@ -8,6 +8,8 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { FavoritePage } from './pages/FavoritePage/FavoritePage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { RightsPage } from './pages/RightsPage/RightsPage';
+import { ContactsPage } from './pages/ContactsPage/ContactsPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 // Before testing keep in mind to use # in url. e.g http://localHost/#/phones because of HashRouter.
@@ -65,6 +67,16 @@ export const Root = () => (
         <Route
           path="/cart"
           element={<CartPage />}
+        />
+
+        <Route
+          path="/rights"
+          element={<RightsPage />}
+        />
+
+        <Route
+          path="/contacts"
+          element={<ContactsPage />}
         />
 
         <Route

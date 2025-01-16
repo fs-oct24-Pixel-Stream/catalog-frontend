@@ -1,15 +1,11 @@
 import { Link } from 'react-router';
-import { IconButton } from '../IconButton/IconButton';
 import './Footer.scss';
+import { ScrollButton } from '../ScrollButton';
 
 export const Footer = () => {
-  const handleBackToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="footer footer-custom">
-      <div className="footer-content has-text-centered">
+    <footer className="footer">
+      <div className="_container footer-content has-text-centered">
         <div className="footer-logo">
           <Link
             to="/home"
@@ -27,7 +23,8 @@ export const Footer = () => {
           <ul className="footer-links">
             <li className="footer-link-item">
               <Link
-                to="/github"
+                to="https://github.com/fs-oct24-Pixel-Stream/catalog-frontend"
+                target="_blank"
                 className="footer-link"
               >
                 Github
@@ -51,14 +48,9 @@ export const Footer = () => {
             </li>
           </ul>
         </div>
-
-        <div className="footer-back-to-top">
-          <label className="footer-back-to-top--label">Back to Top</label>
-          <IconButton
-            backgroundImage="img/icons/Arrow-Top.png"
-            onClick={handleBackToTop}
-          />
-        </div>
+      </div>
+      <div className="footer-back-to-top">
+        <ScrollButton />
       </div>
     </footer>
   );
