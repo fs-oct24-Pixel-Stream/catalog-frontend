@@ -6,7 +6,6 @@
 }
 
 input.input {
-  // max-width: 600px;
   min-width: 350px;
 }
 
@@ -22,7 +21,6 @@ input.input:focus {
     position: absolute;
     top: 50px;
     left: 0;
-    // width: 300px;
     min-width: 350px;
     padding: 15px;
     z-index: 2;
@@ -48,7 +46,7 @@ input.input:focus {
     right: 5px;
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 2.4em;
     color: #89939a;
     cursor: pointer;
     padding-right: 10px;
@@ -58,7 +56,7 @@ input.input:focus {
     display: flex;
     align-items: center;
     justify-content: start;
-    font-size: 16px;
+    font-size: 1.6em;
     gap: 10px;
     cursor: pointer;
   }
