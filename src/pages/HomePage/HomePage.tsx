@@ -1,8 +1,7 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { NewModelSection } from '../../components/NewModelSection';
 import './HomePage.scss';
-import { fetchProducts } from '../../features/products/productsSlice';
 import { CategorySection } from '../../components/CategorySection/CategorySection';
 import { HotPriceSection } from '../../components/HotPriceSection';
 import { PromoSection } from '../../components/PromoSection';
@@ -18,10 +17,6 @@ export const HomePage = () => {
   const phones = useMemo(() => filterProductsByCategory('phones'), [products]);
   const tablets = useMemo(() => filterProductsByCategory('tablets'), [products]);
   const accessories = useMemo(() => filterProductsByCategory('accessories'), [products]);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
 
   return (
     <div className="home-page">

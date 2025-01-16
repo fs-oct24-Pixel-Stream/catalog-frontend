@@ -2,11 +2,8 @@
 @use './../../styles/utils/mixins.scss';
 
 .footer {
-  // position: sticky;
-  // bottom: 0;
   background-color: #fff;
   box-shadow: 0px -1px 0px 0px variable.$elements;
-  // box-shadow: 0px -1px 0px 0px variable.$elements;
   padding: 32px 0;
 
   &-content {
@@ -22,7 +19,6 @@
   }
 
   &-logo {
-    // width: 89px;
     text-align: left;
     transition: scale variable.$button-transition-time ease;
 
@@ -56,12 +52,10 @@
     }
 
     .footer-link {
-      // font-family: Mont, sans-serif;
       font-size: 1.2em;
       text-transform: uppercase;
       font-weight: 700;
       color: variable.$secondary;
-      // color: variable.$secondary;
     }
   }
 
@@ -72,12 +66,10 @@
     align-self: flex-end;
 
     &--label {
-      // font-family: Mont, sans-serif;
       font-size: 1.2em;
       line-height: 1.5;
       font-weight: 600;
       color: variable.$secondary;
-      // color: variable.$secondary;
       margin-right: 1.6em;
     }
   }
