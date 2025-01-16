@@ -1,15 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ProductCardType } from '../../utils/types/ProductCardType';
 import { getAccessories } from '../../api/accessories';
+import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 
 type InitialState = {
-  accessories: ProductCardType[];
+  accessories: ProductDeviceType[];
+  selectedAccessories: ProductDeviceType | null;
   loading: boolean;
   error: string | null;
 };
 
 const initialState: InitialState = {
   accessories: [],
+  selectedAccessories: null,
   loading: false,
   error: null,
 };
@@ -21,7 +23,14 @@ export const fetchAccessories = createAsyncThunk('accessories/fetchAccessories',
 export const accessoriesSlice = createSlice({
   name: 'accessories',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedAccessories: (state, { payload }) => {
+      const currentAccessoriesById = state.accessories.find(
+        (accessory) => accessory.id === payload,
+      );
+      state.selectedAccessories = currentAccessoriesById || null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAccessories.pending, (state) => ({
       ...state,
@@ -40,3 +49,5 @@ export const accessoriesSlice = createSlice({
     }));
   },
 });
+
+export const { setSelectedAccessories } = accessoriesSlice.actions;

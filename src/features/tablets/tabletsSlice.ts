@@ -1,15 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ProductCardType } from '../../utils/types/ProductCardType';
 import { getTablets } from '../../api/tablets';
+import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 
 type InitialState = {
-  tablets: ProductCardType[];
+  tablets: ProductDeviceType[];
+  selectedTablet: ProductDeviceType | null;
   loading: boolean;
   error: string | null;
 };
 
 const initialState: InitialState = {
   tablets: [],
+  selectedTablet: null,
   loading: false,
   error: null,
 };
@@ -21,7 +23,12 @@ export const fetchTablets = createAsyncThunk('tablets/fetchTablets', async () =>
 export const tabletsSlice = createSlice({
   name: 'tablets',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedTablet: (state, { payload }) => {
+      const currentTabletById = state.tablets.find((tablet) => tablet.id === payload);
+      state.selectedTablet = currentTabletById || null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchTablets.pending, (state) => ({
       ...state,
@@ -40,3 +47,5 @@ export const tabletsSlice = createSlice({
     }));
   },
 });
+
+export const { setSelectedTablet } = tabletsSlice.actions;

@@ -1,7 +1,6 @@
 import { Link } from 'react-router';
-import { IconButton } from '../IconButton/IconButton';
 import './Footer.scss';
-import { handleBackToTop } from '../../utils/functions/handleBackToTop';
+import { ScrollButton } from '../ScrollButton';
 
 export const Footer = () => {
   return (
@@ -48,14 +47,9 @@ export const Footer = () => {
             </li>
           </ul>
         </div>
-
-        <div className="footer-back-to-top">
-          <label className="footer-back-to-top--label">Back to Top</label>
-          <IconButton
-            backgroundImage="img/icons/Arrow-Top.png"
-            onClick={handleBackToTop}
-          />
-        </div>
+      </div>
+      <div className="footer-back-to-top">
+        <ScrollButton />
       </div>
     </footer>
   );

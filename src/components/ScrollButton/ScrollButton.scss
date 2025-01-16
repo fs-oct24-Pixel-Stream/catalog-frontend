@@ -1,0 +1,30 @@
+@use '../../styles/utils/variable.scss';
+@use './../../styles/utils/mixins.scss';
+
+.scroll-button {
+  position: fixed;
+  z-index: 50;
+  bottom: 32px;
+  right: 32px;
+  opacity: 0;
+  transition: opacity variable.$button-transition-time ease;
+
+  @include mixins.on-tablet {
+    bottom: 100px;
+  }
+
+  &__footer {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border-radius: variable.$global-border-radius;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}
