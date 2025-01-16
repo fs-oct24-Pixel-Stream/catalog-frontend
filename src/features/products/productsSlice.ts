@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { getProducts } from '../../api/products';
 
