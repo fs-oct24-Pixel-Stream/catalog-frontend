@@ -1,0 +1,68 @@
+@use '../../styles/utils/mixins.scss' as mixins;
+@use '../../styles/utils/variable.scss';
+
+.search {
+  position: relative;
+}
+
+input.input {
+  min-width: 350px;
+}
+
+input.input:focus {
+  border-color: none;
+  box-shadow: variable.$elements 0px 0px 0px 1px;
+}
+
+.search-dropdown {
+  position: relative;
+
+  &__results {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    min-width: 350px;
+    padding: 15px;
+    z-index: 2;
+    background-color: variable.$white;
+    border: 1px solid #e2e6e9;
+    max-height: 250px;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 8px;
+  }
+  &__no-results {
+    font-size: 14px;
+    padding: 10px;
+    text-align: start;
+  }
+  &__close {
+    position: absolute;
+    z-index: 9;
+    top: 8px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 2.4em;
+    color: #89939a;
+    cursor: pointer;
+    padding-right: 10px;
+    cursor: pointer;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 1.6em;
+    gap: 10px;
+    cursor: pointer;
+  }
+}
+
+.search-image {
+  width: 30px;
+  height: 30px;
+}
