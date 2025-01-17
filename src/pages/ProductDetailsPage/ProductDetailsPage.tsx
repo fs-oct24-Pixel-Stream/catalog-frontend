@@ -4,16 +4,43 @@ import { AboutSection } from '../../components/AboutSection/AboutSection';
 import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
 import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
 import { useLocation, useNavigate } from 'react-router';
-import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
-import { useEffect, useState } from 'react';
-import { useCategoryProducts } from '../../utils/customHooks/useCategoryProducts';
-import { ProductParamrsSelects } from '../../components/ProductParamrsSelects/ProductParamsSelects';
+import { useEffect } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ColorKey } from '../../utils/types/colors';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { fetchPhones, setSelectedPhone } from '../../features/phones/phonesSlice';
+import {
+  fetchAccessories,
+  setSelectedAccessories,
+} from '../../features/accessories/accessoriesSlice';
+import { fetchTablets, setSelectedTablet } from '../../features/tablets/tabletsSlice';
+import { RecommendedSection } from '../../components/RecommendedSection';
+import { ProductParamsSelects } from '../../components/ProductParamrsSelects/ProductParamsSelects';
+import { ProductActions } from '../../components/ProductActions/ProductActions';
+
+const categoryMap = {
+  phones: {
+    fetchAction: fetchPhones,
+    setSelectedAction: setSelectedPhone,
+    selector: (state: any) => state.phones.selectedPhone,
+    loadingSelector: (state: any) => state.phones.loading,
+  },
+  accessories: {
+    fetchAction: fetchAccessories,
+    setSelectedAction: setSelectedAccessories,
+    selector: (state: any) => state.accessories.selectedAccessories,
+    loadingSelector: (state: any) => state.accessories.loading,
+  },
+  tablets: {
+    fetchAction: fetchTablets,
+    setSelectedAction: setSelectedTablet,
+    selector: (state: any) => state.tablets.selectedTablet,
+    loadingSelector: (state: any) => state.tablets.loading,
+  },
+};
 
 export const ProductDetailsPage = () => {
-  const [device, setDevice] = useState<ProductDeviceType | null>(null);
-
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -24,27 +51,53 @@ export const ProductDetailsPage = () => {
     .slice(0, deviceId.split('-').length - 2)
     .join('-');
 
-  const products = useCategoryProducts(category);
+  const categoryToFetch = categoryMap[category as keyof typeof categoryMap];
+
+  const { fetchAction, setSelectedAction, selector } = categoryToFetch;
+  console.log(selector);
+  // const isLoading = useAppSelector(categoryToFetch.loadingSelector);
+  const selectedProduct = useAppSelector(selector);
 
   useEffect(() => {
-    const selectedDevice = products.find((product: ProductDeviceType) => product.id === deviceId);
-    setDevice(selectedDevice || null);
-  }, [category, deviceId]);
+    dispatch(fetchAction());
+    dispatch(setSelectedAction(deviceId));
 
-  (() => {
-    const timer = setTimeout(() => {
-      const selectedDevice = products.find((product: ProductDeviceType) => product.id === deviceId);
-      setDevice(selectedDevice || null);
-    }, 200);
-    console.log(timer);
-  })();
+    const fetchData = async () => {
+      await dispatch(fetchAction());
+      dispatch(setSelectedAction(deviceId));
+    };
 
-  if (!device) {
+    if (!selectedProduct) {
+      fetchData();
+    }
+  }, [, dispatch, fetchAction, setSelectedAction, deviceId]);
+
+  const {
+    name,
+    images,
+    colorsAvailable,
+    capacityAvailable,
+    description,
+    color,
+    capacity,
+    priceRegular,
+    priceDiscount,
+    id,
+  } = selectedProduct || {};
+
+  /* if (selectedProduct?.id !== deviceId) {
     return <p>Loading...</p>;
+  } */
+
+  /*  if (isLoading) {
+    return <p>Loading...</p>;
+  } */
+
+  if (!selectedProduct) {
+    return <p>Product not found.</p>;
   }
 
-  const { name, images, colorsAvailable, capacityAvailable, description, id, color, capacity } =
-    device;
+  const discount = true;
 
   const handleColorChange = (newColor: ColorKey) => {
     const newPath = `/${category}/${baseId}-${capacity}-${newColor}`;
@@ -76,7 +129,7 @@ export const ProductDetailsPage = () => {
       </section>
 
       <section className="product-details__parameters">
-        <ProductParamrsSelects
+        <ProductParamsSelects
           colorsAvailable={colorsAvailable}
           capacityAvailable={capacityAvailable}
           id={id}
@@ -85,6 +138,23 @@ export const ProductDetailsPage = () => {
           capacity={capacity}
           onColorChange={handleColorChange}
           onCapasityChange={handleCapasityChange}
+        />
+
+        <div className="is-flex product-card__price">
+          <p className="product-card__price-value">${priceDiscount}</p>
+          {discount && (
+            <p className="product-card__price-value product-card__price-value--discount">
+              ${priceRegular}
+            </p>
+          )}
+        </div>
+
+        <ProductActions selectedProduct={selectedProduct} />
+
+        <TechSpecs
+          device={selectedProduct}
+          category={category}
+          variant="short"
         />
       </section>
 
@@ -100,14 +170,17 @@ export const ProductDetailsPage = () => {
         <div className="product-details__line" />
 
         <TechSpecs
-          device={device}
+          device={selectedProduct}
           category={category}
+          variant="full"
         />
       </section>
 
       <section className="product-details__recommended">
-        {/* TODO ADD Recommended */}
-        Recommended
+        <RecommendedSection
+          price={priceRegular}
+          category={category}
+        />
       </section>
     </div>
   );

@@ -13,7 +13,7 @@ type Params = {
   onCapasityChange: (capasity: string) => void;
 };
 
-export const ProductParamrsSelects: React.FC<Params> = (params) => {
+export const ProductParamsSelects: React.FC<Params> = (params) => {
   const {
     colorsAvailable,
     capacityAvailable,

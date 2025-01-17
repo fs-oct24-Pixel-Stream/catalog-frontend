@@ -2,6 +2,7 @@
 @use './../../styles/utils/variable.scss';
 
 .product-details {
+  position: relative;
   @include mixins.page-grid;
 
   padding-top: 24px;

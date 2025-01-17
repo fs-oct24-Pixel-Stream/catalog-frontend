@@ -1,12 +1,14 @@
+import classNames from 'classnames';
 import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 import './TechSpecs.scss';
 
 type Props = {
   device: ProductDeviceType;
   category: string;
+  variant: 'full' | 'short';
 };
 
-export const TechSpecs: React.FC<Props> = ({ device, category }) => {
+export const TechSpecs: React.FC<Props> = ({ device, category, variant }) => {
   const specs = {
     'Screen': device.screen,
     'Resolution': device.resolution,
@@ -18,6 +20,8 @@ export const TechSpecs: React.FC<Props> = ({ device, category }) => {
     'Zoom': device.zoom,
     'Cell': device.cell,
   };
+
+  const shortSpecs = ['Screen', 'Resolution', 'Processor', 'RAM'];
 
   if (category === 'accessories') {
     specs['Built in memory'] = null;
@@ -54,10 +58,15 @@ export const TechSpecs: React.FC<Props> = ({ device, category }) => {
     });
   }
 
+  const specsToRender =
+    variant === 'short' ?
+      Object.fromEntries(Object.entries(specs).filter(([key]) => shortSpecs.includes(key)))
+    : specs;
+
   return (
-    <div className="tech-specs">
+    <div className={classNames('tech-specs', { 'tech-specs--short': variant === 'short' })}>
       <ul className="tech-specs__list">
-        {Object.entries(specs).map((spec) => {
+        {Object.entries(specsToRender).map((spec) => {
           const key = spec[0];
           let val = spec[1];
 
