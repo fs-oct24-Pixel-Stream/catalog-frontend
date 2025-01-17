@@ -34,12 +34,23 @@ svg {
     color: variable.$secondary;
     position: relative;
     transition: variable.$button-transition-time;
+
+    html.dark & {
+      color: variable.$secondary-dark;
+    }
   }
+
   &--item:hover {
     color: variable.$primary;
+    html.dark & {
+      color: variable.$primary-dark;
+    }
   }
   &--current {
     color: variable.$primary;
+    html.dark & {
+      color: variable.$primary-dark;
+    }
   }
 }
 
