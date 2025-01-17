@@ -9,7 +9,6 @@ import '../src/styles/utils/variable.scss';
 import '../src/styles/utils/mixins.scss';
 import './App.scss';
 
-import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { fetchAccessories } from './features/accessories/accessoriesSlice';
 import { fetchPhones } from './features/phones/phonesSlice';
