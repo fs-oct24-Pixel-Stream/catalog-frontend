@@ -52,9 +52,11 @@
   }
 
   &__results-container {
-    padding: 12px;
+    padding: 0px 12px 12px;
     background-color: variable.$white;
     border: 1px solid variable.$elements;
+    margin-top: 3px;
+    border-radius: 5px;
   }
 
   &__results {
@@ -64,9 +66,7 @@
     gap: 13px;
     max-height: 50vh;
     width: 100%;
-    margin-top: 3px;
     overflow-y: scroll;
-    border-radius: 5px;
   }
 
   &__no-results {

@@ -36,7 +36,7 @@ export const BurgerMenu: FC = () => {
           to="#"
           className="burger-icons__item"
         >
-          <div>UK</div>
+          <div>UA</div>
         </Link>
       </div>
     </div>
