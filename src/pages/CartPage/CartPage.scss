@@ -9,8 +9,10 @@
   gap: 30px;
 }
 .cart {
-  padding: 20px 20px;
-
+  padding: 50px 20px;
+  &__title {
+    margin-bottom: 20px;
+  }
   &__background {
     background-image: url('../../../public/img/cart-is-empty.png');
     margin: 0 auto;
@@ -27,7 +29,7 @@
     text-align: center;
     color: variable.$primary;
     html.dark & {
-      color: variable.$white;
+      color: variable.$icons;
     }
 
     &__title {
@@ -41,7 +43,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 40px;
+  @include mixins.on-desktop-mini {
+    flex-direction: row;
+    align-items: flex-start;
+  }
   &__list {
     display: flex;
     flex-direction: column;
@@ -63,10 +71,15 @@
   gap: 20px;
   background-color: variable.$white;
 
+  @include mixins.on-tablet3 {
+    max-width: 350px;
+    max-height: 200px;
+  }
+
   html.dark & {
     border: 1px solid variable.$elements-dark;
     background-color: variable.$primary-dark;
-    color: variable.$white;
+    color: variable.$icons;
   }
   &__header {
     margin-bottom: 30px;
@@ -78,7 +91,7 @@
   }
   &__check {
     width: 100%;
-    max-height: 48px;
+    min-height: 48px;
   }
 }
 
@@ -91,16 +104,5 @@
         font-size: 3.4em;
       }
     }
-  }
-}
-
-@include mixins.on-tablet3 {
-  .checkout-block {
-    max-width: 300px;
-    max-height: 200px;
-  }
-  .cart-block {
-    flex-direction: row;
-    gap: 20px;
   }
 }

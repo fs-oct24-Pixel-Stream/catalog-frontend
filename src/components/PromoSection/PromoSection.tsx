@@ -41,7 +41,7 @@ export const PromoSection = () => {
             isThemeDark ? 'img/icons/arrow-left-white.svg' : 'img/icons/arrow-left.svg'
           }
           onClick={handlePrevSlide}
-          className="promo-section__button"
+          className=" promo-section__button "
         />
         <Swiper
           ref={swiperRef}

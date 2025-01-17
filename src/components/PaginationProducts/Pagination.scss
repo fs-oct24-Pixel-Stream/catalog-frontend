@@ -18,7 +18,7 @@
       color: variable.$primary;
 
       html.dark & {
-        color: variable.$white;
+        color: variable.$icons;
       }
     }
   }
@@ -50,7 +50,7 @@
     background-color: variable.$white;
     html.dark & {
       background-color: variable.$primary-dark;
-      color: variable.$white;
+      color: variable.$icons;
     }
 
     &--prev {
@@ -71,6 +71,7 @@
 
       html.dark & {
         background-color: variable.$purple;
+        color: variable.$white;
       }
     }
     &--disabled {

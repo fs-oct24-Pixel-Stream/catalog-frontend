@@ -10,7 +10,7 @@
   }
 
   html.dark & {
-    color: variable.$white;
+    color: variable.$text-dark;
   }
 }
 
@@ -64,7 +64,7 @@
     }
 
     html.dark & {
-      color: variable.$white;
+      color: variable.$text-dark;
     }
   }
 

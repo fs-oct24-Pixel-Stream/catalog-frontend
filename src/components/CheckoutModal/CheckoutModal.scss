@@ -64,7 +64,7 @@
       font-weight: bold;
       position: relative;
       html.dark & {
-        color: variable.$white;
+        color: variable.$text-dark;
         background-color: variable.$primary-dark;
       }
     }

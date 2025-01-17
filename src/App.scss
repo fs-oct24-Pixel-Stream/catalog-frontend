@@ -34,7 +34,7 @@
   line-height: 1.17;
 
   html.dark & {
-    color: variable.$white;
+    color: variable.$icons;
   }
 
   @include mixins.on-tablet {
@@ -111,6 +111,7 @@
       #3e3f45,
       #89939a,
       #89939a,
+      #313237,
       #313237,
       #89939a,
       #3e3f45,

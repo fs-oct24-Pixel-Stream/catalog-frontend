@@ -3,21 +3,17 @@
 
 .home-page {
   &__title {
-    margin-top: 24px;
+    margin-top: 30px;
     margin-bottom: 24px;
 
     @include mixins.on-tablet {
-      margin-top: 32px;
+      margin-top: 50px;
       margin-bottom: 32px;
     }
 
     @include mixins.on-desktop {
       margin-top: 56px;
       margin-bottom: 56px;
-    }
-
-    html.dark & {
-      color: variable.$white;
     }
   }
 

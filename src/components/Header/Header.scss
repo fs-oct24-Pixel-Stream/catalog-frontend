@@ -49,13 +49,13 @@ svg {
   &--item:hover {
     color: variable.$primary;
     html.dark & {
-      color: variable.$white;
+      color: variable.$icons;
     }
   }
   &--current {
     color: variable.$primary;
     html.dark & {
-      color: variable.$white;
+      color: variable.$icons;
     }
   }
 }
