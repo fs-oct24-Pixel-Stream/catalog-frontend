@@ -16,6 +16,10 @@
   &__points {
     & a {
       color: variable.$primary;
+
+      html.dark & {
+        color: variable.$white;
+      }
     }
   }
 
@@ -24,8 +28,13 @@
     height: 3.2em;
     border: 1px solid variable.$elements;
     border-radius: variable.$global-border-radius;
+
     &--active {
       background-color: variable.$primary;
+    }
+
+    html.dark & {
+      border: 1px solid;
     }
   }
   &__link {
@@ -38,9 +47,30 @@
     background-color: variable.$bgColor;
     color: variable.$primary;
     font-weight: 600;
+    html.dark & {
+      background-color: variable.$primary-dark;
+      color: variable.$white;
+    }
+
+    &--prev {
+      html.dark & {
+        background-color: variable.$gray;
+      }
+    }
+
+    &--next {
+      html.dark & {
+        background-color: variable.$gray;
+      }
+    }
+
     &--active {
       background-color: variable.$primary;
       color: variable.$white;
+
+      html.dark & {
+        background-color: variable.$purple;
+      }
     }
     &--disabled {
       color: variable.$secondary;
