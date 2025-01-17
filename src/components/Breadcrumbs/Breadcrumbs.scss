@@ -26,6 +26,9 @@
 
     &--active {
       color: variables.$primary;
+      html.dark & {
+        color: variables.$white;
+      }
     }
   }
 }

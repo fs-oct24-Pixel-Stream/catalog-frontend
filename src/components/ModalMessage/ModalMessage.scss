@@ -10,7 +10,7 @@
   border-radius: 20px;
   font-size: 1em;
   text-align: center;
-  background-color: #fff;
+  background-color: variable.$white;
 
   overflow-x: hidden;
 }
@@ -34,7 +34,6 @@
     max-width: 700px;
   }
 }
-
 @keyframes ride {
   from {
     transform: translateX(-100%);

@@ -3,7 +3,9 @@ import logo from '../../../public/img/icons/Logo.svg';
 import logoWhite from '../../../public/img/icons/LogoWhite.svg';
 import { Link, useLocation } from 'react-router';
 import burger from '../../../public/img/icons/burger.svg';
+import burgerWhite from '../../../public/img/icons/burgerWhite.svg';
 import burgerClose from '../../../public/img/icons/burgerClose.svg';
+import burgerCloseWhite from '../../../public/img/icons/burgerCloseWhite.svg';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
 import cartWhite from '../../../public/img/icons/cartWhite.png';
@@ -190,16 +192,14 @@ export const Header = () => {
             {isMenuOpen ?
               <button>
                 <img
-                  src={burgerClose}
+                  src={theme === 'light' ? burgerClose : burgerCloseWhite}
                   alt="icon for close side-bar"
                 />
               </button>
-            : <button>
-                <img
-                  src={burger}
-                  alt="icon for open side-bar"
-                />
-              </button>
+            : <img
+                src={theme === 'light' ? burger : burgerWhite}
+                alt="icon for open side-bar"
+              />
             }
           </div>
         </div>

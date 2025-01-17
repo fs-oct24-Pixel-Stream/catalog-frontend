@@ -48,6 +48,9 @@
     .footer-link-item {
       :hover {
         color: variable.$primary;
+        html.dark & {
+          color: variable.$white;
+        }
       }
     }
 
@@ -56,6 +59,9 @@
       text-transform: uppercase;
       font-weight: 700;
       color: variable.$secondary;
+      html.dark & {
+        color: variable.$secondary-dark;
+      }
     }
   }
 
@@ -70,6 +76,9 @@
       line-height: 1.5;
       font-weight: 600;
       color: variable.$secondary;
+      html.dark & {
+        color: variable.$secondary-dark;
+      }
       margin-right: 1.6em;
     }
   }
