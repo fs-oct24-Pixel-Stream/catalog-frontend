@@ -225,6 +225,10 @@ svg {
   .language-selector:focus {
     outline: none;
   }
+
+  .icons {
+    border-left: none;
+  }
 }
 
 @include mixins.on-desktop {
@@ -264,4 +268,13 @@ svg {
 
 .toggler-white {
   color: white;
+}
+
+@media screen and (max-width: 699px) {
+  .nav-links {
+    gap: 25px;
+  }
+  .nav-links--item {
+    font-size: 11px;
+  }
 }

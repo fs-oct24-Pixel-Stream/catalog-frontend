@@ -2,31 +2,34 @@ import { FC } from 'react';
 import { HeaderLinks } from '../Header/HeaderLinks';
 import './BurgerMenu.scss';
 import cn from 'classnames';
-import { Link } from 'react-router';
+
 import { Within } from '@theme-toggles/react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setTheme } from '../../features/theme/themeSlice';
 
-type Props = {
-  isOpen: boolean;
-  onClose: () => void;
-};
 
-export const BurgerMenu: FC<Props> = (props) => {
-  const { isOpen, onClose } = props;
+import { setBurgerState } from '../../features/burger/burgerSlice';
+
+
+export const BurgerMenu: FC = () => {
+  // const { isOpen, onClose } = props;
   const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
   const toggleThemeChange = (): void => {
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
+  const handleCloseMenu = () => {
+    dispatch(setBurgerState());
+  };
+
   return (
-    <div className={cn('burger-menu-content', { open: isOpen })}>
+    <div className={cn('burger-menu-content', { open: true })}>
       <div>
         <HeaderLinks
           mainClassName="burger-nav__main"
           activeClassName="burger-nav__main burger-nav__active"
           containerClassName="burger-nav"
-          onClose={onClose}
+          onLinkClose={handleCloseMenu}
         />
       </div>
 
