@@ -10,13 +10,18 @@ import { HeaderLinks } from './HeaderLinks';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { SearchModal } from '../SearchModal';
 import { useMediaQuery } from 'react-responsive';
 import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
+import { setTheme } from '../../features/theme/themeSlice';
+import '@theme-toggles/react/css/Within.css';
+import { Within } from '@theme-toggles/react';
 
 export const Header = () => {
   const location = useLocation();
+  const dispatch = useAppDispatch();
+  const theme = useAppSelector((state) => state.theme.theme);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -30,6 +35,9 @@ export const Header = () => {
     setIsSearchActive((prev) => !prev);
   };
 
+  const toggleThemeChange = (): void => {
+    dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
+  };
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('no-scroll');
@@ -87,8 +95,17 @@ export const Header = () => {
             {isSearchActive && !isDesktop && <SearchModal onClose={toggleSearchModal} />}
 
             <div className="icons-togle-switcher">
-              <div className="icons-toggle icon-container">
-                <p>toggle</p>
+              <div
+                onClick={toggleThemeChange}
+                className="icons-toggle icon-container"
+              >
+                <Within
+                  style={{ width: '16px' }}
+                  duration={750}
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                />
               </div>
 
               <div className="icons-language icon-container">

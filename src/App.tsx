@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 import { Footer } from './components/Footer/Footer';
-import { useAppDispatch } from './app/hooks';
+import { useAppDispatch, useAppSelector } from './app/hooks';
 import { useEffect } from 'react';
 import { fetchProducts } from './features/products/productsSlice';
 
@@ -12,10 +12,11 @@ import { Header } from './components/Header/Header';
 
 export const App = () => {
   const dispatch = useAppDispatch();
-
+  const theme = useAppSelector((state) => state.theme.theme);
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+    document.documentElement.className = theme;
+  }, [theme]);
 
   return (
     <div className="body-ajustment">
