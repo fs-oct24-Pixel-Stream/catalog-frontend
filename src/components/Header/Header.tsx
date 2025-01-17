@@ -28,11 +28,8 @@ import { useLocation } from 'react-router';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
-
   const [isSearchActive, setIsSearchActive] = useState(false);
-  const location = useLocation();
   const dispatch = useAppDispatch();
-
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
 
   const isMenuOpen = useAppSelector((state) => state.burger.burgerStatus);
