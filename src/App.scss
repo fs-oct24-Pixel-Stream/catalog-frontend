@@ -97,7 +97,7 @@ html {
     background-color: transparent;
     left: 0;
     top: 0;
-    border-radius: 10px;
+    border-radius: variable.$global-border-radius;
   }
 
   &::before {
