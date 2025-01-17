@@ -15,6 +15,11 @@
     max-width: 272px;
   }
 
+  html.dark & {
+    border: 1px solid variable.$primary-dark;
+    background-color: variable.$primary-dark;
+  }
+
   &:hover {
     box-shadow: 0px 3px 13px 0px variable.$shadow;
   }
@@ -50,6 +55,10 @@
     color: variable.$primary;
     transition: all variable.$button-transition-time ease;
 
+    html.dark & {
+      color: variable.$white;
+    }
+
     &:hover {
       transform: scale(variable.$transform-scale);
     }
@@ -65,6 +74,10 @@
     font-weight: 800;
     line-height: 1.4;
     color: variable.$primary;
+
+    html.dark & {
+      color: variable.$white;
+    }
   }
 
   &__price-value--discount {
@@ -73,11 +86,19 @@
     line-height: 1.4;
     color: variable.$secondary;
     text-decoration: line-through;
+
+    html.dark & {
+      color: variable.$secondary-dark;
+    }
   }
 
   &__line {
     border-bottom: 1px solid variable.$elements;
     margin-bottom: 16px;
+
+    html.dark & {
+      border-bottom: 1px solid variable.$elements-dark;
+    }
   }
 
   &__descriptions {
@@ -89,6 +110,10 @@
     font-weight: 700;
     line-height: 1.2;
     color: variable.$secondary;
+
+    html.dark & {
+      color: variable.$secondary-dark;
+    }
   }
 
   &__descriptions-value {
@@ -96,6 +121,10 @@
     font-weight: 700;
     line-height: 1.2;
     color: variable.$primary;
+
+    html.dark & {
+      color: variable.$white;
+    }
   }
 
   &__buttons {
@@ -144,17 +173,25 @@
   &__button-wishlist {
     height: 40px;
     width: 40px;
-    background-image: url('../../../public/img/icons/Favourites\ \(Heart\ Like\).svg');
+    background-image: url('../../../public/img/icons/Fav.svg');
 
     &:hover {
       border: 1px solid variable.$primary;
+    }
+
+    html.dark & {
+      background-image: url('../../../public/img/icons/favWhite.png');
     }
   }
 
   &__button-wishlist--active {
     height: 40px;
     width: 40px;
-    background-image: url('../../../public/img/icons/IconsFavourites\ Filled\ \(Heart\ Like\).svg');
+    background-image: url('../../../public/img/icons/IconsFav-Filled.svg');
+
+    html.dark & {
+      background-image: url('../../../public/img/icons/IconsFav-Filled-white.svg');
+    }
 
     &:hover {
       border: 1px solid variable.$primary;
