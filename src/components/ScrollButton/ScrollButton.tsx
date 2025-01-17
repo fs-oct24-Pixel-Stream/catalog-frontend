@@ -42,10 +42,12 @@ export const ScrollButton = () => {
   });
 
   return (
-    <IconButton
-      className={`scroll-button__footer", ${buttonClass}`}
-      backgroundImage="img/icons/Arrow-Top.png"
-      onClick={handleBackToTop}
-    />
+    <div className={buttonClass}>
+      <IconButton
+        className="scroll-button__footer buttonClass"
+        backgroundImage="img/icons/Arrow-Top.png"
+        onClick={handleBackToTop}
+      />
+    </div>
   );
 };

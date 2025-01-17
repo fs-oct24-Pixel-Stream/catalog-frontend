@@ -43,9 +43,9 @@ export const Footer = () => {
             })}
           </ul>
         </div>
-      </div>
-      <div className="footer-back-to-top">
-        <ScrollButton />
+        <div className="footer-back-to-top">
+          <ScrollButton />
+        </div>
       </div>
     </footer>
   );

@@ -25,6 +25,9 @@
     background-color: variable.$elements;
     color: variable.$primary;
     width: 100%;
+    &:hover {
+      color: variable.$white;
+    }
   }
 }
 
