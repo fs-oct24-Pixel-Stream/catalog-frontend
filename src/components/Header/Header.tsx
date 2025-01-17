@@ -24,11 +24,14 @@ import { setTheme } from '../../features/theme/themeSlice';
 import '@theme-toggles/react/css/Within.css';
 import { Within } from '@theme-toggles/react';
 import { setBurgerState } from '../../features/burger/burgerSlice';
+import { useLocation } from 'react-router';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
-  const dispatch = useAppDispatch();
+
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const location = useLocation();
+  const dispatch = useAppDispatch();
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
 
