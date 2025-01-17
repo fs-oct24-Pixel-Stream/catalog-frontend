@@ -1,9 +1,10 @@
 import './Header.scss';
 import logo from '../../../public/img/icons/Logo.svg';
 import logoWhite from '../../../public/img/icons/LogoWhite.svg';
-import { Link, useLocation } from 'react-router';
 import burger from '../../../public/img/icons/burger.svg';
+import burgerWhite from '../../../public/img/icons/burgerWhite.svg';
 import burgerClose from '../../../public/img/icons/burgerClose.svg';
+import burgerCloseWhite from '../../../public/img/icons/burgerCloseWhite.svg';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
 import cartWhite from '../../../public/img/icons/cartWhite.png';
@@ -21,20 +22,29 @@ import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
 import { setTheme } from '../../features/theme/themeSlice';
 import '@theme-toggles/react/css/Within.css';
 import { Within } from '@theme-toggles/react';
+import { setBurgerState } from '../../features/burger/burgerSlice';
+import { Link } from 'react-router';
 
 export const Header = () => {
-  const location = useLocation();
-  const dispatch = useAppDispatch();
   const theme = useAppSelector((state) => state.theme.theme);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
-
+  const dispatch = useAppDispatch();
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
 
+  const isMenuOpen = useAppSelector((state) => state.burger.burgerStatus);
+
   const toggleBurgerMenu = (): void => {
-    setIsMenuOpen((prev) => !prev);
+    dispatch(setBurgerState());
+    console.log('here');
   };
+
+  const handleLinkClick = () => {
+    if (isMenuOpen) {
+      dispatch(setBurgerState());
+    }
+  };
+
   const toggleSearchModal = (): void => {
     setIsSearchActive((prev) => !prev);
   };
@@ -42,8 +52,9 @@ export const Header = () => {
   const toggleThemeChange = (): void => {
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
+
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen || isSearchActive) {
       document.body.classList.add('no-scroll');
     } else {
       document.body.classList.remove('no-scroll');
@@ -52,7 +63,7 @@ export const Header = () => {
     return () => {
       document.body.classList.remove('no-scroll');
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isSearchActive]);
 
   const cartList = useAppSelector((state) => state.cart.cart);
   const favoritesList = useAppSelector((state) => state.favorities.products);
@@ -67,6 +78,7 @@ export const Header = () => {
           <Link
             to="/"
             className="header-nav--logo"
+            onClick={handleLinkClick}
           >
             {theme === 'light' ?
               <img
@@ -83,7 +95,6 @@ export const Header = () => {
             mainClassName="nav-links--item"
             activeClassName="nav-links--item nav-links--current"
             containerClassName="nav-links"
-            onClose={() => setIsMenuOpen(false)}
           />
         </div>
 
@@ -132,7 +143,7 @@ export const Header = () => {
                   defaultValue="EN"
                 >
                   <option value="EN">EN</option>
-                  <option value="UK">UK</option>
+                  <option value="UK">UA</option>
                 </select>
               </div>
             </div>
@@ -142,6 +153,7 @@ export const Header = () => {
                 className={cn('icons-wrapper__item icon-container', {
                   'icons-wrapper__current': location.pathname === '/favorites',
                 })}
+                onClick={handleLinkClick}
               >
                 <div className="icons-img-box">
                   {theme === 'light' ?
@@ -164,6 +176,7 @@ export const Header = () => {
                 className={cn('icons-wrapper__item icon-container', {
                   'icons-wrapper__current': location.pathname === '/cart',
                 })}
+                onClick={handleLinkClick}
               >
                 <div className="icons-img-box">
                   {theme === 'light' ?
@@ -190,26 +203,20 @@ export const Header = () => {
             {isMenuOpen ?
               <button>
                 <img
-                  src={burgerClose}
+                  src={theme === 'light' ? burgerClose : burgerCloseWhite}
                   alt="icon for close side-bar"
                 />
               </button>
-            : <button>
-                <img
-                  src={burger}
-                  alt="icon for open side-bar"
-                />
-              </button>
+            : <img
+                src={theme === 'light' ? burger : burgerWhite}
+                alt="icon for open side-bar"
+              />
             }
           </div>
         </div>
       </header>
-      {isMenuOpen && (
-        <BurgerMenu
-          isOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
-        />
-      )}
+
+      {isMenuOpen && <BurgerMenu />}
     </>
   );
 };

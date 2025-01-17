@@ -10,6 +10,10 @@
   justify-content: space-between;
   background-color: variable.$white;
 
+  html.dark & {
+    background-color: variable.$primary-dark;
+    border: 1px solid variable.$elements-dark;
+  }
   @include mixins.on-tablet {
     //max-width: 592px;
     padding: 24px;
@@ -100,6 +104,9 @@
     line-height: 1.5;
     min-width: 32px;
     text-align: center;
+    html.dark & {
+      color: variable.$white;
+    }
   }
 
   &__price {
@@ -107,5 +114,8 @@
     font-weight: 800;
     line-height: 1.4;
     width: 80px;
+    html.dark & {
+      color: variable.$white;
+    }
   }
 }

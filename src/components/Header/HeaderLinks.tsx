@@ -25,11 +25,11 @@ type Props = {
   mainClassName: string;
   activeClassName: string;
   containerClassName: string;
-  onClose: () => void;
+  onLinkClose?: () => void;
 };
 
 export const HeaderLinks: FC<Props> = (props) => {
-  const { mainClassName, activeClassName, containerClassName, onClose } = props;
+  const { mainClassName, activeClassName, containerClassName, onLinkClose } = props;
 
   const location = useLocation();
 
@@ -46,7 +46,7 @@ export const HeaderLinks: FC<Props> = (props) => {
               [activeClassName]: isActive,
               [mainClassName]: !isActive,
             })}
-            onClick={onClose}
+            onClick={onLinkClose}
           >
             {name}
           </Link>
