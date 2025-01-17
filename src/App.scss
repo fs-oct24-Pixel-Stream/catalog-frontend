@@ -73,6 +73,7 @@
     padding: 32px 0 32px;
   }
 
+  background-color: variable.$white;
   html.dark & {
     background-color: variable.$bgColor-dark;
   }

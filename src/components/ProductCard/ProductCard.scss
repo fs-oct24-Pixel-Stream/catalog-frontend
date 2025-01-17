@@ -10,6 +10,7 @@
   border: 1px solid variable.$elements;
   font-family: variable.$font-family;
   transition: box-shadow variable.$button-transition-time ease;
+  background-color: variable.$white;
 
   @include mixins.on-desktop {
     max-width: 272px;
