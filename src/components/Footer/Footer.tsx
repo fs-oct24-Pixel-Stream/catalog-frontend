@@ -4,8 +4,10 @@ import { ScrollButton } from '../ScrollButton';
 import { footerButtons } from '../../utils/constants/footerButtons';
 import { correctTitle } from '../../utils/functions/correctTitle';
 import { handleBackToTop } from '../../utils/functions/handleBackToTop';
+import { useAppSelector } from '../../app/hooks';
 
 export const Footer = () => {
+  const theme = useAppSelector((state) => state.theme.theme);
   return (
     <footer className="footer">
       <div className="_container footer-content has-text-centered">
@@ -15,7 +17,7 @@ export const Footer = () => {
             className="footer-logo--link"
           >
             <img
-              src="./img/icons/Logo.svg"
+              src={theme === 'light' ? './img/icons/Logo.svg' : './img/icons/LogoWhite.svg'}
               alt="Nice Gadgets Logo"
               className="logo"
             />

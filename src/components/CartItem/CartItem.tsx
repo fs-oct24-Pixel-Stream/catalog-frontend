@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { decreaseProduct, increaseProduct, removeProduct } from '../../features/cart/cartSlice';
 import { IconButton } from '../IconButton/IconButton';
 import './CartItem.scss';
@@ -11,7 +11,7 @@ type Props = {
 };
 export const CartItem: React.FC<Props> = ({ product }) => {
   const dispatch = useAppDispatch();
-
+  const theme = useAppSelector((state) => state.theme.theme);
   const handleIncrease = () => {
     dispatch(increaseProduct(product));
   };
@@ -66,7 +66,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
           <IconButton
             onClick={handleIncrease}
-            backgroundImage="img/icons/Plus.svg"
+            backgroundImage={theme === 'light' ? 'img/icons/Plus.svg' : 'img/icons/PlusWhite.svg'}
           />
         </div>
 

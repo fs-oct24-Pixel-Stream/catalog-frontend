@@ -62,7 +62,7 @@ svg {
   width: 48px;
   height: 100%;
 
-  border-left: 1px solid variable.$primary;
+  border-left: 1px solid variable.$elements;
   html.dark & {
     color: variable.$primary-dark;
   }
@@ -139,7 +139,7 @@ svg {
   border: none;
 }
 
-@include mixins.on-tablet {
+@include mixins.on-tablet2 {
   .header-nav {
     display: flex;
     box-sizing: border-box;
@@ -175,6 +175,7 @@ svg {
     display: flex;
     height: 100%;
     cursor: pointer;
+    padding-left: 10px;
     &__item {
       position: relative;
       width: 48px;
@@ -225,6 +226,10 @@ svg {
   .language-selector:focus {
     outline: none;
   }
+
+  .icons {
+    border-left: none;
+  }
 }
 
 @include mixins.on-desktop {
@@ -264,4 +269,13 @@ svg {
 
 .toggler-white {
   color: white;
+}
+
+@media screen and (max-width: 699px) {
+  .nav-links {
+    gap: 25px;
+  }
+  .nav-links--item {
+    font-size: 1.1em;
+  }
 }
