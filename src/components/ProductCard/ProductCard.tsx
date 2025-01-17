@@ -15,7 +15,7 @@ type Props = {
 };
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const dispatch = useAppDispatch();
-
+  const darkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
   const cart = useAppSelector((store) => store.cart.cart);
   const isInCart = cart.some((item) => item.id === product.id);
 
@@ -100,6 +100,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
           onClick={handleBuyProduct}
           className={cn('button product-card__button-buy btn', {
             'product-card__button-buy--active': isInCart,
+            'btn--dark': darkTheme,
           })}
         >
           {getButtonText}

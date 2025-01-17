@@ -84,14 +84,16 @@
   position: relative;
   z-index: 0;
   background-color: variable.$primary;
-
+  html.dark & {
+    border: 1px solid #905bff;
+    background-color: #905bff;
+  }
   &::after {
     content: '';
     z-index: -1;
     position: absolute;
     width: 100%;
     height: 100%;
-    // background-color: transparent;
     left: 0;
     top: 0;
     border-radius: variable.$global-border-radius;
@@ -110,7 +112,6 @@
       #3e3f45,
       #313237
     );
-
     position: absolute;
     top: -2px;
     left: -2px;
@@ -134,19 +135,17 @@
     font-weight: bold;
   }
   &--dark {
-    border: 1px solid #905bff;
-    background-color: #905bff;
     &::before {
       background: linear-gradient(
         45deg,
-        #905bff,
-        #905bff,
-        #b49ee4,
-        #905bff,
+        #683dc5,
         #905bff,
         #b49ee4,
+        #b49ee4,
+        #683dc5,
+        #b49ee4,
         #905bff,
-        #905bff
+        #683dc5
       );
       position: absolute;
       top: -2px;

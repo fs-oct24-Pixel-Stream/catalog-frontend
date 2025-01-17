@@ -115,6 +115,10 @@
     background-color: variable.$primary;
     color: variable.$white;
 
+    html.dark & {
+      color: variable.$white;
+    }
+
     @include mixins.on-desktop {
       width: 160px;
     }
