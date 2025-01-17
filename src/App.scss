@@ -68,6 +68,10 @@
   @include mixins.on-desktop {
     padding: 32px 0 32px;
   }
+
+  html.dark & {
+    background-color: variable.$bgColor-dark;
+  }
 }
 
 // button for animation
@@ -183,7 +187,7 @@ html {
   }
 
   &.dark {
-    background-color: variable.$primary;
-    color: variable.$bgColor;
+    background-color: variable.$bgColor-dark;
+    color: variable.$primary-dark;
   }
 }
