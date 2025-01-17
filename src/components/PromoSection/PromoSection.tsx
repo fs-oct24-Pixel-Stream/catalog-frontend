@@ -1,15 +1,17 @@
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router';
 import { IconButton } from '../IconButton/IconButton';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Pagination } from 'swiper/modules';
 
 import './PromoSection.scss';
 import 'swiper/swiper-bundle.css';
+import { useAppSelector } from '../../app/hooks';
 
 export const PromoSection = () => {
   const swiperRef = useRef<SwiperRef | null>(null);
   const paginationRef = useRef<HTMLDivElement | null>(null);
+  const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
 
   const handleNextSlide = () => {
     swiperRef.current?.swiper.slideNext();
@@ -19,11 +21,25 @@ export const PromoSection = () => {
     swiperRef.current?.swiper.slidePrev();
   };
 
+  useEffect(() => {
+    const swiperInstance = swiperRef.current?.swiper;
+    if (swiperInstance && paginationRef.current) {
+      if (typeof swiperInstance.params.pagination === 'object') {
+        swiperInstance.params.pagination.el = paginationRef.current;
+        swiperInstance.pagination.init();
+        swiperInstance.pagination.render();
+        swiperInstance.pagination.update();
+      }
+    }
+  }, []);
+
   return (
     <div>
       <div className="is-flex promo-section">
         <IconButton
-          backgroundImage="img/icons/arrow-left.svg"
+          backgroundImage={
+            isThemeDark ? 'img/icons/arrow-left-white.svg' : 'img/icons/arrow-left.svg'
+          }
           onClick={handlePrevSlide}
           className="promo-section__button"
         />
@@ -40,7 +56,7 @@ export const PromoSection = () => {
           <SwiperSlide>
             <Link to={'/phones/apple-iphone-14-512gb-midnight'}>
               <video
-                className="promo-section__slide promo-section__slide--video"
+                className="promo-section__slide"
                 autoPlay
                 loop
                 playsInline
@@ -55,7 +71,7 @@ export const PromoSection = () => {
           <SwiperSlide>
             <Link to={'/tablets/apple-ipad-pro-11-2021-128gb-spacegray'}>
               <video
-                className="promo-section__slide promo-section__slide--video"
+                className="promo-section__slide"
                 autoPlay
                 loop
                 playsInline
@@ -70,7 +86,7 @@ export const PromoSection = () => {
           <SwiperSlide>
             <Link to={'/accessories/apple-watch-series-6-40mm-space-gray'}>
               <video
-                className="promo-section__slide promo-section__slide--video"
+                className="promo-section__slide"
                 autoPlay
                 loop
                 playsInline
@@ -83,7 +99,9 @@ export const PromoSection = () => {
           </SwiperSlide>
         </Swiper>
         <IconButton
-          backgroundImage="img/icons/arrow-right.svg"
+          backgroundImage={
+            isThemeDark ? 'img/icons/arrow-right-white.svg' : 'img/icons/arrow-right.svg'
+          }
           onClick={handleNextSlide}
           className="promo-section__button"
         />

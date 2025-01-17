@@ -15,6 +15,10 @@
       margin-top: 56px;
       margin-bottom: 56px;
     }
+
+    html.dark & {
+      color: variable.$white;
+    }
   }
 
   &__sections {
