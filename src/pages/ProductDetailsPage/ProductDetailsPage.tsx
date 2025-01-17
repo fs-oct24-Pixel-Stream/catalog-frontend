@@ -156,6 +156,7 @@ export const ProductDetailsPage = () => {
           category={category}
           variant="short"
         />
+        <div className="product-details__id">{`ID: ${id}`}</div>
       </section>
 
       <section className="product-details__about">

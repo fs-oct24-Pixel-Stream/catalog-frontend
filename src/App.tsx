@@ -10,9 +10,6 @@ import '../src/styles/utils/mixins.scss';
 import './App.scss';
 
 import { Header } from './components/Header/Header';
-import { fetchAccessories } from './features/accessories/accessoriesSlice';
-import { fetchPhones } from './features/phones/phonesSlice';
-import { fetchTablets } from './features/tablets/tabletsSlice';
 
 export const App = () => {
   const dispatch = useAppDispatch();

@@ -17,7 +17,6 @@ export const ProductParamsSelects: React.FC<Params> = (params) => {
   const {
     colorsAvailable,
     capacityAvailable,
-    id,
     category,
     color,
     capacity,
@@ -30,7 +29,6 @@ export const ProductParamsSelects: React.FC<Params> = (params) => {
       <div className="available-options__color available-options__section">
         <div className="available-options__label-wrapper">
           <span className="available-options__label">Available colors</span>
-          <span className="available-options__id">{`ID: ${id}`}</span>
         </div>
 
         <div>
