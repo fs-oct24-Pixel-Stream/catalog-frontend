@@ -1,7 +1,7 @@
 import './Header.scss';
 import logo from '../../../public/img/icons/Logo.svg';
 import { Link, useLocation } from 'react-router';
-import burger from '../../../public/img/icons/burger.svg';
+import burgerIc from '../../../public/img/icons/burger.svg';
 import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
@@ -25,12 +25,24 @@ export const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const location = useLocation();
+  const dispatch = useAppDispatch();
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
 
+  const isMenuOpen = useAppSelector((state) => state.burger.burgerStatus);
+
   const toggleBurgerMenu = (): void => {
-    setIsMenuOpen((prev) => !prev);
+    dispatch(setBurgerState());
+    console.log('here');
   };
+
+  const handleLinkClick = () => {
+    if (isMenuOpen) {
+      dispatch(setBurgerState());
+    }
+  };
+
   const toggleSearchModal = (): void => {
     setIsSearchActive((prev) => !prev);
   };
@@ -48,7 +60,7 @@ export const Header = () => {
     return () => {
       document.body.classList.remove('no-scroll');
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isSearchActive]);
 
   const cartList = useAppSelector((state) => state.cart.cart);
   const favoritesList = useAppSelector((state) => state.favorities.products);
@@ -74,7 +86,6 @@ export const Header = () => {
             mainClassName="nav-links--item"
             activeClassName="nav-links--item nav-links--current"
             containerClassName="nav-links"
-            onClose={() => setIsMenuOpen(false)}
           />
         </div>
 
@@ -124,6 +135,7 @@ export const Header = () => {
                 className={cn('icons-wrapper__item icon-container', {
                   'icons-wrapper__current': location.pathname === '/favorites',
                 })}
+                onClick={handleLinkClick}
               >
                 <div className="icons-img-box">
                   <img
@@ -140,6 +152,7 @@ export const Header = () => {
                 className={cn('icons-wrapper__item icon-container', {
                   'icons-wrapper__current': location.pathname === '/cart',
                 })}
+                onClick={handleLinkClick}
               >
                 <div className="icons-img-box">
                   <img
@@ -166,7 +179,7 @@ export const Header = () => {
               </button>
             : <button>
                 <img
-                  src={burger}
+                  src={burgerIc}
                   alt="icon for open side-bar"
                 />
               </button>
@@ -174,12 +187,8 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      {isMenuOpen && (
-        <BurgerMenu
-          isOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
-        />
-      )}
+
+      {isMenuOpen && <BurgerMenu />}
     </>
   );
 };
