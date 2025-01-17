@@ -3,12 +3,7 @@
 
 :root {
   --bulma-family-primary: Mont, sans-serif;
-}
-
-html {
-  $font-family: var(--bulma-family-primary);
-  font-size: 10px;
-  background-color: variable.$bgColor;
+  --bulma-body-color: variable.$bgColor;
 }
 
 .body-ajustment {
@@ -37,7 +32,6 @@ html {
   font-size: 3.2em;
   font-weight: 800;
   line-height: 1.17;
-  color: variable.$primary;
 
   @include mixins.on-tablet {
     font-size: 4.2em;
@@ -51,11 +45,8 @@ html {
   font-size: 2.2em;
   font-weight: 800;
   line-height: 1.4;
-  color: variable.$primary;
 }
 .main-button {
-  background-color: variable.$primary;
-  color: variable.$white;
   font-size: 1.4em;
   width: 175px;
   height: 48px;
@@ -70,5 +61,99 @@ html {
   }
 }
 .footer {
-  padding: 32px 0 32px;
+  padding: 32px 0 0;
+  @include mixins.on-tablet {
+    padding: 32px 0 32px;
+  }
+  @include mixins.on-desktop {
+    padding: 32px 0 32px;
+  }
+}
+
+// button for animation
+.btn {
+  border: none;
+  outline: none;
+  color: variable.$white;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    left: 0;
+    top: 0;
+    border-radius: variable.$global-border-radius;
+  }
+
+  &::before {
+    content: '';
+    background: linear-gradient(
+      45deg,
+      #313237,
+      #3e3f45,
+      #89939a,
+      #89939a,
+      #313237,
+      #89939a,
+      #3e3f45,
+      #313237
+    );
+
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+  }
+  &:hover::before {
+    opacity: 1;
+  }
+  &:active:after {
+    background: transparent;
+  }
+  &:active {
+    color: variable.$primary;
+    font-weight: bold;
+  }
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+html {
+  $font-family: var(--bulma-family-primary);
+  font-size: 10px;
+  background-color: variable.$bgColor;
+  color: variable.$primary;
+
+  &.light {
+    background-color: variable.$bgColor;
+    color: variable.$primary;
+  }
+
+  &.dark {
+    background-color: variable.$primary;
+    color: variable.$bgColor;
+  }
 }

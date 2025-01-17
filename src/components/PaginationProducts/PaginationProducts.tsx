@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { CustomEventPageClick } from '../../utils/types/CustomEventPageClick';
 import './Pagination.scss';
+import { useSearchParams } from 'react-router';
 
 type Props = {
   pageCount: number;
@@ -11,6 +12,13 @@ type Props = {
 const PaginationProducts: React.FC<Props> = (props) => {
   const { pageCount, handlePageClick } = props;
   const [width, setWidth] = useState(window.innerWidth);
+  const [searchParams] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState(0);
+
+  useEffect(() => {
+    const page = Number(searchParams.get('page')) || 1;
+    setCurrentPage(page - 1);
+  }, [searchParams]);
 
   useEffect(() => {
     const handleResize = (event: Event) => {
@@ -34,6 +42,7 @@ const PaginationProducts: React.FC<Props> = (props) => {
         pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}
+        forcePage={currentPage}
         containerClassName="paginations__container"
         breakClassName="paginations__points"
         pageClassName="paginations__page"

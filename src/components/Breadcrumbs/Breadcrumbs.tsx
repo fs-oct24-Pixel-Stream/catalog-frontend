@@ -6,7 +6,6 @@ export const Breadcrumbs = () => {
   const location = useLocation();
 
   const pathnames = location.pathname.split('/').filter((page) => page !== '');
-
   const isActivePathActive = (pathIndex: number) => {
     if (pathIndex === 0 && pathnames.length > 1) {
       return true;
@@ -26,6 +25,8 @@ export const Breadcrumbs = () => {
           </Link>
         </li>
         {pathnames.map((path, index) => {
+          const formattedPath = path.replace(/-/g, ' ');
+
           const redirectTo = `/${pathnames.slice(0, index + 1).join('/')}`;
           return (
             <li
@@ -40,7 +41,7 @@ export const Breadcrumbs = () => {
                   'breadcrumbs__link': !isActivePathActive(index),
                 })}
               >
-                {path}
+                {formattedPath}
               </Link>
             </li>
           );

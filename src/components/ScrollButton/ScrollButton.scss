@@ -4,20 +4,17 @@
 .scroll-button {
   position: fixed;
   z-index: 50;
-  bottom: 32px;
+  bottom: 28px;
   right: 32px;
   opacity: 0;
   transition: opacity variable.$button-transition-time ease;
-
-  @include mixins.on-tablet {
-    bottom: 100px;
-  }
 
   &__footer {
     width: 40px;
     height: 40px;
     position: relative;
     border-radius: variable.$global-border-radius;
+    border: 1px solid variable.$primary;
   }
 
   &.visible {
