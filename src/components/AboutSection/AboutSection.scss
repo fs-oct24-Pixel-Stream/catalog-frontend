@@ -1,0 +1,30 @@
+@use './../../styles/utils/variable.scss';
+
+.about {
+  display: block;
+
+  &__section {
+    margin-bottom: 32px;
+
+    &--title {
+      margin-bottom: 16px;
+
+      font-weight: 600;
+      font-size: 2em;
+      line-height: 1.3;
+
+      color: variable.$primary;
+    }
+
+    &--text {
+      font-weight: 400;
+      font-size: 1.4em;
+      line-height: 1.5;
+      color: variable.$secondary;
+    }
+  }
+
+  &__section:last-child {
+    margin-bottom: 0;
+  }
+}

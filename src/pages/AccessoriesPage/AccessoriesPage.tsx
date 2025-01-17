@@ -9,12 +9,10 @@ export const AccessoriesPage = () => {
   const accessories = useMemo(() => {
     return products.filter((product) => product.category === 'accessories');
   }, [products]);
-
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchAccessories());
-  }, [dispatch]);
-
+  }, []);
   return (
     <>
       <ProductsPage products={accessories} />

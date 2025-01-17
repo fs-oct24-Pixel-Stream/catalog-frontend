@@ -1,3 +1,5 @@
+import { ColorKey } from './colors';
+
 export interface ProductDeviceType {
   id: string;
   category: string;
@@ -7,8 +9,8 @@ export interface ProductDeviceType {
   capacity: string;
   priceRegular: number;
   priceDiscount?: number;
-  colorsAvailable: string[];
-  color: string;
+  colorsAvailable: ColorKey[];
+  color: ColorKey;
   images: string[];
   description: Array<{
     title: string;
