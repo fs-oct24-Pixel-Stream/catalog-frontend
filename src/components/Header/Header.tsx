@@ -28,6 +28,7 @@ import { useLocation } from 'react-router';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
+
   const [isSearchActive, setIsSearchActive] = useState(false);
   const dispatch = useAppDispatch();
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
