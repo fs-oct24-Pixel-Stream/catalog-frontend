@@ -14,6 +14,10 @@
       line-height: 1.3;
 
       color: variable.$primary;
+
+      html.dark & {
+        color: variable.$icons;
+      }
     }
 
     &--text {

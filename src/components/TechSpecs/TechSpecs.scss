@@ -22,6 +22,10 @@
 
     &--value {
       color: variable.$primary;
+
+      html.dark & {
+        color: variable.$icons;
+      }
     }
   }
 }

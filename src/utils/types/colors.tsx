@@ -1,7 +1,7 @@
 export const COLORS = {
   alpinegreen: '#637862',
   black: '#161717',
-  blue: '#bad4e3',
+  blue: '#041e4d',
   coral: '#ed6653',
   deeppurple: '#4b4057',
   gold: '#d6a987',

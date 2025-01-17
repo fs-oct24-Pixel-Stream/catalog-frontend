@@ -45,7 +45,11 @@
   &__wishlist {
     height: 40px;
     width: 40px;
-    background-image: url('../../../public/img/icons/Favourites\ \(Heart\ Like\).svg');
+    background-image: url('../../../public/img/icons/Fav.svg');
+
+    html.dark & {
+      background-image: url('../../../public/img/icons/favWhite.png');
+    }
 
     &:hover {
       border: 1px solid variable.$primary;
@@ -55,7 +59,11 @@
   &__wishlist--active {
     height: 40px;
     width: 40px;
-    background-image: url('../../../public/img/icons/IconsFavourites\ Filled\ \(Heart\ Like\).svg');
+    background-image: url('../../../public/img/icons/IconsFav-Filled.svg');
+
+    html.dark & {
+      background-image: url('../../../public/img/icons/IconsFav-Filled-white.svg');
+    }
 
     &:hover {
       border: 1px solid variable.$primary;
