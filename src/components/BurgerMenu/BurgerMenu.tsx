@@ -7,12 +7,9 @@ import { Within } from '@theme-toggles/react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setTheme } from '../../features/theme/themeSlice';
 
-
 import { setBurgerState } from '../../features/burger/burgerSlice';
 
-
 export const BurgerMenu: FC = () => {
-  // const { isOpen, onClose } = props;
   const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
   const toggleThemeChange = (): void => {
