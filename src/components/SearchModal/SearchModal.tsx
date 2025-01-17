@@ -40,29 +40,31 @@ export const SearchModal = ({ onClose }: { onClose: () => void }) => {
             onChange={(e) => setQuery(e.target.value)}
           />
           {query && (
-            <div className="search-modal__results">
-              {filteredProducts.length > 0 ?
-                filteredProducts.map((product) => (
-                  <div
-                    key={product.id}
-                    className="search-modal__item"
-                    onClick={() => handleProductClick(product)}
-                  >
-                    {isTablet && (
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        width={'30px'}
-                        height={'30px'}
-                      />
-                    )}
-                    {product.name}
+            <div>
+              <div className="search-modal__results">
+                {filteredProducts.length > 0 ?
+                  filteredProducts.map((product) => (
+                    <div
+                      key={product.id}
+                      className="search-modal__item"
+                      onClick={() => handleProductClick(product)}
+                    >
+                      {isTablet && (
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          width={'30px'}
+                          height={'30px'}
+                        />
+                      )}
+                      {product.name}
+                    </div>
+                  ))
+                : <div className="search-modal__no-results">
+                    No products found matching your search.
                   </div>
-                ))
-              : <div className="search-modal__no-results">
-                  No products found matching your search.
-                </div>
-              }
+                }
+              </div>
             </div>
           )}
         </div>

@@ -3,23 +3,24 @@ import { HeaderLinks } from '../Header/HeaderLinks';
 import './BurgerMenu.scss';
 import cn from 'classnames';
 import { Link } from 'react-router';
+import { useAppDispatch } from '../../app/hooks';
+import { setBurgerState } from '../../features/burger/burgerSlice';
 
-type Props = {
-  isOpen: boolean;
-  onClose: () => void;
-};
+export const BurgerMenu: FC = () => {
+  const dispatch = useAppDispatch();
 
-export const BurgerMenu: FC<Props> = (props) => {
-  const { isOpen, onClose } = props;
+  const handleCloseMenu = () => {
+    dispatch(setBurgerState());
+  };
 
   return (
-    <div className={cn('burger-menu-content', { open: isOpen })}>
+    <div className={cn('burger-menu-content', { open: true })}>
       <div>
         <HeaderLinks
           mainClassName="burger-nav__main"
           activeClassName="burger-nav__main burger-nav__active"
           containerClassName="burger-nav"
-          onClose={onClose}
+          onLinkClose={handleCloseMenu}
         />
       </div>
 
