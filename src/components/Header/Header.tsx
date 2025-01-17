@@ -1,7 +1,7 @@
 import './Header.scss';
 import logo from '../../../public/img/icons/Logo.svg';
 import logoWhite from '../../../public/img/icons/LogoWhite.svg';
-import { Link, useLocation } from 'react-router';
+import { Link } from 'react-router';
 import burger from '../../../public/img/icons/burger.svg';
 import burgerWhite from '../../../public/img/icons/burgerWhite.svg';
 import burgerClose from '../../../public/img/icons/burgerClose.svg';
@@ -26,13 +26,9 @@ import { Within } from '@theme-toggles/react';
 import { setBurgerState } from '../../features/burger/burgerSlice';
 
 export const Header = () => {
-
   const theme = useAppSelector((state) => state.theme.theme);
-
- 
-  const [isSearchActive, setIsSearchActive] = useState(false);
-  const location = useLocation();
   const dispatch = useAppDispatch();
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
 
@@ -56,6 +52,7 @@ export const Header = () => {
   const toggleThemeChange = (): void => {
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('no-scroll');
