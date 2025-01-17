@@ -98,7 +98,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
       <div className="is-flex is-justify-content-space-between product-card__buttons">
         <button
           onClick={handleBuyProduct}
-          className={cn('button', 'product-card__button-buy', {
+          className={cn('button product-card__button-buy btn', {
             'product-card__button-buy--active': isInCart,
           })}
         >

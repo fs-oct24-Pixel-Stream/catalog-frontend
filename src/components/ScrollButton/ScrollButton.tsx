@@ -20,12 +20,11 @@ export const ScrollButton = () => {
       timeout = setTimeout(() => {
         setIsScrolling(false);
         if (scrollTop > 200) {
-          // Показувати кнопку після прокрутки 200px
           setIsVisible(true);
         } else {
           setIsVisible(false);
         }
-      }, 200); // Затримка для визначення завершення скролу
+      }, 200);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -42,10 +41,12 @@ export const ScrollButton = () => {
   });
 
   return (
-    <IconButton
-      className={`scroll-button__footer", ${buttonClass}`}
-      backgroundImage="img/icons/Arrow-Top.png"
-      onClick={handleBackToTop}
-    />
+    <div className={buttonClass}>
+      <IconButton
+        className="scroll-button__footer buttonClass"
+        backgroundImage="img/icons/Arrow-Top.png"
+        onClick={handleBackToTop}
+      />
+    </div>
   );
 };

@@ -99,7 +99,6 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
       <PaginationProducts
         pageCount={pageCount}
         handlePageClick={handlePageClick}
-        // currentPage={currentPage}
       />
     </section>
   );

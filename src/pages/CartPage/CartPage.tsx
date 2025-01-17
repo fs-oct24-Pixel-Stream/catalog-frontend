@@ -78,7 +78,7 @@ export const CartPage = () => {
                     for {totalQuantity} product{totalQuantity > 1 ? 's' : ''}
                   </p>
                   <button
-                    className="checkout-block__button main-button"
+                    className="button product-card__button-buy btn checkout-block__check"
                     onClick={() => handleOpenModal()}
                   >
                     Checkout
