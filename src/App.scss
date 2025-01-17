@@ -179,6 +179,11 @@ html {
   font-size: 10px;
   background-color: variable.$bgColor;
   color: variable.$primary;
+  transition: all variable.$button-transition-time ease-in-out;
+  select option {
+    background-color: lightgray;
+    color: black;
+  }
 
   &.light {
     background-color: variable.$bgColor;

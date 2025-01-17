@@ -14,6 +14,11 @@
   align-items: center;
   justify-content: center;
 
+  html.dark & {
+    border: 1px solid variable.$purple;
+    background-color: variable.$purple;
+  }
+
   &:hover {
     border: 1px solid variable.$primary;
   }

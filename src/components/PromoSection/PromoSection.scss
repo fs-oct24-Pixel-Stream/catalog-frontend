@@ -48,18 +48,11 @@
   &__slide {
     width: 100%;
     height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-color: rgb(229, 229, 229);
+    object-fit: cover;
 
     @include mixins.on-tablet {
       border-radius: variable.$global-border-radius;
     }
-  }
-
-  &__slide--video {
-    object-fit: cover;
   }
 }
 
@@ -80,8 +73,16 @@
   border-radius: 0;
   background-color: variable.$secondary;
   border-radius: variable.$global-border-radius;
+
+  html.dark & {
+    background-color: variable.$secondary-dark;
+  }
 }
 
 .swiper-pagination-bullet-active {
   background-color: variable.$primary;
+
+  html.dark & {
+    background-color: variable.$white;
+  }
 }

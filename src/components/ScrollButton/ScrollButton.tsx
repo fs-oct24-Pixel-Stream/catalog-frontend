@@ -3,10 +3,12 @@ import { IconButton } from '../IconButton';
 import { handleBackToTop } from '../../utils/functions/handleBackToTop';
 import cn from 'classnames';
 import './ScrollButton.scss';
+import { useAppSelector } from '../../app/hooks';
 
 export const ScrollButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
 
   useEffect(() => {
     let timeout: any;
@@ -44,7 +46,7 @@ export const ScrollButton = () => {
     <div className={buttonClass}>
       <IconButton
         className="scroll-button__footer buttonClass"
-        backgroundImage="img/icons/Arrow-Top.png"
+        backgroundImage={isThemeDark ? 'img/icons/Arrow-top-white.svg' : 'img/icons/Arrow-top.svg'}
         onClick={handleBackToTop}
       />
     </div>

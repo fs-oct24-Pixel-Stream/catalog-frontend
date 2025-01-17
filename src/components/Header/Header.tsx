@@ -1,11 +1,15 @@
 import './Header.scss';
 import logo from '../../../public/img/icons/Logo.svg';
+import logoWhite from '../../../public/img/icons/LogoWhite.svg';
 import { Link, useLocation } from 'react-router';
 import burger from '../../../public/img/icons/burger.svg';
 import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import cart from '../../../public/img/icons/cart.png';
 import fav from '../../../public/img/icons/fav.png';
+import cartWhite from '../../../public/img/icons/cartWhite.png';
+import favWhite from '../../../public/img/icons/favWhite.png';
 import search from '../../../public/img/icons/Search.svg';
+import searchWhite from '../../../public/img/icons/SearchWhite.svg';
 import { HeaderLinks } from './HeaderLinks';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { useEffect, useState } from 'react';
@@ -64,11 +68,16 @@ export const Header = () => {
             to="/"
             className="header-nav--logo"
           >
-            <img
-              src={logo}
-              alt="logo"
-              className="logo-img"
-            />
+            {theme === 'light' ?
+              <img
+                src={logo}
+                alt="logo"
+              />
+            : <img
+                src={logoWhite}
+                alt="logo"
+              />
+            }
           </Link>
           <HeaderLinks
             mainClassName="nav-links--item"
@@ -87,10 +96,16 @@ export const Header = () => {
               onClick={toggleSearchModal}
               aria-label="open search"
             >
-              <img
-                src={search}
-                alt="search"
-              />
+              {theme === 'light' ?
+                <img
+                  src={search}
+                  alt="icon for search"
+                />
+              : <img
+                  src={searchWhite}
+                  alt="white icon for search"
+                />
+              }
             </div>
             {isSearchActive && !isDesktop && <SearchModal onClose={toggleSearchModal} />}
 
@@ -99,9 +114,12 @@ export const Header = () => {
                 onClick={toggleThemeChange}
                 className="icons-toggle icon-container"
               >
+                {/* our toggler */}
                 <Within
                   style={{ width: '16px' }}
                   duration={750}
+                  toggled={theme === 'dark'}
+                  className={cn({ 'toggler-white': theme === 'dark' })}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
@@ -126,10 +144,16 @@ export const Header = () => {
                 })}
               >
                 <div className="icons-img-box">
-                  <img
-                    src={fav}
-                    alt="icon for favorite"
-                  />
+                  {theme === 'light' ?
+                    <img
+                      src={fav}
+                      alt="icon for favorite"
+                    />
+                  : <img
+                      src={favWhite}
+                      alt="icon for favorite"
+                    />
+                  }
                   {favoritesList.length > 0 && (
                     <span className="item-counter">{favoritesList.length}</span>
                   )}
@@ -142,10 +166,16 @@ export const Header = () => {
                 })}
               >
                 <div className="icons-img-box">
-                  <img
-                    src={cart}
-                    alt="icon for cart"
-                  />
+                  {theme === 'light' ?
+                    <img
+                      src={cart}
+                      alt="icon for cart"
+                    />
+                  : <img
+                      src={cartWhite}
+                      alt="icon for cart"
+                    />
+                  }
                   {cartList.length > 0 && <span className="item-counter">{cartList.length}</span>}
                 </div>
               </Link>
