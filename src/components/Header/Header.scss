@@ -62,7 +62,7 @@ svg {
   width: 48px;
   height: 100%;
 
-  border-left: 1px solid variable.$primary;
+  border-left: 1px solid variable.$elements;
   html.dark & {
     color: variable.$primary-dark;
   }
