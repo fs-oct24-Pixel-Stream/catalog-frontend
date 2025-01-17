@@ -50,7 +50,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
     if (location.pathname === `/${product.category}`) {
       return `${product.itemId}`;
     } else {
-      handleBackToTop();
+      // handleBackToTop();
       return `/${product.category}/${product.itemId}`;
     }
   };
