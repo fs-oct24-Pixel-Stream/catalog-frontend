@@ -26,7 +26,7 @@ export const Breadcrumbs = () => {
         </li>
         {pathnames.map((path, index) => {
           const formattedPath = path.replace(/-/g, ' ');
-          console.log(formattedPath);
+
           const redirectTo = `/${pathnames.slice(0, index + 1).join('/')}`;
           return (
             <li
