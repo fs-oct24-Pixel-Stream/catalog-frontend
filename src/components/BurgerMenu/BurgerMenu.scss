@@ -14,6 +14,9 @@
   width: 100%;
   max-width: 639px;
   background-color: variable.$white;
+  html.dark & {
+    background-color: variable.$primary-dark;
+  }
   z-index: 101;
   height: calc(100vh - 48px);
   display: flex;
@@ -39,10 +42,16 @@
     line-height: 1.2;
     letter-spacing: 0.04em;
     color: variable.$secondary;
+    html.dark & {
+      color: variable.$secondary-dark;
+    }
     text-transform: uppercase;
     transition: color 0.3s ease-in-out;
     &:hover {
       color: variable.$primary;
+      html.dark & {
+        color: variable.$white;
+      }
     }
   }
 }
@@ -55,6 +64,9 @@
   text-transform: uppercase;
   position: relative;
   color: variable.$primary;
+  html.dark & {
+    color: variable.$white;
+  }
   &::after {
     content: '';
     position: absolute;
@@ -62,6 +74,10 @@
     left: 0;
     width: 100%;
     border-bottom: 2px solid variable.$primary;
+
+    html.dark & {
+      border-bottom: 2px solid variable.$white;
+    }
   }
 }
 
@@ -75,11 +91,18 @@
     width: 100%;
     height: 64px;
     border: 1px solid variable.$elements;
+    color: variable.$primary;
+    html.dark & {
+      color: variable.$white;
+    }
     cursor: pointer;
     font-size: 1.6em;
     &:hover,
     &:focus {
       background-color: variable.$elements;
+      html.dark & {
+        background-color: variable.$elements-dark;
+      }
     }
   }
   &__active::after {
@@ -90,6 +113,9 @@
     width: 100%;
     height: 3px;
     background: variable.$primary;
+    html.dark & {
+      background: variable.$white;
+    }
     border-radius: 2px;
   }
 }
