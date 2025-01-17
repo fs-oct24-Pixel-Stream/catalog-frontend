@@ -114,6 +114,7 @@ export const Header = () => {
                 onClick={toggleThemeChange}
                 className="icons-toggle icon-container"
               >
+                {/* our toggler */}
                 <Within
                   style={{ width: '16px' }}
                   duration={750}
