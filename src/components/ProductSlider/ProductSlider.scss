@@ -12,6 +12,10 @@
       font-size: 3.2em;
       line-height: 1.28;
     }
+
+    html.dark & {
+      color: variable.$white;
+    }
   }
 
   &__buttons {

@@ -73,8 +73,16 @@
   border-radius: 0;
   background-color: variable.$secondary;
   border-radius: variable.$global-border-radius;
+
+  html.dark & {
+    background-color: variable.$secondary-dark;
+  }
 }
 
 .swiper-pagination-bullet-active {
   background-color: variable.$primary;
+
+  html.dark & {
+    background-color: variable.$white;
+  }
 }

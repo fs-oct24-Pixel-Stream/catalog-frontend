@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { ProductCard } from '../ProductCard';
 import 'swiper/swiper-bundle.css';
 import './ProductSlider.scss';
+import { useAppSelector } from '../../app/hooks';
 
 interface Props {
   products: ProductCardType[];
@@ -15,6 +16,7 @@ interface Props {
 export const ProductSlider: React.FC<Props> = (props) => {
   const { products, title, discount = true } = props;
   const swiperRef = useRef<SwiperRef | null>(null);
+  const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
 
   const handleNextSlide = () => {
     swiperRef.current?.swiper.slideNext();
@@ -30,12 +32,18 @@ export const ProductSlider: React.FC<Props> = (props) => {
         <h2 className="titleSecond product-slider__title">{title}</h2>
         <div className="is-flex product-slider__buttons">
           <IconButton
-            backgroundImage="img/icons/arrow-left.svg"
+            backgroundImage={
+              isThemeDark ? 'img/icons/arrow-left-white.svg' : 'img/icons/arrow-left.svg'
+            }
             onClick={handlePrevSlide}
+            className="product-slider__button"
           />
           <IconButton
-            backgroundImage="img/icons/arrow-right.svg"
+            backgroundImage={
+              isThemeDark ? 'img/icons/arrow-right-white.svg' : 'img/icons/arrow-right.svg'
+            }
             onClick={handleNextSlide}
+            className="product-slider__button"
           />
         </div>
       </div>

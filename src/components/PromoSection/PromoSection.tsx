@@ -6,10 +6,12 @@ import { Pagination } from 'swiper/modules';
 
 import './PromoSection.scss';
 import 'swiper/swiper-bundle.css';
+import { useAppSelector } from '../../app/hooks';
 
 export const PromoSection = () => {
   const swiperRef = useRef<SwiperRef | null>(null);
   const paginationRef = useRef<HTMLDivElement | null>(null);
+  const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
 
   const handleNextSlide = () => {
     swiperRef.current?.swiper.slideNext();
@@ -34,9 +36,10 @@ export const PromoSection = () => {
   return (
     <div>
       <div className="is-flex promo-section">
-        1
         <IconButton
-          backgroundImage="img/icons/arrow-left.svg"
+          backgroundImage={
+            isThemeDark ? 'img/icons/arrow-left-white.svg' : 'img/icons/arrow-left.svg'
+          }
           onClick={handlePrevSlide}
           className="promo-section__button"
         />
@@ -96,7 +99,9 @@ export const PromoSection = () => {
           </SwiperSlide>
         </Swiper>
         <IconButton
-          backgroundImage="img/icons/arrow-right.svg"
+          backgroundImage={
+            isThemeDark ? 'img/icons/arrow-right-white.svg' : 'img/icons/arrow-right.svg'
+          }
           onClick={handleNextSlide}
           className="promo-section__button"
         />
