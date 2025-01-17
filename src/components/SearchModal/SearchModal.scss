@@ -51,6 +51,12 @@
     gap: 10px;
   }
 
+  &__results-container {
+    padding: 12px;
+    background-color: variable.$white;
+    border: 1px solid variable.$elements;
+  }
+
   &__results {
     display: flex;
     flex-direction: column;
@@ -59,11 +65,8 @@
     max-height: 50vh;
     width: 100%;
     margin-top: 3px;
-    padding: 12px;
     overflow-y: scroll;
-    border: 1px solid variable.$elements;
     border-radius: 5px;
-    background-color: variable.$white;
   }
 
   &__no-results {
