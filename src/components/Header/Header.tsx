@@ -21,16 +21,13 @@ import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
 import { setTheme } from '../../features/theme/themeSlice';
 import '@theme-toggles/react/css/Within.css';
 import { Within } from '@theme-toggles/react';
+import { setBurgerState } from '../../features/burger/burgerSlice';
 
 export const Header = () => {
   const location = useLocation();
   const dispatch = useAppDispatch();
   const theme = useAppSelector((state) => state.theme.theme);
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
-  const location = useLocation();
-  const dispatch = useAppDispatch();
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
 
@@ -54,6 +51,7 @@ export const Header = () => {
   const toggleThemeChange = (): void => {
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('no-scroll');
