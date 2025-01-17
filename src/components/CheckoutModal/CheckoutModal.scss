@@ -12,6 +12,10 @@
   transition: box-shadow variable.$button-transition-time ease;
   border-radius: variable.$global-border-radius;
 
+  html.dark & {
+    background-color: variable.$primary-dark;
+    color: variable.$white;
+  }
   &:hover {
     box-shadow: 0 5px 13px rgba(18, 25, 39, 0.4);
   }
@@ -19,12 +23,18 @@
   &-confirm {
     background-color: variable.$primary;
     width: 100%;
+    html.dark & {
+      background-color: variable.$primary;
+    }
   }
 
   &-cancel {
     background-color: variable.$elements;
     color: variable.$primary;
     width: 100%;
+    html.dark & {
+      background-color: variable.$elements-dark;
+    }
     &:hover {
       color: variable.$white;
     }
@@ -44,18 +54,28 @@
       box-shadow: none;
       text-align: center;
       text-transform: capitalize;
+      html.dark & {
+        background-color: variable.$primary-dark;
+      }
     }
 
     &-title {
       font-size: 1.4em;
       font-weight: bold;
       position: relative;
+      html.dark & {
+        color: variable.$white;
+        background-color: variable.$primary-dark;
+      }
     }
 
     &-body {
       max-height: 100%;
       padding: 25px 0 0 30px;
       background-color: variable.$white;
+      html.dark & {
+        background-color: variable.$primary-dark;
+      }
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -68,6 +88,9 @@
       gap: 30px;
       font-size: 1.4em;
       border-top: 1px solid variable.$elements;
+      html.dark & {
+        background-color: variable.$primary-dark;
+      }
       padding: 40px 30px;
     }
   }
@@ -75,6 +98,9 @@
 
 .modal-background {
   background-color: variable.$shadow;
+  html.dark & {
+    background-color: #a5a5a567;
+  }
 }
 
 .buttons {

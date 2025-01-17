@@ -17,18 +17,30 @@
 
   text-align: center;
   color: variable.$primary;
+  html.dark & {
+    color: variable.$white;
+  }
 
   &__title {
     font-size: 3.2em;
+    html.dark & {
+      color: variable.$white;
+    }
   }
   &__description {
     font-size: 1.4em;
     font-weight: 500;
     padding: 20px 0 20px;
     line-height: 1.5;
+    html.dark & {
+      color: variable.$white;
+    }
   }
   &__back-button {
     background-color: variable.$primary;
+    html.dark & {
+      color: variable.$white;
+    }
     color: variable.$white;
     font-size: 1.4em;
     width: 175px;
@@ -50,5 +62,12 @@
     &__title {
       font-size: 4.8em;
     }
+  }
+}
+
+.title {
+  color: variable.$primary;
+  html.dark & {
+    color: variable.$white;
   }
 }

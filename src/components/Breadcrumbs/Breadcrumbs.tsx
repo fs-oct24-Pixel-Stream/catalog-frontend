@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router';
 import cn from 'classnames';
 import './Breadcrumbs.scss';
+import { useAppSelector } from '../../app/hooks';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
@@ -12,6 +13,8 @@ export const Breadcrumbs = () => {
     }
     return false;
   };
+
+  const theme = useAppSelector((state) => state.theme.theme);
   return (
     <div className="breadcrumbs-container">
       <ul className="breadcrumbs">
@@ -19,7 +22,7 @@ export const Breadcrumbs = () => {
           <Link to="/">
             <img
               className="breadcrumbs__home"
-              src="./img/icons/Home.svg"
+              src={theme === 'light' ? './img/icons/Home.svg' : './img/icons/HomeWhite.svg'}
               alt="Home"
             />
           </Link>

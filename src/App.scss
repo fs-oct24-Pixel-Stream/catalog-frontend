@@ -33,6 +33,10 @@
   font-weight: 800;
   line-height: 1.17;
 
+  html.dark & {
+    color: variable.$white;
+  }
+
   @include mixins.on-tablet {
     font-size: 4.2em;
   }
