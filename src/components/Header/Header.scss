@@ -139,7 +139,7 @@ svg {
   border: none;
 }
 
-@include mixins.on-tablet {
+@include mixins.on-tablet2 {
   .header-nav {
     display: flex;
     box-sizing: border-box;
@@ -175,6 +175,7 @@ svg {
     display: flex;
     height: 100%;
     cursor: pointer;
+    padding-left: 10px;
     &__item {
       position: relative;
       width: 48px;

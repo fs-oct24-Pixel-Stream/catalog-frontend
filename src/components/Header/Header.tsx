@@ -27,6 +27,7 @@ export const Header = () => {
   const location = useLocation();
   const dispatch = useAppDispatch();
   const theme = useAppSelector((state) => state.theme.theme);
+
   const [isSearchActive, setIsSearchActive] = useState(false);
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
@@ -53,7 +54,7 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen || isSearchActive) {
       document.body.classList.add('no-scroll');
     } else {
       document.body.classList.remove('no-scroll');
@@ -77,6 +78,7 @@ export const Header = () => {
           <Link
             to="/"
             className="header-nav--logo"
+            onClick={handleLinkClick}
           >
             {theme === 'light' ?
               <img
@@ -141,7 +143,7 @@ export const Header = () => {
                   defaultValue="EN"
                 >
                   <option value="EN">EN</option>
-                  <option value="UK">UK</option>
+                  <option value="UK">UA</option>
                 </select>
               </div>
             </div>
