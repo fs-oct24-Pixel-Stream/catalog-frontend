@@ -11,8 +11,12 @@
   font-size: 1em;
   text-align: center;
   background-color: variable.$white;
-
   overflow-x: hidden;
+
+  html.dark & {
+    background-color: variable.$primary-dark;
+    border: 1px solid variable.$purple;
+  }
 }
 
 .modal-background {

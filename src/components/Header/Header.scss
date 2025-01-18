@@ -63,6 +63,7 @@ svg {
 .burger-menu {
   width: 48px;
   height: 100%;
+  cursor: pointer;
 
   border-left: 1px solid variable.$elements;
   html.dark & {

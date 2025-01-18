@@ -8,6 +8,7 @@ import { IconButton } from '../IconButton/IconButton';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
 import './ProductCard.scss';
 import { separeteSpecs } from '../../utils/functions/separeteSpecs';
+import { handleBackToTop } from '../../utils/functions/handleBackToTop';
 
 type Props = {
   product: ProductCardType;
@@ -49,7 +50,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
     if (location.pathname === `/${product.category}`) {
       return `${product.itemId}`;
     } else {
-      // handleBackToTop();
+      handleBackToTop();
       return `/${product.category}/${product.itemId}`;
     }
   };

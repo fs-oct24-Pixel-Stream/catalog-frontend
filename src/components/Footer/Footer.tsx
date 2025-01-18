@@ -3,7 +3,7 @@ import './Footer.scss';
 import { ScrollButton } from '../ScrollButton';
 import { footerButtons } from '../../utils/constants/footerButtons';
 import { correctTitle } from '../../utils/functions/correctTitle';
-import { handleBackToTop } from '../../utils/functions/handleBackToTop';
+import { handleBackToTop, quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 import { useAppSelector } from '../../app/hooks';
 
 export const Footer = () => {
@@ -15,6 +15,7 @@ export const Footer = () => {
           <Link
             to="/"
             className="footer-logo--link"
+            onClick={quicklyBackToTop}
           >
             <img
               src={theme === 'light' ? './img/icons/Logo.svg' : './img/icons/LogoWhite.svg'}

@@ -1,15 +1,17 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { CartItem } from '../../components/CartItem/CartItem';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
 import { clearAllProducts } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
+
   const darkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
   const dispatch = useAppDispatch();
 
@@ -52,8 +54,7 @@ export const CartPage = () => {
         <h1 className="titleMain cart__title">Cart</h1>
 
         {!isCartNotEmpty ?
-          <div className="cart__background_wrapper">
-            <div className="cart__background"></div>
+          <div className="cart__background">
             <h2 className="cart__background__title">Your cart is empty</h2>
           </div>
         : <>
@@ -92,6 +93,7 @@ export const CartPage = () => {
         <CheckoutModal
           productsList={cart}
           totalPrice={totalPrice}
+          isOpen={isModalOpen}
           handleCloseModal={handleCloseModal}
         />
       )}

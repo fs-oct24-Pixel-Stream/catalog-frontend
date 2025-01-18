@@ -2,18 +2,18 @@
 @use '../../styles/utils/mixins.scss' as mixins;
 
 .cart {
-  overflow: auto;
   padding: 20px;
   padding-bottom: 50px;
+
   &__title {
     margin-bottom: 20px;
   }
+
   &__background {
     background-image: url('../../../public/img/cart-is-empty.png');
-    width: 500px;
-    height: 500px;
+
     margin: 0 auto;
-    // padding: 390px 0 130px;
+    padding: 370px 0 130px;
 
     background-repeat: no-repeat;
     background-size: auto 50%;
