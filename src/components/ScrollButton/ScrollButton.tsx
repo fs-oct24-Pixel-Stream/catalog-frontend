@@ -46,7 +46,7 @@ export const ScrollButton = () => {
     <div className={buttonClass}>
       <IconButton
         className="scroll-button__footer buttonClass"
-        backgroundImage={isThemeDark ? 'img/icons/Arrow-top-white.svg' : 'img/icons/Arrow-top.svg'}
+        backgroundImage="img/icons/Arrow-top-white.svg"
         onClick={handleBackToTop}
       />
     </div>

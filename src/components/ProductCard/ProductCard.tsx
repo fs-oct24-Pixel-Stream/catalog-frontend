@@ -8,7 +8,6 @@ import { IconButton } from '../IconButton/IconButton';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
 import './ProductCard.scss';
 import { separeteSpecs } from '../../utils/functions/separeteSpecs';
-import { handleBackToTop } from '../../utils/functions/handleBackToTop';
 
 type Props = {
   product: ProductCardType;
@@ -16,7 +15,7 @@ type Props = {
 };
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const dispatch = useAppDispatch();
-
+  const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
   const cart = useAppSelector((store) => store.cart.cart);
   const isInCart = cart.some((item) => item.id === product.id);
 
@@ -50,7 +49,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
     if (location.pathname === `/${product.category}`) {
       return `${product.itemId}`;
     } else {
-      handleBackToTop();
+      // handleBackToTop();
       return `/${product.category}/${product.itemId}`;
     }
   };
@@ -102,6 +101,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
           onClick={handleBuyProduct}
           className={cn('button product-card__button-buy btn', {
             'product-card__button-buy--active': isInCart,
+            'btn--dark': isDarkTheme,
           })}
         >
           {getButtonText}

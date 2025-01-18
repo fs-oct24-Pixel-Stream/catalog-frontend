@@ -17,6 +17,7 @@
   html.dark & {
     border: 1px solid variable.$purple;
     background-color: variable.$purple;
+    color: variable.$white;
   }
 
   &:hover {

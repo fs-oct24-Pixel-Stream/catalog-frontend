@@ -49,7 +49,7 @@
       :hover {
         color: variable.$primary;
         html.dark & {
-          color: variable.$white;
+          color: variable.$icons;
         }
       }
     }

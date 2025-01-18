@@ -56,14 +56,46 @@
     line-height: 1.5;
   }
 }
-
-.select .color-secondary {
-  color: variable.$secondary;
+.select .products__selectList {
+  border-radius: 6px;
+  &:hover {
+    border: 1.5px solid #000;
+  }
+  &:focus {
+    border: 1px solid #000;
+    outline: none;
+  }
 }
 
-.select .color-primary {
-  color: variable.$primary;
+.select select:not([multiple]) {
+  border: 1px solid variable.$secondary;
+  outline: none;
+  html.dark & {
+    background-color: variable.$icons;
+    color: variable.$primary;
+  }
 }
+.select select option {
+  background-color: variable.$white;
+  font-weight: 700;
+  html.dark & {
+    background-color: variable.$icons;
+    color: variable.$primary;
+  }
+}
+.select select {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.navbar-link:not(.is-arrowless)::after,
+.select:not(.is-multiple):not(.is-loading)::after {
+  border-color: variable.$primary;
+}
+.select select {
+  border-radius: 5px;
+}
+
 .bread-crumbs {
   margin-bottom: 24px;
 
@@ -82,7 +114,7 @@
   margin: 0 auto;
 
   @include mixins.on-tablet {
-    max-width: 620px;
+    max-width: 640px;
   }
 
   @include mixins.on-tablet3 {

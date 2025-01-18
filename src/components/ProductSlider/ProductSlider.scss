@@ -14,7 +14,7 @@
     }
 
     html.dark & {
-      color: variable.$white;
+      color: variable.$icons;
     }
   }
 
@@ -23,14 +23,14 @@
   }
 
   &__item {
-    max-width: 230px;
+    max-width: 270px;
 
-    @include mixins.on-tablet {
-      max-width: 237px;
-    }
+    // @include mixins.on-tablet {
+    //   max-width: 237px;
+    // }
 
-    @include mixins.on-desktop {
-      max-width: 272px;
-    }
+    // @include mixins.on-desktop {
+    //   max-width: 272px;
+    // }
   }
 }

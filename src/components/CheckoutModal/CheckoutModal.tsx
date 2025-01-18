@@ -1,5 +1,7 @@
+import { useAppSelector } from '../../app/hooks';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { CheckoutCartItem } from '../CheckoutCartItem/CheckoutCartItem';
+import cn from 'classnames';
 import './CheckoutModal.scss';
 
 type Props = {
@@ -7,9 +9,9 @@ type Props = {
   productsList: ProductCardType[];
   totalPrice: number;
 };
-
 export const CheckoutModal: React.FC<Props> = (props) => {
   const { handleCloseModal, productsList, totalPrice } = props;
+  const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
   return (
     <>
       <div className="modal is-active">
@@ -37,7 +39,9 @@ export const CheckoutModal: React.FC<Props> = (props) => {
             <div className="buttons">
               <div className="confirm">
                 <button
-                  className="choice-button choice-button-confirm btn"
+                  className={cn('choice-button choice-button-confirm btn', {
+                    'btn--dark': isDarkTheme,
+                  })}
                   onClick={() => {
                     handleCloseModal('succsess');
                   }}
@@ -47,7 +51,9 @@ export const CheckoutModal: React.FC<Props> = (props) => {
               </div>
               <div className="cancel">
                 <button
-                  className="choice-button choice-button-cancel btn"
+                  className={cn('choice-button choice-button-cancel btn', {
+                    'btn--dark': isDarkTheme,
+                  })}
                   onClick={() => {
                     handleCloseModal('close');
                   }}

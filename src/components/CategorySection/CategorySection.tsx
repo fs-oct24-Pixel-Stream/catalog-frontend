@@ -36,7 +36,10 @@ export const CategorySection = () => {
             className="category-section__item"
             key={category.id}
           >
-            <Link to={category.path}>
+            <Link
+              to={category.path}
+              className="category-section__wrapper"
+            >
               <img
                 src={category.img}
                 alt={`${category.name} image`}

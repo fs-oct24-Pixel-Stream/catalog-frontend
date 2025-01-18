@@ -50,7 +50,7 @@
     &:hover {
       color: variable.$primary;
       html.dark & {
-        color: variable.$white;
+        color: variable.$text-dark;
       }
     }
   }
@@ -65,7 +65,7 @@
   position: relative;
   color: variable.$primary;
   html.dark & {
-    color: variable.$white;
+    color: variable.$text-dark;
   }
   &::after {
     content: '';
@@ -93,7 +93,7 @@
     border: 1px solid variable.$elements;
     color: variable.$primary;
     html.dark & {
-      color: variable.$white;
+      color: variable.$text-dark;
     }
     cursor: pointer;
     font-size: 1.6em;

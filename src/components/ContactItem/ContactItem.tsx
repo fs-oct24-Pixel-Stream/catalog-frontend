@@ -9,11 +9,13 @@ export const ContactItem: React.FC<Props> = ({ creator }) => {
   return (
     <>
       <div className="card">
-        <img
-          src={creator.avatar}
-          alt="creator Image"
-          className="card__img"
-        />
+        <div className="card__img-container">
+          <img
+            src={creator.avatar}
+            alt="creator Image"
+            className="card__img"
+          />
+        </div>
         <h2 className="card__name title">
           {creator.name} {creator.surname}
         </h2>

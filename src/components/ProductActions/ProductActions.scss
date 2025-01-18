@@ -39,6 +39,13 @@
     &:hover {
       box-shadow: 0px 4px 11px -2px variable.$shadow;
       border-radius: variable.$global-border-radius;
+      html.dark & {
+        color: variable.$white;
+      }
+    }
+    html.dark & {
+      background: variable.$icons;
+      color: variable.$primary;
     }
   }
 
