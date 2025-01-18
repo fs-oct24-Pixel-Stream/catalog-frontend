@@ -6,6 +6,7 @@ import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
 import { clearAllProducts } from '../../features/cart/cartSlice';
 import cn from 'classnames';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
@@ -55,6 +56,7 @@ export const CartPage = () => {
   return (
     <>
       <div className="cart _container">
+        <Breadcrumbs />
         <h1 className="titleMain cart__title">Cart</h1>
 
         {!isCartNotEmpty ?

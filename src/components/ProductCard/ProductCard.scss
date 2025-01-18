@@ -171,12 +171,23 @@
       width: 160px;
     }
 
+    html.dark & {
+      background: variable.$white;
+      color: variable.$primary;
+    }
+
     &:hover {
       box-shadow: 0px 4px 11px -2px variable.$shadow;
       border-radius: variable.$global-border-radius;
+      html.dark & {
+        border: 1px solid transparent;
+        color: variable.$white;
+      }
     }
   }
-
+  &__button-buy--active-dark {
+    background-color: #fff;
+  }
   &__button-wishlist {
     height: 40px;
     width: 40px;

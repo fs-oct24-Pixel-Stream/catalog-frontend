@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ContactItem } from '../../components/ContactItem/ContactItem';
 import { creators as creatorsList } from '../../utils/constants/creators';
 import './ContactsPage.scss';
@@ -6,6 +7,7 @@ export const ContactsPage = () => {
   const creators = creatorsList;
   return (
     <div className="container-custom">
+      <Breadcrumbs />
       <h1 className="titleMain">Creators</h1>
       <div className="creators">
         {creators.map((creator) => {

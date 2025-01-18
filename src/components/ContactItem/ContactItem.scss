@@ -18,6 +18,15 @@
     object-fit: cover;
     border-radius: variables.$global-border-radius;
     border: 1px solid variables.$elements;
+    transition: transform variables.$button-transition-time ease 0s;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &-container {
+      overflow: hidden;
+      border-radius: variables.$global-border-radius;
+    }
   }
 
   &__name {
@@ -51,9 +60,6 @@
     &__image {
       min-width: 22px;
       min-height: 22px;
-    }
-    &:not(:last-child) {
-      margin-bottom: 10px;
     }
   }
 }

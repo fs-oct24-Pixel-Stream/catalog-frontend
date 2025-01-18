@@ -4,9 +4,10 @@
 // cart item bg white and checkout block bg white
 
 .main-block {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  @include mixins.page-grid;
+  // display: flex;
+  // flex-direction: column;
+  // gap: 30px;
 }
 .cart {
   padding: 50px 20px;

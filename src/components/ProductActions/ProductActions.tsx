@@ -15,6 +15,7 @@ type Props = {
 export const ProductActions: React.FC<Props> = ({ selectedProduct }) => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.products.products);
+  const darkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
 
   const [product, setProduct] = useState<ProductCardType | null>(null);
 
@@ -55,8 +56,9 @@ export const ProductActions: React.FC<Props> = ({ selectedProduct }) => {
     <div className="is-flex is-justify-content-space-between actions-buttons">
       <button
         onClick={handleBuyProduct}
-        className={classNames('button', 'actions-buttons__buy', {
+        className={classNames('button', 'actions-buttons__buy btn', {
           'actions-buttons__buy--active': isInCart,
+          'btn--dark': darkTheme,
         })}
       >
         {getButtonText}
