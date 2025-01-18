@@ -200,3 +200,38 @@ html {
     color: variable.$primary-dark;
   }
 }
+
+/* Для WebKit-браузерів */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: variable.$secondary;
+  html.dark & {
+    background: variable.$bgColor-dark;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: variable.$secondary;
+  html.dark & {
+    background: variable.$bgColor-dark;
+  }
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: variable.$secondary;
+  html.dark & {
+    background: variable.$bgColor-dark;
+  }
+}
+
+/* Для Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: variable.$secondary variable.$icons;
+}
+html.dark {
+  scrollbar-color: #905bff variable.$bgColor-dark;
+}

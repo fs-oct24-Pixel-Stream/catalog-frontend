@@ -172,7 +172,7 @@
     }
 
     html.dark & {
-      background: variable.$white;
+      background: variable.$icons;
       color: variable.$primary;
     }
 
@@ -184,9 +184,6 @@
         color: variable.$white;
       }
     }
-  }
-  &__button-buy--active-dark {
-    background-color: #fff;
   }
   &__button-wishlist {
     height: 40px;

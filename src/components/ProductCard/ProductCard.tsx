@@ -101,8 +101,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
           onClick={handleBuyProduct}
           className={cn('button product-card__button-buy btn', {
             'product-card__button-buy--active': isInCart,
-            'btn--dark': !isInCart && isDarkTheme,
-            'btn--dark product-card__button-buy--active-dark': isInCart && isDarkTheme,
+            'btn--dark': isDarkTheme,
           })}
         >
           {getButtonText}

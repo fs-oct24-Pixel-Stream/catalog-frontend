@@ -9,7 +9,6 @@ type Props = {
   productsList: ProductCardType[];
   totalPrice: number;
 };
-
 export const CheckoutModal: React.FC<Props> = (props) => {
   const { handleCloseModal, productsList, totalPrice } = props;
   const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';

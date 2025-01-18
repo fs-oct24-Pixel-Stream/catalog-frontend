@@ -15,7 +15,7 @@ type Props = {
 export const ProductActions: React.FC<Props> = ({ selectedProduct }) => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.products.products);
-  const darkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
+  const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
 
   const [product, setProduct] = useState<ProductCardType | null>(null);
 
@@ -58,7 +58,7 @@ export const ProductActions: React.FC<Props> = ({ selectedProduct }) => {
         onClick={handleBuyProduct}
         className={classNames('button', 'actions-buttons__buy btn', {
           'actions-buttons__buy--active': isInCart,
-          'btn--dark': darkTheme,
+          'btn--dark': isDarkTheme,
         })}
       >
         {getButtonText}
