@@ -45,14 +45,6 @@ export const CartPage = () => {
     }, 0);
   }, [cart]);
 
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isModalOpen]);
-
   return (
     <>
       <div className="cart _container">
@@ -60,7 +52,8 @@ export const CartPage = () => {
         <h1 className="titleMain cart__title">Cart</h1>
 
         {!isCartNotEmpty ?
-          <div className="cart__background">
+          <div className="cart__background_wrapper">
+            <div className="cart__background"></div>
             <h2 className="cart__background__title">Your cart is empty</h2>
           </div>
         : <>

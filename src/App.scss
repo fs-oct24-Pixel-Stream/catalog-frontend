@@ -5,6 +5,15 @@
   --bulma-family-primary: Mont, sans-serif;
   --bulma-body-color: variable.$bgColor;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  overflow: auto;
+}
 
 .body-ajustment {
   display: flex;
@@ -15,6 +24,7 @@
   flex: 1 1 auto;
 }
 ._container {
+  box-sizing: border-box;
   padding-inline: 16px;
 
   @include mixins.on-tablet {
@@ -228,10 +238,10 @@ html {
 }
 
 /* Для Firefox */
-body {
-  scrollbar-width: thin;
-  scrollbar-color: variable.$secondary variable.$icons;
+html {
+  scrollbar-color: variable.$icons variable.$bgColor;
 }
+
 html.dark {
   scrollbar-color: #905bff variable.$bgColor-dark;
 }

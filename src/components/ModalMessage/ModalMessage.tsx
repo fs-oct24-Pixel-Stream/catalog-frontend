@@ -8,15 +8,18 @@ type Props = {
 
 export const ModalMessage: React.FC<Props> = ({ setIsPurchased }) => {
   const navigate = useNavigate();
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsPurchased(false);
       navigate('/');
     }, 2000);
+
     return () => {
       clearTimeout(timer);
     };
   }, [setIsPurchased, navigate]);
+
   return (
     <>
       <div className="modal is-active">
