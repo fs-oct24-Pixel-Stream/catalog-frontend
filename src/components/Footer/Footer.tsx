@@ -13,7 +13,7 @@ export const Footer = () => {
       <div className="_container footer-content has-text-centered">
         <div className="footer-logo">
           <Link
-            to="/home"
+            to="/"
             className="footer-logo--link"
           >
             <img

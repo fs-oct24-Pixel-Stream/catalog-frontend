@@ -33,6 +33,10 @@
     @include mixins.on-tablet {
       margin-bottom: 40px;
     }
+
+    html.dark & {
+      color: variable.$icons;
+    }
   }
 
   &__subtitle {
@@ -103,7 +107,7 @@
       color: variable.$primary;
 
       html.dark & {
-        color: variable.$white;
+        color: variable.$icons;
       }
     }
 

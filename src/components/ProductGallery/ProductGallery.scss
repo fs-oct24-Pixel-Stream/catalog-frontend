@@ -65,7 +65,7 @@
     border: 1px solid variable.$primary;
 
     html.dark & {
-      border: 1px solid variable.$icons;
+      border: 0.5px solid variable.$icons;
     }
 
     img {
