@@ -11,12 +11,16 @@
   &__icon {
     width: 16px;
     height: 16px;
-    background-image: url(./../../../public/img/icons/Arrow-Left.png);
+    background-image: url(./../../../public/img/icons/arrow-left.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px;
     margin-right: 4px;
     transition: all variable.$button-transition-time ease;
+
+    html.dark & {
+      filter: invert(1);
+    }
   }
 
   &:hover {

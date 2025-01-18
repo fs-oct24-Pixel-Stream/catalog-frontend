@@ -42,15 +42,24 @@
     font-size: 2.2em;
     line-height: 1.4;
     color: variable.$primary;
+
+    html.dark & {
+      color: variable.$icons;
+    }
   }
 
   &__line {
     margin-bottom: 32px;
 
     border: 0.5px solid variable.$elements;
+
+    html.dark & {
+      border: 0.5px solid variable.$elements-dark;
+    }
   }
 
   &__gallery {
+    position: relative;
     grid-column: 1 / -1;
     margin-bottom: 40px;
 
@@ -81,6 +90,36 @@
     }
   }
 
+  &__price {
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--full {
+      font-size: 3.2em;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: variable.$primary;
+
+      html.dark & {
+        color: variable.$white;
+      }
+    }
+
+    &--discount {
+      font-size: 2.2em;
+      font-weight: 500;
+      line-height: 1.3;
+      text-decoration-line: line-through;
+      color: variable.$secondary;
+
+      html.dark & {
+        color: variable.$secondary-dark;
+      }
+    }
+  }
+
   &__id {
     font-size: 1.2em;
     line-height: 1.3;
@@ -88,6 +127,10 @@
     color: variable.$icons;
     text-align: right;
     margin-top: 20px;
+
+    html.dark & {
+      color: variable.$icons-dark;
+    }
   }
 
   &__about {
@@ -120,5 +163,9 @@
 
   &__recommended {
     grid-column: 1 / -1;
+  }
+
+  html.dark & {
+    color: variable.$white;
   }
 }
