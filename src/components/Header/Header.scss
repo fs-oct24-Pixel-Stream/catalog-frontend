@@ -7,11 +7,11 @@
   align-items: center;
   min-height: 48px;
   padding-left: 16px;
-  border-bottom: 2px solid #e2e6e9;
+  border-bottom: 1px solid #e2e6e9;
   background-color: variable.$white;
 
   html.dark & {
-    border-bottom: 2px solid variable.$elements-dark;
+    border-bottom: 1px solid variable.$elements-dark;
     background-color: variable.$bgColor-dark;
   }
 }
