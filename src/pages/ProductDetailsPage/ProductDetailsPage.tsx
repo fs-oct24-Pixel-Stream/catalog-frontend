@@ -54,7 +54,7 @@ export const ProductDetailsPage = () => {
   const categoryToFetch = categoryMap[category as keyof typeof categoryMap];
 
   const { fetchAction, setSelectedAction, selector } = categoryToFetch;
-  console.log(selector);
+
   // const isLoading = useAppSelector(categoryToFetch.loadingSelector);
   const selectedProduct = useAppSelector(selector);
 

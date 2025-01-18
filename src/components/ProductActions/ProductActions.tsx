@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
@@ -12,20 +12,25 @@ type Props = {
   selectedProduct: ProductDeviceType;
 };
 
+const transformProductType = (
+  selectedProduct: ProductDeviceType,
+  products: ProductCardType[],
+): ProductCardType | null => {
+  return products.find((device) => device.itemId === selectedProduct.id) || null;
+};
+
 export const ProductActions: React.FC<Props> = ({ selectedProduct }) => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.products.products);
   const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
 
-  const [product, setProduct] = useState<ProductCardType | null>(null);
-
   const cart = useAppSelector((store) => store.cart.cart);
   const favorites = useAppSelector((store) => store.favorities.products);
 
-  useEffect(() => {
-    const device = products.find((device) => device.itemId === selectedProduct.id);
-    setProduct(device || null);
-  }, [products, selectedProduct]);
+  const product = useMemo(
+    () => transformProductType(selectedProduct, products),
+    [selectedProduct, products],
+  );
 
   if (!product) {
     return null;
