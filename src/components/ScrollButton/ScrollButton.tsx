@@ -3,12 +3,10 @@ import { IconButton } from '../IconButton';
 import { handleBackToTop } from '../../utils/functions/handleBackToTop';
 import cn from 'classnames';
 import './ScrollButton.scss';
-import { useAppSelector } from '../../app/hooks';
 
 export const ScrollButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
-  const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
 
   useEffect(() => {
     let timeout: any;
