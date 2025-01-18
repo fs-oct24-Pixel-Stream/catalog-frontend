@@ -6,6 +6,10 @@
     padding-bottom: 24px;
     border-bottom: 1px solid variable.$elements;
     margin-bottom: 24px;
+
+    html.dark & {
+      border-bottom: 1px solid variable.$elements-dark;
+    }
   }
 
   &__label-wrapper {
@@ -20,6 +24,10 @@
     color: variable.$secondary;
     padding-right: 20px;
     margin-bottom: 8px;
+
+    html.dark & {
+      color: variable.$secondary-dark;
+    }
   }
 
   &__color-button {
@@ -31,8 +39,16 @@
     border-radius: 50%;
     margin-right: 8px;
 
+    html.dark & {
+      border: 1px solid variable.$icons-dark;
+    }
+
     &:hover {
       border: 1px solid variable.$icons;
+
+      html.dark & {
+        border: 1px solid variable.$icons;
+      }
     }
 
     &--inner {
@@ -48,6 +64,10 @@
 
   &__color-button.selected {
     border: 1px solid variable.$primary;
+
+    html.dark & {
+      border: 1px solid variable.$white;
+    }
   }
 
   &__color-button:last-child {
@@ -67,14 +87,28 @@
     text-align: baseline;
     border-radius: 4px;
 
+    html.dark & {
+      border: 1px solid variable.$icons-dark;
+      color: variable.$white;
+    }
+
     &:hover {
       border: 1px solid variable.$icons;
+
+      html.dark & {
+        border: 1px solid variable.$icons;
+      }
     }
   }
 
   &__capacity-button.selected {
     background-color: variable.$primary;
     color: variable.$white;
+
+    html.dark & {
+      background-color: variable.$white;
+      color: variable.$primary;
+    }
   }
 
   &__capacity-button:last-child {

@@ -3,21 +3,17 @@
 @import './../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 
 .image-gallery {
-  position: relative;
   width: 100%;
   height: auto;
 }
 
 .image-gallery-content {
-  position: relative;
-}
-
-.image-gallery-thumbnails-container {
-  position: relative;
-}
-
-.image-gallery-slide-wrapper {
-  position: relative;
+  @include mixins.on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 16px;
+    max-height: 100%;
+  }
 }
 
 .image-gallery-slide-wrapper img {
@@ -29,43 +25,55 @@
 
 .image-gallery-slide-wrapper {
   margin-bottom: 16px;
-
-  /* @include mixins.on-tablet {
-    margin-left: 100px;
-  } */
+  flex-grow: 1;
 }
 
-/* .image-gallery-thumbnails-container {
-  // overflow: hidden;
+.image-gallery-thumbnails-container {
   @include mixins.on-tablet {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    left: 0;
-    // top: -400px;
-    width: 100px;
-    max-height: 100%;
+    width: 50px;
+    align-items: center;
   }
-} */
+
+  @include mixins.on-desktop {
+    width: 80px;
+  }
+}
 
 .image-gallery-thumbnail {
-  margin: 5px;
+  margin-right: 8px;
+
+  @include mixins.on-tablet {
+    margin-right: 0;
+    margin-bottom: 8px;
+    width: 95%;
+  }
+
   border: 1px solid variable.$elements;
-  transition: all variable.$button-transition-time ease;
+  border-radius: 4px;
+  transition: border variable.$button-transition-time ease;
 
   img {
     object-fit: contain;
-    width: 90%;
-    height: 90%;
     aspect-ratio: 1 / 1;
+    transition: transform variable.$button-transition-time ease-in;
   }
-}
 
-.image-gallery-thumbnail.active {
-  border: 1px solid variable.$primary;
-}
+  &:hover,
+  &.active {
+    border: 1px solid variable.$primary;
 
-.image-gallery-thumbnail:hover {
-  border: 1px solid variable.$primary;
-  transform: scale(0.95);
+    html.dark & {
+      border: 1px solid variable.$icons;
+    }
+
+    img {
+      transform: scale(0.9);
+    }
+  }
+
+  html.dark & {
+    border: 1px solid variable.$elements-dark;
+  }
 }

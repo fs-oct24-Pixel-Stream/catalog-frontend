@@ -15,7 +15,7 @@ import {
 } from '../../features/accessories/accessoriesSlice';
 import { fetchTablets, setSelectedTablet } from '../../features/tablets/tabletsSlice';
 import { RecommendedSection } from '../../components/RecommendedSection';
-import { ProductParamsSelects } from '../../components/ProductParamrsSelects/ProductParamsSelects';
+import { ProductParamsSelects } from '../../components/ProductParamsSelects/ProductParamsSelects';
 import { ProductActions } from '../../components/ProductActions/ProductActions';
 
 const categoryMap = {
@@ -97,8 +97,6 @@ export const ProductDetailsPage = () => {
     return <p>Product not found.</p>;
   }
 
-  const discount = true;
-
   const handleColorChange = (newColor: ColorKey) => {
     const newPath = `/${category}/${baseId}-${capacity}-${newColor}`;
     navigate(newPath);
@@ -140,13 +138,9 @@ export const ProductDetailsPage = () => {
           onCapasityChange={handleCapasityChange}
         />
 
-        <div className="is-flex product-card__price">
-          <p className="product-card__price-value">${priceDiscount}</p>
-          {discount && (
-            <p className="product-card__price-value product-card__price-value--discount">
-              ${priceRegular}
-            </p>
-          )}
+        <div className="is-flex product-details__price">
+          <p className="product-details__price--full">${priceDiscount}</p>
+          <p className="product-details__price--discount">${priceRegular}</p>
         </div>
 
         <ProductActions selectedProduct={selectedProduct} />
