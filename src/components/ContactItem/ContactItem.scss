@@ -11,13 +11,18 @@
   font-size: 1.5em;
   height: 100%;
   border-radius: variables.$global-border-radius;
+  background-color: variables.$white;
+
+  html.dark & {
+    background-color: variables.$primary-dark;
+    // border: 1px solid variables.$elements-dark;
+  }
 
   &__img {
     width: 100%;
     height: 300px;
     object-fit: cover;
     border-radius: variables.$global-border-radius;
-    border: 1px solid variables.$elements;
     transition: transform variables.$button-transition-time ease 0s;
     &:hover {
       transform: scale(1.1);
@@ -40,11 +45,17 @@
       height: 1px;
       background-color: variables.$elements;
       margin-top: 10px;
+      html.dark & {
+        background-color: variables.$elements-dark;
+      }
     }
   }
 
   &__title {
     font-weight: bold;
+    html.dark & {
+      color: variables.$secondary-dark;
+    }
   }
 
   &__link-block {
@@ -72,10 +83,16 @@
 
   &__title {
     margin: 10px;
+    html.dark & {
+      color: variables.$text-dark;
+    }
   }
 
   &__text {
     line-height: 1.4em;
+    html.dark & {
+      color: variables.$secondary-dark;
+    }
   }
   &::before {
     content: '';
@@ -84,6 +101,9 @@
     height: 1px;
     background-color: variables.$elements;
     margin-top: 10px;
+    html.dark & {
+      background-color: variables.$elements-dark;
+    }
   }
 }
 

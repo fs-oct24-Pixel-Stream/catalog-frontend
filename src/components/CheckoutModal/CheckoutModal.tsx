@@ -3,19 +3,39 @@ import { ProductCardType } from '../../utils/types/ProductCardType';
 import { CheckoutCartItem } from '../CheckoutCartItem/CheckoutCartItem';
 import cn from 'classnames';
 import './CheckoutModal.scss';
+import { useEffect } from 'react';
 
 type Props = {
   handleCloseModal: (option: string) => void;
   productsList: ProductCardType[];
   totalPrice: number;
+  isOpen: boolean;
 };
 export const CheckoutModal: React.FC<Props> = (props) => {
-  const { handleCloseModal, productsList, totalPrice } = props;
+  const { handleCloseModal, productsList, totalPrice, isOpen } = props;
   const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
+
+  useEffect(() => {
+    if (isOpen) {
+      document.documentElement.style.overflowY = 'hidden';
+    } else {
+      document.documentElement.style.overflowY = 'auto';
+    }
+
+    return () => {
+      document.documentElement.style.overflowY = 'auto';
+    };
+  }, [isOpen]);
+
   return (
     <>
       <div className="modal is-active">
-        <div className="modal-background"></div>
+        <div
+          className="modal-background"
+          onClick={() => {
+            handleCloseModal('close');
+          }}
+        ></div>
         <div className="modal-card">
           <header className="modal-card-head">
             <h1 className="modal-card-title">Confirm your order</h1>
@@ -34,7 +54,9 @@ export const CheckoutModal: React.FC<Props> = (props) => {
 
           <footer className="modal-card-foot">
             <div className="price-block">
-              <p>Total price: ${totalPrice}</p>
+              <p className="price-block__text">
+                Total price: <span>${totalPrice}</span>
+              </p>
             </div>
             <div className="buttons">
               <div className="confirm">
@@ -51,7 +73,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
               </div>
               <div className="cancel">
                 <button
-                  className={cn('choice-button choice-button-cancel btn', {
+                  className={cn('choice-button choice-button--close choice-button-cancel btn', {
                     'btn--dark': isDarkTheme,
                   })}
                   onClick={() => {

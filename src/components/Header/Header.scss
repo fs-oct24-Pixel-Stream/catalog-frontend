@@ -9,6 +9,7 @@
   padding-left: 16px;
   border-bottom: 1px solid #e2e6e9;
   background-color: variable.$white;
+  width: 100vw; //???? У Насті на телефоні білі полоси по бокам
 
   html.dark & {
     border-bottom: 1px solid variable.$elements-dark;
@@ -63,6 +64,7 @@ svg {
 .burger-menu {
   width: 48px;
   height: 100%;
+  cursor: pointer;
 
   border-left: 1px solid variable.$elements;
   html.dark & {

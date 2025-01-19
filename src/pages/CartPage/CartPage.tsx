@@ -1,15 +1,17 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { CartItem } from '../../components/CartItem/CartItem';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
 import { clearAllProducts } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
+
   const darkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
   const dispatch = useAppDispatch();
 
@@ -44,14 +46,6 @@ export const CartPage = () => {
       return acc + product.quantity;
     }, 0);
   }, [cart]);
-
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isModalOpen]);
 
   return (
     <>
@@ -99,6 +93,7 @@ export const CartPage = () => {
         <CheckoutModal
           productsList={cart}
           totalPrice={totalPrice}
+          isOpen={isModalOpen}
           handleCloseModal={handleCloseModal}
         />
       )}

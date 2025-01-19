@@ -1,17 +1,26 @@
 @use '../../styles/utils/mixins.scss' as mixins;
 @use '../../styles/utils/variable.scss' as variables;
 
+.contacts {
+  padding-top: 24px;
+  padding-bottom: 64px;
+}
+
 .creators {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 30px;
-  padding: 40px;
+  padding-top: 40px;
   justify-content: center;
-}
 
-@include mixins.on-tablet {
-  .creators {
-    gap: 100px;
+  @include mixins.on-tablet2 {
+    gap: 40px;
+  }
+  @include mixins.on-tablet3 {
+    gap: 50px;
+  }
+  @include mixins.on-desktop {
+    gap: 60px;
   }
 }
