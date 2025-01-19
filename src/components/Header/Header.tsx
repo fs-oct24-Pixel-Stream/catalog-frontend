@@ -24,6 +24,7 @@ import '@theme-toggles/react/css/Within.css';
 import { Within } from '@theme-toggles/react';
 import { setBurgerState } from '../../features/burger/burgerSlice';
 import { Link } from 'react-router';
+import { LangToggle } from '../LangToggle/LangToggle';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
@@ -138,13 +139,7 @@ export const Header = () => {
               </div>
 
               <div className="icons-language icon-container">
-                <select
-                  className="nav-links--item language-selector"
-                  defaultValue="EN"
-                >
-                  <option value="EN">EN</option>
-                  <option value="UK">UA</option>
-                </select>
+                <LangToggle />
               </div>
             </div>
             <div className="icons-wrapper">
