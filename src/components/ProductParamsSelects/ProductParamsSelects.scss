@@ -102,7 +102,7 @@
   }
 
   &__capacity-button.selected {
-    background-color: variable.$primary;
+    background: linear-gradient(45deg, #89939a, #313237);
     color: variable.$white;
 
     html.dark & {

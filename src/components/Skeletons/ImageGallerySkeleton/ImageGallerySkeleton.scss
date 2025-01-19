@@ -1,0 +1,39 @@
+@use '../../../styles/utils/variable.scss';
+@use '../../../styles/utils/mixins.scss';
+
+.image-gallery {
+  &--skeleton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mixins.on-tablet {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 16px;
+      max-height: 100%;
+    }
+  }
+
+  &__main-skeleton {
+    width: 100%;
+    height: 400px;
+  }
+
+  &__thumbnails {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    @include mixins.on-tablet {
+      display: flex;
+      flex-direction: column;
+      width: 50px;
+      align-items: center;
+    }
+  }
+
+  &__thumbnail-skeleton {
+    width: 60px;
+    height: 60px;
+  }
+}

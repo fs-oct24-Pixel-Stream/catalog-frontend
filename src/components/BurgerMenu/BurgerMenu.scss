@@ -12,7 +12,7 @@
   top: 48px;
   position: fixed;
   width: 100%;
-  max-width: 639px;
+  max-width: 768px;
   background-color: variable.$white;
   html.dark & {
     background-color: variable.$primary-dark;
@@ -120,7 +120,7 @@
   }
 }
 
-@include mixins.on-tablet {
+@include mixins.on-tablet2 {
   .burger-menu-content {
     display: none;
   }
