@@ -25,6 +25,7 @@
 
     text-align: center;
     color: variable.$primary;
+
     html.dark & {
       color: variable.$icons;
     }
@@ -43,6 +44,7 @@
   align-items: center;
   column-gap: 20px;
   row-gap: 40px;
+
   @include mixins.on-desktop-mini {
     flex-direction: row;
     align-items: flex-start;
@@ -89,6 +91,9 @@
   &__check {
     width: 100%;
     min-height: 48px;
+    &:active {
+      color: white;
+    }
   }
   &__products-quantity {
     font-weight: 600;

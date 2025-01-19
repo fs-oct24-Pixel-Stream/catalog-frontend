@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
+
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
-import cn from 'classnames';
 import { IconButton } from '../IconButton/IconButton';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
-import './ProductCard.scss';
 import { separeteSpecs } from '../../utils/functions/separeteSpecs';
 import { quicklyBackToTop } from '../../utils/functions/handleBackToTop';
+import cn from 'classnames';
+import './ProductCard.scss';
 
 type Props = {
   product: ProductCardType;
@@ -38,7 +39,6 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   };
 
   const handleAddFavorite = () => {
-    // e.preventDefault();
     if (isInFavorites) {
       dispatch(removeFavorite(product.id));
     } else {

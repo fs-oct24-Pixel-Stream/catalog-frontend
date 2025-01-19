@@ -144,7 +144,7 @@
     font-weight: 700;
     line-height: 1.5;
     border-radius: variable.$global-border-radius;
-    background-color: variable.$primary;
+    background: linear-gradient(45deg, #89939a, #313237);
     color: variable.$white;
 
     html.dark & {
@@ -162,7 +162,7 @@
   }
 
   &__button-buy--active {
-    background-color: variable.$white;
+    background: variable.$white;
     color: variable.$primary;
     border: 1px solid variable.$icons;
     border-radius: variable.$global-border-radius;
