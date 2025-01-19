@@ -177,13 +177,13 @@
 
   text-align: center;
   &__text {
-    font-size: 20px;
+    font-size: 2rem;
     html.dark & {
       color: variable.$icons;
     }
     & span {
       font-weight: 700;
-      font-size: 28px;
+      font-size: 2.8rem;
     }
   }
 }
