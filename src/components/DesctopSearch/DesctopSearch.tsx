@@ -33,7 +33,7 @@ export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
               <button>×</button>
             </div>
             <input
-              className="input is-large"
+              className="input is-large search-dropdown__input"
               type="text"
               placeholder="Search..."
               value={query}

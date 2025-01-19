@@ -40,8 +40,8 @@ export const SearchModal = ({ onClose }: { onClose: () => void }) => {
             onChange={(e) => setQuery(e.target.value)}
           />
           {query && (
-            <div className="search-modal__results-container">
-              <div className="search-modal__results">
+            <div className="search-modal__wrapper">
+              <div className="search-modal__results search-modal__results-container">
                 {filteredProducts.length > 0 ?
                   filteredProducts.map((product) => (
                     <div
