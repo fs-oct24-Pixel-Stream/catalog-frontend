@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { HeaderLinks } from '../Header/HeaderLinks';
 import './BurgerMenu.scss';
 import cn from 'classnames';
@@ -18,6 +18,20 @@ export const BurgerMenu: FC = () => {
   const handleCloseMenu = () => {
     dispatch(setBurgerState());
   };
+
+  const isOpen = useAppSelector((state) => state.burger.burgerStatus);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.documentElement.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   return (
     <div className={cn('burger-menu-content', { open: true })}>

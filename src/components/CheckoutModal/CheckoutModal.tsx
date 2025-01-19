@@ -17,13 +17,13 @@ export const CheckoutModal: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (isOpen) {
-      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.overflowY = 'hidden';
     } else {
-      document.documentElement.style.overflow = 'auto';
+      document.documentElement.style.overflowY = 'auto';
     }
 
     return () => {
-      document.documentElement.style.overflow = 'auto';
+      document.documentElement.style.overflowY = 'auto';
     };
   }, [isOpen]);
 

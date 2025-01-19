@@ -11,10 +11,6 @@
   box-sizing: border-box;
 }
 
-// html {
-//   overflow: auto;
-// }
-
 .body-ajustment {
   display: flex;
   height: 100dvh;
@@ -240,6 +236,7 @@ html {
 /* Для Firefox */
 html {
   scrollbar-color: variable.$icons variable.$bgColor;
+  scrollbar-width: thin;
 }
 
 html.dark {

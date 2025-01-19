@@ -6,7 +6,7 @@ import './ContactsPage.scss';
 export const ContactsPage = () => {
   const creators = creatorsList;
   return (
-    <div className="container-custom">
+    <div className="contacts _container">
       <Breadcrumbs />
       <h1 className="titleMain">Creators</h1>
       <div className="creators">

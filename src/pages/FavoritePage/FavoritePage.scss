@@ -6,6 +6,9 @@
     color: variables.$secondary;
     margin-bottom: 32px;
     font-size: 1.2em;
+    html.dark & {
+      color: variables.$icons;
+    }
   }
 
   &__background {
@@ -27,6 +30,9 @@
       padding-top: 20px;
       font-weight: 700;
       font-size: 2em;
+      html.dark & {
+        color: variables.$icons;
+      }
     }
   }
 }
