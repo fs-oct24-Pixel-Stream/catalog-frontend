@@ -23,9 +23,9 @@
     height: 300px;
     object-fit: cover;
     border-radius: variables.$global-border-radius;
-    transition: transform variables.$button-transition-time ease 0s;
+    transition: transform 500ms ease-out;
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.06);
     }
 
     &-container {
@@ -71,6 +71,18 @@
     &__image {
       min-width: 22px;
       min-height: 22px;
+
+      &--git {
+        html.dark & {
+          content: url('../../../public/img/icons/GitHub-darkTheme.svg');
+        }
+      }
+
+      &--linkedIn {
+        html.dark & {
+          content: url('../../../public/img/icons/linkedin-darktheme.svg');
+        }
+      }
     }
   }
 }
