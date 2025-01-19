@@ -22,9 +22,18 @@ export const SearchModal = ({ onClose }: { onClose: () => void }) => {
     onClose();
   };
 
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
     <>
-      <div className="search-modal">
+      <div
+        className="search-modal"
+        onClick={handleOverlayClick}
+      >
         <div className="search-modal__content">
           <div
             className="search-modal__close"
