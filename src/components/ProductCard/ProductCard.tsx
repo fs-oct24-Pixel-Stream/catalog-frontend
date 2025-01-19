@@ -8,7 +8,7 @@ import { IconButton } from '../IconButton/IconButton';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
 import './ProductCard.scss';
 import { separeteSpecs } from '../../utils/functions/separeteSpecs';
-import { handleBackToTop, quicklyBackToTop } from '../../utils/functions/handleBackToTop';
+import { quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 
 type Props = {
   product: ProductCardType;
