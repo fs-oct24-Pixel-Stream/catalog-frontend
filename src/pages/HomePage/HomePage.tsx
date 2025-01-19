@@ -3,8 +3,12 @@ import './HomePage.scss';
 import { CategorySection } from '../../components/CategorySection/CategorySection';
 import { HotPriceSection } from '../../components/HotPriceSection';
 import { PromoSection } from '../../components/PromoSection';
+import { useAppSelector } from '../../app/hooks';
+import { CategorySectionSkeleton } from '../../components/Skeletons/CategorySectionSkeleton/CategorySectionSkeleton';
 
 export const HomePage = () => {
+  const isLoading = useAppSelector((state) => state.products.loading);
+
   return (
     <div className="home-page">
       <h1 className="_container titleMain home-page__title">Welcome to Nice Gadgets store!</h1>
@@ -19,7 +23,9 @@ export const HomePage = () => {
         </div>
 
         <div className="home-page__sections">
-          <CategorySection />
+          {isLoading ?
+            <CategorySectionSkeleton />
+          : <CategorySection />}
         </div>
 
         <div className="home-page__sections">

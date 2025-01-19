@@ -6,17 +6,19 @@ import { ProductCard } from '../ProductCard';
 import 'swiper/swiper-bundle.css';
 import './ProductSlider.scss';
 import { useAppSelector } from '../../app/hooks';
+import { ProductCardSkeleton } from '../Skeletons/ProductCardSkeleton/ProductCardSkeleton';
 
-interface Props {
+type Props = {
   products: ProductCardType[];
   title: string;
   discount?: boolean;
-}
+};
 
 export const ProductSlider: React.FC<Props> = (props) => {
   const { products, title, discount = true } = props;
   const swiperRef = useRef<SwiperRef | null>(null);
   const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
+  const isLoading = useAppSelector((state) => state.products.loading);
 
   const handleNextSlide = () => {
     swiperRef.current?.swiper.slideNext();
@@ -56,6 +58,15 @@ export const ProductSlider: React.FC<Props> = (props) => {
         grabCursor={true}
         freeMode={true}
       >
+        {isLoading &&
+          Array.from({ length: 6 }).map((_, index) => (
+            <SwiperSlide
+              key={index}
+              className="product-slider__item"
+            >
+              <ProductCardSkeleton />
+            </SwiperSlide>
+          ))}
         {products.map((product) => (
           <SwiperSlide
             key={product.id}

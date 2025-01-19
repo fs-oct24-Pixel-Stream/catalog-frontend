@@ -11,12 +11,15 @@ import { ChooseForFilter } from '../../utils/types/ChooseForFilter';
 
 import './ProductsPage.scss';
 import { correctTitle } from '../../utils/functions/correctTitle';
+import { useAppSelector } from '../../app/hooks';
+import { ProductListSkeleton } from '../Skeletons/ProductListSkeleton/ProductListSkeleton';
 
 type Props = {
   products: ProductCardType[];
 };
 
 export const ProductsPage: React.FC<Props> = ({ products }) => {
+  const isLoading = useAppSelector((state) => state.products.loading);
   const location = useLocation();
   const path = location.pathname.split('/')[1];
   const title = correctTitle(path);
@@ -30,6 +33,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
     pageCount,
     handlePageClick,
   } = useFilterAndPagination(products);
+
   return (
     <section className="products _container container-custom">
       <Breadcrumbs />
@@ -95,7 +99,9 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
           </div>
         </div>
       </div>
-      {!!products.length && <ProductList products={currentItems} />}
+      {isLoading ?
+        <ProductListSkeleton />
+      : !!products.length && <ProductList products={currentItems} />}
       <PaginationProducts
         pageCount={pageCount}
         handlePageClick={handlePageClick}

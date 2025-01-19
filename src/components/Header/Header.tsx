@@ -29,7 +29,6 @@ import { LangToggle } from '../LangToggle/LangToggle';
 
 import { useLocation } from 'react-router';
 
-
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
 

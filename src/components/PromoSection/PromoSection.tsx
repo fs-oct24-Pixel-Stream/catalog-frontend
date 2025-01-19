@@ -7,11 +7,13 @@ import { Pagination } from 'swiper/modules';
 import './PromoSection.scss';
 import 'swiper/swiper-bundle.css';
 import { useAppSelector } from '../../app/hooks';
+import { PromoSectionSkeleton } from '../Skeletons/PromoSectionSkeleton/PromoSectionSkeleton';
 
 export const PromoSection = () => {
   const swiperRef = useRef<SwiperRef | null>(null);
   const paginationRef = useRef<HTMLDivElement | null>(null);
   const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
+  const isLoading = useAppSelector((state) => state.products.loading);
 
   const handleNextSlide = () => {
     swiperRef.current?.swiper.slideNext();
@@ -53,6 +55,15 @@ export const PromoSection = () => {
           grabCursor={true}
           className="promo-section__swiper"
         >
+          {isLoading &&
+            Array.from({ length: 1 }).map((_, index) => (
+              <SwiperSlide
+                key={index}
+                className="promo-section__slide"
+              >
+                <PromoSectionSkeleton />
+              </SwiperSlide>
+            ))}
           <SwiperSlide>
             <Link to={'/phones/apple-iphone-14-512gb-midnight'}>
               <video
@@ -69,7 +80,7 @@ export const PromoSection = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <Link to={'/tablets/apple-ipad-pro-11-2021-128gb-spacegray'}>
+            <Link to={'/tablets/apple-ipad-air-4th-gen-256gb-rosegold'}>
               <video
                 className="promo-section__slide"
                 autoPlay
