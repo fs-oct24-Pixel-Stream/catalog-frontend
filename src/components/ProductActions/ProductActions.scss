@@ -14,7 +14,7 @@
     font-weight: 700;
     line-height: 1.5;
     border-radius: variable.$global-border-radius;
-    background-color: variable.$primary;
+    background: linear-gradient(45deg, #89939a, #313237);
     color: variable.$white;
 
     @include mixins.on-desktop {
@@ -23,11 +23,12 @@
 
     &:hover {
       box-shadow: 0px 3px 13px 0px variable.$shadow;
+      color: variable.$white;
     }
   }
 
   &__buy--active {
-    background-color: variable.$white;
+    background: variable.$white;
     color: variable.$primary;
     border: 1px solid variable.$icons;
     border-radius: variable.$global-border-radius;

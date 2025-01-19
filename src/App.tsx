@@ -10,6 +10,7 @@ import '../src/styles/utils/mixins.scss';
 import './App.scss';
 
 import { Header } from './components/Header/Header';
+// import { TransitionGroup } from 'react-transition-group';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +24,9 @@ export const App = () => {
     <div className="body-ajustment">
       <Header />
       <main className="main">
+        {/* <TransitionGroup> */}
         <Outlet />
+        {/* </TransitionGroup> */}
       </main>
       <Footer />
     </div>
