@@ -8,7 +8,7 @@ import { IconButton } from '../IconButton/IconButton';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
 import './ProductCard.scss';
 import { separeteSpecs } from '../../utils/functions/separeteSpecs';
-import { handleBackToTop } from '../../utils/functions/handleBackToTop';
+import { quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 
 type Props = {
   product: ProductCardType;
@@ -28,7 +28,8 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
 
   const getButtonText = isInCart ? 'Added' : 'Add to cart';
 
-  const handleBuyProduct = () => {
+  const handleBuyProduct = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     if (isInCart) {
       dispatch(removeProduct(product.id));
     } else {
@@ -37,6 +38,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   };
 
   const handleAddFavorite = () => {
+    // e.preventDefault();
     if (isInFavorites) {
       dispatch(removeFavorite(product.id));
     } else {
@@ -50,7 +52,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
     if (location.pathname === `/${product.category}`) {
       return `${product.itemId}`;
     } else {
-      handleBackToTop();
+      // quicklyBackToTop()
       return `/${product.category}/${product.itemId}`;
     }
   };
@@ -62,11 +64,17 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
           src={`${product.image}`}
           alt="Placeholder image"
           className="product-card__image"
+          onClick={quicklyBackToTop}
         />
       </Link>
 
       <Link to={handleRedirect()}>
-        <h2 className="product-card__title">{product.name}</h2>
+        <h2
+          className="product-card__title"
+          onClick={quicklyBackToTop}
+        >
+          {product.name}
+        </h2>
       </Link>
 
       <div className="is-flex product-card__price">
