@@ -24,6 +24,7 @@ import '@theme-toggles/react/css/Within.css';
 import { Within } from '@theme-toggles/react';
 import { setBurgerState } from '../../features/burger/burgerSlice';
 import { Link } from 'react-router';
+import { useLocation } from 'react-router';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
@@ -34,6 +35,7 @@ export const Header = () => {
 
   const isMenuOpen = useAppSelector((state) => state.burger.burgerStatus);
 
+  const location = useLocation();
   const toggleBurgerMenu = (): void => {
     dispatch(setBurgerState());
     console.log('here');
@@ -84,16 +86,18 @@ export const Header = () => {
               <img
                 src={logo}
                 alt="logo"
+                className="logo-img"
               />
             : <img
                 src={logoWhite}
                 alt="logo"
+                className="logo-img"
               />
             }
           </Link>
           <HeaderLinks
             mainClassName="nav-links--item"
-            activeClassName="nav-links--item nav-links--current"
+            activeClassName="nav-links--item nav-links--current active"
             containerClassName="nav-links"
           />
         </div>
