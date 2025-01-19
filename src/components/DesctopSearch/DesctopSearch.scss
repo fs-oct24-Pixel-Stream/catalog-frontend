@@ -11,8 +11,12 @@ input.input {
 
 input.input:focus {
   border-color: none;
-  box-shadow: variable.$elements 0px 0px 0px 1px;
-  border: 1px solid variable.$primary;
+  box-shadow: none;
+  border: 1px solid variable.$secondary;
+  html.dark & {
+    border-color: none;
+    border: 1px solid variable.$bgColor-dark;
+  }
 }
 
 .search-dropdown {
@@ -20,24 +24,28 @@ input.input:focus {
 
   &__results {
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 0;
     min-width: 350px;
     padding: 15px;
     z-index: 2;
     background-color: variable.$white;
-    border: 1px solid #e2e6e9;
+    border: 1px solid variable.$secondary;
     max-height: 250px;
     overflow-y: auto;
-
+    scrollbar-width: thin;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-radius: 8px;
+    border-radius: 4px;
+
+    html.dark & {
+      background-color: variable.$text-dark;
+      color: variable.$primary;
+    }
   }
   &__no-results {
     font-size: 14px;
-    padding: 10px;
     text-align: start;
   }
   &__close {
@@ -49,9 +57,11 @@ input.input:focus {
     border: none;
     font-size: 2.4em;
     color: #89939a;
-    cursor: pointer;
     padding-right: 10px;
     cursor: pointer;
+    html.dark & {
+      color: variable.$primary;
+    }
   }
   &__item {
     display: flex;
@@ -60,6 +70,11 @@ input.input:focus {
     font-size: 1.6em;
     gap: 10px;
     cursor: pointer;
+  }
+  &__input {
+    html.dark & {
+      background-color: variable.$text-dark;
+    }
   }
 }
 

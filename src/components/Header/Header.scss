@@ -13,7 +13,7 @@
 
   html.dark & {
     border-bottom: 1px solid variable.$elements-dark;
-    background-color: variable.$bgColor-dark;
+    background-color: variable.$primary-dark;
   }
 }
 svg {
@@ -69,6 +69,7 @@ svg {
   border-left: 1px solid variable.$elements;
   html.dark & {
     color: variable.$primary-dark;
+    border-left: 1px solid variable.$elements-dark;
   }
   display: flex;
   align-items: center;
@@ -196,6 +197,9 @@ svg {
     }
     &__item:hover {
       background-color: variable.$elements;
+      html.dark & {
+        background: variable.$gray;
+      }
     }
 
     &__current::after {

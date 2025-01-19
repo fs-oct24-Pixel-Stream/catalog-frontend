@@ -10,7 +10,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .body-ajustment {
   display: flex;
   height: 100dvh;
@@ -33,7 +32,6 @@
     margin-inline: auto;
   }
 }
-
 .titleMain {
   font-size: 3.2em;
   font-weight: 800;
@@ -81,7 +79,7 @@
 
   background-color: variable.$white;
   html.dark & {
-    background-color: variable.$bgColor-dark;
+    background-color: #121526;
   }
 }
 

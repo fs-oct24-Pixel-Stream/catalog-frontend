@@ -8,7 +8,6 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-
   z-index: 1000;
 
   &__content {
@@ -27,6 +26,9 @@
     color: #89939a;
     cursor: pointer;
     padding-right: 10px;
+    html.dark & {
+      color: variable.$primary;
+    }
   }
 
   &__input {
@@ -37,6 +39,11 @@
     font-size: 16px;
     outline: none;
     transition: border-color 0.3s;
+
+    html.dark & {
+      background-color: variable.$icons;
+      border: 1px solid variable.$icons;
+    }
 
     &:focus {
       border-color: variable.$elements;
@@ -49,14 +56,50 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    html.dark & {
+      color: variable.$primary;
+    }
   }
-
+  &__wrapper {
+    position: relative;
+  }
   &__results-container {
-    padding: 0px 12px 12px;
+    padding: 12px;
     background-color: variable.$white;
     border: 1px solid variable.$elements;
     margin-top: 3px;
     border-radius: 5px;
+
+    html.dark & {
+      background-color: variable.$icons;
+      border: 1px solid variable.$icons;
+    }
+    &::after {
+      content: '';
+      background-color: variable.$white;
+      border-top-left-radius: 5px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 95%;
+      height: 12px;
+      html.dark & {
+        background-color: variable.$icons;
+      }
+    }
+    &::before {
+      content: '';
+      background-color: variable.$white;
+      border-bottom-left-radius: 5px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 95%;
+      height: 15px;
+      html.dark & {
+        background-color: variable.$icons;
+      }
+    }
   }
 
   &__results {
@@ -66,11 +109,13 @@
     gap: 13px;
     max-height: 50vh;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
+    scrollbar-width: thin;
   }
 
   &__no-results {
-    font-size: 1.4em;
+    font-size: 1.4rem;
+    line-height: 1.5;
   }
 }
 
