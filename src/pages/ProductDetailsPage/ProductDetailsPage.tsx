@@ -17,6 +17,7 @@ import { fetchTablets, setSelectedTablet } from '../../features/tablets/tabletsS
 import { RecommendedSection } from '../../components/RecommendedSection';
 import { ProductParamsSelects } from '../../components/ProductParamsSelects/ProductParamsSelects';
 import { ProductActions } from '../../components/ProductActions/ProductActions';
+import { NotFoundPage } from '../NotFoundPage';
 
 const categoryMap = {
   phones: {
@@ -94,7 +95,7 @@ export const ProductDetailsPage = () => {
   } */
 
   if (!selectedProduct) {
-    return <p>Product not found.</p>;
+    return <NotFoundPage />;
   }
 
   const handleColorChange = (newColor: ColorKey) => {
