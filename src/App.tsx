@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import { Footer } from './components/Footer/Footer';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { useEffect } from 'react';
@@ -10,7 +10,7 @@ import '../src/styles/utils/mixins.scss';
 import './App.scss';
 
 import { Header } from './components/Header/Header';
-// import { TransitionGroup } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -19,14 +19,27 @@ export const App = () => {
     dispatch(fetchProducts());
     document.documentElement.className = theme;
   }, [theme]);
+  const location = useLocation();
+  console.log(location);
 
   return (
     <div className="body-ajustment">
       <Header />
       <main className="main">
-        {/* <TransitionGroup> */}
-        <Outlet />
-        {/* </TransitionGroup> */}
+        <TransitionGroup>
+          <CSSTransition
+            key={location.pathname.split('/')[1]}
+            timeout={700}
+            classNames={{
+              enter: 'app-enter',
+              enterActive: 'app-enter-active',
+              exit: 'app-exit',
+              exitActive: 'app-exit-active',
+            }}
+          >
+            <Outlet />
+          </CSSTransition>
+        </TransitionGroup>
       </main>
       <Footer />
     </div>

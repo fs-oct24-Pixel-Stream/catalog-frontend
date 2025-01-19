@@ -1,12 +1,13 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { CartItem } from '../../components/CartItem/CartItem';
-import { useMemo, useState } from 'react';
+// import { CartItem } from '../../components/CartItem/CartItem';
+import { createRef, useMemo, useState } from 'react';
 import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import './CartPage.scss';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
 import { clearAllProducts } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+// import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,6 +48,7 @@ export const CartPage = () => {
     }, 0);
   }, [cart]);
 
+  const nodeRef = createRef();
   return (
     <>
       <div className="cart _container">
@@ -59,15 +61,22 @@ export const CartPage = () => {
           </div>
         : <>
             <div className="cart-block">
-              <div className="cart-block__list">
-                {isCartNotEmpty &&
-                  cart.map((product) => (
-                    <CartItem
-                      key={product.id}
-                      product={product}
-                    />
-                  ))}
-              </div>
+              {/* <TransitionGroup className="cart-block__list"> */}
+              {/* {/* {isCartNotEmpty && */}
+              {/* cart.map((product) => (  */}
+              {/* //<CSSTransition */}
+              {/* //   key={product.id}
+                    //   nodeRef={nodeRef}
+                    //   timeout={500}
+                    //   classNames="item"
+                    // >
+                    //   <CartItem */}
+              {/* //     ref={nodeRef}
+                    //     product={product}
+                    //   />
+                    // </CSSTransition>
+                  // ))} */}
+              {/* </TransitionGroup> */}
 
               {isCartNotEmpty && (
                 <div className="checkout-block">
