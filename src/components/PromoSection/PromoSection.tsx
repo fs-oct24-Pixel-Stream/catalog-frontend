@@ -84,7 +84,7 @@ export const PromoSection = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <Link to={'/accessories/apple-watch-series-6-40mm-space-gray'}>
+            <Link to={'/accessories/apple-watch-series-6-40mm-spacegray'}>
               <video
                 className="promo-section__slide"
                 autoPlay
