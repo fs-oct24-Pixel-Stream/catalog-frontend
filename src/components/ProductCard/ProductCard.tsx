@@ -30,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const capacity = product.capacity;
   const ram = product.ram;
 
-  const getButtonText = isInCart ? 'Added' : 'Add to cart';
+  const getButtonText = isInCart ? t('added') : t('addToCart');
 
   const handleBuyProduct = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
