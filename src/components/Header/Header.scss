@@ -236,6 +236,10 @@ svg {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  @include mixins.on-desktop {
+    width: 64px;
+  }
 }
 
 .item-counter {
