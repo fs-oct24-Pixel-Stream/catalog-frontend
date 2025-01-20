@@ -8,6 +8,7 @@ import { clearAllProducts } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useTranslation } from 'react-i18next';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,15 +62,19 @@ export const CartPage = () => {
           </div>
         : <>
             <div className="cart-block">
-              <div className="cart-block__list">
+              <TransitionGroup className="cart-block__list">
                 {isCartNotEmpty &&
                   cart.map((product) => (
-                    <CartItem
+                    <CSSTransition
                       key={product.id}
-                      product={product}
-                    />
+                      timeout={500}
+                      classNames="cartItem"
+                      unmountOnExit
+                    >
+                      <CartItem product={product} />
+                    </CSSTransition>
                   ))}
-              </div>
+              </TransitionGroup>
 
               {isCartNotEmpty && (
                 <div className="checkout-block">

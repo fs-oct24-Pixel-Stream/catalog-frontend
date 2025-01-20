@@ -130,35 +130,22 @@
 
 .cartItem-enter {
   opacity: 0;
-  // transform: translateY(-20px);
-  transform: translateY(-20px); /* Початкове зсув для входу */
+  transform: translateY(-20px);
 }
 .cartItem-enter-active {
-  // opacity: 1;
-  // transform: translateY(0);
-  // transition:
-  //   opacity 900ms ease,
-  //   transform 900ms ease;
   opacity: 1;
-  transform: translateY(0); /* Елемент поступово з'являється */
+  transform: translateY(0);
   transition:
     opacity 0.5s ease,
     transform 0.5s ease;
 }
 .cartItem-exit {
-  // opacity: 1;
-  // transform: translateY(0);
   opacity: 1;
-  transform: translateY(0); /* Під час видалення елемент все ще видно */
+  transform: translateY(0);
 }
 .cartItem-exit-active {
-  // opacity: 0;
-  // transform: translateY(-20px);
-  // transition:
-  //   opacity 900ms ease,
-  //   transform 900ms ease;
   opacity: 0;
-  transform: translateY(-20px); /* Елемент зникає і переміщається */
+  transform: translateY(-20px);
   transition:
     opacity 0.5s ease,
     transform 0.5s ease;

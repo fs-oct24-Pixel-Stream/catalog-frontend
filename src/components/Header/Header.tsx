@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router';
+import { CSSTransition } from 'react-transition-group';
 import { Within } from '@theme-toggles/react';
 import { useMediaQuery } from 'react-responsive';
 
@@ -215,16 +216,15 @@ export const Header = () => {
           </div>
         </div>
       </header>
-      {/* <CSSTransition
+      <CSSTransition
         in={isMenuOpen}
         timeout={1200}
         classNames="burger-menu"
-        nodeRef={nodeRef}
+        unmountOnExit
+        mountOnEnter
       >
-        <div ref={nodeRef}> */}
-      <BurgerMenu />
-      {/* </div>
-      </CSSTransition> */}
+        <BurgerMenu />
+      </CSSTransition>
     </>
   );
 };

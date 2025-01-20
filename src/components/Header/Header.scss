@@ -315,3 +315,26 @@ svg {
     display: flex;
   }
 }
+
+.burger-menu-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.burger-menu-enter-active {
+  transform: translateX(0);
+  transition:
+    opacity 1100ms ease,
+    transform 1100ms ease;
+}
+
+.burger-menu-exit {
+  transform: translateX(0);
+}
+
+.burger-menu-exit-active {
+  transform: translateX(-100%);
+  transition:
+    opacity 1100ms ease,
+    transform 1100ms ease;
+}

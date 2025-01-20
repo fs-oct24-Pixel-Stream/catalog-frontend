@@ -47,3 +47,26 @@
     }
   }
 }
+
+.favoriteItem-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.favoriteItem-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+.favoriteItem-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.favoriteItem-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
