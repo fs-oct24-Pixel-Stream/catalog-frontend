@@ -28,7 +28,6 @@ import { Link } from 'react-router';
 import { LangToggle } from '../LangToggle/LangToggle';
 
 import { useLocation } from 'react-router';
-import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
