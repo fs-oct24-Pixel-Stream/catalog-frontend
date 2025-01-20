@@ -150,7 +150,7 @@ export const Header = () => {
             <div className="icons-wrapper">
               <Link
                 to="/favorites"
-                className={cn('icons-wrapper__item icon-container', {
+                className={cn('icons-wrapper__item ', {
                   'icons-wrapper__current': location.pathname === '/favorites',
                 })}
                 onClick={handleLinkClick}
@@ -173,7 +173,7 @@ export const Header = () => {
               </Link>
               <Link
                 to="/cart"
-                className={cn('icons-wrapper__item icon-container', {
+                className={cn('icons-wrapper__item ', {
                   'icons-wrapper__current': location.pathname === '/cart',
                 })}
                 onClick={handleLinkClick}
