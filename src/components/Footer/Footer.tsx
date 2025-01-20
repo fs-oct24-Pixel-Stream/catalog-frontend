@@ -13,6 +13,8 @@ import './Footer.scss';
 export const Footer = () => {
   const theme = useAppSelector((state) => state.theme.theme);
   const { t } = useTranslation();
+
+  const gitLink = 'https://github.com/fs-oct24-Pixel-Stream/catalog-frontend';
   return (
     <footer className="footer">
       <div className="_container footer-content has-text-centered">
@@ -40,7 +42,7 @@ export const Footer = () => {
                   className="footer-link-item"
                 >
                   <Link
-                    to={`/${button}`}
+                    to={button === 'github' ? gitLink : `/${button}`}
                     className="footer-link"
                     onClick={quicklyBackToTop}
                   >
