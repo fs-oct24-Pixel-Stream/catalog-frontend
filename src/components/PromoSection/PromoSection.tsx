@@ -55,59 +55,62 @@ export const PromoSection = () => {
           grabCursor={true}
           className="promo-section__swiper"
         >
-          {isLoading &&
-            Array.from({ length: 1 }).map((_, index) => (
+          {isLoading ?
+            Array.from({ length: 3 }).map((_, index) => (
               <SwiperSlide
                 key={index}
                 className="promo-section__slide"
               >
                 <PromoSectionSkeleton />
               </SwiperSlide>
-            ))}
-          <SwiperSlide>
-            <Link to={'/phones/apple-iphone-14-512gb-midnight'}>
-              <video
-                className="promo-section__slide"
-                autoPlay
-                loop
-                playsInline
-                preload="auto"
-                muted
-              >
-                <source src="video/iPhone-14-Pro.mp4" />
-              </video>
-            </Link>
-          </SwiperSlide>
+            ))
+          : <>
+              <SwiperSlide>
+                <Link to={'/phones/apple-iphone-14-512gb-midnight'}>
+                  <video
+                    className="promo-section__slide"
+                    autoPlay
+                    loop
+                    playsInline
+                    preload="auto"
+                    muted
+                  >
+                    <source src="video/iPhone-14-Pro.mp4" />
+                  </video>
+                </Link>
+              </SwiperSlide>
 
-          <SwiperSlide>
-            <Link to={'/tablets/apple-ipad-air-4th-gen-256gb-rosegold'}>
-              <video
-                className="promo-section__slide"
-                autoPlay
-                loop
-                playsInline
-                preload="auto"
-                muted
-              >
-                <source src="video/iPad-Air-4.mp4" />
-              </video>
-            </Link>
-          </SwiperSlide>
+              <SwiperSlide>
+                <Link to={'/tablets/apple-ipad-air-4th-gen-256gb-rosegold'}>
+                  <video
+                    className="promo-section__slide"
+                    autoPlay
+                    loop
+                    playsInline
+                    preload="auto"
+                    muted
+                  >
+                    <source src="video/iPad-Air-4.mp4" />
+                  </video>
+                </Link>
+              </SwiperSlide>
 
-          <SwiperSlide>
-            <Link to={'/accessories/apple-watch-series-6-40mm-spacegray'}>
-              <video
-                className="promo-section__slide"
-                autoPlay
-                loop
-                playsInline
-                preload="auto"
-                muted
-              >
-                <source src="video/Apple-Watch-Series-6.mp4" />
-              </video>
-            </Link>
-          </SwiperSlide>
+              <SwiperSlide>
+                <Link to={'/accessories/apple-watch-series-6-40mm-spacegray'}>
+                  <video
+                    className="promo-section__slide"
+                    autoPlay
+                    loop
+                    playsInline
+                    preload="auto"
+                    muted
+                  >
+                    <source src="video/Apple-Watch-Series-6.mp4" />
+                  </video>
+                </Link>
+              </SwiperSlide>
+            </>
+          }
         </Swiper>
         <IconButton
           backgroundImage={

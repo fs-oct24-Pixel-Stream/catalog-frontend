@@ -59,7 +59,7 @@ export const ProductSlider: React.FC<Props> = (props) => {
         grabCursor={true}
         freeMode={true}
       >
-        {isLoading &&
+        {isLoading ?
           Array.from({ length: 6 }).map((_, index) => (
             <SwiperSlide
               key={index}
@@ -67,18 +67,19 @@ export const ProductSlider: React.FC<Props> = (props) => {
             >
               <ProductCardSkeleton />
             </SwiperSlide>
-          ))}
-        {products.map((product) => (
-          <SwiperSlide
-            key={product.id}
-            className="product-slider__item"
-          >
-            <ProductCard
-              discount={discount}
-              product={product}
-            />
-          </SwiperSlide>
-        ))}
+          ))
+        : products.map((product) => (
+            <SwiperSlide
+              key={product.id}
+              className="product-slider__item"
+            >
+              <ProductCard
+                discount={discount}
+                product={product}
+              />
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
     </div>
   );
