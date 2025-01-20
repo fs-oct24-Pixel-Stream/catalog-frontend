@@ -1,10 +1,12 @@
-import { useMediaQuery } from 'react-responsive';
 import { useState, useMemo } from 'react';
-import { useAppSelector } from '../../app/hooks';
 import { useNavigate } from 'react-router';
-import { ProductCardType } from '../../utils/types/ProductCardType';
-import './DesctopSearch.scss';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from 'react-responsive';
+
+import { useAppSelector } from '../../app/hooks';
+import { ProductCardType } from '../../utils/types/ProductCardType';
+
+import './DesctopSearch.scss';
 
 export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
   const [query, setQuery] = useState('');

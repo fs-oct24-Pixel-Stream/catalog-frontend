@@ -1,7 +1,9 @@
-import './ProductParamsSelects.scss';
-import { ColorKey, COLORS } from '../../utils/types/colors';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+
+import { ColorKey, COLORS } from '../../utils/types/colors';
+
+import './ProductParamsSelects.scss';
 
 type Params = {
   colorsAvailable: ColorKey[];

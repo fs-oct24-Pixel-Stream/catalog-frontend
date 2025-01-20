@@ -1,6 +1,8 @@
+import { creators as creatorsList } from '../../utils/constants/creators';
+
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ContactItem } from '../../components/ContactItem/ContactItem';
-import { creators as creatorsList } from '../../utils/constants/creators';
+
 import './ContactsPage.scss';
 
 export const ContactsPage = () => {

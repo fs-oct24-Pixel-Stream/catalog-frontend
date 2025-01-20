@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router';
-import cn from 'classnames';
-import './Breadcrumbs.scss';
-import { useAppSelector } from '../../app/hooks';
 import { useTranslation } from 'react-i18next';
+import cn from 'classnames';
+
+import { useAppSelector } from '../../app/hooks';
+
+import './Breadcrumbs.scss';
 
 export const Breadcrumbs = () => {
   const location = useLocation();

@@ -1,7 +1,10 @@
 import { useEffect, useMemo } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { ProductsPage } from '../../components/ProductsPage';
 import { fetchAccessories } from '../../features/accessories/accessoriesSlice';
+
+import { ProductsPage } from '../../components/ProductsPage';
+
 import './AccessoriesPage.scss';
 
 export const AccessoriesPage = () => {

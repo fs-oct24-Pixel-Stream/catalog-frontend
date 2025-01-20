@@ -1,11 +1,14 @@
 import { Link } from 'react-router';
-import './Footer.scss';
-import { ScrollButton } from '../ScrollButton';
+import { useTranslation } from 'react-i18next';
+
 import { footerButtons } from '../../utils/constants/footerButtons';
 import { correctTitle } from '../../utils/functions/correctTitle';
 import { handleBackToTop, quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 import { useAppSelector } from '../../app/hooks';
-import { useTranslation } from 'react-i18next';
+
+import { ScrollButton } from '../ScrollButton';
+
+import './Footer.scss';
 
 export const Footer = () => {
   const theme = useAppSelector((state) => state.theme.theme);

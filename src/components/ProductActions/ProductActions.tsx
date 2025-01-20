@@ -1,13 +1,16 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
+
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
 import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
-import { IconButton } from '../IconButton';
-import './ProductActions.scss';
-import classNames from 'classnames';
 import { ProductCardType } from '../../utils/types/ProductCardType';
-import { useTranslation } from 'react-i18next';
+
+import { IconButton } from '../IconButton';
+
+import './ProductActions.scss';
 
 type Props = {
   selectedProduct: ProductDeviceType;
