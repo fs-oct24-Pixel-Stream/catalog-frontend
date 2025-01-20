@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
-import { IconButton } from '../IconButton';
-import { handleBackToTop } from '../../utils/functions/handleBackToTop';
 import cn from 'classnames';
+
+import { handleBackToTop } from '../../utils/functions/handleBackToTop';
+
+import { IconButton } from '../IconButton';
+
 import './ScrollButton.scss';
 
 export const ScrollButton = () => {

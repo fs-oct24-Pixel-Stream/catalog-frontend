@@ -1,10 +1,12 @@
 import { useState, useMemo } from 'react';
-import { useAppSelector } from '../../app/hooks';
-import './SearchModal.scss';
 import { useNavigate } from 'react-router';
-import { ProductCardType } from '../../utils/types/ProductCardType';
-import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from 'react-responsive';
+
+import { useAppSelector } from '../../app/hooks';
+import { ProductCardType } from '../../utils/types/ProductCardType';
+
+import './SearchModal.scss';
 
 export const SearchModal = ({ onClose }: { onClose: () => void }) => {
   const [query, setQuery] = useState('');

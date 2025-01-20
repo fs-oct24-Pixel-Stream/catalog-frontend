@@ -1,11 +1,15 @@
+import { useTranslation } from 'react-i18next';
+
+import { useAppSelector } from '../../app/hooks';
+
 import { NewModelSection } from '../../components/NewModelSection';
-import './HomePage.scss';
 import { CategorySection } from '../../components/CategorySection/CategorySection';
 import { HotPriceSection } from '../../components/HotPriceSection';
 import { PromoSection } from '../../components/PromoSection';
-import { useAppSelector } from '../../app/hooks';
+
 import { CategorySectionSkeleton } from '../../components/Skeletons/CategorySectionSkeleton/CategorySectionSkeleton';
-import { useTranslation } from 'react-i18next';
+
+import './HomePage.scss';
 
 export const HomePage = () => {
   const isLoading = useAppSelector((state) => state.products.loading);

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
-import './NotFoundPage.scss';
 import { useTranslation } from 'react-i18next';
+
+import './NotFoundPage.scss';
 
 export const NotFoundPage = () => {
   const navigate = useNavigate();

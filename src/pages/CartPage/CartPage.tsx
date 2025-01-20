@@ -1,14 +1,18 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { CartItem } from '../../components/CartItem/CartItem';
 import { useMemo, useState } from 'react';
-import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
-import './CartPage.scss';
-import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
-import { clearAllProducts } from '../../features/cart/cartSlice';
-import cn from 'classnames';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useTranslation } from 'react-i18next';
+import cn from 'classnames';
+
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { clearAllProducts } from '../../features/cart/cartSlice';
+
+import { CartItem } from '../../components/CartItem/CartItem';
+import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
+import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+import './CartPage.scss';
 
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

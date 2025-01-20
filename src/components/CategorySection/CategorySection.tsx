@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
-import { useAppSelector } from '../../app/hooks';
-import './CategorySection.scss';
-import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
+
+import { useAppSelector } from '../../app/hooks';
+
+import './CategorySection.scss';
 
 export const CategorySection = () => {
   const { products } = useAppSelector((state) => state.products);

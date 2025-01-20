@@ -1,13 +1,17 @@
-import { ProductCardType } from '../../utils/types/ProductCardType';
-import { IconButton } from '../IconButton/IconButton';
-import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { useRef } from 'react';
-import { ProductCard } from '../ProductCard';
-import 'swiper/swiper-bundle.css';
-import './ProductSlider.scss';
-import { useAppSelector } from '../../app/hooks';
-import { ProductCardSkeleton } from '../Skeletons/ProductCardSkeleton/ProductCardSkeleton';
 import { useTranslation } from 'react-i18next';
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
+
+import { useAppSelector } from '../../app/hooks';
+import { ProductCardType } from '../../utils/types/ProductCardType';
+
+import { IconButton } from '../IconButton/IconButton';
+import { ProductCard } from '../ProductCard';
+
+import { ProductCardSkeleton } from '../Skeletons/ProductCardSkeleton/ProductCardSkeleton';
+
+import './ProductSlider.scss';
+import 'swiper/swiper-bundle.css';
 
 type Props = {
   products: ProductCardType[];

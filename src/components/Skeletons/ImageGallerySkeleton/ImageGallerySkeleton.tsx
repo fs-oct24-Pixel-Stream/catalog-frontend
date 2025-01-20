@@ -1,5 +1,7 @@
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+
 import { useAppSelector } from '../../../app/hooks';
+
 import './ImageGallerySkeleton.scss';
 
 export const ImageGallerySkeleton = () => {

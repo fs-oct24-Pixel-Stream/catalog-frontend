@@ -1,19 +1,21 @@
 import React from 'react';
 import { useLocation } from 'react-router';
-import { ProductList } from '../ProductList';
-import PaginationProducts from '../PaginationProducts/PaginationProducts';
-import { Breadcrumbs } from '../Breadcrumbs';
+import { useTranslation } from 'react-i18next';
 
 import { variableForFilter } from '../../utils/constants/variableForFilter';
 import { useFilterAndPagination } from '../../utils/hooks/useFilterAndPagination';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { ChooseForFilter } from '../../utils/types/ChooseForFilter';
-
-import './ProductsPage.scss';
 import { correctTitle } from '../../utils/functions/correctTitle';
 import { useAppSelector } from '../../app/hooks';
+
+import { ProductList } from '../ProductList';
+import { Breadcrumbs } from '../Breadcrumbs';
+import PaginationProducts from '../PaginationProducts/PaginationProducts';
+
 import { ProductListSkeleton } from '../Skeletons/ProductListSkeleton/ProductListSkeleton';
-import { useTranslation } from 'react-i18next';
+
+import './ProductsPage.scss';
 
 type Props = {
   products: ProductCardType[];
