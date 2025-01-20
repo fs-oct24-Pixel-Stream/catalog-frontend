@@ -126,7 +126,7 @@ const resources = {
         - Loss of data or unauthorized access due to user negligence.
         - Errors, delays, or interruptions in service caused by external factors.
       `,
-      contactEmail: 'For questions or additional support, contact us at',
+      contactEmail: 'For questions or additional support, contact us at: ',
       lastUpdatedRights: 'Last updated:',
       SelectSize: 'Select size',
       SelectCapacity: 'Select capacity',
@@ -266,7 +266,7 @@ const resources = {
         - Помилки, затримки або переривання в роботі сервісу, викликані зовнішніми факторами.
       `,
       contactEmail:
-        'Якщо у вас виникли запитання чи додаткова підтримка, зв’яжіться з нами за адресою',
+        'Якщо у вас виникли запитання чи додаткова підтримка, зв’яжіться з нами за адресою: ',
       lastUpdatedRights: 'Востаннє оновлено:',
     },
   },
