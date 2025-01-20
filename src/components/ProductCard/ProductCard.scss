@@ -159,6 +159,9 @@
       box-shadow: 0px 3px 13px 0px variable.$shadow;
       color: variable.$white;
     }
+    &:active {
+      color: variable.$white;
+    }
   }
 
   &__button-buy--active {

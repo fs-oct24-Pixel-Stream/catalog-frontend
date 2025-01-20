@@ -3,8 +3,8 @@ import { Link } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { decreaseProduct, increaseProduct, removeProduct } from '../../features/cart/cartSlice';
-import { ProductCardType } from '../../utils/types/ProductCardType';
 
+import { ProductCardType } from '../../utils/types/ProductCardType';
 import { IconButton } from '../IconButton/IconButton';
 
 import './CartItem.scss';
@@ -29,6 +29,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
   const handleDeleteProduct = () => {
     dispatch(removeProduct(product.id));
   };
+
   return (
     <div className="is-flex cart-item">
       <div className="is-flex is-justify-content-space-between is-align-items-center cart-item__header">

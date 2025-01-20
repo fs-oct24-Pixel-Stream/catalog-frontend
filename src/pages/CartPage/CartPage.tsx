@@ -10,6 +10,8 @@ import { CheckoutModal } from '../../components/CheckoutModal/CheckoutModal';
 import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 import './CartPage.scss';
 
 export const CartPage = () => {
@@ -64,15 +66,19 @@ export const CartPage = () => {
           </div>
         : <>
             <div className="cart-block">
-              <div className="cart-block__list">
+              <TransitionGroup className="cart-block__list">
                 {isCartNotEmpty &&
                   cart.map((product) => (
-                    <CartItem
+                    <CSSTransition
                       key={product.id}
-                      product={product}
-                    />
+                      timeout={500}
+                      classNames="cartItem"
+                      unmountOnExit
+                    >
+                      <CartItem product={product} />
+                    </CSSTransition>
                   ))}
-              </div>
+              </TransitionGroup>
 
               {isCartNotEmpty && (
                 <div className="checkout-block">

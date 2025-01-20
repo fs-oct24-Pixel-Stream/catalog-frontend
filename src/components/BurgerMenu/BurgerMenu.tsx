@@ -1,5 +1,6 @@
 import { FC, useEffect } from 'react';
 import { Within } from '@theme-toggles/react';
+
 import cn from 'classnames';
 
 import { setTheme } from '../../features/theme/themeSlice';
@@ -13,13 +14,13 @@ import './BurgerMenu.scss';
 export const BurgerMenu: FC = () => {
   const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
+
   const toggleThemeChange = (): void => {
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
   const handleCloseMenu = () => {
     dispatch(setBurgerState());
   };
-
   const isOpen = useAppSelector((state) => state.burger.burgerStatus);
 
   useEffect(() => {

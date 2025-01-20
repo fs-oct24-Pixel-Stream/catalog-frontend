@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { footerButtons } from '../../utils/constants/footerButtons';
 import { correctTitle } from '../../utils/functions/correctTitle';
-import { handleBackToTop, quicklyBackToTop } from '../../utils/functions/handleBackToTop';
+import { quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 import { useAppSelector } from '../../app/hooks';
 
 import { ScrollButton } from '../ScrollButton';
@@ -42,7 +42,7 @@ export const Footer = () => {
                   <Link
                     to={`/${button}`}
                     className="footer-link"
-                    onClick={handleBackToTop}
+                    onClick={quicklyBackToTop}
                   >
                     {t(text)}
                   </Link>

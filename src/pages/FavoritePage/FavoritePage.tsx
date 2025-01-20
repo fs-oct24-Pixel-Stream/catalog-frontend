@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useAppSelector } from '../../app/hooks';
 
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -25,14 +25,18 @@ export const FavoritePage = () => {
             <p className="favorites__items-quantity">
               {quantity} {t('items')}
             </p>
-            <div className="favorites__list productList">
+            <TransitionGroup className="favorites__list productList">
               {products.map((product) => (
-                <ProductCard
+                <CSSTransition
                   key={product.id}
-                  product={product}
-                />
+                  timeout={500}
+                  classNames="favoriteItem"
+                  unmountOnExit
+                >
+                  <ProductCard product={product} />
+                </CSSTransition>
               ))}
-            </div>
+            </TransitionGroup>
           </>
         }
       </div>

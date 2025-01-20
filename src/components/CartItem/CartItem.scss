@@ -127,3 +127,26 @@
     }
   }
 }
+
+.cartItem-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.cartItem-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+.cartItem-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cartItem-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}

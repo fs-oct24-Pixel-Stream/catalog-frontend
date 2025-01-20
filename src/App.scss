@@ -21,6 +21,7 @@
 ._container {
   box-sizing: border-box;
   padding-inline: 16px;
+  // padding-right: 16px;
 
   @include mixins.on-tablet {
     padding-inline: 24px;
@@ -210,33 +211,28 @@ html {
   width: 12px;
 }
 
-::-webkit-scrollbar-track {
-  background: variable.$secondary;
-  html.dark & {
-    background: variable.$bgColor-dark;
-  }
-}
-
-::-webkit-scrollbar-thumb {
-  background: variable.$secondary;
-  html.dark & {
-    background: variable.$bgColor-dark;
-  }
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: variable.$secondary;
-  html.dark & {
-    background: variable.$bgColor-dark;
-  }
-}
-
 /* Для Firefox */
 html {
-  scrollbar-color: variable.$icons variable.$bgColor;
+  // scrollbar-color: variable.$icons variable.$bgColor;
   scrollbar-width: thin;
+  scroll-behavior: smooth;
 }
 
 html.dark {
   scrollbar-color: #905bff variable.$bgColor-dark;
+}
+
+.app-enter {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+.app-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+.app-exit {
+  display: none;
 }

@@ -19,6 +19,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
   const { handleCloseModal, productsList, totalPrice, isOpen } = props;
   const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
   const { t } = useTranslation();
+
   useEffect(() => {
     if (isOpen) {
       document.documentElement.style.overflowY = 'hidden';

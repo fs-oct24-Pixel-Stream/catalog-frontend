@@ -7,6 +7,7 @@
   align-items: center;
   min-height: 48px;
   padding-left: 16px;
+  padding-right: 12px;
   border-bottom: 1px solid #e2e6e9;
   background-color: variable.$white;
   width: 100vw; //???? У Насті на телефоні білі полоси по бокам
@@ -313,4 +314,27 @@ svg {
   .icons-language {
     display: flex;
   }
+}
+
+.burger-menu-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.burger-menu-enter-active {
+  transform: translateX(0);
+  transition:
+    opacity 1100ms ease,
+    transform 1100ms ease;
+}
+
+.burger-menu-exit {
+  transform: translateX(0);
+}
+
+.burger-menu-exit-active {
+  transform: translateX(-100%);
+  transition:
+    opacity 1100ms ease,
+    transform 1100ms ease;
 }

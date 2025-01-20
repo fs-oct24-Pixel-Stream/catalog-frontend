@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import { Link } from 'react-router';
+
+import { Link, useLocation } from 'react-router';
+import { CSSTransition } from 'react-transition-group';
 import { useMediaQuery } from 'react-responsive';
 import { Within } from '@theme-toggles/react';
-import cn from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setBurgerState } from '../../features/burger/burgerSlice';
@@ -14,7 +14,7 @@ import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { SearchModal } from '../SearchModal';
 import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
 import { LangToggle } from '../LangToggle/LangToggle';
-
+ 
 import logo from '../../../public/img/icons/Logo.svg';
 import logoWhite from '../../../public/img/icons/LogoWhite.svg';
 import burger from '../../../public/img/icons/burger.svg';
@@ -23,11 +23,13 @@ import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import burgerCloseWhite from '../../../public/img/icons/burgerCloseWhite.svg';
 import cart from '../../../public/img/icons/Cart.svg';
 import fav from '../../../public/img/icons/Fav.svg';
-import cartWhite from '../../../public/img/icons/Cart-White.svg';
 import favWhite from '../../../public/img/icons/Fav-White-Empty.svg';
 import search from '../../../public/img/icons/Search.svg';
 import searchWhite from '../../../public/img/icons/SearchWhite.svg';
 
+import cartWhite from '../../../public/img/icons/Cart-White.svg';
+
+import cn from 'classnames';
 import './Header.scss';
 import '@theme-toggles/react/css/Within.css';
 
@@ -73,7 +75,6 @@ export const Header = () => {
 
   const cartList = useAppSelector((state) => state.cart.cart);
   const favoritesList = useAppSelector((state) => state.favorities.products);
-
   return (
     <>
       <header
@@ -217,8 +218,15 @@ export const Header = () => {
           </div>
         </div>
       </header>
-
-      {isMenuOpen && <BurgerMenu />}
+      <CSSTransition
+        in={isMenuOpen}
+        timeout={1200}
+        classNames="burger-menu"
+        unmountOnExit
+        mountOnEnter
+      >
+        <BurgerMenu />
+      </CSSTransition>
     </>
   );
 };
