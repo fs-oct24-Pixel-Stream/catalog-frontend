@@ -1,5 +1,5 @@
 export enum ChooseForFilter {
-  SELECT = 'Select...',
+  SELECT = 'Select',
   NEWEST = 'Newest',
   CHEAPEST = 'Cheapest',
   EXPENSIVE = 'Expensive',

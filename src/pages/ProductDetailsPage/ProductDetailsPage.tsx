@@ -18,6 +18,7 @@ import { RecommendedSection } from '../../components/RecommendedSection';
 import { ProductParamsSelects } from '../../components/ProductParamsSelects/ProductParamsSelects';
 import { ProductActions } from '../../components/ProductActions/ProductActions';
 import { NotFoundPage } from '../NotFoundPage';
+import { useTranslation } from 'react-i18next';
 
 const categoryMap = {
   phones: {
@@ -44,6 +45,7 @@ export const ProductDetailsPage = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const category = location.pathname.split('/')[1];
   const deviceId = location.pathname.split('/')[2];
@@ -155,14 +157,14 @@ export const ProductDetailsPage = () => {
       </section>
 
       <section className="product-details__about">
-        <h3 className="product-details__subtitle">About</h3>
+        <h3 className="product-details__subtitle">{t('about')}</h3>
         <div className="product-details__line" />
 
         <AboutSection description={description} />
       </section>
 
       <section className="product-details__tech-specs">
-        <h3 className="product-details__subtitle">Tech specs</h3>
+        <h3 className="product-details__subtitle">{t('techSpecs')}</h3>
         <div className="product-details__line" />
 
         <TechSpecs

@@ -1,6 +1,7 @@
 import './ProductParamsSelects.scss';
 import { ColorKey, COLORS } from '../../utils/types/colors';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 type Params = {
   colorsAvailable: ColorKey[];
@@ -14,6 +15,7 @@ type Params = {
 };
 
 export const ProductParamsSelects: React.FC<Params> = (params) => {
+  const { t } = useTranslation();
   const {
     colorsAvailable,
     capacityAvailable,
@@ -28,7 +30,7 @@ export const ProductParamsSelects: React.FC<Params> = (params) => {
     <div className="available-options">
       <div className="available-options__color available-options__section">
         <div className="available-options__label-wrapper">
-          <span className="available-options__label">Available colors</span>
+          <span className="available-options__label">{t('colors')}</span>
         </div>
 
         <div>
@@ -50,8 +52,8 @@ export const ProductParamsSelects: React.FC<Params> = (params) => {
       </div>
       <div className="available-options__capasity available-options__section">
         {category === 'accessories' ?
-          <span className="available-options__label">Select size</span>
-        : <span className="available-options__label">Select capacity</span>}
+          <span className="available-options__label">{t('SelectSize')}</span>
+        : <span className="available-options__label">{t('SelectCapacity')}</span>}
 
         <div>
           {capacityAvailable.map((capacityOption) => (

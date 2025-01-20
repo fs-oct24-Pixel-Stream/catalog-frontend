@@ -4,12 +4,13 @@ import './SearchModal.scss';
 import { useNavigate } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import { useMediaQuery } from 'react-responsive';
+import { useTranslation } from 'react-i18next';
 
 export const SearchModal = ({ onClose }: { onClose: () => void }) => {
   const [query, setQuery] = useState('');
   const products = useAppSelector((state) => state.products.products);
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   const filteredProducts = useMemo(() => {
@@ -44,7 +45,7 @@ export const SearchModal = ({ onClose }: { onClose: () => void }) => {
           <input
             type="text"
             className="search-modal__input"
-            placeholder="Search..."
+            placeholder={t('Search')}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -69,10 +70,7 @@ export const SearchModal = ({ onClose }: { onClose: () => void }) => {
                       {product.name}
                     </div>
                   ))
-                : <div className="search-modal__no-results">
-                    No products found matching your search.
-                  </div>
-                }
+                : <div className="search-modal__no-results">{t('searchEmpty')}</div>}
               </div>
             </div>
           )}

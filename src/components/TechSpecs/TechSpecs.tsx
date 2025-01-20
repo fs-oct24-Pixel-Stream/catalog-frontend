@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
 import './TechSpecs.scss';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   device: ProductDeviceType;
@@ -9,6 +10,7 @@ type Props = {
 };
 
 export const TechSpecs: React.FC<Props> = ({ device, category, variant }) => {
+  const { t } = useTranslation();
   const specs = {
     'Screen': device.screen,
     'Resolution': device.resolution,
@@ -69,14 +71,13 @@ export const TechSpecs: React.FC<Props> = ({ device, category, variant }) => {
         {Object.entries(specsToRender).map((spec) => {
           const key = spec[0];
           let val = spec[1];
-
           if (val) {
             return (
               <li
                 className="tech-specs__item"
                 key={key}
               >
-                <div className="tech-specs__item--name">{key}</div>
+                <div className="tech-specs__item--name">{t(key)}</div>
 
                 <div className="tech-specs__item--value">{val}</div>
               </li>

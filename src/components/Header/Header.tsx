@@ -28,6 +28,7 @@ import { Link } from 'react-router';
 import { LangToggle } from '../LangToggle/LangToggle';
 
 import { useLocation } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
@@ -41,7 +42,6 @@ export const Header = () => {
   const location = useLocation();
   const toggleBurgerMenu = (): void => {
     dispatch(setBurgerState());
-    console.log('here');
   };
 
   const handleLinkClick = () => {
