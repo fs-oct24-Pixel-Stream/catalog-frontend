@@ -14,7 +14,7 @@ import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { SearchModal } from '../SearchModal';
 import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
 import { LangToggle } from '../LangToggle/LangToggle';
- 
+
 import logo from '../../../public/img/icons/Logo.svg';
 import logoWhite from '../../../public/img/icons/LogoWhite.svg';
 import burger from '../../../public/img/icons/burger.svg';

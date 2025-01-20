@@ -120,13 +120,21 @@
   }
 
   @include mixins.on-desktop {
+    // gap: 64px;
+    // &--current::after {
+    //   top: 34px;
+    // }
+  }
+}
+
+@media (min-width: 1360px) {
+  .nav-links {
     gap: 64px;
     &--current::after {
       top: 34px;
     }
   }
 }
-
 svg {
   width: 25px;
 }
@@ -158,6 +166,7 @@ svg {
     height: 100%;
     cursor: pointer;
     padding-left: 10px;
+
     &__item {
       position: relative;
       width: 48px;
@@ -167,13 +176,16 @@ svg {
       html.dark & {
         border-left: 1px solid variable.$elements-dark;
       }
+
       display: flex;
       align-items: center;
       justify-content: center;
       transition: background-color variable.$button-transition-time ease;
     }
+
     &__item:hover {
       background-color: variable.$elements;
+
       html.dark & {
         background: variable.$gray;
       }
@@ -244,19 +256,19 @@ svg {
 }
 
 .item-counter {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   display: flex;
 
   justify-content: center;
   align-items: center;
-  border: 1px solid #fff;
   border-radius: 50%;
 
   color: #fff;
   background-color: variable.$blue;
   html.dark & {
     background-color: variable.$purple;
+    border: 1px solid #a590d1;
   }
   position: absolute;
   bottom: 10px;

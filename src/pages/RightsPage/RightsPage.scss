@@ -12,11 +12,15 @@
   }
 
   &__block {
-    background-color: variables.$elements;
+    background-color: variables.$white;
+    transition: box-shadow variables.$button-transition-time ease;
     padding: 20px;
-
+    &:hover {
+      box-shadow: 0px 3px 13px 0px variables.$shadow;
+    }
     html.dark & {
       background-color: variables.$primary-dark;
+      border: 1px solid variables.$elements-dark;
     }
   }
 
@@ -26,6 +30,9 @@
     }
     &:last-child {
       font-style: italic;
+    }
+    & p {
+      color: variables.$secondary-dark;
     }
   }
 }

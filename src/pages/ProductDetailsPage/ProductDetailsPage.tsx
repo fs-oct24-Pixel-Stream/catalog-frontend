@@ -123,7 +123,7 @@ export const ProductDetailsPage = () => {
         <BackButton />
       </div>
 
-      <h1 className="product-details__title titleSecond">{name}</h1>
+      <h1 className="titleSecond product-details__title ">{name}</h1>
 
       <section className="product-details__gallery">
         {isLoading || !selectedProduct ?

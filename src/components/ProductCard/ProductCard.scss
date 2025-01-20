@@ -144,7 +144,8 @@
     font-weight: 700;
     line-height: 1.5;
     border-radius: variable.$global-border-radius;
-    background: linear-gradient(45deg, #89939a, #313237);
+
+    background: linear-gradient(45deg, #89939a, #3e4246, #111112);
     color: variable.$white;
 
     html.dark & {

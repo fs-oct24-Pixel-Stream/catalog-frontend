@@ -27,11 +27,16 @@
 
   &__title {
     grid-column: 1 / -1;
+    font-size: 2.7rem;
 
     margin-bottom: 32px;
 
     @include mixins.on-tablet {
       margin-bottom: 40px;
+      font-size: 3.2rem;
+    }
+    @include mixins.on-desktop {
+      font-size: 3rem;
     }
 
     html.dark & {

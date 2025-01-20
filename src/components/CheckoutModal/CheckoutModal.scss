@@ -2,7 +2,7 @@
 @use '../../styles/utils/mixins.scss' as mixins;
 
 .choice-button {
-  background: linear-gradient(45deg, #89939a, #313237);
+  background: linear-gradient(45deg, #89939a, #3e4246, #111112);
   color: variable.$white;
   font-family: variable.$font-family;
   font-size: 1em;
@@ -21,8 +21,8 @@
   }
 
   &-confirm {
-    background: variable.$primary;
     width: 100%;
+    background: linear-gradient(45deg, #89939a, #3e4246, #111112);
     html.dark & {
       background: linear-gradient(45deg, #d6249f, #285aeb);
     }
