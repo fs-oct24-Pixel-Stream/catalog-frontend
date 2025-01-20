@@ -4,8 +4,12 @@ interface ThemeState {
   theme: 'light' | 'dark';
 }
 
+const getThemeByDefault = (): 'light' | 'dark' => {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
 const initialState: ThemeState = {
-  theme: 'light',
+  theme: getThemeByDefault(),
 };
 
 export const themeSlice = createSlice({
@@ -19,3 +23,4 @@ export const themeSlice = createSlice({
 });
 
 export const { setTheme } = themeSlice.actions;
+export default themeSlice.reducer;
