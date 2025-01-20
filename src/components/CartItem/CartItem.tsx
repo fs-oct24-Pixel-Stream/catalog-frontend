@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { decreaseProduct, increaseProduct, removeProduct } from '../../features/cart/cartSlice';
 import { IconButton } from '../IconButton/IconButton';

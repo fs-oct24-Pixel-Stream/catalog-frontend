@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { HeaderLinks } from '../Header/HeaderLinks';
 import './BurgerMenu.scss';
 import cn from 'classnames';
@@ -12,13 +12,13 @@ import { setBurgerState } from '../../features/burger/burgerSlice';
 export const BurgerMenu: FC = () => {
   const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
+
   const toggleThemeChange = (): void => {
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
   const handleCloseMenu = () => {
     dispatch(setBurgerState());
   };
-
   const isOpen = useAppSelector((state) => state.burger.burgerStatus);
 
   useEffect(() => {

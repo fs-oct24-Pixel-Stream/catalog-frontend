@@ -11,6 +11,7 @@
 .burger-menu-content {
   top: 48px;
   position: fixed;
+  z-index: 10;
   width: 100%;
   max-width: 768px;
   background-color: variable.$white;
@@ -124,4 +125,30 @@
   .burger-menu-content {
     display: none;
   }
+}
+
+.burger-menu-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.burger-menu-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 1100ms ease,
+    transform 1100ms ease;
+}
+
+.burger-menu-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.burger-menu-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition:
+    opacity 1100ms ease,
+    transform 1100ms ease;
 }

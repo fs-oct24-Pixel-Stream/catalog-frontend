@@ -3,7 +3,7 @@ import './Footer.scss';
 import { ScrollButton } from '../ScrollButton';
 import { footerButtons } from '../../utils/constants/footerButtons';
 import { correctTitle } from '../../utils/functions/correctTitle';
-import { handleBackToTop, quicklyBackToTop } from '../../utils/functions/handleBackToTop';
+import { quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 import { useAppSelector } from '../../app/hooks';
 
 export const Footer = () => {
@@ -37,7 +37,7 @@ export const Footer = () => {
                   <Link
                     to={`/${button}`}
                     className="footer-link"
-                    onClick={handleBackToTop}
+                    onClick={quicklyBackToTop}
                   >
                     {text}
                   </Link>

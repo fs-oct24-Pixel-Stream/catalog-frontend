@@ -1,4 +1,18 @@
-import './Header.scss';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router';
+import { Within } from '@theme-toggles/react';
+import { useMediaQuery } from 'react-responsive';
+
+import { setBurgerState } from '../../features/burger/burgerSlice';
+import { setTheme } from '../../features/theme/themeSlice';
+
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { HeaderLinks } from './HeaderLinks';
+import { LangToggle } from '../LangToggle/LangToggle';
+import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import { SearchModal } from '../SearchModal';
+import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
+
 import logo from '../../../public/img/icons/Logo.svg';
 import logoWhite from '../../../public/img/icons/LogoWhite.svg';
 import burger from '../../../public/img/icons/burger.svg';
@@ -7,27 +21,14 @@ import burgerClose from '../../../public/img/icons/burgerClose.svg';
 import burgerCloseWhite from '../../../public/img/icons/burgerCloseWhite.svg';
 import cart from '../../../public/img/icons/Cart.svg';
 import fav from '../../../public/img/icons/Fav.svg';
-import cartWhite from '../../../public/img/icons/Cart-White.svg';
 import favWhite from '../../../public/img/icons/Fav-White-Empty.svg';
 import search from '../../../public/img/icons/Search.svg';
 import searchWhite from '../../../public/img/icons/SearchWhite.svg';
-import { HeaderLinks } from './HeaderLinks';
-import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
-import { useEffect, useState } from 'react';
+import cartWhite from '../../../public/img/icons/Cart-White.svg';
+
 import cn from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { SearchModal } from '../SearchModal';
-import { useMediaQuery } from 'react-responsive';
-import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
-import { setTheme } from '../../features/theme/themeSlice';
 import '@theme-toggles/react/css/Within.css';
-import { Within } from '@theme-toggles/react';
-import { setBurgerState } from '../../features/burger/burgerSlice';
-import { Link } from 'react-router';
-
-import { LangToggle } from '../LangToggle/LangToggle';
-
-import { useLocation } from 'react-router';
+import './Header.scss';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);
@@ -41,7 +42,6 @@ export const Header = () => {
   const location = useLocation();
   const toggleBurgerMenu = (): void => {
     dispatch(setBurgerState());
-    console.log('here');
   };
 
   const handleLinkClick = () => {
@@ -72,7 +72,6 @@ export const Header = () => {
 
   const cartList = useAppSelector((state) => state.cart.cart);
   const favoritesList = useAppSelector((state) => state.favorities.products);
-
   return (
     <>
       <header
@@ -216,8 +215,16 @@ export const Header = () => {
           </div>
         </div>
       </header>
-
-      {isMenuOpen && <BurgerMenu />}
+      {/* <CSSTransition
+        in={isMenuOpen}
+        timeout={1200}
+        classNames="burger-menu"
+        nodeRef={nodeRef}
+      >
+        <div ref={nodeRef}> */}
+      <BurgerMenu />
+      {/* </div>
+      </CSSTransition> */}
     </>
   );
 };

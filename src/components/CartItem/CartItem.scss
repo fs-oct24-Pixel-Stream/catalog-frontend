@@ -127,3 +127,39 @@
     }
   }
 }
+
+.cartItem-enter {
+  opacity: 0;
+  // transform: translateY(-20px);
+  transform: translateY(-20px); /* Початкове зсув для входу */
+}
+.cartItem-enter-active {
+  // opacity: 1;
+  // transform: translateY(0);
+  // transition:
+  //   opacity 900ms ease,
+  //   transform 900ms ease;
+  opacity: 1;
+  transform: translateY(0); /* Елемент поступово з'являється */
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+.cartItem-exit {
+  // opacity: 1;
+  // transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0); /* Під час видалення елемент все ще видно */
+}
+.cartItem-exit-active {
+  // opacity: 0;
+  // transform: translateY(-20px);
+  // transition:
+  //   opacity 900ms ease,
+  //   transform 900ms ease;
+  opacity: 0;
+  transform: translateY(-20px); /* Елемент зникає і переміщається */
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
