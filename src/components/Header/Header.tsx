@@ -1,4 +1,20 @@
-import './Header.scss';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
+import { Link } from 'react-router';
+import { useMediaQuery } from 'react-responsive';
+import { Within } from '@theme-toggles/react';
+import cn from 'classnames';
+
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { setBurgerState } from '../../features/burger/burgerSlice';
+import { setTheme } from '../../features/theme/themeSlice';
+
+import { HeaderLinks } from './HeaderLinks';
+import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import { SearchModal } from '../SearchModal';
+import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
+import { LangToggle } from '../LangToggle/LangToggle';
+
 import logo from '../../../public/img/icons/Logo.svg';
 import logoWhite from '../../../public/img/icons/LogoWhite.svg';
 import burger from '../../../public/img/icons/burger.svg';
@@ -11,23 +27,9 @@ import cartWhite from '../../../public/img/icons/Cart-White.svg';
 import favWhite from '../../../public/img/icons/Fav-White-Empty.svg';
 import search from '../../../public/img/icons/Search.svg';
 import searchWhite from '../../../public/img/icons/SearchWhite.svg';
-import { HeaderLinks } from './HeaderLinks';
-import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
-import { useEffect, useState } from 'react';
-import cn from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { SearchModal } from '../SearchModal';
-import { useMediaQuery } from 'react-responsive';
-import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
-import { setTheme } from '../../features/theme/themeSlice';
+
+import './Header.scss';
 import '@theme-toggles/react/css/Within.css';
-import { Within } from '@theme-toggles/react';
-import { setBurgerState } from '../../features/burger/burgerSlice';
-import { Link } from 'react-router';
-
-import { LangToggle } from '../LangToggle/LangToggle';
-
-import { useLocation } from 'react-router';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);

@@ -1,7 +1,9 @@
 import React from 'react';
-import './CheckoutCartItem.scss';
-import { ProductCardType } from '../../utils/types/ProductCardType';
 import { Link } from 'react-router';
+
+import { ProductCardType } from '../../utils/types/ProductCardType';
+
+import './CheckoutCartItem.scss';
 
 type Props = {
   product: ProductCardType;

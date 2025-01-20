@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router';
+
 import './BackButton.scss';
 
 export const BackButton = () => {

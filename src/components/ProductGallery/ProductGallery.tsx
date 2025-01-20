@@ -1,6 +1,7 @@
 import React from 'react';
-import './ProductGallery.scss';
 import ImageGallery from 'react-image-gallery';
+
+import './ProductGallery.scss';
 
 type Props = {
   images: string[];

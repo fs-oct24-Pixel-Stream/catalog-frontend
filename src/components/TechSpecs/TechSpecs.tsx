@@ -1,7 +1,9 @@
-import classNames from 'classnames';
-import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
-import './TechSpecs.scss';
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
+
+import { ProductDeviceType } from '../../utils/types/ProductDeviceType';
+
+import './TechSpecs.scss';
 
 type Props = {
   device: ProductDeviceType;
