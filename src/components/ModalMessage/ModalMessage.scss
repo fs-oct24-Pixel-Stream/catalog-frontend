@@ -24,6 +24,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .road {
   width: 100%;
   animation: ride 1.8s cubic-bezier(0.7, 0.9, 1, 0) infinite;
@@ -44,5 +45,12 @@
   }
   to {
     transform: translateX(100%);
+  }
+}
+
+.movingTruck {
+  width: 50px;
+  html.dark & {
+    content: url('./../../../public/img/icons/delivery-violet.png');
   }
 }
