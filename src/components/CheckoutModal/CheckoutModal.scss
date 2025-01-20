@@ -13,7 +13,7 @@
   border-radius: variable.$global-border-radius;
 
   html.dark & {
-    background: variable.$primary-dark;
+    background: linear-gradient(45deg, #d6249f, #285aeb);
     color: variable.$white;
   }
   &:hover {
@@ -21,10 +21,10 @@
   }
 
   &-confirm {
-    background-color: variable.$primary;
+    background: variable.$primary;
     width: 100%;
     html.dark & {
-      background-color: variable.$primary;
+      background: linear-gradient(45deg, #d6249f, #285aeb);
     }
     &:active {
       color: white;
@@ -33,6 +33,7 @@
 
   &-cancel {
     background: variable.$elements;
+    border: 1px solid variable.$primary;
     color: variable.$primary;
     width: 100%;
     html.dark & {
@@ -147,6 +148,10 @@
     background: transparent;
     border: 1px solid #905bff;
   }
+}
+.choice-button--confirm.btn--dark {
+  background: linear-gradient(45deg, #d6249f, #285aeb);
+  border: 1px solid #905bff;
 }
 .buttons {
   display: flex;

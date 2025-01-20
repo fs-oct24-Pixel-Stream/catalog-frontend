@@ -211,28 +211,6 @@ html {
   width: 12px;
 }
 
-::-webkit-scrollbar-track {
-  // background: variable.$secondary;
-  // html.dark & {
-  //   background: variable.$bgColor-dark;
-  // }
-  // background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  // background: variable.$secondary;
-  // html.dark & {
-  //   background: variable.$bgColor-dark;
-  // }
-}
-
-::-webkit-scrollbar-thumb:hover {
-  // background: variable.$secondary;
-  // html.dark & {
-  //   background: variable.$bgColor-dark;
-  // }
-}
-
 /* Для Firefox */
 html {
   // scrollbar-color: variable.$icons variable.$bgColor;
@@ -246,14 +224,14 @@ html.dark {
 
 .app-enter {
   opacity: 0;
-  transform: translateX(-30px);
+  transform: translateX(-100px);
 }
 .app-enter-active {
   opacity: 1;
   transform: translateX(0);
   transition:
-    opacity 600ms ease,
-    transform 600ms ease;
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
 }
 .app-exit {
   display: none;

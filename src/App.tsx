@@ -40,8 +40,8 @@ export const App = () => {
             timeout={500}
             classNames="app"
             nodeRef={nodeRef}
-            unmountOnExit
-            mountOnEnter
+            // unmountOnExit
+            // mountOnEnter
           >
             <div ref={nodeRef}>
               <Outlet />

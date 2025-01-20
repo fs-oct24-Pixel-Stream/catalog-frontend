@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React from 'react';
+
 import { Link } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
