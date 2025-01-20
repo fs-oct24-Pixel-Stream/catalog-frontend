@@ -15,9 +15,9 @@ createRoot(container).render(
       loading={null}
       persistor={persistor}
     >
-      <StrictMode>
-        <Root />
-      </StrictMode>
+      {/* <StrictMode> */}
+      <Root />
+      {/* </StrictMode> */}
     </PersistGate>
   </Provider>,
 );

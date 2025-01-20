@@ -244,19 +244,19 @@ svg {
 }
 
 .item-counter {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   display: flex;
 
   justify-content: center;
   align-items: center;
-  border: 1px solid #fff;
   border-radius: 50%;
 
   color: #fff;
   background-color: variable.$blue;
   html.dark & {
     background-color: variable.$purple;
+    border: 1px solid #a590d1;
   }
   position: absolute;
   bottom: 10px;
