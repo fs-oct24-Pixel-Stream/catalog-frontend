@@ -37,7 +37,7 @@ export const Breadcrumbs = () => {
               key={path}
               className="breadcrumbs__link"
             >
-              <span>&gt;</span>
+              <span className="breadcrumbs__divider">&gt;</span>
               <Link
                 to={redirectTo}
                 className={cn({
