@@ -31,7 +31,6 @@ export const Footer = () => {
           <ul className="footer-links">
             {footerButtons.map((button) => {
               const text = correctTitle(button);
-              console.log(text);
               return (
                 <li
                   key={button}
