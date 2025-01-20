@@ -2,9 +2,11 @@ import { useMemo } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import './CategorySection.scss';
 import { Link } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 export const CategorySection = () => {
   const { products } = useAppSelector((state) => state.products);
+  const { t } = useTranslation();
 
   const filterProductsByCategory = (category: string) => {
     return products.filter((product) => product.category === category);
@@ -15,7 +17,7 @@ export const CategorySection = () => {
   const accessories = useMemo(() => filterProductsByCategory('accessories'), [products]);
 
   const categories = [
-    { id: 1, name: 'Mobile phones', path: '/phones', img: 'img/phones.png', items: phones },
+    { id: 1, name: 'mobile', path: '/phones', img: 'img/phones.png', items: phones },
     { id: 2, name: 'Tablets', path: '/tablets', img: 'img/tablets.png', items: tablets },
     {
       id: 3,
@@ -28,7 +30,7 @@ export const CategorySection = () => {
 
   return (
     <section>
-      <h2 className="titleSecond category-title">Shop by category</h2>
+      <h2 className="titleSecond category-title">{t('shopByCategory')}</h2>
 
       <div className="is-flex is-align-items-center is-justify-content-center category-section">
         {categories.map((category) => (
@@ -47,9 +49,11 @@ export const CategorySection = () => {
               />
             </Link>
 
-            <h3 className="category-section__title">{category.name}</h3>
+            <h3 className="category-section__title">{t(category.name)}</h3>
 
-            <div className="category-section__quantity">{category.items.length} models</div>
+            <div className="category-section__quantity">
+              {category.items.length} {t('models')}
+            </div>
           </div>
         ))}
       </div>

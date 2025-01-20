@@ -2,9 +2,11 @@ import { Link, useLocation } from 'react-router';
 import cn from 'classnames';
 import './Breadcrumbs.scss';
 import { useAppSelector } from '../../app/hooks';
+import { useTranslation } from 'react-i18next';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const pathnames = location.pathname.split('/').filter((page) => page !== '');
   const isActivePathActive = (pathIndex: number) => {
@@ -29,14 +31,13 @@ export const Breadcrumbs = () => {
         </li>
         {pathnames.map((path, index) => {
           const formattedPath = path.replace(/-/g, ' ');
-
           const redirectTo = `/${pathnames.slice(0, index + 1).join('/')}`;
           return (
             <li
               key={path}
               className="breadcrumbs__link"
             >
-              <span>&gt;</span>
+              <span className="breadcrumbs__divider">&gt;</span>
               <Link
                 to={redirectTo}
                 className={cn({
@@ -44,7 +45,7 @@ export const Breadcrumbs = () => {
                   'breadcrumbs__link': !isActivePathActive(index),
                 })}
               >
-                {formattedPath}
+                {t(formattedPath)}
               </Link>
             </li>
           );

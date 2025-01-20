@@ -7,10 +7,19 @@
   line-height: 1.4em;
   padding: 0;
 
+  html.dark & {
+    color: variables.$text-dark;
+  }
+
   &__block {
     background-color: variables.$elements;
     padding: 20px;
+
+    html.dark & {
+      background-color: variables.$primary-dark;
+    }
   }
+
   &__section {
     &:not(:last-child) {
       margin-bottom: 20px;

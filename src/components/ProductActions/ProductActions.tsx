@@ -7,6 +7,7 @@ import { IconButton } from '../IconButton';
 import './ProductActions.scss';
 import classNames from 'classnames';
 import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   selectedProduct: ProductDeviceType;
@@ -23,6 +24,7 @@ export const ProductActions: React.FC<Props> = ({ selectedProduct }) => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.products.products);
   const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
+  const { t } = useTranslation();
 
   const cart = useAppSelector((store) => store.cart.cart);
   const favorites = useAppSelector((store) => store.favorities.products);
@@ -39,7 +41,7 @@ export const ProductActions: React.FC<Props> = ({ selectedProduct }) => {
   const isInCart = cart.some((item) => item.id === product.id);
   const isInFavorites = favorites.some((item) => item.id === product.id);
 
-  const getButtonText = isInCart ? 'Added' : 'Add to cart';
+  const getButtonText = isInCart ? t('added') : t('addToCart');
 
   const handleBuyProduct = () => {
     if (isInCart) {

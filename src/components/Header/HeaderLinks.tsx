@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 
 const navLinks = [
@@ -30,7 +31,7 @@ type Props = {
 
 export const HeaderLinks: FC<Props> = (props) => {
   const { mainClassName, activeClassName, containerClassName, onLinkClose } = props;
-
+  const { t } = useTranslation();
   const location = useLocation();
 
   return (
@@ -48,7 +49,7 @@ export const HeaderLinks: FC<Props> = (props) => {
             })}
             onClick={onLinkClose}
           >
-            {name}
+            {t(name)}
           </Link>
         );
       })}

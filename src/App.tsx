@@ -10,16 +10,22 @@ import '../src/styles/utils/mixins.scss';
 import './App.scss';
 
 import { Header } from './components/Header/Header';
+
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import i18n from './utils/config/i18n';
 
 export const App = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
+
+  const currentLanguage = useAppSelector((state) => state.language.lang);
+
   const theme = useAppSelector((state) => state.theme.theme);
 
   useEffect(() => {
     dispatch(fetchProducts());
     document.documentElement.className = theme;
+    i18n.changeLanguage(currentLanguage || 'en');
   }, [theme]);
   const nodeRef = useRef(null);
 

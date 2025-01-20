@@ -35,7 +35,7 @@ export const ContactItem: React.FC<Props> = ({ creator }) => {
               href={creator.githubLink}
             >
               <img
-                className="card__link-block__image"
+                className="card__link-block__image card__link-block__image--git"
                 src="./img/icons/gitIcon.svg"
                 alt="creator"
               />{' '}
@@ -59,7 +59,7 @@ export const ContactItem: React.FC<Props> = ({ creator }) => {
               href={creator.linkedinLink}
             >
               <img
-                className="card__link-block__image"
+                className="card__link-block__image card__link-block__image--linkedIn"
                 src="./img/icons/linkedIn.svg"
               />{' '}
             </a>

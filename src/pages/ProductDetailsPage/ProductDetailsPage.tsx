@@ -17,7 +17,13 @@ import { fetchTablets, setSelectedTablet } from '../../features/tablets/tabletsS
 import { RecommendedSection } from '../../components/RecommendedSection';
 import { ProductParamsSelects } from '../../components/ProductParamsSelects/ProductParamsSelects';
 import { ProductActions } from '../../components/ProductActions/ProductActions';
-import { NotFoundPage } from '../NotFoundPage';
+import { useTranslation } from 'react-i18next';
+import { AboutSkeleton } from '../../components/Skeletons/AboutSkeleton/AboutSkeleton';
+import { ImageGallerySkeleton } from '../../components/Skeletons/ImageGallerySkeleton/ImageGallerySkeleton';
+import { ProductParamsSelectsSkeleton } from '../../components/Skeletons/ProductParamsSelectsSkeleton/ProductParamsSelectsSkeleton';
+import { ActionsButtonsSkeleton } from '../../components/Skeletons/ActionsButtonsSkeleton/ActionsButtonsSkeleton';
+import { PriceSkeleton } from '../../components/Skeletons/PriceSkeleton/PriceSkeleton';
+import { TechSpecsSkeleton } from '../../components/Skeletons/TechSpecsSkeleton/TechSpecsSkeleton';
 
 const categoryMap = {
   phones: {
@@ -44,6 +50,7 @@ export const ProductDetailsPage = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const category = location.pathname.split('/')[1];
   const deviceId = location.pathname.split('/')[2];
@@ -56,7 +63,8 @@ export const ProductDetailsPage = () => {
 
   const { fetchAction, setSelectedAction, selector } = categoryToFetch;
 
-  // const isLoading = useAppSelector(categoryToFetch.loadingSelector);
+  const isLoading = useAppSelector(categoryToFetch.loadingSelector);
+
   const selectedProduct = useAppSelector(selector);
 
   useEffect(() => {
@@ -72,6 +80,7 @@ export const ProductDetailsPage = () => {
       fetchData();
     }
   }, [, dispatch, fetchAction, setSelectedAction, deviceId]);
+  console.log(isLoading);
 
   const {
     name,
@@ -93,10 +102,6 @@ export const ProductDetailsPage = () => {
   /*  if (isLoading) {
     return <p>Loading...</p>;
   } */
-
-  if (!selectedProduct) {
-    return <NotFoundPage />;
-  }
 
   const handleColorChange = (newColor: ColorKey) => {
     const newPath = `/${category}/${baseId}-${capacity}-${newColor}`;
@@ -121,55 +126,71 @@ export const ProductDetailsPage = () => {
       <h1 className="product-details__title titleSecond">{name}</h1>
 
       <section className="product-details__gallery">
-        <ProductGallery
-          images={images}
-          name={name}
-        />
+        {isLoading || !selectedProduct ?
+          <ImageGallerySkeleton />
+        : <ProductGallery
+            images={images}
+            name={name}
+          />
+        }
       </section>
 
       <section className="product-details__parameters">
-        <ProductParamsSelects
-          colorsAvailable={colorsAvailable}
-          capacityAvailable={capacityAvailable}
-          id={id}
-          category={category}
-          color={color}
-          capacity={capacity}
-          onColorChange={handleColorChange}
-          onCapasityChange={handleCapasityChange}
-        />
+        {!isLoading && selectedProduct ?
+          <ProductParamsSelects
+            colorsAvailable={colorsAvailable}
+            capacityAvailable={capacityAvailable}
+            id={id}
+            category={category}
+            color={color}
+            capacity={capacity}
+            onColorChange={handleColorChange}
+            onCapasityChange={handleCapasityChange}
+          />
+        : <ProductParamsSelectsSkeleton />}
 
         <div className="is-flex product-details__price">
-          <p className="product-details__price--full">${priceDiscount}</p>
-          <p className="product-details__price--discount">${priceRegular}</p>
+          <p className="product-details__price--full">
+            {!isLoading ? `$${priceDiscount}` : <PriceSkeleton />}
+          </p>
+          <p className="product-details__price--discount">
+            {!isLoading ? `$${priceRegular}` : <PriceSkeleton />}
+          </p>
         </div>
 
-        <ProductActions selectedProduct={selectedProduct} />
+        {!isLoading && selectedProduct ?
+          <ProductActions selectedProduct={selectedProduct} />
+        : <ActionsButtonsSkeleton />}
 
-        <TechSpecs
-          device={selectedProduct}
-          category={category}
-          variant="short"
-        />
+        {!isLoading && selectedProduct ?
+          <TechSpecs
+            device={selectedProduct}
+            category={category}
+            variant="short"
+          />
+        : <TechSpecsSkeleton variant="short" />}
         <div className="product-details__id">{`ID: ${id}`}</div>
       </section>
 
       <section className="product-details__about">
-        <h3 className="product-details__subtitle">About</h3>
+        <h3 className="product-details__subtitle">{t('about')}</h3>
         <div className="product-details__line" />
-
-        <AboutSection description={description} />
+        {isLoading || !selectedProduct ?
+          <AboutSkeleton />
+        : <AboutSection description={description} />}
       </section>
 
       <section className="product-details__tech-specs">
-        <h3 className="product-details__subtitle">Tech specs</h3>
+        <h3 className="product-details__subtitle">{t('techSpecs')}</h3>
         <div className="product-details__line" />
 
-        <TechSpecs
-          device={selectedProduct}
-          category={category}
-          variant="full"
-        />
+        {!isLoading && selectedProduct ?
+          <TechSpecs
+            device={selectedProduct}
+            category={category}
+            variant="full"
+          />
+        : <TechSpecsSkeleton variant="full" />}
       </section>
 
       <section className="product-details__recommended">

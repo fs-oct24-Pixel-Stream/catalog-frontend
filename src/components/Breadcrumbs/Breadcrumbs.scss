@@ -18,6 +18,10 @@
     min-height: 16px;
   }
 
+  &__divider {
+    cursor: none;
+  }
+
   &__link {
     color: variables.$secondary;
     text-transform: capitalize;
