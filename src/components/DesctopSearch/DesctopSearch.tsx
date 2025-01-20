@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
@@ -25,6 +25,28 @@ export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
   };
   const isDesktop = useMediaQuery({ query: '(min-width: 1199px)' });
 
+  // відстежуємо клік поза віконечком і поза інпутом
+  const windowRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        windowRef.current &&
+        inputRef.current &&
+        !windowRef.current.contains(event.target as Node) &&
+        !inputRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
   return (
     <>
       {isDesktop && (
@@ -37,6 +59,7 @@ export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
               <button>×</button>
             </div>
             <input
+              ref={inputRef}
               className="input is-large search-dropdown__input"
               type="text"
               placeholder={t('Search')}
@@ -45,7 +68,10 @@ export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
             />
           </div>
           {query && (
-            <div className="search-dropdown__results">
+            <div
+              ref={windowRef}
+              className="search-dropdown__results"
+            >
               {filteredProducts.length > 0 ?
                 filteredProducts.map((product) => (
                   <div
