@@ -36,8 +36,20 @@
     align-items: center;
   }
 
-  @include mixins.on-desktop {
+  @include mixins.on-tablet2 {
+    width: 60px;
+  }
+
+  @include mixins.on-tablet3 {
+    width: 70px;
+  }
+
+  @include mixins.on-desktop-mini {
     width: 80px;
+  }
+
+  @include mixins.on-desktop {
+    width: 85px;
   }
 }
 
