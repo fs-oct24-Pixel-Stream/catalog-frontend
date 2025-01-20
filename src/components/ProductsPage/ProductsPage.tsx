@@ -13,6 +13,7 @@ import './ProductsPage.scss';
 import { correctTitle } from '../../utils/functions/correctTitle';
 import { useAppSelector } from '../../app/hooks';
 import { ProductListSkeleton } from '../Skeletons/ProductListSkeleton/ProductListSkeleton';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   products: ProductCardType[];
@@ -23,6 +24,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
   const location = useLocation();
   const path = location.pathname.split('/')[1];
   const title = correctTitle(path);
+  const { t } = useTranslation();
 
   const {
     filterName,
@@ -33,14 +35,15 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
     pageCount,
     handlePageClick,
   } = useFilterAndPagination(products);
-
   return (
     <section className="products _container container-custom">
       <Breadcrumbs />
 
-      <h1 className="titleMain">{title}</h1>
+      <h1 className="titleMain">{t(title)}</h1>
 
-      <p className="products__quantity">{products.length} models</p>
+      <p className="products__quantity">
+        {products.length} {t('models')}
+      </p>
 
       <div className="products__filters">
         <div className="field products__control products__control--first">
@@ -48,7 +51,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
             className="products__label"
             htmlFor="sort"
           >
-            Sort by
+            {t('Sortby')}
           </label>
           <div className="control">
             <div
@@ -56,20 +59,22 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
               id="sort"
             >
               <select
-                value={filterName}
+                value={t(filterName)}
                 onChange={(e) => handleFilter(e)}
                 className="products__selectList color-primary"
               >
-                {variableForFilter.map((option) => (
-                  <option
-                    key={option}
-                    className="color-primary"
-                    value={option}
-                    disabled={option === ChooseForFilter.SELECT ? true : false}
-                  >
-                    {option}
-                  </option>
-                ))}
+                {variableForFilter.map((option) => {
+                  return (
+                    <option
+                      key={option}
+                      className="color-primary"
+                      value={t(option)}
+                      disabled={option === ChooseForFilter.SELECT ? true : false}
+                    >
+                      {t(option)}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
@@ -79,7 +84,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
             className="products__label"
             htmlFor="sort"
           >
-            Items on page
+            {t('itemsOnPage')}
           </label>
           <div className="control">
             <div

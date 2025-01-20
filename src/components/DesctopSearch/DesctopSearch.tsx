@@ -4,11 +4,13 @@ import { useAppSelector } from '../../app/hooks';
 import { useNavigate } from 'react-router';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 import './DesctopSearch.scss';
+import { useTranslation } from 'react-i18next';
 
 export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
   const [query, setQuery] = useState('');
   const products = useAppSelector((state) => state.products.products);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const filteredProducts = useMemo(() => {
     if (!query) return [];
@@ -35,7 +37,7 @@ export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
             <input
               className="input is-large search-dropdown__input"
               type="text"
-              placeholder="Search..."
+              placeholder={t('Search')}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
@@ -57,10 +59,7 @@ export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
                     {product.name}
                   </div>
                 ))
-              : <div className="search-dropdown__no-results">
-                  No products found matching your search.
-                </div>
-              }
+              : <div className="search-dropdown__no-results">{t('searchEmpty')}</div>}
             </div>
           )}
         </div>

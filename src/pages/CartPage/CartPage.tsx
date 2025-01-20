@@ -7,10 +7,12 @@ import { ModalMessage } from '../../components/ModalMessage/ModalMessage';
 import { clearAllProducts } from '../../features/cart/cartSlice';
 import cn from 'classnames';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useTranslation } from 'react-i18next';
 
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
+  const { t } = useTranslation();
 
   const darkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
   const dispatch = useAppDispatch();
@@ -51,11 +53,11 @@ export const CartPage = () => {
     <>
       <div className="cart _container">
         <Breadcrumbs />
-        <h1 className="titleMain cart__title">Cart</h1>
+        <h1 className="titleMain cart__title">{t('cart')}</h1>
 
         {!isCartNotEmpty ?
           <div className="cart__background">
-            <h2 className="cart__background__title">Your cart is empty</h2>
+            <h2 className="cart__background__title">{t('emptyCart')}</h2>
           </div>
         : <>
             <div className="cart-block">
@@ -73,7 +75,7 @@ export const CartPage = () => {
                 <div className="checkout-block">
                   <h2 className="checkout-block__header-title">${totalPrice}</h2>
                   <p className="checkout-block__products-quantity">
-                    for {totalQuantity} product{totalQuantity > 1 ? 's' : ''}
+                    {t('totalFor')} {totalQuantity} {t(totalQuantity > 1 ? 'items' : 'item')}
                   </p>
                   <button
                     className={cn('button product-card__button-buy checkout-block__check btn', {
@@ -81,7 +83,7 @@ export const CartPage = () => {
                     })}
                     onClick={() => handleOpenModal()}
                   >
-                    Checkout
+                    {t('checkout')}
                   </button>
                 </div>
               )}

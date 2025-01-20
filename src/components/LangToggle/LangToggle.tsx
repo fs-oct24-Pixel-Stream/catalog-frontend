@@ -1,11 +1,21 @@
-import { useState } from 'react';
 import './LangToggle.scss';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { setLanguage } from '../../features/languages/languagesSlice';
+import { useTranslation } from 'react-i18next';
 
 export const LangToggle = () => {
-  const [lang, setLang] = useState('EN');
+  const currLanguage = useAppSelector((state) => state.language.lang);
+  const { i18n } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const handleChange = () => {
-    setLang((prevLang) => (prevLang === 'EN' ? 'UA' : 'EN'));
+    if (currLanguage === 'en') {
+      dispatch(setLanguage('ua'));
+      i18n.changeLanguage('ua');
+    } else {
+      dispatch(setLanguage('en'));
+      i18n.changeLanguage('en');
+    }
   };
 
   return (
@@ -13,7 +23,7 @@ export const LangToggle = () => {
       className="lang-button"
       onClick={handleChange}
     >
-      {lang}
+      {currLanguage.toUpperCase()}
     </button>
   );
 };

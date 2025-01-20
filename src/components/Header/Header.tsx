@@ -41,7 +41,6 @@ export const Header = () => {
   const location = useLocation();
   const toggleBurgerMenu = (): void => {
     dispatch(setBurgerState());
-    console.log('here');
   };
 
   const handleLinkClick = () => {
