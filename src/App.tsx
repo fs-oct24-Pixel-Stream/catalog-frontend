@@ -22,7 +22,7 @@ export const App = () => {
     dispatch(fetchProducts());
     document.documentElement.className = theme;
     i18n.changeLanguage(currentLanguage || 'en');
-  }, [theme, currentLanguage]);
+  }, [theme]);
 
   return (
     <div className="body-ajustment">
