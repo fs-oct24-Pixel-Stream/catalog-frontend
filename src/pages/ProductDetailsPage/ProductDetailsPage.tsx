@@ -1,29 +1,34 @@
-import './ProductDetailsPage.scss';
-import { BackButton } from '../../components/BackButton/BackButton';
-import { AboutSection } from '../../components/AboutSection/AboutSection';
-import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
-import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
-import { useLocation, useNavigate } from 'react-router';
 import { useEffect } from 'react';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { ColorKey } from '../../utils/types/colors';
+import { useLocation, useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
+
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchPhones, setSelectedPhone } from '../../features/phones/phonesSlice';
+import { fetchTablets, setSelectedTablet } from '../../features/tablets/tabletsSlice';
 import {
   fetchAccessories,
   setSelectedAccessories,
 } from '../../features/accessories/accessoriesSlice';
-import { fetchTablets, setSelectedTablet } from '../../features/tablets/tabletsSlice';
+import { ColorKey } from '../../utils/types/colors';
+
+import { AboutSection } from '../../components/AboutSection/AboutSection';
+import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
+import { ProductGallery } from '../../components/ProductGallery/ProductGallery';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { BackButton } from '../../components/BackButton/BackButton';
 import { RecommendedSection } from '../../components/RecommendedSection';
 import { ProductParamsSelects } from '../../components/ProductParamsSelects/ProductParamsSelects';
 import { ProductActions } from '../../components/ProductActions/ProductActions';
-import { useTranslation } from 'react-i18next';
+import { NotFoundPage } from '../NotFoundPage';
+
 import { AboutSkeleton } from '../../components/Skeletons/AboutSkeleton/AboutSkeleton';
 import { ImageGallerySkeleton } from '../../components/Skeletons/ImageGallerySkeleton/ImageGallerySkeleton';
 import { ProductParamsSelectsSkeleton } from '../../components/Skeletons/ProductParamsSelectsSkeleton/ProductParamsSelectsSkeleton';
 import { ActionsButtonsSkeleton } from '../../components/Skeletons/ActionsButtonsSkeleton/ActionsButtonsSkeleton';
 import { PriceSkeleton } from '../../components/Skeletons/PriceSkeleton/PriceSkeleton';
 import { TechSpecsSkeleton } from '../../components/Skeletons/TechSpecsSkeleton/TechSpecsSkeleton';
+
+import './ProductDetailsPage.scss';
 
 const categoryMap = {
   phones: {
@@ -80,7 +85,10 @@ export const ProductDetailsPage = () => {
       fetchData();
     }
   }, [, dispatch, fetchAction, setSelectedAction, deviceId]);
-  console.log(isLoading);
+
+  if (!isLoading && !selectedProduct) {
+    return <NotFoundPage />;
+  }
 
   const {
     name,
@@ -94,14 +102,6 @@ export const ProductDetailsPage = () => {
     priceDiscount,
     id,
   } = selectedProduct || {};
-
-  /* if (selectedProduct?.id !== deviceId) {
-    return <p>Loading...</p>;
-  } */
-
-  /*  if (isLoading) {
-    return <p>Loading...</p>;
-  } */
 
   const handleColorChange = (newColor: ColorKey) => {
     const newPath = `/${category}/${baseId}-${capacity}-${newColor}`;

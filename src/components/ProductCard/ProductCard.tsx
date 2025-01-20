@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router';
-import { ProductCardType } from '../../utils/types/ProductCardType';
+import { useTranslation } from 'react-i18next';
+import cn from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { ProductCardType } from '../../utils/types/ProductCardType';
+import { quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 import { addProduct, removeProduct } from '../../features/cart/cartSlice';
-import { IconButton } from '../IconButton/IconButton';
 import { addFavorite, removeFavorite } from '../../features/favorites/favoritiesSlice';
 import { separeteSpecs } from '../../utils/functions/separeteSpecs';
-import { quicklyBackToTop } from '../../utils/functions/handleBackToTop';
-import cn from 'classnames';
+
+import { IconButton } from '../IconButton/IconButton';
+
 import './ProductCard.scss';
-import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: ProductCardType;

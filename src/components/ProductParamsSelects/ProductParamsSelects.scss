@@ -106,7 +106,7 @@
     color: variable.$white;
 
     html.dark & {
-      background-color: variable.$icons;
+      background: variable.$icons;
       color: variable.$primary;
     }
   }

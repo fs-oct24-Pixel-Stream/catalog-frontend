@@ -1,4 +1,5 @@
 import './IconButton.scss';
+
 type Props = {
   backgroundImage?: string;
   onClick?: () => void;

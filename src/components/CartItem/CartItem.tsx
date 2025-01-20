@@ -1,12 +1,12 @@
 import React from 'react';
-
 import { Link } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { decreaseProduct, increaseProduct, removeProduct } from '../../features/cart/cartSlice';
 
-import { IconButton } from '../IconButton/IconButton';
 import { ProductCardType } from '../../utils/types/ProductCardType';
+import { IconButton } from '../IconButton/IconButton';
+
 import './CartItem.scss';
 
 type Props = {

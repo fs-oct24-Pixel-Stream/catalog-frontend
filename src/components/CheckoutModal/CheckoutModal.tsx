@@ -1,10 +1,13 @@
-import { useAppSelector } from '../../app/hooks';
-import { ProductCardType } from '../../utils/types/ProductCardType';
-import { CheckoutCartItem } from '../CheckoutCartItem/CheckoutCartItem';
-import cn from 'classnames';
-import './CheckoutModal.scss';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import cn from 'classnames';
+
+import { useAppSelector } from '../../app/hooks';
+import { ProductCardType } from '../../utils/types/ProductCardType';
+
+import { CheckoutCartItem } from '../CheckoutCartItem/CheckoutCartItem';
+
+import './CheckoutModal.scss';
 
 type Props = {
   handleCloseModal: (option: string) => void;

@@ -1,13 +1,15 @@
-import { FC, useEffect, useRef } from 'react';
-import { HeaderLinks } from '../Header/HeaderLinks';
-import './BurgerMenu.scss';
+import { FC, useEffect } from 'react';
+import { Within } from '@theme-toggles/react';
+
 import cn from 'classnames';
 
-import { Within } from '@theme-toggles/react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setTheme } from '../../features/theme/themeSlice';
-
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setBurgerState } from '../../features/burger/burgerSlice';
+
+import { HeaderLinks } from '../Header/HeaderLinks';
+
+import './BurgerMenu.scss';
 
 export const BurgerMenu: FC = () => {
   const theme = useAppSelector((state) => state.theme.theme);

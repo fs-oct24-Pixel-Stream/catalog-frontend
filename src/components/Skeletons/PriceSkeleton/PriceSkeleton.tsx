@@ -1,4 +1,5 @@
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+
 import { useAppSelector } from '../../../app/hooks';
 
 export const PriceSkeleton = () => {

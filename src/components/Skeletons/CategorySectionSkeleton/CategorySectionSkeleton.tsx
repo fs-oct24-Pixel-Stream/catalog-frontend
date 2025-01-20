@@ -1,6 +1,8 @@
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+
 import { useAppSelector } from '../../../app/hooks';
+
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const CategorySectionSkeleton = () => {
   const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';

@@ -1,9 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useAppSelector } from '../../app/hooks';
+
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductCard } from '../../components/ProductCard';
+
 import './FavoritePage.scss';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 export const FavoritePage = () => {
   const products = useAppSelector((state) => state.favorities.products);
   const isFavoritesEmpty = !!products.length;

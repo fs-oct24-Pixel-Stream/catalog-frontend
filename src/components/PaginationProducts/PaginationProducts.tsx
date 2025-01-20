@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import { CustomEventPageClick } from '../../utils/types/CustomEventPageClick';
-import './Pagination.scss';
 import { useSearchParams } from 'react-router';
+import ReactPaginate from 'react-paginate';
 
+import { CustomEventPageClick } from '../../utils/types/CustomEventPageClick';
+
+import './Pagination.scss';
 type Props = {
   pageCount: number;
   handlePageClick: (event: CustomEventPageClick) => void;

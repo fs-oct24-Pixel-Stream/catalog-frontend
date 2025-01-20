@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
+
 import { Link, useLocation } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
-import { Within } from '@theme-toggles/react';
 import { useMediaQuery } from 'react-responsive';
+import { Within } from '@theme-toggles/react';
 
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setBurgerState } from '../../features/burger/burgerSlice';
 import { setTheme } from '../../features/theme/themeSlice';
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { HeaderLinks } from './HeaderLinks';
-import { LangToggle } from '../LangToggle/LangToggle';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { SearchModal } from '../SearchModal';
 import { DesctopSearch } from '../DesctopSearch/DesctopSearch';
-
+import { LangToggle } from '../LangToggle/LangToggle';
+ 
 import logo from '../../../public/img/icons/Logo.svg';
 import logoWhite from '../../../public/img/icons/LogoWhite.svg';
 import burger from '../../../public/img/icons/burger.svg';
@@ -25,11 +26,12 @@ import fav from '../../../public/img/icons/Fav.svg';
 import favWhite from '../../../public/img/icons/Fav-White-Empty.svg';
 import search from '../../../public/img/icons/Search.svg';
 import searchWhite from '../../../public/img/icons/SearchWhite.svg';
+
 import cartWhite from '../../../public/img/icons/Cart-White.svg';
 
 import cn from 'classnames';
-import '@theme-toggles/react/css/Within.css';
 import './Header.scss';
+import '@theme-toggles/react/css/Within.css';
 
 export const Header = () => {
   const theme = useAppSelector((state) => state.theme.theme);

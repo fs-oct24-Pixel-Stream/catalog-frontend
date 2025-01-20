@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+
 import { ProductCardType } from '../../utils/types/ProductCardType';
-import { ProductSlider } from '../ProductSlider';
 import { getRecommendedProduct } from '../../utils/functions/getRecommendedProduct';
+
+import { ProductSlider } from '../ProductSlider';
 import { useAppSelector } from '../../app/hooks';
 
 interface Props {

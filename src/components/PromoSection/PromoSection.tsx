@@ -1,13 +1,16 @@
+import { useEffect, useRef } from 'react';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router';
-import { IconButton } from '../IconButton/IconButton';
-import { useEffect, useRef } from 'react';
 import { Pagination } from 'swiper/modules';
+
+import { useAppSelector } from '../../app/hooks';
+
+import { IconButton } from '../IconButton/IconButton';
+
+import { PromoSectionSkeleton } from '../Skeletons/PromoSectionSkeleton/PromoSectionSkeleton';
 
 import './PromoSection.scss';
 import 'swiper/swiper-bundle.css';
-import { useAppSelector } from '../../app/hooks';
-import { PromoSectionSkeleton } from '../Skeletons/PromoSectionSkeleton/PromoSectionSkeleton';
 
 export const PromoSection = () => {
   const swiperRef = useRef<SwiperRef | null>(null);
