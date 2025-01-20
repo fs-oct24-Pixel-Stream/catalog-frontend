@@ -4,6 +4,7 @@ import { CheckoutCartItem } from '../CheckoutCartItem/CheckoutCartItem';
 import cn from 'classnames';
 import './CheckoutModal.scss';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   handleCloseModal: (option: string) => void;
@@ -14,7 +15,7 @@ type Props = {
 export const CheckoutModal: React.FC<Props> = (props) => {
   const { handleCloseModal, productsList, totalPrice, isOpen } = props;
   const isDarkTheme = useAppSelector((state) => state.theme.theme) === 'dark';
-
+  const { t } = useTranslation();
   useEffect(() => {
     if (isOpen) {
       document.documentElement.style.overflowY = 'hidden';
@@ -38,7 +39,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
         ></div>
         <div className="modal-card">
           <header className="modal-card-head">
-            <h1 className="modal-card-title">Confirm your order</h1>
+            <h1 className="modal-card-title">{t('checkoutConfirm')}</h1>
           </header>
           <section className="modal-card-body">
             {productsList.map((product) => {
@@ -55,7 +56,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
           <footer className="modal-card-foot">
             <div className="price-block">
               <p className="price-block__text">
-                Total price: <span>${totalPrice}</span>
+                {t('totalPrice')}: <span>${totalPrice}</span>
               </p>
             </div>
             <div className="buttons">
@@ -68,7 +69,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
                     handleCloseModal('succsess');
                   }}
                 >
-                  Confirm
+                  {t('confirm')}
                 </button>
               </div>
               <div className="cancel">
@@ -80,7 +81,7 @@ export const CheckoutModal: React.FC<Props> = (props) => {
                     handleCloseModal('close');
                   }}
                 >
-                  Cancel
+                  {t('cancel')}
                 </button>
               </div>
             </div>

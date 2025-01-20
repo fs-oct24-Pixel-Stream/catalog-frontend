@@ -5,9 +5,11 @@ import { footerButtons } from '../../utils/constants/footerButtons';
 import { correctTitle } from '../../utils/functions/correctTitle';
 import { handleBackToTop, quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 import { useAppSelector } from '../../app/hooks';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
   const theme = useAppSelector((state) => state.theme.theme);
+  const { t } = useTranslation();
   return (
     <footer className="footer">
       <div className="_container footer-content has-text-centered">
@@ -39,7 +41,7 @@ export const Footer = () => {
                     className="footer-link"
                     onClick={handleBackToTop}
                   >
-                    {text}
+                    {t(text)}
                   </Link>
                 </li>
               );

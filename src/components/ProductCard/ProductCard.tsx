@@ -10,6 +10,7 @@ import { separeteSpecs } from '../../utils/functions/separeteSpecs';
 import { quicklyBackToTop } from '../../utils/functions/handleBackToTop';
 import cn from 'classnames';
 import './ProductCard.scss';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: ProductCardType;
@@ -21,13 +22,15 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const cart = useAppSelector((store) => store.cart.cart);
   const isInCart = cart.some((item) => item.id === product.id);
 
+  const { t } = useTranslation();
+
   const favorites = useAppSelector((store) => store.favorities.products);
   const isInFavorites = favorites.some((item) => item.id === product.id);
 
   const capacity = product.capacity;
   const ram = product.ram;
 
-  const getButtonText = isInCart ? 'Added' : 'Add to cart';
+  const getButtonText = isInCart ? t('added') : t('addToCart');
 
   const handleBuyProduct = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -89,19 +92,19 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
       <div className="product-card__line"></div>
 
       <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
-        <p className="product-card__descriptions-text">Screen</p>
+        <p className="product-card__descriptions-text">{t('screen')}</p>
         <p className="product-card__descriptions-value">{product.screen}</p>
       </div>
 
       <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
         {product.category === 'accessories' ?
-          <p className="product-card__descriptions-text">Size</p>
-        : <p className="product-card__descriptions-text">Capacity</p>}
+          <p className="product-card__descriptions-text">{t('Size')}</p>
+        : <p className="product-card__descriptions-text">{t('Capacity')}</p>}
         <p className="product-card__descriptions-value">{separeteSpecs(capacity)}</p>
       </div>
 
       <div className="is-flex is-align-items-center is-justify-content-space-between product-card__descriptions">
-        <p className="product-card__descriptions-text">RAM</p>
+        <p className="product-card__descriptions-text">{t('ram')}</p>
         <p className="product-card__descriptions-value">{separeteSpecs(ram)}</p>
       </div>
 

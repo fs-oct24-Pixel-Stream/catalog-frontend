@@ -7,6 +7,7 @@ import 'swiper/swiper-bundle.css';
 import './ProductSlider.scss';
 import { useAppSelector } from '../../app/hooks';
 import { ProductCardSkeleton } from '../Skeletons/ProductCardSkeleton/ProductCardSkeleton';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   products: ProductCardType[];
@@ -15,11 +16,11 @@ type Props = {
 };
 
 export const ProductSlider: React.FC<Props> = (props) => {
-  const { products, title, discount = true } = props;
+  const { products, discount = true } = props;
   const swiperRef = useRef<SwiperRef | null>(null);
   const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
   const isLoading = useAppSelector((state) => state.products.loading);
-
+  const { t } = useTranslation();
   const handleNextSlide = () => {
     swiperRef.current?.swiper.slideNext();
   };
@@ -31,7 +32,7 @@ export const ProductSlider: React.FC<Props> = (props) => {
   return (
     <div className="product-slider">
       <div className="is-flex is-justify-content-space-between is-align-items-center product-slider__header">
-        <h2 className="titleSecond product-slider__title">{title}</h2>
+        <h2 className="titleSecond product-slider__title">{t('newModels')}</h2>
         <div className="is-flex product-slider__buttons">
           <IconButton
             backgroundImage={
