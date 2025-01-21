@@ -21,13 +21,6 @@ import { ProductParamsSelects } from '../../components/ProductParamsSelects/Prod
 import { ProductActions } from '../../components/ProductActions/ProductActions';
 import { NotFoundPage } from '../NotFoundPage';
 
-import { AboutSkeleton } from '../../components/Skeletons/AboutSkeleton/AboutSkeleton';
-import { ImageGallerySkeleton } from '../../components/Skeletons/ImageGallerySkeleton/ImageGallerySkeleton';
-import { ProductParamsSelectsSkeleton } from '../../components/Skeletons/ProductParamsSelectsSkeleton/ProductParamsSelectsSkeleton';
-import { ActionsButtonsSkeleton } from '../../components/Skeletons/ActionsButtonsSkeleton/ActionsButtonsSkeleton';
-import { PriceSkeleton } from '../../components/Skeletons/PriceSkeleton/PriceSkeleton';
-import { TechSpecsSkeleton } from '../../components/Skeletons/TechSpecsSkeleton/TechSpecsSkeleton';
-
 import './ProductDetailsPage.scss';
 
 const categoryMap = {
@@ -68,7 +61,7 @@ export const ProductDetailsPage = () => {
 
   const { fetchAction, setSelectedAction, selector } = categoryToFetch;
 
-  const isLoading = useAppSelector(categoryToFetch.loadingSelector);
+  // const isLoading = useAppSelector(categoryToFetch.loadingSelector);
 
   const selectedProduct = useAppSelector(selector);
 
@@ -86,7 +79,7 @@ export const ProductDetailsPage = () => {
     }
   }, [, dispatch, fetchAction, setSelectedAction, deviceId]);
 
-  if (!isLoading && !selectedProduct) {
+  if (!selectedProduct) {
     return <NotFoundPage />;
   }
 
@@ -126,71 +119,54 @@ export const ProductDetailsPage = () => {
       <h1 className="titleSecond product-details__title ">{name}</h1>
 
       <section className="product-details__gallery">
-        {isLoading || !selectedProduct ?
-          <ImageGallerySkeleton />
-        : <ProductGallery
-            images={images}
-            name={name}
-          />
-        }
+        <ProductGallery
+          images={images}
+          name={name}
+        />
       </section>
 
       <section className="product-details__parameters">
-        {!isLoading && selectedProduct ?
-          <ProductParamsSelects
-            colorsAvailable={colorsAvailable}
-            capacityAvailable={capacityAvailable}
-            id={id}
-            category={category}
-            color={color}
-            capacity={capacity}
-            onColorChange={handleColorChange}
-            onCapasityChange={handleCapasityChange}
-          />
-        : <ProductParamsSelectsSkeleton />}
+        <ProductParamsSelects
+          colorsAvailable={colorsAvailable}
+          capacityAvailable={capacityAvailable}
+          id={id}
+          category={category}
+          color={color}
+          capacity={capacity}
+          onColorChange={handleColorChange}
+          onCapasityChange={handleCapasityChange}
+        />
 
         <div className="is-flex product-details__price">
-          <p className="product-details__price--full">
-            {!isLoading ? `$${priceDiscount}` : <PriceSkeleton />}
-          </p>
-          <p className="product-details__price--discount">
-            {!isLoading ? `$${priceRegular}` : <PriceSkeleton />}
-          </p>
+          <p className="product-details__price--full">${priceDiscount}</p>
+          <p className="product-details__price--discount">${priceRegular}</p>
         </div>
 
-        {!isLoading && selectedProduct ?
-          <ProductActions selectedProduct={selectedProduct} />
-        : <ActionsButtonsSkeleton />}
+        <ProductActions selectedProduct={selectedProduct} />
 
-        {!isLoading && selectedProduct ?
-          <TechSpecs
-            device={selectedProduct}
-            category={category}
-            variant="short"
-          />
-        : <TechSpecsSkeleton variant="short" />}
+        <TechSpecs
+          device={selectedProduct}
+          category={category}
+          variant="short"
+        />
         <div className="product-details__id">{`ID: ${id}`}</div>
       </section>
 
       <section className="product-details__about">
         <h3 className="product-details__subtitle">{t('about')}</h3>
         <div className="product-details__line" />
-        {isLoading || !selectedProduct ?
-          <AboutSkeleton />
-        : <AboutSection description={description} />}
+        <AboutSection description={description} />
       </section>
 
       <section className="product-details__tech-specs">
         <h3 className="product-details__subtitle">{t('techSpecs')}</h3>
         <div className="product-details__line" />
 
-        {!isLoading && selectedProduct ?
-          <TechSpecs
-            device={selectedProduct}
-            category={category}
-            variant="full"
-          />
-        : <TechSpecsSkeleton variant="full" />}
+        <TechSpecs
+          device={selectedProduct}
+          category={category}
+          variant="full"
+        />
       </section>
 
       <section className="product-details__recommended">
