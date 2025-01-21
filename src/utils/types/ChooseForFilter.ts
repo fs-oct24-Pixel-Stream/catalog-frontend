@@ -3,4 +3,8 @@ export enum ChooseForFilter {
   NEWEST = 'Newest',
   CHEAPEST = 'Cheapest',
   EXPENSIVE = 'Expensive',
+  SELECTUrk = 'Оберіть',
+  NEWESTUrk = 'Новіші',
+  CHEAPESTUrk = 'Найдешевші',
+  EXPENSIVEUrk = 'Найдорожчі',
 }
