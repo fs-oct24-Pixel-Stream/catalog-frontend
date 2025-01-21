@@ -23,7 +23,7 @@ export const RecommendedSection: React.FC<Props> = ({ price, category }) => {
     <ProductSlider
       products={recommendedProducts}
       discount={true}
-      title={'You may also like'}
+      title={'recommended'}
     />
   );
 };
