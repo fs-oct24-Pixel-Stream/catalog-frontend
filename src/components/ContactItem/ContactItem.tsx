@@ -48,7 +48,7 @@ export const ContactItem: React.FC<Props> = ({ creator }) => {
           <a
             target="_blank"
             className="card__title"
-            href={creator.githubLink}
+            href={creator.linkedinLink}
           >
             LinkedIn
           </a>
