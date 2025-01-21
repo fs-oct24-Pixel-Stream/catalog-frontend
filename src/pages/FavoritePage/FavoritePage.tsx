@@ -19,7 +19,7 @@ export const FavoritePage = () => {
         <h1 className="titleMain">{t('favorites')}</h1>
         {!isFavoritesEmpty ?
           <div className="favorites__background">
-            <h2 className="favorites__background__title">Your list of favorites items are empty</h2>
+            <h2 className="favorites__background__title">{t('noFavorites')}</h2>
           </div>
         : <>
             <p className="favorites__items-quantity">
