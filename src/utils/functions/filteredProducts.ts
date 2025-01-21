@@ -15,6 +15,18 @@ export const filteredProducts = (filterName: ChooseForFilter, products: ProductC
       return [...products].sort(
         (productPrev, productCurrent) => productCurrent.year - productPrev.year,
       );
+    case ChooseForFilter.CHEAPESTUrk:
+      return [...products].sort(
+        (productPrev, productCurrent) => productPrev.price - productCurrent.price,
+      );
+    case ChooseForFilter.EXPENSIVEUrk:
+      return [...products].sort(
+        (productPrev, productCurrent) => productCurrent.price - productPrev.price,
+      );
+    case ChooseForFilter.NEWESTUrk:
+      return [...products].sort(
+        (productPrev, productCurrent) => productCurrent.year - productPrev.year,
+      );
     default:
       return products;
   }
