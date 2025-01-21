@@ -11,7 +11,7 @@ export const NewModelSection = () => {
     <ProductSlider
       products={newestProducts}
       discount={false}
-      title={'Brand new models'}
+      title={'newModels'}
     />
   );
 };
