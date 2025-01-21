@@ -42,55 +42,64 @@ export const DesctopSearch = ({ onClose }: { onClose: () => void }) => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+    document.body.classList.add('no-scroll');
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.body.classList.remove('no-scroll');
     };
   }, [onClose]);
 
   return (
     <>
       {isDesktop && (
-        <div className="search">
-          <div className="search-dropdown">
-            <div
-              className="search-dropdown__close"
-              onClick={onClose}
-            >
-              <button>×</button>
+        <p>
+          <div
+            className="search-overlay"
+            onClick={onClose}
+          />
+          <div className="search">
+            <div className="search-dropdown">
+              <div
+                className="search-dropdown__close"
+                onClick={onClose}
+              >
+                <button>×</button>
+              </div>
+              <input
+                ref={inputRef}
+                className="input is-large search-dropdown__input"
+                type="text"
+                placeholder={t('Search')}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
             </div>
-            <input
-              ref={inputRef}
-              className="input is-large search-dropdown__input"
-              type="text"
-              placeholder={t('Search')}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
+            {query && (
+              <div
+                ref={windowRef}
+                className="search-dropdown__results"
+              >
+                {filteredProducts.length > 0 ?
+                  filteredProducts.map((product) => (
+                    <div
+                      key={product.id}
+                      className="search-dropdown__item"
+                      onClick={() => handleProductClick(product)}
+                    >
+                      <img
+                        src={product.image}
+                        alt="product image"
+                        className="search-image"
+                      />
+                      {product.name}
+                    </div>
+                  ))
+                : <div className="search-dropdown__no-results">{t('searchEmpty')}</div>}
+              </div>
+            )}
           </div>
-          {query && (
-            <div
-              ref={windowRef}
-              className="search-dropdown__results"
-            >
-              {filteredProducts.length > 0 ?
-                filteredProducts.map((product) => (
-                  <div
-                    key={product.id}
-                    className="search-dropdown__item"
-                    onClick={() => handleProductClick(product)}
-                  >
-                    <img
-                      src={product.image}
-                      alt="product image"
-                      className="search-image"
-                    />
-                    {product.name}
-                  </div>
-                ))
-              : <div className="search-dropdown__no-results">{t('searchEmpty')}</div>}
-            </div>
-          )}
-        </div>
+        </p>
       )}
     </>
   );
