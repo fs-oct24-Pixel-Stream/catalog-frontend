@@ -3,15 +3,19 @@ import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { ProductCardType } from '../../utils/types/ProductCardType';
 
 import './SearchModal.scss';
+import { setBurgerState } from '../../features/burger/burgerSlice';
 
 export const SearchModal = ({ onClose }: { onClose: () => void }) => {
   const [query, setQuery] = useState('');
   const products = useAppSelector((state) => state.products.products);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const isOpen = useAppSelector((state) => state.burger.burgerStatus);
+
   const { t } = useTranslation();
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
@@ -21,8 +25,12 @@ export const SearchModal = ({ onClose }: { onClose: () => void }) => {
   }, [query, products]);
 
   const handleProductClick = (product: ProductCardType) => {
-    navigate(`/${product.category}/${product.itemId}`);
+    if (isOpen) {
+      dispatch(setBurgerState());
+    }
+
     onClose();
+    navigate(`/${product.category}/${product.itemId}`);
   };
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
