@@ -33,7 +33,7 @@ export const CategorySection = () => {
 
   const { ref, inView } = useInView({
     threshold: 0.2,
-    triggerOnce: true, //
+    triggerOnce: true,
   });
 
   return (
