@@ -47,8 +47,8 @@ export const App = () => {
         {!isAnimationEnabled ?
           <SwitchTransition>
             <CSSTransition
-              in={false}
-              key={location.key}
+              in={true}
+              key={location.pathname}
               timeout={500}
               classNames="app"
               nodeRef={nodeRef}
@@ -66,3 +66,14 @@ export const App = () => {
     </div>
   );
 };
+
+//   return (
+//     <div className="body-ajustment">
+//       <Header />
+//       <main className="main">
+//         <Outlet />
+//       </main>
+//       <Footer />
+//     </div>
+//   );
+// };

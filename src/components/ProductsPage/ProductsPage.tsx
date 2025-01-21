@@ -37,6 +37,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
     pageCount,
     handlePageClick,
   } = useFilterAndPagination(products);
+
   return (
     <section className="products _container container-custom">
       <Breadcrumbs />
