@@ -21,11 +21,16 @@ export const LangToggle = () => {
   };
 
   return (
-    <button
-      className="lang-button"
+    <div
+      className="icons-language icon-container"
       onClick={handleChange}
     >
-      {currLanguage.toUpperCase()}
-    </button>
+      <button
+        className="lang-button"
+        onClick={handleChange}
+      >
+        {currLanguage.toUpperCase()}
+      </button>
+    </div>
   );
 };

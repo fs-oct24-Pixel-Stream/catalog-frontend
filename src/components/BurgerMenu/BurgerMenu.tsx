@@ -10,11 +10,26 @@ import { setBurgerState } from '../../features/burger/burgerSlice';
 import { HeaderLinks } from '../Header/HeaderLinks';
 
 import './BurgerMenu.scss';
+import { LangToggle } from '../LangToggle';
+import { useTranslation } from 'react-i18next';
+import { setLanguage } from '../../features/languages/languagesSlice';
 
 export const BurgerMenu: FC = () => {
   const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
 
+  const currLanguage = useAppSelector((state) => state.language.lang);
+  const { i18n } = useTranslation();
+
+  const handleChange = () => {
+    if (currLanguage === 'en') {
+      dispatch(setLanguage('ua'));
+      i18n.changeLanguage('ua');
+    } else {
+      dispatch(setLanguage('en'));
+      i18n.changeLanguage('en');
+    }
+  };
   const toggleThemeChange = (): void => {
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
@@ -54,8 +69,11 @@ export const BurgerMenu: FC = () => {
             />
           </div>
 
-          <div className="burger-icons__item">
-            <div>UA</div>
+          <div
+            className="burger-icons__item"
+            onClick={handleChange}
+          >
+            <LangToggle />
           </div>
         </div>
         <HeaderLinks
