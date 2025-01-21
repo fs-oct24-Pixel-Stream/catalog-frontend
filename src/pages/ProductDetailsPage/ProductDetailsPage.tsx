@@ -19,7 +19,6 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import { RecommendedSection } from '../../components/RecommendedSection';
 import { ProductParamsSelects } from '../../components/ProductParamsSelects/ProductParamsSelects';
 import { ProductActions } from '../../components/ProductActions/ProductActions';
-import { NotFoundPage } from '../NotFoundPage';
 
 import './ProductDetailsPage.scss';
 
@@ -77,10 +76,10 @@ export const ProductDetailsPage = () => {
     if (!selectedProduct) {
       fetchData();
     }
-  }, [, dispatch, fetchAction, setSelectedAction, deviceId]);
+  }, [dispatch, fetchAction, setSelectedAction, deviceId]);
 
   if (!selectedProduct) {
-    return <NotFoundPage />;
+    return null;
   }
 
   const {
