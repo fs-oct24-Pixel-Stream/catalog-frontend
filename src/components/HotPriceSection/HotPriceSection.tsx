@@ -11,7 +11,7 @@ export const HotPriceSection = () => {
     <ProductSlider
       products={productWithDiscount}
       discount={true}
-      title={'Hot prices'}
+      title={'hotPrices'}
     />
   );
 };

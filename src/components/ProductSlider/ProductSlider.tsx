@@ -20,7 +20,7 @@ type Props = {
 };
 
 export const ProductSlider: React.FC<Props> = (props) => {
-  const { products, discount = true } = props;
+  const { products, discount = true, title } = props;
   const swiperRef = useRef<SwiperRef | null>(null);
   const isThemeDark = useAppSelector((state) => state.theme.theme) === 'dark';
   const isLoading = useAppSelector((state) => state.products.loading);
@@ -36,7 +36,7 @@ export const ProductSlider: React.FC<Props> = (props) => {
   return (
     <div className="product-slider">
       <div className="is-flex is-justify-content-space-between is-align-items-center product-slider__header">
-        <h2 className="titleSecond product-slider__title">{t('newModels')}</h2>
+        <h2 className="titleSecond product-slider__title">{t(title)}</h2>
         <div className="is-flex product-slider__buttons">
           <IconButton
             backgroundImage={
