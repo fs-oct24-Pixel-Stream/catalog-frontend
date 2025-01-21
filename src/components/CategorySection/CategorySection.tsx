@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
+import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
 
 import { useAppSelector } from '../../app/hooks';
-
+import cn from 'classnames';
 import './CategorySection.scss';
 
 export const CategorySection = () => {
@@ -30,9 +31,19 @@ export const CategorySection = () => {
     },
   ];
 
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+    triggerOnce: true, //
+  });
+
   return (
     <section>
-      <h2 className="titleSecond category-title">{t('shopByCategory')}</h2>
+      <h2
+        ref={ref}
+        className={cn('titleSecond category-title', { visible: inView })}
+      >
+        {t('shopByCategory')}
+      </h2>
 
       <div className="is-flex is-align-items-center is-justify-content-center category-section">
         {categories.map((category) => (

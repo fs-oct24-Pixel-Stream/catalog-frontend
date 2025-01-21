@@ -39,7 +39,7 @@ export const ScrollButton = () => {
   }, []);
 
   const buttonClass = cn('scroll-button', {
-    visible: isVisible && !isScrolling,
+    isVisible: isVisible && !isScrolling,
     hidden: !isVisible || isScrolling,
   });
 

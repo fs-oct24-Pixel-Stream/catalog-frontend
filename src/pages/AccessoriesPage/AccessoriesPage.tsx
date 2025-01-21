@@ -1,7 +1,6 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { fetchAccessories } from '../../features/accessories/accessoriesSlice';
+import { useAppSelector } from '../../app/hooks';
 
 import { ProductsPage } from '../../components/ProductsPage';
 
@@ -12,10 +11,7 @@ export const AccessoriesPage = () => {
   const accessories = useMemo(() => {
     return products.filter((product) => product.category === 'accessories');
   }, [products]);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchAccessories());
-  }, []);
+
   return (
     <>
       <ProductsPage products={accessories} />
