@@ -99,5 +99,9 @@ html.dark {
 }
 
 .app-exit {
-  display: none;
+  opacity: 0;
+  transform: translateX(-100px);
 }
+// .app-exit-active {
+//   transition: opacity 500ms;
+// }

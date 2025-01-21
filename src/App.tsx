@@ -38,25 +38,29 @@ export const App = () => {
 
   const nodeRef = useRef(null);
 
-  SwitchTransition;
+  const isAnimationEnabled = location.pathname.split('/').length === 3;
+
   return (
     <div className="body-ajustment">
       <Header />
       <main className="main">
-        <SwitchTransition>
-          <CSSTransition
-            key={location.key}
-            timeout={500}
-            classNames="app"
-            nodeRef={nodeRef}
-            // unmountOnExit
-            // mountOnEnter
-          >
-            <div ref={nodeRef}>
-              <Outlet />
-            </div>
-          </CSSTransition>
-        </SwitchTransition>
+        {!isAnimationEnabled ?
+          <SwitchTransition>
+            <CSSTransition
+              in={false}
+              key={location.key}
+              timeout={500}
+              classNames="app"
+              nodeRef={nodeRef}
+              unmountOnExit
+              mountOnEnter
+            >
+              <div ref={nodeRef}>
+                <Outlet />
+              </div>
+            </CSSTransition>
+          </SwitchTransition>
+        : <Outlet />}
       </main>
       <Footer />
     </div>
