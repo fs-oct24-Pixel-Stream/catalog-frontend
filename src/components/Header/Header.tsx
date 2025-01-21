@@ -146,9 +146,7 @@ export const Header = () => {
                 />
               </div>
 
-              <div className="icons-language icon-container">
-                <LangToggle />
-              </div>
+              <LangToggle />
             </div>
             <div className="icons-wrapper">
               <Link
