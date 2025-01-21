@@ -13,6 +13,9 @@ import { Header } from './components/Header/Header';
 
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import i18n from './utils/config/i18n';
+import { fetchTablets } from './features/tablets/tabletsSlice';
+import { fetchPhones } from './features/phones/phonesSlice';
+import { fetchAccessories } from './features/accessories/accessoriesSlice';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -21,12 +24,18 @@ export const App = () => {
   const currentLanguage = useAppSelector((state) => state.language.lang);
 
   const theme = useAppSelector((state) => state.theme.theme);
-
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(fetchTablets());
+    dispatch(fetchPhones());
+    dispatch(fetchAccessories());
+  }, []);
+
+  useEffect(() => {
     document.documentElement.className = theme;
     i18n.changeLanguage(currentLanguage || 'en');
   }, [theme]);
+
   const nodeRef = useRef(null);
 
   SwitchTransition;
